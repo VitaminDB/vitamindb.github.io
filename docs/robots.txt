@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vitamindb.github.io/sitemap.xml
+Sitemap: https://alexeyev.dev/sitemap.xml
