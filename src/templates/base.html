@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="$lang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$title</title>
+<meta name="description" content="$description">
+<meta name="author" content="$author">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+$robots$verify<link rel="canonical" href="$canonical">
+$alternates<link rel="preload" href="$prefix/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="$prefix/assets/style.css?v=$css_ver">
+<link rel="icon" href="$prefix/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="$og_type">
+<meta property="og:site_name" content="$site_name">
+<meta property="og:title" content="$og_title">
+<meta property="og:description" content="$description">
+<meta property="og:url" content="$canonical">
+<meta property="og:locale" content="$og_locale">
+<meta property="og:locale:alternate" content="$og_locale_alt">
+<meta property="og:image" content="$og_image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="$og_title">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="$og_title">
+<meta name="twitter:description" content="$description">
+<meta name="twitter:image" content="$og_image">
+$jsonld
+</head>
+<body class="$body_class">
+<a class="skip" href="#main">$skip</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="$home_url" aria-label="$site_name — $home_label"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">$site_name</span></a>
+    <nav class="top-nav" aria-label="$nav_label">
+      <a href="$home_url#projects">$nav_projects</a>
+      <a href="$home_url#vibe">$nav_vibe</a>
+      <a href="$home_url#contact">$nav_contact</a>
+      <a class="lang" href="$lang_url" hreflang="$lang_other_code" lang="$lang_other_code" title="$lang_other">$lang_other_short</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+$main
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+$footer
+  </div>
+</footer>
+</body>
+</html>

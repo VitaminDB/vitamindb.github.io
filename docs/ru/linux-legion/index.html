@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>linux-legion — аналог Lenovo Vantage для Linux</title>
+<meta name="description" content="Управление Lenovo Legion в Linux: режимы питания, лимиты мощности CPU, вентиляторы, RGB-подсветка Spectrum, режимы зарядки. Без root и модулей ядра.">
+<meta name="author" content="Виталий Алексеев">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://vitamindb.github.io/ru/linux-legion/">
+<link rel="alternate" hreflang="en" href="https://vitamindb.github.io/linux-legion/">
+<link rel="alternate" hreflang="ru" href="https://vitamindb.github.io/ru/linux-legion/">
+<link rel="alternate" hreflang="x-default" href="https://vitamindb.github.io/linux-legion/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=c51e4f5c45">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Виталий Алексеев">
+<meta property="og:title" content="linux-legion — аналог Lenovo Vantage для Linux">
+<meta property="og:description" content="Управление Lenovo Legion в Linux: режимы питания, лимиты мощности CPU, вентиляторы, RGB-подсветка Spectrum, режимы зарядки. Без root и модулей ядра.">
+<meta property="og:url" content="https://vitamindb.github.io/ru/linux-legion/">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://vitamindb.github.io/og/linux-legion-ru.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="linux-legion — аналог Lenovo Vantage для Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="linux-legion — аналог Lenovo Vantage для Linux">
+<meta name="twitter:description" content="Управление Lenovo Legion в Linux: режимы питания, лимиты мощности CPU, вентиляторы, RGB-подсветка Spectrum, режимы зарядки. Без root и модулей ядра.">
+<meta name="twitter:image" content="https://vitamindb.github.io/og/linux-legion-ru.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["SoftwareApplication","SoftwareSourceCode"],"@id":"https://vitamindb.github.io/ru/linux-legion/#software","name":"linux-legion","description":"Управление Lenovo Legion в Linux: режимы питания, лимиты мощности CPU, вентиляторы, RGB-подсветка Spectrum, режимы зарядки. Без root и модулей ядра.","abstract":"Центр управления ноутбуками Lenovo Legion для Linux — то, что в Windows делают Lenovo Vantage и Legion Space: режимы питания, лимиты мощности CPU, вентиляторы, RGB-подсветка Spectrum по клавишам, режимы батареи и аппаратные переключатели.","url":"https://vitamindb.github.io/ru/linux-legion/","mainEntityOfPage":"https://vitamindb.github.io/ru/linux-legion/","codeRepository":"https://github.com/VitaminDB/linux-legion","sameAs":["https://github.com/VitaminDB/linux-legion","https://aur.archlinux.org/packages/linux-legion"],"applicationCategory":"UtilitiesApplication","operatingSystem":"Linux","programmingLanguage":"Rust","license":["https://spdx.org/licenses/MIT.html"],"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","@id":"https://vitamindb.github.io/#person","name":"Vitaliy Alexeyev","url":"https://vitamindb.github.io/"},"image":"https://vitamindb.github.io/og/linux-legion-ru.jpg","screenshot":["https://vitamindb.github.io/img/linux-legion/home.webp","https://vitamindb.github.io/img/linux-legion/lighting.webp","https://vitamindb.github.io/img/linux-legion/lighting-layers.webp","https://vitamindb.github.io/img/linux-legion/performance.webp","https://vitamindb.github.io/img/linux-legion/battery.webp","https://vitamindb.github.io/img/linux-legion/device.webp"],"inLanguage":"ru","featureList":["Главная: режим питания в один клик, живые шкалы CPU / GPU / памяти / батареи и обороты вентиляторов; видеокарта NVIDIA опрашивается, только если уже проснулась, так что панель не будит дискретную карту.","Производительность: Quiet, Balanced, Performance, Extreme и Custom (то же, что Fn+Q); в Custom — PL1 / PL2 процессора, все остальные лимиты, которые отдаёт прошивка, и ручные обороты вентиляторов.","Автоприменение: прошивка забывает свои лимиты после перезагрузки, поэтому необязательный пользовательский сервис возвращает их при входе, при включении Custom и после сна.","Подсветка Spectrum: шесть аппаратных профилей, яркость, логотип LEGION на крышке и редактор слоёв на живой карте клавиш с 12 эффектами; профили хранятся в самой клавиатуре.","Батарея: Standard, Rapid charge или Conservation (≈80 %), уровень заряда и износ.","Устройство: Fn Lock, аппаратное отключение камеры, зарядка по USB в выключенном состоянии и сведения о системе.","--simulate показывает весь интерфейс без железа; LEGION_TRACE=1 печатает каждый RGB-пакет."],"downloadUrl":"https://aur.archlinux.org/packages/linux-legion"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Виталий Алексеев","item":"https://vitamindb.github.io/ru/"},{"@type":"ListItem","position":2,"name":"linux-legion","item":"https://vitamindb.github.io/ru/linux-legion/"}]}]}</script>
+</head>
+<body class="project">
+<a class="skip" href="#main">К содержимому</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/ru/" aria-label="Виталий Алексеев — Главная"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Виталий Алексеев</span></a>
+    <nav class="top-nav" aria-label="Основная навигация">
+      <a href="/ru/#projects">Проекты</a>
+      <a href="/ru/#vibe">Как сделано</a>
+      <a href="/ru/#contact">Контакты</a>
+      <a class="lang" href="/linux-legion/" hreflang="en" lang="en" title="English">EN</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<nav class="crumbs wrap" aria-label="Навигационная цепочка"><ol><li><a href="/ru/">Виталий Алексеев</a></li><li><a href="/ru/#projects">Проекты</a></li><li aria-current="page">linux-legion</li></ol></nav>
+<section class="p-hero" aria-labelledby="p-h">
+  <div class="wrap">
+    <p class="eyebrow rise">05 / 06 · Rust · syngui · hidraw</p>
+    <h1 id="p-h" class="rise d1">linux-legion</h1>
+    <p class="p-lead rise d2">Центр управления ноутбуками Lenovo Legion для Linux — то, что в Windows делают Lenovo Vantage и Legion Space: режимы питания, лимиты мощности CPU, вентиляторы, RGB-подсветка Spectrum по клавишам, режимы батареи и аппаратные переключатели.</p>
+    <div class="rise d3"><dl class="facts"><div><dt>Лицензия</dt><dd>MIT</dd></div><div><dt>Платформа</dt><dd>Linux · ноутбуки Lenovo Legion</dd></div><div><dt>Пакеты</dt><dd>linux-legion (AUR)</dd></div><div><dt>Статус</dt><dd>Проверено на Legion Pro 7 16IAX10H</dd></div></dl></div>
+    <div class="actions rise d4"><a class="btn" href="https://github.com/VitaminDB/linux-legion"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>Исходники на GitHub</span></a><a class="btn ghost" href="https://aur.archlinux.org/packages/linux-legion">Пакет в AUR: linux-legion</a></div>
+    <figure class="shot-hero rise d4"><div class="frame"><img src="/img/linux-legion/home.webp" width="1600" height="1146" alt="Главная страница linux-legion: режим питания, шкалы CPU / GPU / памяти / батареи и вентиляторы" srcset="/img/linux-legion/home-800.webp 800w, /img/linux-legion/home.webp 1600w" sizes="(max-width: 1240px) 100vw, 1180px" fetchpriority="high"></div>
+    <figcaption>Главная страница linux-legion: режим питания, шкалы CPU / GPU / памяти / батареи и вентиляторы</figcaption></figure>
+    <div style="margin-top:clamp(32px,5vw,56px)"><dl class="statbar"><div><dt>эффектов подсветки в редакторе слоёв</dt><dd>12</dd></div><div><dt>аппаратных профилей подсветки</dt><dd>6</dd></div><div><dt>раз в секунду читаются цвета клавиш</dt><dd>~10<small>/s</small></dd></div><div><dt>сторонних модулей ядра, демонов и root</dt><dd>0</dd></div></dl></div>
+  </div>
+</section>
+<section class="section " id="what" aria-labelledby="what-h"><div class="wrap"><div class="sec-head"><span class="sec-num">01</span><h2 id="what-h">Что это</h2></div><div class="prose"><p>linux-legion написан на Rust и syngui. Он пользуется штатными драйверами ядра (lenovo-wmi-gamezone, lenovo-wmi-other, ideapad-laptop) и общается с RGB-контроллером напрямую через hidraw — без стороннего модуля ядра, без демона и без root при работе.</p><p>Правило udev даёт вошедшему пользователю доступ к RGB-контроллеру и открывает настройки в sysfs на запись группе wheel. В README описан и протокол Spectrum, включая особенности 10-го поколения, найденные на живом железе, — для тех, кто захочет перенести его куда-то ещё.</p></div></div></section>
+<section class="section " id="features" aria-labelledby="features-h"><div class="wrap"><div class="sec-head"><span class="sec-num">02</span><h2 id="features-h">Возможности</h2></div><ul class="features"><li>Главная: режим питания в один клик, живые шкалы CPU / GPU / памяти / батареи и обороты вентиляторов; видеокарта NVIDIA опрашивается, только если уже проснулась, так что панель не будит дискретную карту.</li><li>Производительность: Quiet, Balanced, Performance, Extreme и Custom (то же, что Fn+Q); в Custom — PL1 / PL2 процессора, все остальные лимиты, которые отдаёт прошивка, и ручные обороты вентиляторов.</li><li>Автоприменение: прошивка забывает свои лимиты после перезагрузки, поэтому необязательный пользовательский сервис возвращает их при входе, при включении Custom и после сна.</li><li>Подсветка Spectrum: шесть аппаратных профилей, яркость, логотип LEGION на крышке и редактор слоёв на живой карте клавиш с 12 эффектами; профили хранятся в самой клавиатуре.</li><li>Батарея: Standard, Rapid charge или Conservation (≈80 %), уровень заряда и износ.</li><li>Устройство: Fn Lock, аппаратное отключение камеры, зарядка по USB в выключенном состоянии и сведения о системе.</li><li>--simulate показывает весь интерфейс без железа; LEGION_TRACE=1 печатает каждый RGB-пакет.</li></ul></div></section>
+<section class="section " id="install" aria-labelledby="install-h"><div class="wrap"><div class="sec-head"><span class="sec-num">03</span><h2 id="install-h">Установка</h2></div><div class="install"><pre><code>yay -S linux-legion<span class="c">        # or: paru -S linux-legion</span></code></pre><p>Пакет ставит бинарник, пункт меню, иконки и правило udev. Из исходников: cargo build --release, затем положить packaging/70-linux-legion.rules в /etc/udev/rules.d/ и перезагрузить правила udev.</p><p><a href="https://github.com/VitaminDB/linux-legion#readme">Полная инструкция — в README →</a></p></div></div></section>
+<section class="section " id="requirements" aria-labelledby="requirements-h"><div class="wrap"><div class="sec-head"><span class="sec-num">04</span><h2 id="requirements-h">Требования и ограничения</h2></div><ul class="limits"><li>Разработан и проверен на одном ноутбуке: Legion Pro 7 16IAX10H (83F5, Core Ultra 9 275HX, RTX 5090 Laptop, контроллер Spectrum 048d:c197), Arch Linux, ядро 7.0.</li><li>Другие модели Legion с теми же интерфейсами ядра и контроллером Spectrum (048d:c1xx / c9xx) должны работать — каждая страница подстраивается под то, что сообщает прошивка, — но не проверялись.</li><li>Интерфейс пока только на русском.</li><li>Неофициальный проект, с Lenovo не связан. Лимиты и обороты задаются через штатные интерфейсы прошивки, но вся ответственность — на вас.</li></ul></div></section>
+<section class="section " id="screenshots" aria-labelledby="screenshots-h"><div class="wrap"><div class="sec-head"><span class="sec-num">05</span><h2 id="screenshots-h">Скриншоты</h2></div><ul class="gallery"><li><figure><a href="/img/linux-legion/lighting.webp"><div class="frame"><img src="/img/linux-legion/lighting-800.webp" width="800" height="573" alt="Подсветка Spectrum — живая карта клавиш" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Подсветка Spectrum — живая карта клавиш</figcaption></figure></li><li><figure><a href="/img/linux-legion/lighting-layers.webp"><div class="frame"><img src="/img/linux-legion/lighting-layers-800.webp" width="800" height="573" alt="Слои эффектов подсветки" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Слои эффектов подсветки</figcaption></figure></li><li><figure><a href="/img/linux-legion/performance.webp"><div class="frame"><img src="/img/linux-legion/performance-800.webp" width="800" height="573" alt="Режимы производительности, лимиты мощности и вентиляторы" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Режимы производительности, лимиты мощности и вентиляторы</figcaption></figure></li><li><figure><a href="/img/linux-legion/battery.webp"><div class="frame"><img src="/img/linux-legion/battery-800.webp" width="800" height="573" alt="Режимы зарядки батареи" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Режимы зарядки батареи</figcaption></figure></li><li><figure><a href="/img/linux-legion/device.webp"><div class="frame"><img src="/img/linux-legion/device-800.webp" width="800" height="573" alt="Переключатели устройства и сведения о системе" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Переключатели устройства и сведения о системе</figcaption></figure></li></ul></div></section>
+
+<section class="vibe compact" id="how-built" aria-labelledby="how-built-h">
+  <div class="wrap">
+    <p class="eyebrow">Вайбкодинг в Claude Code</p>
+    <h2 id="how-built-h">Как сделано</h2>
+    <p class="vibe-text">Модель пишет код, тесты и большую часть документации. Каждый формат пакета снят с моего собственного Legion и проверен на нём — живые тесты пишут слои в неактивный профиль клавиатуры, читают обратно и восстанавливают исходный байт в байт.</p>
+    <p class="vibe-more"><a href="/ru/#vibe">Всё здесь написано вайбкодингом.</a> <a href="https://github.com/VitaminDB/linux-legion">github.com/VitaminDB/linux-legion</a></p>
+  </div>
+</section>
+<nav class="section" aria-labelledby="others-h"><div class="wrap"><div class="sec-head"><span class="sec-num">06</span><h2 id="others-h">Другие проекты</h2></div><ul class="others"><li><a href="/ru/synthos/"><b>synthos</b><span>Локальная AI-студия</span></a></li><li><a href="/ru/synaptix/"><b>synaptix</b><span>Движок под synthos</span></a></li><li><a href="/ru/syngui/"><b>syngui</b><span>Retained-mode GUI-фреймворк для Rust</span></a></li><li><a href="/ru/syndesktop/"><b>syndesktop</b><span>Рабочий стол для Wayland</span></a></li><li><a href="/ru/ardor-mouse/"><b>ardor-mouse</b><span>Настройка мыши ARDOR GAMING Edge Air Ultra в Linux — DPI, подсветка, переназначение кнопок</span></a></li></ul></div></nav>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Виталий Алексеев · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Статический сайт без трекеров и cookies. Собран скриптом на Python.</p></div>
+    <nav aria-label="Другие проекты"><a href="/ru/synthos/">synthos</a><a href="/ru/synaptix/">synaptix</a><a href="/ru/syngui/">syngui</a><a href="/ru/syndesktop/">syndesktop</a><a href="/ru/linux-legion/">linux-legion</a><a href="/ru/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>

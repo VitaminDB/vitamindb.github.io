@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>syngui — GPU GUI framework for Rust with CSS-like styles</title>
+<meta name="description" content="Retained-mode GUI framework for Rust: wgpu rendering, real stylesheets with a cascade, reactive signals, 110+ widgets — terminal, code and block editors, video.">
+<meta name="author" content="Vitaliy Alexeyev">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://vitamindb.github.io/syngui/">
+<link rel="alternate" hreflang="en" href="https://vitamindb.github.io/syngui/">
+<link rel="alternate" hreflang="ru" href="https://vitamindb.github.io/ru/syngui/">
+<link rel="alternate" hreflang="x-default" href="https://vitamindb.github.io/syngui/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=c51e4f5c45">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vitaliy Alexeyev">
+<meta property="og:title" content="syngui — GPU GUI framework for Rust with CSS-like styles">
+<meta property="og:description" content="Retained-mode GUI framework for Rust: wgpu rendering, real stylesheets with a cascade, reactive signals, 110+ widgets — terminal, code and block editors, video.">
+<meta property="og:url" content="https://vitamindb.github.io/syngui/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:image" content="https://vitamindb.github.io/og/syngui-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="syngui — GPU GUI framework for Rust with CSS-like styles">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="syngui — GPU GUI framework for Rust with CSS-like styles">
+<meta name="twitter:description" content="Retained-mode GUI framework for Rust: wgpu rendering, real stylesheets with a cascade, reactive signals, 110+ widgets — terminal, code and block editors, video.">
+<meta name="twitter:image" content="https://vitamindb.github.io/og/syngui-en.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["SoftwareApplication","SoftwareSourceCode"],"@id":"https://vitamindb.github.io/syngui/#software","name":"syngui","description":"Retained-mode GUI framework for Rust: wgpu rendering, real stylesheets with a cascade, reactive signals, 110+ widgets — terminal, code and block editors, video.","abstract":"A retained-mode GUI framework for Rust — GPU-rendered through wgpu, styled with CSS-like stylesheets, wired with reactive signals.","url":"https://vitamindb.github.io/syngui/","mainEntityOfPage":"https://vitamindb.github.io/syngui/","codeRepository":"https://github.com/VitaminDB/syngui","sameAs":["https://github.com/VitaminDB/syngui"],"applicationCategory":"DeveloperApplication","operatingSystem":"Linux","programmingLanguage":"Rust","license":["https://spdx.org/licenses/MIT.html","https://spdx.org/licenses/Apache-2.0.html"],"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","@id":"https://vitamindb.github.io/#person","name":"Vitaliy Alexeyev","url":"https://vitamindb.github.io/"},"image":"https://vitamindb.github.io/og/syngui-en.jpg","screenshot":["https://vitamindb.github.io/img/syngui/widget-gallery.webp","https://vitamindb.github.io/img/synthos/notes-kanban-drag.webp","https://vitamindb.github.io/img/synthos/code-terminal-btop.webp","https://vitamindb.github.io/img/synthos/notes-charts.webp","https://vitamindb.github.io/img/linux-legion/lighting.webp"],"inLanguage":"en","featureList":["MSS stylesheets: variables and var(), type / class / compound / descendant selectors, :hover, :active, :focus, :checked, :disabled, nesting, transitions, @keyframes, inheritance, plus window-state pseudo-classes.","Fine-grained reactivity: use_signal, use_effect, create_memo and use_context with automatic dependency tracking; subtrees rebuild granularly.","Retained-mode architecture: immutable Widget → stateful Element, diffed via can_update(), with dirty-flag propagation.","110+ widgets: line / bar / pie / radar / gauge charts, a tile map, an embedded terminal (PTY + VT100), Markdown with syntax highlighting, a rope-backed code editor, an audio-clocked video player with hardware decode, a devtools inspector.","DocumentEditor: a Notion-style block editor where Markdown is both the model and the file format, with flow or free-canvas layout, vector shapes and live embeds of your own widgets.","3D transforms from stylesheets, particle emitters with 15 presets and a macOS-dock-style fisheye row.","Measured hot paths: VirtualList, keyed children, a cached cascade and rendering batched into a handful of draw calls in one pass.","wgpu 28 (Vulkan / Metal / DX12 / GL / WebGPU) with hand-written WGSL shaders.","Linux on X11 and Wayland (with its own drag-and-drop), Windows, macOS, Android and Android TV, WebAssembly."]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Vitaliy Alexeyev","item":"https://vitamindb.github.io/"},{"@type":"ListItem","position":2,"name":"syngui","item":"https://vitamindb.github.io/syngui/"}]}]}</script>
+</head>
+<body class="project">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/" aria-label="Vitaliy Alexeyev — Home"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Vitaliy Alexeyev</span></a>
+    <nav class="top-nav" aria-label="Main">
+      <a href="/#projects">Projects</a>
+      <a href="/#vibe">How it is built</a>
+      <a href="/#contact">Contact</a>
+      <a class="lang" href="/ru/syngui/" hreflang="ru" lang="ru" title="Русский">RU</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Vitaliy Alexeyev</a></li><li><a href="/#projects">Projects</a></li><li aria-current="page">syngui</li></ol></nav>
+<section class="p-hero" aria-labelledby="p-h">
+  <div class="wrap">
+    <p class="eyebrow rise">03 / 06 · Rust · wgpu 28 · WGSL</p>
+    <h1 id="p-h" class="rise d1">syngui</h1>
+    <p class="p-lead rise d2">A retained-mode GUI framework for Rust — GPU-rendered through wgpu, styled with CSS-like stylesheets, wired with reactive signals.</p>
+    <div class="rise d3"><dl class="facts"><div><dt>Licence</dt><dd>MIT OR Apache-2.0</dd></div><div><dt>Platform</dt><dd>Linux · Windows · macOS · Android · Web</dd></div><div><dt>Packages</dt><dd>Cargo</dd></div><div><dt>Status</dt><dd>Young, API not stable</dd></div></dl></div>
+    <div class="actions rise d4"><a class="btn" href="https://github.com/VitaminDB/syngui"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>Source on GitHub</span></a></div>
+    <figure class="shot-hero rise d4"><div class="frame"><img src="/img/syngui/widget-gallery.webp" width="1600" height="944" alt="The widget_gallery_mss example running natively — MarkdownView with syntax highlighting" srcset="/img/syngui/widget-gallery-800.webp 800w, /img/syngui/widget-gallery.webp 1600w" sizes="(max-width: 1240px) 100vw, 1180px" fetchpriority="high"></div>
+    <figcaption>The widget_gallery_mss example running natively — MarkdownView with syntax highlighting</figcaption></figure>
+    <div style="margin-top:clamp(32px,5vw,56px)"><dl class="statbar"><div><dt>widgets in 10 categories</dt><dd>110+</dd></div><div><dt>tests</dt><dd>1 400+</dd></div><div><dt>per frame for a long chat feed (was 3.4 s)</dt><dd>5.8<small>ms</small></dd></div><div><dt>platforms: Linux, Windows, macOS, Android, Web</dt><dd>5</dd></div></dl></div>
+  </div>
+</section>
+<section class="section " id="what" aria-labelledby="what-h"><div class="wrap"><div class="sec-head"><span class="sec-num">01</span><h2 id="what-h">What it is</h2></div><div class="prose"><p>Most Rust GUI libraries make you choose: immediate-mode simplicity (egui) or a retained tree with typed styling (iced), a custom DSL (Slint) or web tech (Tauri, Dioxus). syngui takes a different combination — real stylesheets with a cascade, SolidJS-style fine-grained reactivity, a retained widget tree, and a large set of widgets you would normally have to vendor yourself.</p><p>It is used in production by its author: synthos, syndesktop, linux-legion and ardor-mouse all run on it, so its bugs get found by real use.</p></div></div></section>
+<section class="section " id="features" aria-labelledby="features-h"><div class="wrap"><div class="sec-head"><span class="sec-num">02</span><h2 id="features-h">Key features</h2></div><ul class="features"><li>MSS stylesheets: variables and var(), type / class / compound / descendant selectors, :hover, :active, :focus, :checked, :disabled, nesting, transitions, @keyframes, inheritance, plus window-state pseudo-classes.</li><li>Fine-grained reactivity: use_signal, use_effect, create_memo and use_context with automatic dependency tracking; subtrees rebuild granularly.</li><li>Retained-mode architecture: immutable Widget → stateful Element, diffed via can_update(), with dirty-flag propagation.</li><li>110+ widgets: line / bar / pie / radar / gauge charts, a tile map, an embedded terminal (PTY + VT100), Markdown with syntax highlighting, a rope-backed code editor, an audio-clocked video player with hardware decode, a devtools inspector.</li><li>DocumentEditor: a Notion-style block editor where Markdown is both the model and the file format, with flow or free-canvas layout, vector shapes and live embeds of your own widgets.</li><li>3D transforms from stylesheets, particle emitters with 15 presets and a macOS-dock-style fisheye row.</li><li>Measured hot paths: VirtualList, keyed children, a cached cascade and rendering batched into a handful of draw calls in one pass.</li><li>wgpu 28 (Vulkan / Metal / DX12 / GL / WebGPU) with hand-written WGSL shaders.</li><li>Linux on X11 and Wayland (with its own drag-and-drop), Windows, macOS, Android and Android TV, WebAssembly.</li></ul></div></section>
+<section class="section " id="install" aria-labelledby="install-h"><div class="wrap"><div class="sec-head"><span class="sec-num">03</span><h2 id="install-h">Install</h2></div><div class="install"><pre><code>cargo build -p syngui
+cargo test -p syngui
+cargo run -p widget_gallery_mss<span class="c">   # every widget + MSS styling</span></code></pre><p>Video playback sits behind the optional ffmpeg feature and needs FFmpeg 7+ development libraries; without it nothing links against FFmpeg. The widget gallery also builds to WebAssembly.</p><p><a href="https://github.com/VitaminDB/syngui#readme">Full instructions in the README →</a></p></div></div></section>
+<section class="section " id="requirements" aria-labelledby="requirements-h"><div class="wrap"><div class="sec-head"><span class="sec-num">04</span><h2 id="requirements-h">Requirements and limitations</h2></div><ul class="limits"><li>Text shaping is simple: Latin, Cyrillic and CJK render correctly, but there is no kerning, no ligatures, no GSUB/GPOS, no bidirectional text and no complex scripts (Arabic, Devanagari).</li><li>Colour emoji are drawn without a shaper: ZWJ sequences and VS16 can render as separate glyphs.</li><li>Accessibility (AccessKit) exists behind a non-default feature and is not continuously tested.</li><li>No CI yet: Windows, macOS and Android builds are verified by hand.</li><li>The API is not stable; expect breaking changes.</li></ul></div></section>
+<section class="section " id="screenshots" aria-labelledby="screenshots-h"><div class="wrap"><div class="sec-head"><span class="sec-num">05</span><h2 id="screenshots-h">Screenshots</h2></div><ul class="gallery"><li><figure><a href="/img/synthos/notes-kanban-drag.webp"><div class="frame"><img src="/img/synthos/notes-kanban-drag-800.webp" width="800" height="464" alt="Built on syngui: DocumentEditor pages and kanban boards in synthos" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Built on syngui: DocumentEditor pages and kanban boards in synthos</figcaption></figure></li><li><figure><a href="/img/synthos/code-terminal-btop.webp"><div class="frame"><img src="/img/synthos/code-terminal-btop-800.webp" width="800" height="464" alt="Built on syngui: the embedded terminal running btop inside synthos" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Built on syngui: the embedded terminal running btop inside synthos</figcaption></figure></li><li><figure><a href="/img/synthos/notes-charts.webp"><div class="frame"><img src="/img/synthos/notes-charts-800.webp" width="800" height="464" alt="Built on syngui: line, bar, pie and radar charts" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Built on syngui: line, bar, pie and radar charts</figcaption></figure></li><li><figure><a href="/img/linux-legion/lighting.webp"><div class="frame"><img src="/img/linux-legion/lighting-800.webp" width="800" height="573" alt="Built on syngui: the live keyboard map in linux-legion" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Built on syngui: the live keyboard map in linux-legion</figcaption></figure></li></ul></div></section>
+
+<section class="vibe compact" id="how-built" aria-labelledby="how-built-h">
+  <div class="wrap">
+    <p class="eyebrow">Vibe-coded with Claude Code</p>
+    <h2 id="how-built-h">How it is built</h2>
+    <p class="vibe-text">The model writes the code, the tests and most of the documentation. The performance numbers were measured on my machine, and every app I have built since — synthos, syndesktop, linux-legion, ardor-mouse — runs on this framework, so its bugs get found by real use.</p>
+    <p class="vibe-more"><a href="/#vibe">Everything here is vibe-coded.</a> <a href="https://github.com/VitaminDB/syngui">github.com/VitaminDB/syngui</a></p>
+  </div>
+</section>
+<nav class="section" aria-labelledby="others-h"><div class="wrap"><div class="sec-head"><span class="sec-num">06</span><h2 id="others-h">Other projects</h2></div><ul class="others"><li><a href="/synthos/"><b>synthos</b><span>Local AI studio</span></a></li><li><a href="/synaptix/"><b>synaptix</b><span>The engine under synthos</span></a></li><li><a href="/syndesktop/"><b>syndesktop</b><span>Wayland desktop environment</span></a></li><li><a href="/linux-legion/"><b>linux-legion</b><span>Lenovo Vantage for Linux</span></a></li><li><a href="/ardor-mouse/"><b>ardor-mouse</b><span>Linux configurator for the ARDOR GAMING Edge Air Ultra mouse — DPI, RGB, button remapping</span></a></li></ul></div></nav>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Vitaliy Alexeyev · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Static site, no trackers, no cookies. Built with a Python script.</p></div>
+    <nav aria-label="Other projects"><a href="/synthos/">synthos</a><a href="/synaptix/">synaptix</a><a href="/syngui/">syngui</a><a href="/syndesktop/">syndesktop</a><a href="/linux-legion/">linux-legion</a><a href="/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>

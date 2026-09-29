@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>synaptix — движок инференса на Rust и CUDA без PyTorch</title>
+<meta name="description" content="Нативный движок на Rust для LLM, картинок, видео, речи и музыки: свои CUDA-ядра через NVRTC, квантование NVFP4 / MXFP8 / SQ, GGUF напрямую. Без PyTorch.">
+<meta name="author" content="Виталий Алексеев">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://vitamindb.github.io/ru/synaptix/">
+<link rel="alternate" hreflang="en" href="https://vitamindb.github.io/synaptix/">
+<link rel="alternate" hreflang="ru" href="https://vitamindb.github.io/ru/synaptix/">
+<link rel="alternate" hreflang="x-default" href="https://vitamindb.github.io/synaptix/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=c51e4f5c45">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Виталий Алексеев">
+<meta property="og:title" content="synaptix — движок инференса на Rust и CUDA без PyTorch">
+<meta property="og:description" content="Нативный движок на Rust для LLM, картинок, видео, речи и музыки: свои CUDA-ядра через NVRTC, квантование NVFP4 / MXFP8 / SQ, GGUF напрямую. Без PyTorch.">
+<meta property="og:url" content="https://vitamindb.github.io/ru/synaptix/">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://vitamindb.github.io/og/synaptix-ru.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="synaptix — движок инференса на Rust и CUDA без PyTorch">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="synaptix — движок инференса на Rust и CUDA без PyTorch">
+<meta name="twitter:description" content="Нативный движок на Rust для LLM, картинок, видео, речи и музыки: свои CUDA-ядра через NVRTC, квантование NVFP4 / MXFP8 / SQ, GGUF напрямую. Без PyTorch.">
+<meta name="twitter:image" content="https://vitamindb.github.io/og/synaptix-ru.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["SoftwareApplication","SoftwareSourceCode"],"@id":"https://vitamindb.github.io/ru/synaptix/#software","name":"synaptix","description":"Нативный движок на Rust для LLM, картинок, видео, речи и музыки: свои CUDA-ядра через NVRTC, квантование NVFP4 / MXFP8 / SQ, GGUF напрямую. Без PyTorch.","abstract":"Нативный движок на Rust для запуска и обучения нейросетей — написанные вручную CUDA-ядра, которые компилируются на лету через NVRTC. Без PyTorch, без libtorch и без Python.","url":"https://vitamindb.github.io/ru/synaptix/","mainEntityOfPage":"https://vitamindb.github.io/ru/synaptix/","codeRepository":"https://github.com/VitaminDB/synaptix","sameAs":["https://github.com/VitaminDB/synaptix"],"applicationCategory":"DeveloperApplication","operatingSystem":"Linux","programmingLanguage":"Rust","license":["https://spdx.org/licenses/MIT.html","https://spdx.org/licenses/Apache-2.0.html"],"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","@id":"https://vitamindb.github.io/#person","name":"Vitaliy Alexeyev","url":"https://vitamindb.github.io/"},"image":"https://vitamindb.github.io/og/synaptix-ru.jpg","screenshot":["https://vitamindb.github.io/img/synthos/chat-details.webp","https://vitamindb.github.io/img/synthos/pack-wizard-layers.webp","https://vitamindb.github.io/img/synthos/nodes-acestep.webp","https://vitamindb.github.io/img/synthos/agent-pipeline-run.webp"],"inLanguage":"ru","featureList":["CUDA-ядра, написанные вручную и компилируемые через NVRTC под compute capability конкретной карты; любая карта от sm_80, родной block-scale mma.sync на Blackwell (sm_120+).","Порты моделей, сверенные с оригиналами: Qwen3 (плотные и MoE), гибриды Qwen3-Next, Qwen4Exp на 125B MoE, Llama, Gemma-3, Gemma-4, Muse Glimmer; FLUX.1, FLUX.2, Qwen-Image 2.1, Qwen-Image-Edit, SDXL; видео LTX-2.3 и MiniMax-H3.","Речь и музыка: Whisper, GigaAM, Sortformer; VoxCPM, OmniVoice, VibeVoice; YuE2, SheetSage2, ACE-Step; эмбеддинги BGE-M3 и реранкер.","Однофайловые бандлы .syn: читаются через mmap без копирования, квантуются при упаковке, точность выбирается для каждой группы слоёв.","SQ1…SQ8 — переносимый блочный формат с энкодером на GPU; GGUF работает напрямую со всеми 27 типами блоков ggml; квантованный бандл можно перекодировать при загрузке под старую карту.","KV-кэш в MXFP8 по умолчанию, страничный KV, декод через CUDA-граф и спекулятивное декодирование.","Эксперты MoE живут в закреплённой памяти хоста и подкачиваются со скоростью ~39 ГБ/с, плюс частичная выгрузка блоков: MoE на 125B работает на карте 24 ГБ, а все семейства моделей проверены на 7 ГБ.","Сессии префикс-KV переживают смену хода у всех архитектур, включая промпты с картинками.","CLI на всё: inspect, convert, quantize, run, chat, bench, imagine, video, music, speak, podcast, transcribe."]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Виталий Алексеев","item":"https://vitamindb.github.io/ru/"},{"@type":"ListItem","position":2,"name":"synaptix","item":"https://vitamindb.github.io/ru/synaptix/"}]}]}</script>
+</head>
+<body class="project">
+<a class="skip" href="#main">К содержимому</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/ru/" aria-label="Виталий Алексеев — Главная"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Виталий Алексеев</span></a>
+    <nav class="top-nav" aria-label="Основная навигация">
+      <a href="/ru/#projects">Проекты</a>
+      <a href="/ru/#vibe">Как сделано</a>
+      <a href="/ru/#contact">Контакты</a>
+      <a class="lang" href="/synaptix/" hreflang="en" lang="en" title="English">EN</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<nav class="crumbs wrap" aria-label="Навигационная цепочка"><ol><li><a href="/ru/">Виталий Алексеев</a></li><li><a href="/ru/#projects">Проекты</a></li><li aria-current="page">synaptix</li></ol></nav>
+<section class="p-hero" aria-labelledby="p-h">
+  <div class="wrap">
+    <p class="eyebrow rise">02 / 06 · Rust · CUDA · NVRTC</p>
+    <h1 id="p-h" class="rise d1">synaptix</h1>
+    <p class="p-lead rise d2">Нативный движок на Rust для запуска и обучения нейросетей — написанные вручную CUDA-ядра, которые компилируются на лету через NVRTC. Без PyTorch, без libtorch и без Python.</p>
+    <div class="rise d3"><dl class="facts"><div><dt>Лицензия</dt><dd>MIT OR Apache-2.0</dd></div><div><dt>Платформа</dt><dd>CUDA sm_80+ · запасной путь на CPU</dd></div><div><dt>Пакеты</dt><dd>Cargo, из исходников</dd></div><div><dt>Статус</dt><dd>Молодой, API нестабилен</dd></div></dl></div>
+    <div class="actions rise d4"><a class="btn" href="https://github.com/VitaminDB/synaptix"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>Исходники на GitHub</span></a></div>
+    <figure class="shot-hero rise d4"><div class="frame"><img src="/img/synthos/chat-details.webp" width="1600" height="928" alt="synaptix в работе внутри synthos: ток/с, время префилла и доля промпта из префикс-KV" srcset="/img/synthos/chat-details-800.webp 800w, /img/synthos/chat-details.webp 1600w" sizes="(max-width: 1240px) 100vw, 1180px" fetchpriority="high"></div>
+    <figcaption>synaptix в работе внутри synthos: ток/с, время префилла и доля промпта из префикс-KV</figcaption></figure>
+    <div style="margin-top:clamp(32px,5vw,56px)"><dl class="statbar"><div><dt>строк на Rust</dt><dd>~245k</dd></div><div><dt>файла CUDA-ядер, компиляция на лету</dt><dd>73</dd></div><div><dt>тестов</dt><dd>2 000+</dd></div><div><dt>типов блоков ggml работают как есть</dt><dd>27</dd></div></dl></div>
+  </div>
+</section>
+<section class="section " id="what" aria-labelledby="what-h"><div class="wrap"><div class="sec-head"><span class="sec-num">01</span><h2 id="what-h">Что это</h2></div><div class="prose"><p>Альтернатива Python-стеку для машинного обучения. Всё — от API тензоров и CUDA-ядер до полных портов моделей, токенизатора, движка инференса со страничным KV-кэшем и стека обучения — написано на Rust.</p><p>Работает на любой видеокарте NVIDIA от sm_80 (Ampere): ядра компилируются на лету под конкретную карту, на Blackwell есть родные тензорные пути NVFP4 / MXFP8, на остальных — переносимые ядра. Модели загружаются из однофайловых бандлов .syn или прямо из GGUF. Корректность проверяется побитовым совпадением с эталонами PyTorch и NeMo — построчно, а не по общему косинусному сходству, за которым прячутся локальные ошибки.</p></div></div></section>
+<section class="section " id="features" aria-labelledby="features-h"><div class="wrap"><div class="sec-head"><span class="sec-num">02</span><h2 id="features-h">Возможности</h2></div><ul class="features"><li>CUDA-ядра, написанные вручную и компилируемые через NVRTC под compute capability конкретной карты; любая карта от sm_80, родной block-scale mma.sync на Blackwell (sm_120+).</li><li>Порты моделей, сверенные с оригиналами: Qwen3 (плотные и MoE), гибриды Qwen3-Next, Qwen4Exp на 125B MoE, Llama, Gemma-3, Gemma-4, Muse Glimmer; FLUX.1, FLUX.2, Qwen-Image 2.1, Qwen-Image-Edit, SDXL; видео LTX-2.3 и MiniMax-H3.</li><li>Речь и музыка: Whisper, GigaAM, Sortformer; VoxCPM, OmniVoice, VibeVoice; YuE2, SheetSage2, ACE-Step; эмбеддинги BGE-M3 и реранкер.</li><li>Однофайловые бандлы .syn: читаются через mmap без копирования, квантуются при упаковке, точность выбирается для каждой группы слоёв.</li><li>SQ1…SQ8 — переносимый блочный формат с энкодером на GPU; GGUF работает напрямую со всеми 27 типами блоков ggml; квантованный бандл можно перекодировать при загрузке под старую карту.</li><li>KV-кэш в MXFP8 по умолчанию, страничный KV, декод через CUDA-граф и спекулятивное декодирование.</li><li>Эксперты MoE живут в закреплённой памяти хоста и подкачиваются со скоростью ~39 ГБ/с, плюс частичная выгрузка блоков: MoE на 125B работает на карте 24 ГБ, а все семейства моделей проверены на 7 ГБ.</li><li>Сессии префикс-KV переживают смену хода у всех архитектур, включая промпты с картинками.</li><li>CLI на всё: inspect, convert, quantize, run, chat, bench, imagine, video, music, speak, podcast, transcribe.</li></ul></div></section>
+<section class="section " id="performance" aria-labelledby="performance-h"><div class="wrap"><div class="sec-head"><span class="sec-num">03</span><h2 id="performance-h">Замеры скорости</h2></div><div class="table-wrap"><table><thead><tr><th scope=col>Модель</th><th scope=col>Префилл</th><th scope=col>Декод</th><th scope=col>Примечание</th></tr></thead><tbody><tr><td>Gemma-4 26B A4B</td><td class="num">10 100 tok/s @ 4k</td><td class="num">210 tok/s</td><td>CUDA-graph decode captures the MoE</td></tr><tr><td>Qwen3.8-27B hybrid</td><td class="num">1 450 tok/s @ 3.3k</td><td class="num">47 tok/s</td><td>MTP speculative decode</td></tr><tr><td>Qwen3.8-Flash-Next 125B MoE</td><td class="num">1 650 tok/s @ 260k</td><td class="num">17–22 tok/s</td><td>262k context on 24 GB</td></tr></tbody></table></div><p class="perf-note">Декод Gemma-4 вырос с 35 до 210 ток/с, а префилл — с 957 до 10 100 ток/с за неделю работы над ядрами. Диффузия 1024²: SDXL за 30 шагов — 6,5 с (пик 8,8 ГБ), Qwen-Image-Edit-2511 за 40 шагов — 155 с в NVFP4 (пик 13,2 ГБ).</p><p class="hw-note">Замерено на ноутбучной RTX 5090 (24 ГБ) с 93 ГБ оперативной памяти, Arch Linux.</p></div></section>
+<section class="section " id="install" aria-labelledby="install-h"><div class="wrap"><div class="sec-head"><span class="sec-num">04</span><h2 id="install-h">Установка</h2></div><div class="install"><pre><code>cargo build --release -p synaptix-cli
+synaptix convert model.gguf model.syn
+synaptix run model.gguf &quot;Explain NVFP4&quot; --max-tokens 256
+synaptix bench model.syn --n-tokens 128</code></pre><p>Для сборки нужен CUDA toolkit (по nvcc фиксируется версия CUDA); драйвер подгружается динамически при запуске. Эталонные тензоры для побитовых тестов в репозиторий не входят — их генерируют скрипты из scripts/reference/.</p><p><a href="https://github.com/VitaminDB/synaptix#readme">Полная инструкция — в README →</a></p></div></div></section>
+<section class="section " id="requirements" aria-labelledby="requirements-h"><div class="wrap"><div class="sec-head"><span class="sec-num">05</span><h2 id="requirements-h">Требования и ограничения</h2></div><ul class="limits"><li>CUDA (основной путь) и CPU. Любая карта от sm_80; родной block-scale MMA для NVFP4 / MXFP8 требует Blackwell (sm_120+), на старых картах те же веса идут через ядра с деквантованием.</li><li>Проект молодой, автор один: API нестабилен, ломающие изменения будут.</li><li>Готов к работе инференс — на нём каждый день работает synthos. В обучении есть рабочий autograd, оптимизаторы и чекпойнты, но модули RLHF, дистилляции и self-play — пока каркас.</li><li>Часть каталогов моделей — заглушки; реально работают только модели из списка в README.</li><li>Слабые места описаны, а не спрятаны: bf16 GEMM даёт 0,82–1,16× от cuBLAS в зависимости от формы и отстаёт на больших M.</li></ul></div></section>
+<section class="section " id="screenshots" aria-labelledby="screenshots-h"><div class="wrap"><div class="sec-head"><span class="sec-num">06</span><h2 id="screenshots-h">Скриншоты</h2></div><ul class="gallery"><li><figure><a href="/img/synthos/pack-wizard-layers.webp"><div class="frame"><img src="/img/synthos/pack-wizard-layers-800.webp" width="800" height="464" alt="Упаковка бандла .syn: компоненты, вспомогательные файлы и точность для каждой группы слоёв (интерфейс synthos)" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Упаковка бандла .syn: компоненты, вспомогательные файлы и точность для каждой группы слоёв (интерфейс synthos)</figcaption></figure></li><li><figure><a href="/img/synthos/nodes-acestep.webp"><div class="frame"><img src="/img/synthos/nodes-acestep-800.webp" width="800" height="464" alt="Граф ACE-Step «текст → музыка» на synaptix (нодовый редактор synthos)" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Граф ACE-Step «текст → музыка» на synaptix (нодовый редактор synthos)</figcaption></figure></li><li><figure><a href="/img/synthos/agent-pipeline-run.webp"><div class="frame"><img src="/img/synthos/agent-pipeline-run-800.webp" width="800" height="464" alt="Агент проверяет видеопамять, освобождает её и запускает генерацию видео (synthos)" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Агент проверяет видеопамять, освобождает её и запускает генерацию видео (synthos)</figcaption></figure></li></ul></div></section>
+
+<section class="vibe compact" id="how-built" aria-labelledby="how-built-h">
+  <div class="wrap">
+    <p class="eyebrow">Вайбкодинг в Claude Code</p>
+    <h2 id="how-built-h">Как сделано</h2>
+    <p class="vibe-text">Модель пишет код, тесты и большую часть документации. Каждая цифра в README измерена на моей машине, а корректность проверяется по эталонным реализациям слой за слоем, а не принимается на слово у модели.</p>
+    <p class="vibe-more"><a href="/ru/#vibe">Всё здесь написано вайбкодингом.</a> <a href="https://github.com/VitaminDB/synaptix">github.com/VitaminDB/synaptix</a></p>
+  </div>
+</section>
+<nav class="section" aria-labelledby="others-h"><div class="wrap"><div class="sec-head"><span class="sec-num">07</span><h2 id="others-h">Другие проекты</h2></div><ul class="others"><li><a href="/ru/synthos/"><b>synthos</b><span>Локальная AI-студия</span></a></li><li><a href="/ru/syngui/"><b>syngui</b><span>Retained-mode GUI-фреймворк для Rust</span></a></li><li><a href="/ru/syndesktop/"><b>syndesktop</b><span>Рабочий стол для Wayland</span></a></li><li><a href="/ru/linux-legion/"><b>linux-legion</b><span>Lenovo Vantage для Linux</span></a></li><li><a href="/ru/ardor-mouse/"><b>ardor-mouse</b><span>Настройка мыши ARDOR GAMING Edge Air Ultra в Linux — DPI, подсветка, переназначение кнопок</span></a></li></ul></div></nav>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Виталий Алексеев · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Статический сайт без трекеров и cookies. Собран скриптом на Python.</p></div>
+    <nav aria-label="Другие проекты"><a href="/ru/synthos/">synthos</a><a href="/ru/synaptix/">synaptix</a><a href="/ru/syngui/">syngui</a><a href="/ru/syndesktop/">syndesktop</a><a href="/ru/linux-legion/">linux-legion</a><a href="/ru/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>

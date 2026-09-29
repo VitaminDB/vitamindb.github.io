@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ardor-mouse — настройка мыши ARDOR Edge Air Ultra в Linux</title>
+<meta name="description" content="Программа для мыши ARDOR GAMING Edge Air Ultra в Linux: DPI, RGB-подсветка, кнопки, частота опроса. Протокол восстановлен реверс-инжинирингом, без root.">
+<meta name="author" content="Виталий Алексеев">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://vitamindb.github.io/ru/ardor-mouse/">
+<link rel="alternate" hreflang="en" href="https://vitamindb.github.io/ardor-mouse/">
+<link rel="alternate" hreflang="ru" href="https://vitamindb.github.io/ru/ardor-mouse/">
+<link rel="alternate" hreflang="x-default" href="https://vitamindb.github.io/ardor-mouse/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=c51e4f5c45">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Виталий Алексеев">
+<meta property="og:title" content="ardor-mouse — настройка мыши ARDOR Edge Air Ultra в Linux">
+<meta property="og:description" content="Программа для мыши ARDOR GAMING Edge Air Ultra в Linux: DPI, RGB-подсветка, кнопки, частота опроса. Протокол восстановлен реверс-инжинирингом, без root.">
+<meta property="og:url" content="https://vitamindb.github.io/ru/ardor-mouse/">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://vitamindb.github.io/og/ardor-mouse-ru.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ardor-mouse — настройка мыши ARDOR Edge Air Ultra в Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="ardor-mouse — настройка мыши ARDOR Edge Air Ultra в Linux">
+<meta name="twitter:description" content="Программа для мыши ARDOR GAMING Edge Air Ultra в Linux: DPI, RGB-подсветка, кнопки, частота опроса. Протокол восстановлен реверс-инжинирингом, без root.">
+<meta name="twitter:image" content="https://vitamindb.github.io/og/ardor-mouse-ru.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["SoftwareApplication","SoftwareSourceCode"],"@id":"https://vitamindb.github.io/ru/ardor-mouse/#software","name":"ardor-mouse","description":"Программа для мыши ARDOR GAMING Edge Air Ultra в Linux: DPI, RGB-подсветка, кнопки, частота опроса. Протокол восстановлен реверс-инжинирингом, без root.","abstract":"Нативная программа для настройки беспроводной мыши ARDOR GAMING Edge Air Ultra в Linux — замена фирменной OemDrv.exe, которая есть только под Windows.","url":"https://vitamindb.github.io/ru/ardor-mouse/","mainEntityOfPage":"https://vitamindb.github.io/ru/ardor-mouse/","codeRepository":"https://github.com/VitaminDB/ardor-mouse","sameAs":["https://github.com/VitaminDB/ardor-mouse","https://aur.archlinux.org/packages/ardor-mouse"],"applicationCategory":"UtilitiesApplication","operatingSystem":"Linux","programmingLanguage":"Rust","license":["https://spdx.org/licenses/MIT.html"],"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","@id":"https://vitamindb.github.io/#person","name":"Vitaliy Alexeyev","url":"https://vitamindb.github.io/"},"image":"https://vitamindb.github.io/og/ardor-mouse-ru.jpg","screenshot":["https://vitamindb.github.io/img/ardor-mouse/dpi.webp","https://vitamindb.github.io/img/ardor-mouse/lighting.webp","https://vitamindb.github.io/img/ardor-mouse/buttons.webp","https://vitamindb.github.io/img/ardor-mouse/sensor.webp"],"inLanguage":"ru","featureList":["DPI: до 8 ступеней от 50 до 19 000 DPI, у каждой свой цвет индикатора; выбор активной ступени.","RGB-подсветка: статичная, дыхание, поток, неон, бегущая строка, дыхание цветом или выключена — цвет, скорость, яркость и живое превью.","Кнопки: переназначение всех шести — клики, назад / вперёд, переключение DPI по кругу / вверх / вниз или отключение.","Сенсор: частота опроса 125 / 250 / 500 / 1000 Гц, высота отрыва 1 / 2 мм, антидребезг, выравнивание линий, подавление дрожания, тайм-аут сна.","Уровень заряда батареи и состояние зарядки.","--simulate запускает программу с виртуальной мышью; ARDOR_TRACE=1 печатает каждый пакет обмена с мышью.","Протокол и карта EEPROM описаны — для тех, кто захочет перенести их в другую программу или на другую мышь с тем же контроллером."],"downloadUrl":"https://aur.archlinux.org/packages/ardor-mouse"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Виталий Алексеев","item":"https://vitamindb.github.io/ru/"},{"@type":"ListItem","position":2,"name":"ardor-mouse","item":"https://vitamindb.github.io/ru/ardor-mouse/"}]}]}</script>
+</head>
+<body class="project">
+<a class="skip" href="#main">К содержимому</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/ru/" aria-label="Виталий Алексеев — Главная"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Виталий Алексеев</span></a>
+    <nav class="top-nav" aria-label="Основная навигация">
+      <a href="/ru/#projects">Проекты</a>
+      <a href="/ru/#vibe">Как сделано</a>
+      <a href="/ru/#contact">Контакты</a>
+      <a class="lang" href="/ardor-mouse/" hreflang="en" lang="en" title="English">EN</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<nav class="crumbs wrap" aria-label="Навигационная цепочка"><ol><li><a href="/ru/">Виталий Алексеев</a></li><li><a href="/ru/#projects">Проекты</a></li><li aria-current="page">ardor-mouse</li></ol></nav>
+<section class="p-hero" aria-labelledby="p-h">
+  <div class="wrap">
+    <p class="eyebrow rise">06 / 06 · Rust · syngui · hidraw</p>
+    <h1 id="p-h" class="rise d1">ardor-mouse</h1>
+    <p class="p-lead rise d2">Нативная программа для настройки беспроводной мыши ARDOR GAMING Edge Air Ultra в Linux — замена фирменной OemDrv.exe, которая есть только под Windows.</p>
+    <div class="rise d3"><dl class="facts"><div><dt>Лицензия</dt><dd>MIT</dd></div><div><dt>Платформа</dt><dd>Linux · ARDOR GAMING Edge Air Ultra</dd></div><div><dt>Пакеты</dt><dd>ardor-mouse (AUR)</dd></div><div><dt>Статус</dt><dd>Проверено на Edge Air Ultra</dd></div></dl></div>
+    <div class="actions rise d4"><a class="btn" href="https://github.com/VitaminDB/ardor-mouse"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>Исходники на GitHub</span></a><a class="btn ghost" href="https://aur.archlinux.org/packages/ardor-mouse">Пакет в AUR: ardor-mouse</a></div>
+    <figure class="shot-hero rise d4"><div class="frame"><img src="/img/ardor-mouse/dpi.webp" width="1486" height="1032" alt="ardor-mouse: ступени DPI с цветами индикатора" srcset="/img/ardor-mouse/dpi-800.webp 800w, /img/ardor-mouse/dpi.webp 1486w" sizes="(max-width: 1240px) 100vw, 1180px" fetchpriority="high"></div>
+    <figcaption>ardor-mouse: ступени DPI с цветами индикатора</figcaption></figure>
+    <div style="margin-top:clamp(32px,5vw,56px)"><dl class="statbar"><div><dt>ступеней DPI, у каждой свой цвет</dt><dd>8</dd></div><div><dt>диапазон DPI</dt><dd>50–19 000</dd></div><div><dt>эффектов подсветки с живым превью</dt><dd>7</dd></div><div><dt>тестов на пакетах с настоящей мыши</dt><dd>30</dd></div></dl></div>
+  </div>
+</section>
+<section class="section " id="what" aria-labelledby="what-h"><div class="wrap"><div class="sec-head"><span class="sec-num">01</span><h2 id="what-h">Что это</h2></div><div class="prose"><p>Производитель не выпускает софта под Linux и не публикует протокол. Всё восстановлено реверс-инжинирингом: утилита для Windows дизассемблирована, её USB-трафик сверен с живой мышью, каждое поле EEPROM проверено на настоящих дампах.</p><p>Программа написана на Rust и syngui и общается с мышью напрямую через hidraw — без модуля ядра, без демона и без root. Настройки читаются из памяти самой мыши, а обратно записываются только изменённые участки, так что программа не затирает то, чего не понимает.</p></div></div></section>
+<section class="section " id="features" aria-labelledby="features-h"><div class="wrap"><div class="sec-head"><span class="sec-num">02</span><h2 id="features-h">Возможности</h2></div><ul class="features"><li>DPI: до 8 ступеней от 50 до 19 000 DPI, у каждой свой цвет индикатора; выбор активной ступени.</li><li>RGB-подсветка: статичная, дыхание, поток, неон, бегущая строка, дыхание цветом или выключена — цвет, скорость, яркость и живое превью.</li><li>Кнопки: переназначение всех шести — клики, назад / вперёд, переключение DPI по кругу / вверх / вниз или отключение.</li><li>Сенсор: частота опроса 125 / 250 / 500 / 1000 Гц, высота отрыва 1 / 2 мм, антидребезг, выравнивание линий, подавление дрожания, тайм-аут сна.</li><li>Уровень заряда батареи и состояние зарядки.</li><li>--simulate запускает программу с виртуальной мышью; ARDOR_TRACE=1 печатает каждый пакет обмена с мышью.</li><li>Протокол и карта EEPROM описаны — для тех, кто захочет перенести их в другую программу или на другую мышь с тем же контроллером.</li></ul></div></section>
+<section class="section " id="install" aria-labelledby="install-h"><div class="wrap"><div class="sec-head"><span class="sec-num">03</span><h2 id="install-h">Установка</h2></div><div class="install"><pre><code>yay -S ardor-mouse<span class="c">        # or: paru -S ardor-mouse</span></code></pre><p>Пакет ставит бинарник, пункт меню, иконки и правило udev, которое даёт вошедшему пользователю доступ к мыши; если приёмник уже был вставлен, переподключите его один раз. Из исходников: cargo build --release и правило udev из packaging/.</p><p><a href="https://github.com/VitaminDB/ardor-mouse#readme">Полная инструкция — в README →</a></p></div></div></section>
+<section class="section " id="requirements" aria-labelledby="requirements-h"><div class="wrap"><div class="sec-head"><span class="sec-num">04</span><h2 id="requirements-h">Требования и ограничения</h2></div><ul class="limits"><li>Проверено только с Edge Air Ultra: приёмник 2,4 ГГц 25a7:fa7c и кабель USB 25a7:fa7b (сенсор PixArt PMW3370, контроллер JM03). Другие мыши на том же контроллере могут говорить на том же протоколе.</li><li>Если мышь спит, приёмник отвечает, но её память недоступна — пошевелите мышью, и настройки загрузятся сами.</li><li>Интерфейс пока только на русском.</li><li>Неофициальный проект, с ARDOR GAMING не связан. Запись в EEPROM делается так же, как в фирменной утилите, но вся ответственность — на вас.</li></ul></div></section>
+<section class="section " id="screenshots" aria-labelledby="screenshots-h"><div class="wrap"><div class="sec-head"><span class="sec-num">05</span><h2 id="screenshots-h">Скриншоты</h2></div><ul class="gallery"><li><figure><a href="/img/ardor-mouse/lighting.webp"><div class="frame"><img src="/img/ardor-mouse/lighting-800.webp" width="800" height="571" alt="Эффекты RGB-подсветки с живым превью" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Эффекты RGB-подсветки с живым превью</figcaption></figure></li><li><figure><a href="/img/ardor-mouse/buttons.webp"><div class="frame"><img src="/img/ardor-mouse/buttons-800.webp" width="800" height="574" alt="Переназначение шести кнопок" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Переназначение шести кнопок</figcaption></figure></li><li><figure><a href="/img/ardor-mouse/sensor.webp"><div class="frame"><img src="/img/ardor-mouse/sensor-800.webp" width="800" height="573" alt="Сенсор: частота опроса, высота отрыва, антидребезг" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Сенсор: частота опроса, высота отрыва, антидребезг</figcaption></figure></li></ul></div></section>
+
+<section class="vibe compact" id="how-built" aria-labelledby="how-built-h">
+  <div class="wrap">
+    <p class="eyebrow">Вайбкодинг в Claude Code</p>
+    <h2 id="how-built-h">Как сделано</h2>
+    <p class="vibe-text">Модель пишет код, тесты и большую часть документации. Протокол восстановлен и проверен на моей собственной мыши; тесты разбирают пакеты и дампы EEPROM, снятые с неё.</p>
+    <p class="vibe-more"><a href="/ru/#vibe">Всё здесь написано вайбкодингом.</a> <a href="https://github.com/VitaminDB/ardor-mouse">github.com/VitaminDB/ardor-mouse</a></p>
+  </div>
+</section>
+<nav class="section" aria-labelledby="others-h"><div class="wrap"><div class="sec-head"><span class="sec-num">06</span><h2 id="others-h">Другие проекты</h2></div><ul class="others"><li><a href="/ru/synthos/"><b>synthos</b><span>Локальная AI-студия</span></a></li><li><a href="/ru/synaptix/"><b>synaptix</b><span>Движок под synthos</span></a></li><li><a href="/ru/syngui/"><b>syngui</b><span>Retained-mode GUI-фреймворк для Rust</span></a></li><li><a href="/ru/syndesktop/"><b>syndesktop</b><span>Рабочий стол для Wayland</span></a></li><li><a href="/ru/linux-legion/"><b>linux-legion</b><span>Lenovo Vantage для Linux</span></a></li></ul></div></nav>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Виталий Алексеев · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Статический сайт без трекеров и cookies. Собран скриптом на Python.</p></div>
+    <nav aria-label="Другие проекты"><a href="/ru/synthos/">synthos</a><a href="/ru/synaptix/">synaptix</a><a href="/ru/syngui/">syngui</a><a href="/ru/syndesktop/">syndesktop</a><a href="/ru/linux-legion/">linux-legion</a><a href="/ru/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>

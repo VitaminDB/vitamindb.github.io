@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>linux-legion — Lenovo Vantage alternative for Linux</title>
+<meta name="description" content="Control Lenovo Legion laptops on Linux: power modes, CPU power limits, fans, per-key Spectrum RGB, battery charging modes. No root, no kernel module. AUR.">
+<meta name="author" content="Vitaliy Alexeyev">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://vitamindb.github.io/linux-legion/">
+<link rel="alternate" hreflang="en" href="https://vitamindb.github.io/linux-legion/">
+<link rel="alternate" hreflang="ru" href="https://vitamindb.github.io/ru/linux-legion/">
+<link rel="alternate" hreflang="x-default" href="https://vitamindb.github.io/linux-legion/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=c51e4f5c45">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vitaliy Alexeyev">
+<meta property="og:title" content="linux-legion — Lenovo Vantage alternative for Linux">
+<meta property="og:description" content="Control Lenovo Legion laptops on Linux: power modes, CPU power limits, fans, per-key Spectrum RGB, battery charging modes. No root, no kernel module. AUR.">
+<meta property="og:url" content="https://vitamindb.github.io/linux-legion/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:image" content="https://vitamindb.github.io/og/linux-legion-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="linux-legion — Lenovo Vantage alternative for Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="linux-legion — Lenovo Vantage alternative for Linux">
+<meta name="twitter:description" content="Control Lenovo Legion laptops on Linux: power modes, CPU power limits, fans, per-key Spectrum RGB, battery charging modes. No root, no kernel module. AUR.">
+<meta name="twitter:image" content="https://vitamindb.github.io/og/linux-legion-en.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["SoftwareApplication","SoftwareSourceCode"],"@id":"https://vitamindb.github.io/linux-legion/#software","name":"linux-legion","description":"Control Lenovo Legion laptops on Linux: power modes, CPU power limits, fans, per-key Spectrum RGB, battery charging modes. No root, no kernel module. AUR.","abstract":"A Linux control centre for Lenovo Legion laptops — what Lenovo Vantage and Legion Space do on Windows: power modes, CPU power limits, fans, per-key Spectrum RGB, battery modes and hardware switches.","url":"https://vitamindb.github.io/linux-legion/","mainEntityOfPage":"https://vitamindb.github.io/linux-legion/","codeRepository":"https://github.com/VitaminDB/linux-legion","sameAs":["https://github.com/VitaminDB/linux-legion","https://aur.archlinux.org/packages/linux-legion"],"applicationCategory":"UtilitiesApplication","operatingSystem":"Linux","programmingLanguage":"Rust","license":["https://spdx.org/licenses/MIT.html"],"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","@id":"https://vitamindb.github.io/#person","name":"Vitaliy Alexeyev","url":"https://vitamindb.github.io/"},"image":"https://vitamindb.github.io/og/linux-legion-en.jpg","screenshot":["https://vitamindb.github.io/img/linux-legion/home.webp","https://vitamindb.github.io/img/linux-legion/lighting.webp","https://vitamindb.github.io/img/linux-legion/lighting-layers.webp","https://vitamindb.github.io/img/linux-legion/performance.webp","https://vitamindb.github.io/img/linux-legion/battery.webp","https://vitamindb.github.io/img/linux-legion/device.webp"],"inLanguage":"en","featureList":["Home: power mode in one click, live CPU / GPU / memory / battery gauges and fan speeds; the NVIDIA GPU is polled only while it is already awake, so the dashboard never wakes the dGPU.","Performance: Quiet, Balanced, Performance, Extreme and Custom (the same as Fn+Q); in Custom — CPU PL1 / PL2, every other limit the firmware exposes, and manual fan targets.","Auto-apply: the firmware forgets custom limits after a reboot, so an optional user service restores them at login, when Custom mode is switched on and after resume.","Spectrum lighting: six hardware profiles, brightness, the LEGION lid logo and a layer editor on a live key map with 12 effects; profiles are stored in the keyboard itself.","Battery: Standard, Rapid charge or Conservation (≈80 %), plus charge level and health.","Device: Fn Lock, camera kill switch, always-on USB charging and system information.","--simulate shows the whole interface without the hardware; LEGION_TRACE=1 prints every RGB packet."],"downloadUrl":"https://aur.archlinux.org/packages/linux-legion"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Vitaliy Alexeyev","item":"https://vitamindb.github.io/"},{"@type":"ListItem","position":2,"name":"linux-legion","item":"https://vitamindb.github.io/linux-legion/"}]}]}</script>
+</head>
+<body class="project">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/" aria-label="Vitaliy Alexeyev — Home"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Vitaliy Alexeyev</span></a>
+    <nav class="top-nav" aria-label="Main">
+      <a href="/#projects">Projects</a>
+      <a href="/#vibe">How it is built</a>
+      <a href="/#contact">Contact</a>
+      <a class="lang" href="/ru/linux-legion/" hreflang="ru" lang="ru" title="Русский">RU</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Vitaliy Alexeyev</a></li><li><a href="/#projects">Projects</a></li><li aria-current="page">linux-legion</li></ol></nav>
+<section class="p-hero" aria-labelledby="p-h">
+  <div class="wrap">
+    <p class="eyebrow rise">05 / 06 · Rust · syngui · hidraw</p>
+    <h1 id="p-h" class="rise d1">linux-legion</h1>
+    <p class="p-lead rise d2">A Linux control centre for Lenovo Legion laptops — what Lenovo Vantage and Legion Space do on Windows: power modes, CPU power limits, fans, per-key Spectrum RGB, battery modes and hardware switches.</p>
+    <div class="rise d3"><dl class="facts"><div><dt>Licence</dt><dd>MIT</dd></div><div><dt>Platform</dt><dd>Linux · Lenovo Legion laptops</dd></div><div><dt>Packages</dt><dd>linux-legion (AUR)</dd></div><div><dt>Status</dt><dd>Tested on Legion Pro 7 16IAX10H</dd></div></dl></div>
+    <div class="actions rise d4"><a class="btn" href="https://github.com/VitaminDB/linux-legion"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>Source on GitHub</span></a><a class="btn ghost" href="https://aur.archlinux.org/packages/linux-legion">AUR package: linux-legion</a></div>
+    <figure class="shot-hero rise d4"><div class="frame"><img src="/img/linux-legion/home.webp" width="1600" height="1146" alt="linux-legion home page: power mode, CPU / GPU / memory / battery gauges and fan speeds" srcset="/img/linux-legion/home-800.webp 800w, /img/linux-legion/home.webp 1600w" sizes="(max-width: 1240px) 100vw, 1180px" fetchpriority="high"></div>
+    <figcaption>linux-legion home page: power mode, CPU / GPU / memory / battery gauges and fan speeds</figcaption></figure>
+    <div style="margin-top:clamp(32px,5vw,56px)"><dl class="statbar"><div><dt>lighting effects in the layer editor</dt><dd>12</dd></div><div><dt>hardware lighting profiles</dt><dd>6</dd></div><div><dt>key colours read back from the controller</dt><dd>~10<small>/s</small></dd></div><div><dt>out-of-tree kernel modules, daemons, root</dt><dd>0</dd></div></dl></div>
+  </div>
+</section>
+<section class="section " id="what" aria-labelledby="what-h"><div class="wrap"><div class="sec-head"><span class="sec-num">01</span><h2 id="what-h">What it is</h2></div><div class="prose"><p>linux-legion is written in Rust on syngui. It uses the upstream kernel drivers (lenovo-wmi-gamezone, lenovo-wmi-other, ideapad-laptop) and talks to the RGB controller directly through hidraw — no out-of-tree kernel module, no daemon and no root at runtime.</p><p>A udev rule gives the logged-in user access to the RGB controller and makes the sysfs knobs writable for the wheel group. The README also documents the Spectrum protocol, including the Gen 10 quirks found on real hardware, for anyone porting it elsewhere.</p></div></div></section>
+<section class="section " id="features" aria-labelledby="features-h"><div class="wrap"><div class="sec-head"><span class="sec-num">02</span><h2 id="features-h">Key features</h2></div><ul class="features"><li>Home: power mode in one click, live CPU / GPU / memory / battery gauges and fan speeds; the NVIDIA GPU is polled only while it is already awake, so the dashboard never wakes the dGPU.</li><li>Performance: Quiet, Balanced, Performance, Extreme and Custom (the same as Fn+Q); in Custom — CPU PL1 / PL2, every other limit the firmware exposes, and manual fan targets.</li><li>Auto-apply: the firmware forgets custom limits after a reboot, so an optional user service restores them at login, when Custom mode is switched on and after resume.</li><li>Spectrum lighting: six hardware profiles, brightness, the LEGION lid logo and a layer editor on a live key map with 12 effects; profiles are stored in the keyboard itself.</li><li>Battery: Standard, Rapid charge or Conservation (≈80 %), plus charge level and health.</li><li>Device: Fn Lock, camera kill switch, always-on USB charging and system information.</li><li>--simulate shows the whole interface without the hardware; LEGION_TRACE=1 prints every RGB packet.</li></ul></div></section>
+<section class="section " id="install" aria-labelledby="install-h"><div class="wrap"><div class="sec-head"><span class="sec-num">03</span><h2 id="install-h">Install</h2></div><div class="install"><pre><code>yay -S linux-legion<span class="c">        # or: paru -S linux-legion</span></code></pre><p>The package installs the binary, a menu entry, icons and the udev rule. From source: cargo build --release, then install packaging/70-linux-legion.rules into /etc/udev/rules.d/ and reload udev.</p><p><a href="https://github.com/VitaminDB/linux-legion#readme">Full instructions in the README →</a></p></div></div></section>
+<section class="section " id="requirements" aria-labelledby="requirements-h"><div class="wrap"><div class="sec-head"><span class="sec-num">04</span><h2 id="requirements-h">Requirements and limitations</h2></div><ul class="limits"><li>Developed and tested on one laptop: Legion Pro 7 16IAX10H (83F5, Core Ultra 9 275HX, RTX 5090 Laptop, Spectrum controller 048d:c197), Arch Linux, kernel 7.0.</li><li>Other Legion models with the same kernel interfaces and a Spectrum controller (048d:c1xx / c9xx) should work — every page adapts to what the firmware reports — but are untested.</li><li>The interface is in Russian for now.</li><li>Unofficial and not affiliated with Lenovo. Power limits and fan targets go through the vendor&#x27;s own firmware interfaces, but you use it at your own risk.</li></ul></div></section>
+<section class="section " id="screenshots" aria-labelledby="screenshots-h"><div class="wrap"><div class="sec-head"><span class="sec-num">05</span><h2 id="screenshots-h">Screenshots</h2></div><ul class="gallery"><li><figure><a href="/img/linux-legion/lighting.webp"><div class="frame"><img src="/img/linux-legion/lighting-800.webp" width="800" height="573" alt="Spectrum lighting — live key map" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Spectrum lighting — live key map</figcaption></figure></li><li><figure><a href="/img/linux-legion/lighting-layers.webp"><div class="frame"><img src="/img/linux-legion/lighting-layers-800.webp" width="800" height="573" alt="Lighting effect layers" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Lighting effect layers</figcaption></figure></li><li><figure><a href="/img/linux-legion/performance.webp"><div class="frame"><img src="/img/linux-legion/performance-800.webp" width="800" height="573" alt="Performance modes, power limits and fans" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Performance modes, power limits and fans</figcaption></figure></li><li><figure><a href="/img/linux-legion/battery.webp"><div class="frame"><img src="/img/linux-legion/battery-800.webp" width="800" height="573" alt="Battery charging modes" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Battery charging modes</figcaption></figure></li><li><figure><a href="/img/linux-legion/device.webp"><div class="frame"><img src="/img/linux-legion/device-800.webp" width="800" height="573" alt="Device switches and system information" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Device switches and system information</figcaption></figure></li></ul></div></section>
+
+<section class="vibe compact" id="how-built" aria-labelledby="how-built-h">
+  <div class="wrap">
+    <p class="eyebrow">Vibe-coded with Claude Code</p>
+    <h2 id="how-built-h">How it is built</h2>
+    <p class="vibe-text">The model writes the code, the tests and most of the documentation. Every packet format was captured from and tested on my own Legion laptop — the live tests write layers to an inactive keyboard profile, read them back and restore the original byte for byte.</p>
+    <p class="vibe-more"><a href="/#vibe">Everything here is vibe-coded.</a> <a href="https://github.com/VitaminDB/linux-legion">github.com/VitaminDB/linux-legion</a></p>
+  </div>
+</section>
+<nav class="section" aria-labelledby="others-h"><div class="wrap"><div class="sec-head"><span class="sec-num">06</span><h2 id="others-h">Other projects</h2></div><ul class="others"><li><a href="/synthos/"><b>synthos</b><span>Local AI studio</span></a></li><li><a href="/synaptix/"><b>synaptix</b><span>The engine under synthos</span></a></li><li><a href="/syngui/"><b>syngui</b><span>Retained-mode GUI framework for Rust</span></a></li><li><a href="/syndesktop/"><b>syndesktop</b><span>Wayland desktop environment</span></a></li><li><a href="/ardor-mouse/"><b>ardor-mouse</b><span>Linux configurator for the ARDOR GAMING Edge Air Ultra mouse — DPI, RGB, button remapping</span></a></li></ul></div></nav>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Vitaliy Alexeyev · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Static site, no trackers, no cookies. Built with a Python script.</p></div>
+    <nav aria-label="Other projects"><a href="/synthos/">synthos</a><a href="/synaptix/">synaptix</a><a href="/syngui/">syngui</a><a href="/syndesktop/">syndesktop</a><a href="/linux-legion/">linux-legion</a><a href="/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>
