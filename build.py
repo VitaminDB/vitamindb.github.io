@@ -812,7 +812,7 @@ def check(site):
     parsed = {}
     for dirpath, _, files in os.walk(site.out):
         for fn in files:
-            if fn.endswith(".html"):
+            if fn.endswith(".html") and not (dirpath == site.out and os.path.exists(os.path.join(SRC, "root", fn))):
                 path = os.path.join(dirpath, fn)
                 pp = PageParser()
                 pp.feed(open(path, encoding="utf-8").read())
