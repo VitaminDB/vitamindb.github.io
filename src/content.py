@@ -706,12 +706,12 @@ PROJECTS = [
         "requirements": {
             "en": [
                 "Linux with Wayland; X11 applications run through Xwayland.",
-                "No prebuilt packages or AUR entry: you build it from source with Cargo (the PKGBUILD targets Arch Linux).",
+                "No prebuilt packages or AUR entry yet: build from source with Cargo, with syngui cloned next to it (the PKGBUILD targets Arch Linux).",
                 "An early, single-developer project — expect rough edges; logs go to ~/.local/state/syndesktop/.",
             ],
             "ru": [
                 "Linux с Wayland; программы для X11 работают через Xwayland.",
-                "Готовых пакетов и пакета в AUR нет: собирается из исходников через Cargo (PKGBUILD рассчитан на Arch Linux).",
+                "Готовых пакетов и пакета в AUR пока нет: сборка из исходников через Cargo, syngui клонируется рядом (PKGBUILD рассчитан на Arch Linux).",
                 "Ранний проект одного разработчика — шероховатости будут; логи пишутся в ~/.local/state/syndesktop/.",
             ],
         },
@@ -721,12 +721,26 @@ PROJECTS = [
         },
         # Screenshots: every image in syndesktop/docs/screenshots/ if the folder exists,
         # otherwise docs/themes.jpg. Re-read on every build.
-        "hero": img("syndesktop/docs/themes.jpg",
-                    "syndesktop themes: the same desktop in several built-in colour schemes",
-                    "Темы syndesktop: один и тот же рабочий стол в нескольких встроенных оформлениях"),
-        "gallery": [],
-        "gallery_glob": "syndesktop/docs/screenshots/*",
-        "glob_alt": {"en": "syndesktop screenshot", "ru": "Скриншот syndesktop"},
+        "hero": img("syndesktop/docs/screenshots/desktop.png",
+                    "syndesktop desktop: top panel, 3D dock and the file manager in the Synthwave theme",
+                    "Рабочий стол syndesktop: верхняя панель, 3D-док и проводник в теме «Синтвейв»"),
+        "gallery": [
+            img("syndesktop/docs/screenshots/tile.png",
+                "Tile layout: two file manager windows and System Settings side by side",
+                "Раскладка tile: два окна проводника и «Параметры системы» рядом"),
+            img("syndesktop/docs/screenshots/launcher.png",
+                "The application launcher",
+                "Меню запуска приложений"),
+            img("syndesktop/docs/screenshots/themes.png",
+                "System Settings, themes page; the maximized window turns the top panel into its title bar with a global menu",
+                "«Параметры системы», страница тем; у развёрнутого окна верхняя панель становится заголовком с глобальным меню"),
+            img("syndesktop/docs/screenshots/screenshot.png",
+                "The screenshot tool highlighting a window under the cursor",
+                "Скриншотер подсвечивает окно под курсором"),
+            img("syndesktop/docs/themes.jpg",
+                "The same desktop in several of the 14 built-in themes",
+                "Один и тот же рабочий стол в нескольких из 14 встроенных тем"),
+        ],
     },
     # ------------------------------------------------------------------ linux-legion
     # Source: linux_legion/README.md
