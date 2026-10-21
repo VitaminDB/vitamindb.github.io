@@ -5,7 +5,7 @@ see the comment above each project. Paths to images are relative to REPOS_ROOT a
 read on every build, so new screenshots in a repository get picked up by a rebuild.
 """
 
-REPOS_ROOT = "~/Projects/2027"
+REPOS_ROOT = "~/Storage/Проекты/2027"
 
 SITE = {
     "name": {"en": "Vitaliy Alexeyev", "ru": "Виталий Алексеев"},
@@ -339,7 +339,7 @@ PROJECTS = [
             },
         },
         "video": {
-            "file": "~/Projects/synthos_public/video/synthos-125b.mp4",
+            "file": "~/Storage/Проекты/2027/alexeyev.dev/launch-materials/video/synthos-125b.mp4",
             "poster_at": 3.0,
             "youtube_id": "",
             "caption": {
