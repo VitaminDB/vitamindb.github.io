@@ -115,7 +115,8 @@ class Images:
         if not os.path.exists(src):
             raise FileNotFoundError(f"image not found: {src}")
         parts = rel.split("/")
-        group = re.sub(r"[^a-z0-9-]+", "-", parts[0].lower().replace("_", "-"))
+        g = "-".join(parts[1:3]) if parts[0] == "alexeyev.dev" and len(parts) > 3 and parts[1] == "blog" else parts[0]
+        group = re.sub(r"[^a-z0-9-]+", "-", g.lower().replace("_", "-"))
         stem = os.path.splitext(parts[-1])[0]
         stem = re.sub(r"[^A-Za-z0-9-]+", "-", stem).strip("-").lower() or hashlib.sha1(rel.encode()).hexdigest()[:8]
         out = {}
@@ -339,6 +340,8 @@ def render(site, *, lang, rel, title, description, main, canonical=None, alterna
         home_label=esc(ui["home"]),
         nav_label="Main" if lang == "en" else "Основная навигация",
         nav_projects=esc(ui["nav_projects"]),
+        nav_blog=esc(site.blog.UI[lang]["nav"]),
+        blog_url=site.path(lang, "blog"),
         nav_vibe=esc(ui["nav_vibe"]),
         nav_contact=esc(ui["nav_contact"]),
         lang_url=esc(lang_url or site.path(other)),
@@ -691,6 +694,190 @@ def build_project(site, imgs, lang, idx):
            lang_url=site.path("ru" if lang == "en" else "en", slug), og_title=p["title"][lang])
 
 
+# --------------------------------------------------------------------------- blog
+def load_blog():
+    spec = importlib.util.spec_from_file_location("blog", os.path.join(SRC, "blog.py"))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def blog_media(site, rel):
+    """Copy a GIF/MP4 into docs/media/blog/<folder>/ and return (url, abs source)."""
+    src = os.path.join(site.repos, rel)
+    if not os.path.exists(src):
+        raise FileNotFoundError(f"media not found: {src}")
+    parts = rel.split("/")
+    folder = parts[2] if len(parts) > 3 and parts[1] == "blog" else "misc"
+    out_rel = f"media/blog/{folder}/{parts[-1]}"
+    dst = os.path.join(site.out, out_rel)
+    if not (os.path.exists(dst) and os.path.getsize(dst) == os.path.getsize(src) and os.path.getmtime(dst) >= os.path.getmtime(src)):
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        shutil.copy2(src, dst)
+    site.keep(out_rel)
+    return site.asset(out_rel), src
+
+
+def blog_poster(site, src, folder):
+    stem = os.path.splitext(os.path.basename(src))[0]
+    rel = f"img/blog-{folder}/{stem}-poster.webp"
+    if not site.fresh(rel, src) and shutil.which("ffmpeg"):
+        tmp = os.path.join(site.out, f"img/blog-{folder}/.poster.png")
+        os.makedirs(os.path.dirname(tmp), exist_ok=True)
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "2", "-i", src, "-frames:v", "1", tmp], check=True)
+        im = Image.open(tmp).convert("RGB")
+        if im.width > FULL_W:
+            im = im.resize((FULL_W, round(im.height * FULL_W / im.width)), Image.LANCZOS)
+        im.save(os.path.join(site.out, rel), "WEBP", quality=WEBP_Q, method=6)
+        os.remove(tmp)
+    site.keep(rel)
+    with Image.open(os.path.join(site.out, rel)) as p:
+        return site.asset(rel), p.width, p.height
+
+
+def blog_tr(v, lang):
+    return v[lang] if isinstance(v, dict) else v
+
+
+def blog_block(site, imgs, lang, block):
+    kind = block[0]
+    if kind == "p":
+        return f'<p>{esc(block[1][lang])}</p>'
+    if kind == "h":
+        return f'<h2>{esc(block[1][lang])}</h2>'
+    if kind == "list":
+        return '<ul class="limits">' + "".join(f"<li>{esc(t)}</li>" for t in block[1][lang]) + "</ul>"
+    if kind == "shots":
+        items = []
+        for path, cap in block[1]:
+            im = imgs.get(path)
+            items.append(f'<li><figure><a href="{esc(im["full"]["url"])}"><div class="frame">{img_tag(im, cap[lang], sizes="(max-width: 700px) 50vw, 300px")}</div>'
+                         f'<span class="visually-hidden"> ({esc(site.blog.UI[lang]["open_full"])})</span></a><figcaption>{esc(cap[lang])}</figcaption></figure></li>')
+        return f'<ul class="phone-shots">{"".join(items)}</ul>'
+    if kind == "wide":
+        im = imgs.get(blog_tr(block[1], lang))
+        cap = block[2][lang]
+        return (f'<figure class="post-wide"><a href="{esc(im["full"]["url"])}"><div class="frame">{img_tag(im, cap, variant="full", sizes="(max-width: 900px) 100vw, 860px")}</div></a>'
+                f'<figcaption>{esc(cap)}</figcaption></figure>')
+    if kind == "gif":
+        url, src = blog_media(site, block[1])
+        with Image.open(src) as g:
+            w, h = g.size
+        cap = block[2][lang]
+        cls = "post-gif tall" if h > w else "post-gif"
+        return (f'<figure class="{cls}"><div class="frame"><img src="{esc(url)}" width="{w}" height="{h}" alt="{esc(cap)}" loading="lazy" decoding="async"></div>'
+                f'<figcaption>{esc(cap)}</figcaption></figure>')
+    if kind == "video":
+        url, src = blog_media(site, block[1])
+        folder = block[1].split("/")[2]
+        purl, pw, ph = blog_poster(site, src, folder)
+        cap = block[2][lang]
+        cls = "post-video tall" if ph > pw else "post-video"
+        size = os.path.getsize(src) / 1e6
+        return (f'<figure class="{cls}"><div class="frame"><video controls preload="none" playsinline width="{pw}" height="{ph}" poster="{esc(purl)}" aria-label="{esc(cap)}">'
+                f'<source src="{esc(url)}" type="video/mp4"></video></div>'
+                f'<figcaption>{esc(cap)} · <a href="{esc(url)}" download>{esc(site.blog.UI[lang]["video_file"])}, {size:.1f} MB</a></figcaption></figure>')
+    raise ValueError(f"unknown blog block {kind}")
+
+
+def blog_date(d, lang):
+    y, m, day = d.split("-")
+    if lang == "ru":
+        months = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
+        return f"{int(day)} {months[int(m) - 1]} {y}"
+    return dt.date(int(y), int(m), int(day)).strftime("%B %-d, %Y")
+
+
+def blog_card(site, imgs, lang, post):
+    im = imgs.get(post["cover"])
+    ui = site.blog.UI[lang]
+    return (f'<li class="card post-card"><div class="card-media">{img_tag(im, post["title"][lang])}</div>'
+            f'<div class="card-body"><div class="card-top"><time class="card-num" datetime="{post["date"]}">{esc(blog_date(post["date"], lang))}</time></div>'
+            f'<h3><a href="{site.path(lang, "blog/" + post["slug"])}">{esc(post["title"][lang])}</a></h3>'
+            f'<p>{esc(post["summary"][lang])}</p><span class="read">{esc(ui["read"])} →</span></div></li>')
+
+
+def build_blog(site, imgs):
+    B = site.blog
+    S = site.c.SITE
+    person = person_ld(site)
+    for lang in LANGS:
+        ui = B.UI[lang]
+        home = site.path(lang)
+        secs = []
+        n = 0
+        for sec in B.SECTIONS:
+            posts = [p for p in B.POSTS if p["section"] == sec["slug"]]
+            if not posts:
+                continue
+            n += 1
+            cards = "".join(blog_card(site, imgs, lang, p) for p in posts)
+            secs.append(f'<section class="section" id="{sec["slug"]}" aria-labelledby="{sec["slug"]}-h"><div class="wrap">'
+                        f'<div class="sec-head"><span class="sec-num">{n:02d}</span><h2 id="{sec["slug"]}-h">{esc(sec["name"])}</h2>'
+                        f'<p>{esc(sec["about"][lang])} · {len(posts)} {esc(ui["posts"])}</p></div>'
+                        f'<ul class="cards">{cards}</ul></div></section>')
+        toc = "".join(f'<a class="chip" href="#{s["slug"]}">{esc(s["name"])}</a>' for s in B.SECTIONS if any(p["section"] == s["slug"] for p in B.POSTS))
+        main = (f'<nav class="crumbs wrap" aria-label="{esc(site.c.UI[lang]["breadcrumb"])}"><ol><li><a href="{home}">{esc(S["name"][lang])}</a></li><li aria-current="page">{esc(ui["h1"])}</li></ol></nav>'
+                f'<section class="p-hero" aria-labelledby="blog-h"><div class="wrap"><p class="eyebrow rise">@{esc(S["handle"])}</p>'
+                f'<h1 id="blog-h" class="rise d1">{esc(ui["h1"])}</h1><p class="p-lead rise d2">{esc(ui["lead"])}</p>'
+                f'<div class="chips rise d3">{toc}</div></div></section>' + "".join(secs))
+        url_en, url_ru = site.abs(site.path("en", "blog")), site.abs(site.path("ru", "blog"))
+        canonical = url_en if lang == "en" else url_ru
+        ld = [{"@context": "https://schema.org", "@graph": [{
+            "@type": "Blog", "@id": canonical + "#blog", "url": canonical, "name": ui["title"], "inLanguage": lang,
+            "author": {"@id": person["@id"]},
+            "blogPost": [{"@type": "BlogPosting", "headline": p["title"][lang], "url": site.abs(site.path(lang, "blog/" + p["slug"])), "datePublished": p["date"]} for p in B.POSTS],
+        }]}]
+        og_rel = f"og/blog-{lang}.jpg"
+        make_og(site, og_rel, ui["h1"], ui["lead"], "@VitaminDB · blog", [imgs.get(p["cover"]) for p in B.POSTS[:3]])
+        render(site, lang=lang, rel=("ru/" if lang == "ru" else "") + "blog/index.html", title=ui["title"], description=ui["description"],
+               main=main, canonical=canonical, alternates=[("en", url_en), ("ru", url_ru), ("x-default", url_en)],
+               og_image=site.abs(site.asset(og_rel)), ld=ld, body_class="blog", lang_url=site.path("ru" if lang == "en" else "en", "blog"))
+
+        for post in B.POSTS:
+            sec = next(s for s in B.SECTIONS if s["slug"] == post["section"])
+            slug = "blog/" + post["slug"]
+            blog_url = site.path(lang, "blog")
+            body = "\n".join(blog_block(site, imgs, lang, b) for b in post["body"])
+            discuss = ""
+            if B.FOURPDA_URL:
+                discuss = f'<p class="discuss"><a class="btn" href="{esc(B.FOURPDA_URL)}">{esc(ui["discuss"])} →</a></p>'
+            others = [p for p in B.POSTS if p["section"] == post["section"] and p is not post]
+            more = ""
+            if others:
+                more = (f'<nav class="section" aria-labelledby="more-h"><div class="wrap"><div class="sec-head"><span class="sec-num">→</span>'
+                        f'<h2 id="more-h">{esc(ui["more_in"])}: {esc(sec["name"])}</h2></div><ul class="others">'
+                        + "".join(f'<li><a href="{site.path(lang, "blog/" + p["slug"])}"><b>{esc(p["title"][lang])}</b><span>{esc(p["summary"][lang])}</span></a></li>' for p in others)
+                        + "</ul></div></nav>")
+            main = (f'<nav class="crumbs wrap" aria-label="{esc(site.c.UI[lang]["breadcrumb"])}"><ol><li><a href="{home}">{esc(S["name"][lang])}</a></li>'
+                    f'<li><a href="{blog_url}">{esc(ui["h1"])}</a></li><li><a href="{blog_url}#{sec["slug"]}">{esc(sec["name"])}</a></li></ol></nav>'
+                    f'<article class="post" aria-labelledby="post-h"><header class="p-hero"><div class="wrap">'
+                    f'<p class="eyebrow rise"><time datetime="{post["date"]}">{esc(blog_date(post["date"], lang))}</time> · {esc(sec["name"])}</p>'
+                    f'<h1 id="post-h" class="rise d1">{esc(post["title"][lang])}</h1><p class="p-lead rise d2">{esc(post["summary"][lang])}</p></div></header>'
+                    f'<div class="wrap post-body">{body}{discuss}<p class="post-back"><a href="{blog_url}">← {esc(ui["back"])}</a></p></div></article>{more}')
+            url_en, url_ru = site.abs(site.path("en", slug)), site.abs(site.path("ru", slug))
+            canonical = url_en if lang == "en" else url_ru
+            cover = imgs.get(post["cover"])
+            og_rel = f"og/blog-{post['slug']}-{lang}.jpg"
+            shots = [cover] + [imgs.get(b[1][0][0]) for b in post["body"] if b[0] == "shots"][:1]
+            make_og(site, og_rel, post["title"][lang], post["summary"][lang], sec["name"] + " · blog", shots)
+            ld = [{"@context": "https://schema.org", "@graph": [{
+                "@type": "BlogPosting", "@id": canonical + "#post", "headline": post["title"][lang], "description": post["summary"][lang],
+                "datePublished": post["date"], "dateModified": post["date"], "inLanguage": lang, "url": canonical, "mainEntityOfPage": canonical,
+                "image": [site.abs(site.asset(og_rel)), site.abs(cover["full"]["url"])],
+                "author": {"@type": "Person", "@id": person["@id"], "name": S["name"]["en"], "url": site.abs(site.path("en"))},
+                "isPartOf": {"@id": site.abs(blog_url) + "#blog"},
+            }, {"@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": S["name"][lang], "item": site.abs(home)},
+                {"@type": "ListItem", "position": 2, "name": ui["h1"], "item": site.abs(blog_url)},
+                {"@type": "ListItem", "position": 3, "name": post["title"][lang], "item": canonical}]}]}]
+            render(site, lang=lang, rel=("ru/" if lang == "ru" else "") + slug + "/index.html", title=post["title"][lang],
+                   description=post["summary"][lang], main=main, canonical=canonical,
+                   alternates=[("en", url_en), ("ru", url_ru), ("x-default", url_en)], og_image=site.abs(site.asset(og_rel)),
+                   og_type="article", ld=ld, body_class="blog-post", lang_url=site.path("ru" if lang == "en" else "en", slug),
+                   og_title=post["title"][lang])
+
+
 # --------------------------------------------------------------------------- 404, misc
 def build_404(site):
     c = site.c
@@ -734,7 +921,7 @@ def build_static(site):
 
 def build_sitemap(site):
     c = site.c
-    pages = [None] + [p["slug"] for p in c.PROJECTS]
+    pages = [None] + [p["slug"] for p in c.PROJECTS] + ["blog"] + [f"blog/{p['slug']}" for p in site.blog.POSTS]
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for slug in pages:
@@ -919,6 +1106,7 @@ def main():
 
     content = load_content()
     site = Site(args, content)
+    site.blog = load_blog()
     os.makedirs(site.out, exist_ok=True)
     imgs = Images(site)
 
@@ -927,6 +1115,7 @@ def main():
         build_hub(site, imgs, lang)
         for i in range(len(content.PROJECTS)):
             build_project(site, imgs, lang, i)
+    build_blog(site, imgs)
     build_404(site)
     build_sitemap(site)
     removed = prune(site)

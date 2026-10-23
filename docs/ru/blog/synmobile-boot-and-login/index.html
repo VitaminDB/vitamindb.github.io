@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arch Linux на Xiaomi 12T Pro: загрузка и вход</title>
+<meta name="description" content="Двойная загрузка с Android, заставка прямо на KMS, экран входа и блокировки.">
+<meta name="author" content="Виталий Алексеев">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://alexeyev.dev/ru/blog/synmobile-boot-and-login/">
+<link rel="alternate" hreflang="en" href="https://alexeyev.dev/blog/synmobile-boot-and-login/">
+<link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/blog/synmobile-boot-and-login/">
+<link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/blog/synmobile-boot-and-login/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=40559ad318">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Виталий Алексеев">
+<meta property="og:title" content="Arch Linux на Xiaomi 12T Pro: загрузка и вход">
+<meta property="og:description" content="Двойная загрузка с Android, заставка прямо на KMS, экран входа и блокировки.">
+<meta property="og:url" content="https://alexeyev.dev/ru/blog/synmobile-boot-and-login/">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://alexeyev.dev/og/blog-synmobile-boot-and-login-ru.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Arch Linux на Xiaomi 12T Pro: загрузка и вход">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="Arch Linux на Xiaomi 12T Pro: загрузка и вход">
+<meta name="twitter:description" content="Двойная загрузка с Android, заставка прямо на KMS, экран входа и блокировки.">
+<meta name="twitter:image" content="https://alexeyev.dev/og/blog-synmobile-boot-and-login-ru.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://alexeyev.dev/ru/blog/synmobile-boot-and-login/#post","headline":"Arch Linux на Xiaomi 12T Pro: загрузка и вход","description":"Двойная загрузка с Android, заставка прямо на KMS, экран входа и блокировки.","datePublished":"2026-10-23","dateModified":"2026-10-23","inLanguage":"ru","url":"https://alexeyev.dev/ru/blog/synmobile-boot-and-login/","mainEntityOfPage":"https://alexeyev.dev/ru/blog/synmobile-boot-and-login/","image":["https://alexeyev.dev/og/blog-synmobile-boot-and-login-ru.jpg","https://alexeyev.dev/img/blog-2026-10-synmobile-12t-pro/09-login.webp"],"author":{"@type":"Person","@id":"https://alexeyev.dev/#person","name":"Vitaliy Alexeyev","url":"https://alexeyev.dev/"},"isPartOf":{"@id":"https://alexeyev.dev/ru/blog/#blog"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Виталий Алексеев","item":"https://alexeyev.dev/ru/"},{"@type":"ListItem","position":2,"name":"Блог","item":"https://alexeyev.dev/ru/blog/"},{"@type":"ListItem","position":3,"name":"Arch Linux на Xiaomi 12T Pro: загрузка и вход","item":"https://alexeyev.dev/ru/blog/synmobile-boot-and-login/"}]}]}</script>
+</head>
+<body class="blog-post">
+<a class="skip" href="#main">К содержимому</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/ru/" aria-label="Виталий Алексеев — Главная"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Виталий Алексеев</span></a>
+    <nav class="top-nav" aria-label="Основная навигация">
+      <a href="/ru/#projects">Проекты</a>
+      <a href="/ru/blog/">Блог</a>
+      <a href="/ru/#vibe">Как сделано</a>
+      <a href="/ru/#contact">Контакты</a>
+      <a class="lang" href="/blog/synmobile-boot-and-login/" hreflang="en" lang="en" title="English">EN</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap" aria-label="Навигационная цепочка"><ol><li><a href="/ru/">Виталий Алексеев</a></li><li><a href="/ru/blog/">Блог</a></li><li><a href="/ru/blog/#synmobile">synmobile</a></li></ol></nav><article class="post" aria-labelledby="post-h"><header class="p-hero"><div class="wrap"><p class="eyebrow rise"><time datetime="2026-10-23">23 октября 2026</time> · synmobile</p><h1 id="post-h" class="rise d1">Arch Linux на Xiaomi 12T Pro: загрузка и вход</h1><p class="p-lead rise d2">Двойная загрузка с Android, заставка прямо на KMS, экран входа и блокировки.</p></div></header><div class="wrap post-body"><p>Мой Xiaomi 12T Pro загружает настоящий Arch Linux ARM рядом с Android. Не chroot и не Termux: штатное ядро GKI 5.10 с vendor-модулями самого телефона, systemd и сверху моя Wayland-оболочка synshell. Android остаётся на месте, Arch живёт образом в /data.</p>
+<figure class="post-wide"><a href="/img/blog-2026-10-synmobile-12t-pro/00-dualboot.webp"><div class="frame"><img src="/img/blog-2026-10-synmobile-12t-pro/00-dualboot.webp" width="1600" height="900" alt="У меню нет экрана: телефон вибрирует, Vol+ — Arch, Vol− — Android, ничего не нажали — прошлый выбор." srcset="/img/blog-2026-10-synmobile-12t-pro/00-dualboot-800.webp 800w, /img/blog-2026-10-synmobile-12t-pro/00-dualboot.webp 1600w" sizes="(max-width: 900px) 100vw, 860px" loading="lazy" decoding="async"></div></a><figcaption>У меню нет экрана: телефон вибрирует, Vol+ — Arch, Vol− — Android, ничего не нажали — прошлый выбор.</figcaption></figure>
+<p>Попробовать можно, ничего не прошивая: fastboot boot загружает образ один раз. Для постоянной работы в boot ставится маленькое меню, стоковый образ перед этим сохраняется.</p>
+<ul class="phone-shots"><li><figure><a href="/img/blog-2026-10-synmobile-12t-pro/00-boot-splash.webp"><div class="frame"><img src="/img/blog-2026-10-synmobile-12t-pro/00-boot-splash-800.webp" width="800" height="1778" alt="Заставка: synsplash рисует прямо в DRM/KMS ещё из initramfs" srcset="/img/blog-2026-10-synmobile-12t-pro/00-boot-splash-800.webp 800w, /img/blog-2026-10-synmobile-12t-pro/00-boot-splash.webp 1220w" sizes="(max-width: 700px) 50vw, 300px" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Заставка: synsplash рисует прямо в DRM/KMS ещё из initramfs</figcaption></figure></li><li><figure><a href="/img/blog-2026-10-synmobile-12t-pro/09-login.webp"><div class="frame"><img src="/img/blog-2026-10-synmobile-12t-pro/09-login-800.webp" width="800" height="1778" alt="Экран входа synlogin со своей экранной клавиатурой" srcset="/img/blog-2026-10-synmobile-12t-pro/09-login-800.webp 800w, /img/blog-2026-10-synmobile-12t-pro/09-login.webp 1220w" sizes="(max-width: 700px) 50vw, 300px" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Экран входа synlogin со своей экранной клавиатурой</figcaption></figure></li><li><figure><a href="/img/blog-2026-10-synmobile-12t-pro/07-lock-cover.webp"><div class="frame"><img src="/img/blog-2026-10-synmobile-12t-pro/07-lock-cover-800.webp" width="800" height="1778" alt="Экран блокировки" srcset="/img/blog-2026-10-synmobile-12t-pro/07-lock-cover-800.webp 800w, /img/blog-2026-10-synmobile-12t-pro/07-lock-cover.webp 1220w" sizes="(max-width: 700px) 50vw, 300px" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Экран блокировки</figcaption></figure></li><li><figure><a href="/img/blog-2026-10-synmobile-12t-pro/08-lock-pin.webp"><div class="frame"><img src="/img/blog-2026-10-synmobile-12t-pro/08-lock-pin-800.webp" width="800" height="1778" alt="Ввод PIN или полная клавиатура «ABC»" srcset="/img/blog-2026-10-synmobile-12t-pro/08-lock-pin-800.webp 800w, /img/blog-2026-10-synmobile-12t-pro/08-lock-pin.webp 1220w" sizes="(max-width: 700px) 50vw, 300px" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Ввод PIN или полная клавиатура «ABC»</figcaption></figure></li></ul>
+<figure class="post-gif tall"><div class="frame"><img src="/media/blog/2026-10-synmobile-12t-pro/boot-splash.gif" width="360" height="800" alt="Кольцо делает оборот за 0,96 с — как на телефоне." loading="lazy" decoding="async"></div><figcaption>Кольцо делает оборот за 0,96 с — как на телефоне.</figcaption></figure><p class="post-back"><a href="/ru/blog/">← Все записи</a></p></div></article><nav class="section" aria-labelledby="more-h"><div class="wrap"><div class="sec-head"><span class="sec-num">→</span><h2 id="more-h">Ещё в этом разделе: synmobile</h2></div><ul class="others"><li><a href="/ru/blog/synmobile-shell/"><b>synshell на телефоне: столы, виджеты, шторки</b><span>Страницы стола с живыми виджетами железа, две шторки, «Пуск», «Недавние» и анимация зарядки.</span></a></li><li><a href="/ru/blog/synmobile-apps/"><b>synmobile: приложения и связь с ПК</b><span>Параметры, проводник, терминал с экранной клавиатурой, монитор ресурсов, карты и экран телефона на ноутбуке.</span></a></li><li><a href="/ru/blog/synmobile-games-and-android/"><b>synmobile: Windows-игры и Android-приложения</b><span>Игровой режим как у консоли, Steam, Cuphead через Wine с экранным геймпадом и Android-приложения в контейнере.</span></a></li></ul></div></nav>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Виталий Алексеев · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Статический сайт без трекеров и cookies. Собран скриптом на Python.</p></div>
+    <nav aria-label="Другие проекты"><a href="/ru/synthos/">synthos</a><a href="/ru/synaptix/">synaptix</a><a href="/ru/syngui/">syngui</a><a href="/ru/syndesktop/">syndesktop</a><a href="/ru/linux-legion/">linux-legion</a><a href="/ru/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>
