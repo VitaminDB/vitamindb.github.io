@@ -360,6 +360,7 @@ def footer_html(site, lang):
     links = "".join(f'<a href="{site.path(lang, p["slug"])}">{esc(p["name"])}</a>' for p in c.PROJECTS)
     year = site.lastmod[:4]
     return (f'    <div><p>© {year} {esc(c.SITE["name"][lang])} · <a href="{esc(c.SITE["contacts"]["github"])}" rel="me">GitHub</a>'
+            f' · <a href="{esc(c.SITE["contacts"]["linkedin"])}" rel="me">LinkedIn</a>'
             f' · <a href="{esc(c.SITE["contacts"]["paypal"])}">PayPal</a></p><p>{esc(ui["footer_note"])}</p></div>\n'
             f'    <nav aria-label="{esc(ui["other_nav"])}">{links}</nav>')
 
@@ -369,6 +370,7 @@ def contact_rows(site, lang):
     ct = c.SITE["contacts"]
     ui = c.UI[lang]
     rows = [
+        ("LinkedIn", ct.get("linkedin"), "in/vitaly-alexeyev", "me"),
         ("GitHub", ct["github"], "github.com/VitaminDB", "me"),
         ("X", ct["x"], "@alexeyev_vitaly", "me"),
         (ui["email"], "mailto:" + ct["email"], ct["email"], None),
@@ -388,7 +390,7 @@ def contact_rows(site, lang):
 def person_ld(site):
     c = site.c
     ct = c.SITE["contacts"]
-    same = [ct["github"], ct["x"]] + [u for u in (ct.get("youtube"), ) if u]
+    same = [ct["github"], ct["x"]] + [u for u in (ct.get("linkedin"), ct.get("youtube")) if u]
     return {
         "@type": "Person",
         "@id": site.abs(site.path("en")) + "#person",
@@ -446,6 +448,7 @@ def build_hub(site, imgs, lang):
       <div class="meta-row rise d4"><span class="avail">{esc(S["availability"][lang])}</span></div>
       <div class="actions rise d5">
         <a class="btn" href="{esc(ct["github"])}" rel="me">{ICON_GH}<span>github.com/VitaminDB</span></a>
+        <a class="btn ghost" href="{esc(ct["linkedin"])}" rel="me">LinkedIn</a>
         <a class="btn ghost" href="mailto:{esc(ct["email"])}">{esc(ct["email"])}</a>
       </div>
     </div>

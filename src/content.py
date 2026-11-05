@@ -18,6 +18,7 @@ SITE = {
     "availability": {"en": "Open to remote work", "ru": "Открыт к удалённой работе"},
     "contacts": {
         "github": "https://github.com/VitaminDB",
+        "linkedin": "https://www.linkedin.com/in/vitaly-alexeyev-08546b21b/",
         "x": "https://x.com/alexeyev_vitaly",
         "email": "vitamindbnfkz@gmail.com",
         "paypal": "https://paypal.me/vitamindbnfkz",
