@@ -568,6 +568,7 @@ PROJECTS = [
                 "Measured hot paths: VirtualList, keyed children, a cached cascade and rendering batched into a handful of draw calls in one pass.",
                 "wgpu 28 (Vulkan / Metal / DX12 / GL / WebGPU) with hand-written WGSL shaders.",
                 "Linux on X11 and Wayland (with its own drag-and-drop), Windows, macOS, Android and Android TV, WebAssembly.",
+                "The syngui CLI, in the spirit of flutter build and cargo tauri: builds and runs apps for Linux x86_64 and aarch64, Android (APK) and iOS (IPA built on Linux, no Xcode), makes Arch and AUR packages (-git and -bin), and syngui doctor checks the toolchain.",
             ],
             "ru": [
                 "Таблицы стилей MSS: переменные и var(), селекторы по типу, классу, составные и по потомкам, :hover, :active, :focus, :checked, :disabled, вложенность, переходы, @keyframes, наследование и псевдоклассы состояния окна.",
@@ -579,10 +580,11 @@ PROJECTS = [
                 "Горячие пути измерены: VirtualList, ключи у детей, кэш каскада и отрисовка, собранная в несколько вызовов за один проход.",
                 "wgpu 28 (Vulkan / Metal / DX12 / GL / WebGPU) и шейдеры на WGSL, написанные вручную.",
                 "Linux на X11 и Wayland (со своим drag-and-drop), Windows, macOS, Android и Android TV, WebAssembly.",
+                "Утилита syngui в духе flutter build и cargo tauri: собирает и запускает приложения под Linux x86_64 и aarch64, Android (APK) и iOS (IPA на Linux, без Xcode), делает пакеты Arch и AUR (-git и -bin), а syngui doctor проверяет окружение.",
             ],
         },
         "install": {
-            "code": "cargo build -p syngui\ncargo test -p syngui\ncargo run -p widget_gallery_mss   # every widget + MSS styling",
+            "code": "cargo build -p syngui\ncargo run -p widget_gallery_mss   # every widget + MSS styling\n\ncargo install --path syngui-cli --profile fast-release\nsyngui doctor                      # NDK/SDK, JDK, iOS SDK, aarch64 sysroot\nsyngui run -d android              # APK for the device, install, launch, logcat\nsyngui package -f aur              # <name>-git and <name>-bin PKGBUILDs",
             "note": {
                 "en": "Video playback sits behind the optional ffmpeg feature and needs FFmpeg 7+ development libraries; without it nothing links against FFmpeg. The widget gallery also builds to WebAssembly.",
                 "ru": "Видео — за необязательной фичей ffmpeg, для неё нужны dev-библиотеки FFmpeg 7+; без неё с FFmpeg ничего не линкуется. Галерея виджетов собирается и в WebAssembly.",
