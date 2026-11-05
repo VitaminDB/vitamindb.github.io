@@ -565,7 +565,15 @@ def build_project(site, imgs, lang, idx):
   </div>
 </section>""")
 
-    parts.append(sec(ui["what_h"], '<div class="prose">' + "".join(f"<p>{esc(t)}</p>" for t in p["what"][lang]) + "</div>", "what"))
+    what_body = '<div class="prose">' + "".join(f"<p>{esc(t)}</p>" for t in p["what"][lang]) + "</div>"
+    for a in p.get("animations", []):
+        url, src = project_media(site, a["src"], slug)
+        with Image.open(src) as g:
+            w, h = g.size
+        what_body += (f'<figure class="post-gif"><div class="frame"><img src="{esc(url)}" width="{w}" height="{h}" '
+                      f'alt="{esc(a["alt"][lang])}" loading="lazy" decoding="async"></div>'
+                      f'<figcaption>{esc(a["caption"][lang])}</figcaption></figure>')
+    parts.append(sec(ui["what_h"], what_body, "what"))
 
     video_ld = None
     v = p.get("video")
@@ -700,6 +708,20 @@ def load_blog():
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     return mod
+
+
+def project_media(site, rel, slug):
+    """Copy a project's GIF as is (animated) into docs/media/<slug>/ and return (url, abs source)."""
+    src = os.path.join(site.repos, rel)
+    if not os.path.exists(src):
+        raise FileNotFoundError(f"media not found: {src}")
+    out_rel = f"media/{slug}/{os.path.basename(rel)}"
+    dst = os.path.join(site.out, out_rel)
+    if not (os.path.exists(dst) and os.path.getsize(dst) == os.path.getsize(src) and os.path.getmtime(dst) >= os.path.getmtime(src)):
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        shutil.copy2(src, dst)
+    site.keep(out_rel)
+    return site.asset(out_rel), src
 
 
 def blog_media(site, rel):

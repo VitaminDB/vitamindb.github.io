@@ -775,7 +775,7 @@ PROJECTS = [
         },
         "stats": [
             {"value": "12", "label": {"en": "lighting effects in the layer editor", "ru": "эффектов подсветки в редакторе слоёв"}},
-            {"value": "6", "label": {"en": "hardware lighting profiles", "ru": "аппаратных профилей подсветки"}},
+            {"value": "14", "label": {"en": "interface languages, switched on the fly", "ru": "языков интерфейса, переключаются на лету"}},
             {"value": "~10", "unit": "/s", "label": {"en": "key colours read back from the controller", "ru": "раз в секунду читаются цвета клавиш"}},
             {"value": "0", "label": {"en": "out-of-tree kernel modules, daemons, root", "ru": "сторонних модулей ядра, демонов и root"}},
         ],
@@ -797,7 +797,8 @@ PROJECTS = [
                 "Spectrum lighting: six hardware profiles, brightness, the LEGION lid logo and a layer editor on a live key map with 12 effects; profiles are stored in the keyboard itself.",
                 "Battery: Standard, Rapid charge or Conservation (≈80 %), plus charge level and health.",
                 "Device: Fn Lock, camera kill switch, always-on USB charging and system information.",
-                "--simulate shows the whole interface without the hardware; LEGION_TRACE=1 prints every RGB packet.",
+                "14 interface languages: English, Russian, Ukrainian, Kazakh, German, French, Spanish, Italian, Portuguese (Brazil), Polish, Turkish, Chinese, Japanese, Korean. Taken from the system, switched on the fly from the title bar and remembered; LEGION_LANG=xx forces one.",
+                "--simulate shows the whole interface without the hardware; LEGION_TRACE=1 prints every RGB packet; --screenshot renders a window snapshot without showing it.",
             ],
             "ru": [
                 "Главная: режим питания в один клик, живые шкалы CPU / GPU / памяти / батареи и обороты вентиляторов; видеокарта NVIDIA опрашивается, только если уже проснулась, так что панель не будит дискретную карту.",
@@ -806,7 +807,8 @@ PROJECTS = [
                 "Подсветка Spectrum: шесть аппаратных профилей, яркость, логотип LEGION на крышке и редактор слоёв на живой карте клавиш с 12 эффектами; профили хранятся в самой клавиатуре.",
                 "Батарея: Standard, Rapid charge или Conservation (≈80 %), уровень заряда и износ.",
                 "Устройство: Fn Lock, аппаратное отключение камеры, зарядка по USB в выключенном состоянии и сведения о системе.",
-                "--simulate показывает весь интерфейс без железа; LEGION_TRACE=1 печатает каждый RGB-пакет.",
+                "14 языков интерфейса: английский, русский, украинский, казахский, немецкий, французский, испанский, итальянский, португальский (Бразилия), польский, турецкий, китайский, японский, корейский. Язык берётся из системы, переключается на лету из шапки окна и запоминается; LEGION_LANG=xx — принудительно.",
+                "--simulate показывает весь интерфейс без железа; LEGION_TRACE=1 печатает каждый RGB-пакет; --screenshot снимает окно, не показывая его.",
             ],
         },
         "install": {
@@ -820,13 +822,11 @@ PROJECTS = [
             "en": [
                 "Developed and tested on one laptop: Legion Pro 7 16IAX10H (83F5, Core Ultra 9 275HX, RTX 5090 Laptop, Spectrum controller 048d:c197), Arch Linux, kernel 7.0.",
                 "Other Legion models with the same kernel interfaces and a Spectrum controller (048d:c1xx / c9xx) should work — every page adapts to what the firmware reports — but are untested.",
-                "The interface is in Russian for now.",
                 "Unofficial and not affiliated with Lenovo. Power limits and fan targets go through the vendor's own firmware interfaces, but you use it at your own risk.",
             ],
             "ru": [
                 "Разработан и проверен на одном ноутбуке: Legion Pro 7 16IAX10H (83F5, Core Ultra 9 275HX, RTX 5090 Laptop, контроллер Spectrum 048d:c197), Arch Linux, ядро 7.0.",
                 "Другие модели Legion с теми же интерфейсами ядра и контроллером Spectrum (048d:c1xx / c9xx) должны работать — каждая страница подстраивается под то, что сообщает прошивка, — но не проверялись.",
-                "Интерфейс пока только на русском.",
                 "Неофициальный проект, с Lenovo не связан. Лимиты и обороты задаются через штатные интерфейсы прошивки, но вся ответственность — на вас.",
             ],
         },
@@ -834,6 +834,13 @@ PROJECTS = [
             "en": "The model writes the code, the tests and most of the documentation. Every packet format was captured from and tested on my own Legion laptop — the live tests write layers to an inactive keyboard profile, read them back and restore the original byte for byte.",
             "ru": "Модель пишет код, тесты и большую часть документации. Каждый формат пакета снят с моего собственного Legion и проверен на нём — живые тесты пишут слои в неактивный профиль клавиатуры, читают обратно и восстанавливают исходный байт в байт.",
         },
+        "animations": [
+            img("linux_legion/screenshots/lighting.gif",
+                "Live Spectrum key map: rainbow wave, then rainbow spiral",
+                "Живая карта Spectrum: радужная волна, затем радужная спираль",
+                "The live key map in linux-legion. The colours are real frames read back from the keyboard controller, not a preview: rainbow wave, then rainbow spiral.",
+                "Живая карта клавиш в linux-legion. Цвета — настоящие кадры, прочитанные с контроллера клавиатуры, а не предпросмотр: радужная волна, затем радужная спираль."),
+        ],
         "hero": img("linux_legion/screenshots/home.png",
                     "linux-legion home page: power mode, CPU / GPU / memory / battery gauges and fan speeds",
                     "Главная страница linux-legion: режим питания, шкалы CPU / GPU / памяти / батареи и вентиляторы"),
