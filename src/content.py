@@ -437,7 +437,8 @@ PROJECTS = [
             "en": [
                 "Hand-written CUDA kernels, JIT-compiled through NVRTC for the card's compute capability; any sm_80+ GPU, native block-scale mma.sync on Blackwell (sm_120+).",
                 "Model ports checked against upstream: Qwen3 (dense and MoE), the Qwen3-Next hybrids, Qwen4Exp 125B MoE, Llama, Gemma-3, Gemma-4, Muse Glimmer; FLUX.1, FLUX.2, Qwen-Image 2.1, Qwen-Image-Edit, SDXL; LTX-2.3 and MiniMax-H3 video.",
-                "Speech and music: Whisper, GigaAM, Sortformer; VoxCPM, OmniVoice, VibeVoice; YuE2, SheetSage2, ACE-Step; BGE-M3 embeddings and reranker.",
+                "Speech and music: Whisper, GigaAM, Sortformer; VoxCPM, OmniVoice, VibeVoice, Audio8-TTS, Supertonic 3, Leokani-tts 7M, F5-TTS Russian; YuE2, SheetSage2, ACE-Step; BGE-M3 embeddings and reranker.",
+                "F5-TTS Russian, all 8 versions of Misha24-10/F5-TTS_RUSSIAN (weights CC BY-NC 4.0): voice cloning from a recording of up to 12 s and its text, Russian and English, stress marked with «+» before the vowel, long text in chunks with smooth joins; matches the PyTorch original (mel 4e-5, vocoder 2e-5), RTF ≈ 0.1–0.17 on an RTX card and also runs on the CPU.",
                 "Single-file .syn bundles: mmapped zero-copy, quantized while packing, precision chosen per layer group.",
                 "SQ1…SQ8, a portable block format with a GPU encoder; GGUF runs directly with all 27 ggml block types; quantized bundles can be transcoded on load for older cards.",
                 "MXFP8 KV cache by default, paged KV, CUDA-graph decode and speculative decoding.",
@@ -448,7 +449,8 @@ PROJECTS = [
             "ru": [
                 "CUDA-ядра, написанные вручную и компилируемые через NVRTC под compute capability конкретной карты; любая карта от sm_80, родной block-scale mma.sync на Blackwell (sm_120+).",
                 "Порты моделей, сверенные с оригиналами: Qwen3 (плотные и MoE), гибриды Qwen3-Next, Qwen4Exp на 125B MoE, Llama, Gemma-3, Gemma-4, Muse Glimmer; FLUX.1, FLUX.2, Qwen-Image 2.1, Qwen-Image-Edit, SDXL; видео LTX-2.3 и MiniMax-H3.",
-                "Речь и музыка: Whisper, GigaAM, Sortformer; VoxCPM, OmniVoice, VibeVoice; YuE2, SheetSage2, ACE-Step; эмбеддинги BGE-M3 и реранкер.",
+                "Речь и музыка: Whisper, GigaAM, Sortformer; VoxCPM, OmniVoice, VibeVoice, Audio8-TTS, Supertonic 3, Leokani-tts 7M, F5-TTS Russian; YuE2, SheetSage2, ACE-Step; эмбеддинги BGE-M3 и реранкер.",
+                "F5-TTS Russian — все 8 версий Misha24-10/F5-TTS_RUSSIAN (веса под CC BY-NC 4.0): клонирование голоса по записи до 12 с и её тексту, русский и английский, ударение знаком «+» перед гласной, длинный текст кусками с плавными стыками; совпадает с оригиналом на PyTorch (мел 4e-5, вокодер 2e-5), RTF ≈ 0,1–0,17 на RTX, работает и на процессоре.",
                 "Однофайловые бандлы .syn: читаются через mmap без копирования, квантуются при упаковке, точность выбирается для каждой группы слоёв.",
                 "SQ1…SQ8 — переносимый блочный формат с энкодером на GPU; GGUF работает напрямую со всеми 27 типами блоков ggml; квантованный бандл можно перекодировать при загрузке под старую карту.",
                 "KV-кэш в MXFP8 по умолчанию, страничный KV, декод через CUDA-граф и спекулятивное декодирование.",
