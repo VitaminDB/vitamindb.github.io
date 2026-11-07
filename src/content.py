@@ -22,7 +22,7 @@ SITE = {
         "x": "https://x.com/alexeyev_vitaly",
         "email": "vitamindbnfkz@gmail.com",
         "paypal": "https://paypal.me/vitamindbnfkz",
-        "youtube": "",   # channel URL; hidden while empty
+        "youtube": "https://www.youtube.com/@alexeyev_dev",   # channel URL; hidden while empty
         "discord": "",   # invite URL; hidden while empty
     },
     "hub": {
@@ -862,7 +862,7 @@ PROJECTS = [
         "video": {
             "file": "~/Storage/Проекты/2027/alexeyev.dev/launch-materials/video/synport-install.mp4",
             "poster_at": 46.0,
-            "youtube_id": "",
+            "youtube_id": "a1eQKbndKZ0",
             "caption": {
                 "en": "One take from a Windows PC: the counter shows real time, long steps are sped up. About 4 minutes from start to the synshell desktop.",
                 "ru": "Один дубль с компьютера на Windows: счётчик показывает реальное время, долгие шаги ускорены. От запуска до рабочего стола synshell — около 4 минут.",
