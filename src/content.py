@@ -38,13 +38,15 @@ SITE = {
         },
         "intro": {
             "en": "I build software that runs close to the hardware: a local AI studio and the CUDA "
-                  "engine under it, the GUI framework they are drawn with, a Wayland desktop, and "
+                  "engine under it, the GUI framework they are drawn with, a Wayland desktop for "
+                  "computers and phones, an installer that puts Arch Linux next to Android, and "
                   "Linux tools for a laptop and a mouse whose vendors ship Windows-only software. "
-                  "Six open-source projects, all written in Rust, all running on my own machine.",
+                  "Seven projects, all written in Rust, all running on my own machine.",
             "ru": "Я пишу софт, который работает близко к железу: локальную AI-студию и CUDA-движок "
-                  "под ней, GUI-фреймворк, на котором они нарисованы, рабочий стол для Wayland и "
-                  "утилиты для Linux к ноутбуку и мыши, производители которых делают программы "
-                  "только под Windows. Шесть открытых проектов, все на Rust, все работают на моей машине.",
+                  "под ней, GUI-фреймворк, на котором они нарисованы, рабочий стол Wayland для "
+                  "компьютеров и телефонов, установщик Arch Linux рядом с Android и утилиты для Linux "
+                  "к ноутбуку и мыши, производители которых делают программы только под Windows. "
+                  "Семь проектов, все на Rust, все работают на моей машине.",
         },
         "stats": [
             {"value": "125B", "label": {"en": "MoE model on a 24 GB laptop GPU",
@@ -101,7 +103,7 @@ UI = {
         "lang_other_short": "RU",
         "home": "Home",
         "projects_h": "Projects",
-        "projects_sub": "Six repositories, one stack: every app below is drawn with syngui, and the AI ones run on synaptix.",
+        "projects_sub": "Seven projects, one stack: every app below is drawn with syngui, and the AI ones run on synaptix.",
         "vibe_h": "How it is tested",
         "vibe_label": "Measured, not promised",
         "background_h": "Background",
@@ -153,7 +155,7 @@ UI = {
         "lang_other_short": "EN",
         "home": "Главная",
         "projects_h": "Проекты",
-        "projects_sub": "Шесть репозиториев, один стек: все программы ниже нарисованы на syngui, а те, что с нейросетями, работают на synaptix.",
+        "projects_sub": "Семь проектов, один стек: все программы ниже нарисованы на syngui, а те, что с нейросетями, работают на synaptix.",
         "vibe_h": "Как проверено",
         "vibe_label": "Замерено, а не обещано",
         "background_h": "Опыт",
@@ -769,6 +771,120 @@ PROJECTS = [
             img_l("synshell/docs/screenshots/phone-shade.png", "synshell/docs/screenshots/phone-shade-ru.png",
                   "Phone: quick settings shade",
                   "Телефон: шторка быстрых настроек"),
+        ],
+    },
+    # ------------------------------------------------------------------ synport
+    # Source: synport/publish/README.md, release 2026.11-4585a72, install video 07.11.2026.
+    {
+        "slug": "synport",
+        "name": "synport",
+        "repo": "https://github.com/VitaminDB/synport",
+        "readme": "https://github.com/VitaminDB/synport#readme",
+        "aur": [],
+        "licence": "Freeware (binary)",
+        "packages": {"en": "Releases on GitHub (Windows, Linux)", "ru": "Выпуски на GitHub (Windows, Linux)"},
+        "repo_label": {"en": "Download on GitHub", "ru": "Скачать на GitHub"},
+        "platform": {"en": "Windows · Linux → Android phones and tablets", "ru": "Windows · Linux → телефоны и планшеты на Android"},
+        "stack": ["Rust", "syngui", "adb + fastboot"],
+        "category": "UtilitiesApplication",
+        "status": {"en": "First release: Xiaomi 12T Pro", "ru": "Первый выпуск: Xiaomi 12T Pro"},
+        "title": {
+            "en": "synport — Arch Linux next to Android, one USB installer",
+            "ru": "synport — Arch Linux рядом с Android, установка по USB",
+        },
+        "description": {
+            "en": "Installs real Arch Linux ARM next to Android on phones and tablets from Windows or Linux with one USB cable: adb and fastboot only, no vendor files.",
+            "ru": "Ставит Arch Linux ARM рядом с Android на телефоны и планшеты с Windows или Linux по USB-кабелю: только adb и fastboot, без файлов производителя.",
+        },
+        "tagline": {
+            "en": "Real Arch Linux ARM next to Android, installed from a Windows or Linux PC with one USB cable. Android stays; at power-on you pick the system with the volume keys.",
+            "ru": "Настоящий Arch Linux ARM рядом с Android, установка с компьютера на Windows или Linux по USB-кабелю. Android остаётся; при включении система выбирается клавишами громкости.",
+        },
+        "card": {
+            "en": "Arch Linux next to Android on phones and tablets: an installer for Windows and Linux, adb and fastboot only, Android stays.",
+            "ru": "Arch Linux рядом с Android на телефонах и планшетах: установщик для Windows и Linux, только adb и fastboot, Android остаётся.",
+        },
+        "stats": [
+            {"value": "≈4", "label": {"en": "minutes from start to the desktop (on video)", "ru": "минуты от запуска до рабочего стола (на видео)"}},
+            {"value": "3", "label": {"en": "devices ported, more coming", "ru": "устройства портированы, будут ещё"}},
+            {"value": "0", "label": {"en": "vendor files in the image", "ru": "файлов производителя в образе"}},
+            {"value": "1", "label": {"en": "USB cable, no custom recovery", "ru": "USB-кабель, без TWRP"}},
+        ],
+        "what": {
+            "en": [
+                "synport installs Arch Linux ARM next to Android. The phone keeps Android, its apps and data; at power-on you pick the system with the volume keys (Vol+ — Arch Linux, Vol− — Android). Arch runs on the phone's own stock kernel with GPU acceleration and my touch desktop, synshell.",
+                "The installer runs on Windows 10/11 or Linux and needs only a USB cable: it downloads adb and fastboot itself and on Windows binds the WinUSB driver for fastboot. The image ships no proprietary files — on first boot the phone takes its drivers and firmware from its own partitions.",
+            ],
+            "ru": [
+                "synport ставит Arch Linux ARM рядом с Android. Android, его приложения и данные остаются; при включении система выбирается клавишами громкости (Vol+ — Arch Linux, Vol− — Android). Arch работает на собственном стоковом ядре телефона с ускорением GPU и моей сенсорной оболочкой synshell.",
+                "Установщик работает на Windows 10/11 и Linux, нужен только USB-кабель: adb и fastboot он скачает сам, а на Windows сам назначит драйвер WinUSB для fastboot. В образе нет закрытых файлов — при первой загрузке телефон берёт драйверы и прошивки из своих разделов.",
+            ],
+        },
+        "features": {
+            "en": [
+                "One window: phone check, release, options (user, Wi-Fi, time zone, apps), install, remove — or the same from the command line.",
+                "Nothing flashed until the end: the installer starts on the phone from RAM (fastboot boot); if anything fails, the phone restarts into Android and synport shows why.",
+                "No vendor files in the image: the phone imports its own drivers and firmware; the camera file it lacks is taken from Xiaomi's OTA on the PC, about 5 MB out of 5 GB.",
+                "Works on the phone: touch, 120 Hz, GPU (Vulkan, turnip), Wi-Fi, Bluetooth, sound, mobile data, calls and SMS, GPS, all five cameras, sensors, IR, NPU.",
+                "Apps to pick at install: Firefox, Steam and Windows games through Wine, Android apps in a container, synshell programs.",
+                "Remove in one click: the stock boot image is flashed back (checked by sha256), your files can be saved to the PC first.",
+            ],
+            "ru": [
+                "Одно окно: проверка телефона, релиз, параметры (пользователь, Wi-Fi, часовой пояс, программы), установка, удаление — или то же из командной строки.",
+                "До самого конца ничего не прошивается: установщик запускается на телефоне из памяти (fastboot boot); если что-то пошло не так, телефон перезагрузится в Android, а synport покажет причину.",
+                "В образе нет файлов производителя: телефон берёт свои драйверы и прошивки; недостающий файл камеры synport берёт на ПК из OTA Xiaomi — около 5 МБ из 5 ГБ.",
+                "На телефоне работают: тач, 120 Гц, GPU (Vulkan, turnip), Wi-Fi, Bluetooth, звук, мобильный интернет, звонки и SMS, GPS, все пять камер, датчики, ИК, NPU.",
+                "Программы на выбор при установке: Firefox, Steam и Windows-игры через Wine, Android-приложения в контейнере, программы synshell.",
+                "Удаление в один клик: стоковый boot возвращается (проверка по sha256), файлы можно сначала сохранить на ПК.",
+            ],
+        },
+        "install": {
+            "code": "# 1. Download and unpack synport-diting-<version>.zip from Releases\n# 2. Phone: unlocked bootloader, USB debugging on, cable connected\nsynport.exe          # Windows (or ./synport on Linux), then press Install",
+            "note": {
+                "en": "First device with a public release: Xiaomi 12T Pro / Redmi K50 Ultra (diting) on HyperOS OS2.0.5.0.VLFCNXM; the installer checks the ROM first. ONYX BOOX Note Air 4C and Samsung Galaxy Tab A 8.0 are ported, releases for them will follow.",
+                "ru": "Первое устройство с публичным выпуском: Xiaomi 12T Pro / Redmi K50 Ultra (diting) на HyperOS OS2.0.5.0.VLFCNXM; установщик сначала проверит прошивку. ONYX BOOX Note Air 4C и Samsung Galaxy Tab A 8.0 портированы, выпуски для них будут позже.",
+            },
+        },
+        "requirements": {
+            "en": [
+                "Unlocked bootloader (official Mi Unlock; unlocking wipes the phone). synport never locks it back.",
+                "Windows 10/11 or Linux x86_64 and a USB cable; about 20 GB free on the phone.",
+                "One ROM for now: OS2.0.5.0.VLFCNXM (China). Fingerprint reader — not yet.",
+                "Free, binary only; the GPL parts (kernel config, BusyBox, initramfs) are in every release.",
+            ],
+            "ru": [
+                "Разблокированный загрузчик (официальный Mi Unlock; разблокировка стирает телефон). synport его обратно не блокирует.",
+                "Windows 10/11 или Linux x86_64 и USB-кабель; около 20 ГБ свободной памяти на телефоне.",
+                "Пока одна прошивка: OS2.0.5.0.VLFCNXM (Китай). Сканер отпечатков — пока нет.",
+                "Бесплатно, в двоичном виде; части под GPL (конфиг ядра, BusyBox, initramfs) — в каждом выпуске.",
+            ],
+        },
+        "video": {
+            "file": "~/Storage/Проекты/2027/alexeyev.dev/launch-materials/video/synport-install.mp4",
+            "poster_at": 46.0,
+            "youtube_id": "",
+            "caption": {
+                "en": "One take from a Windows PC: the counter shows real time, long steps are sped up. About 4 minutes from start to the synshell desktop.",
+                "ru": "Один дубль с компьютера на Windows: счётчик показывает реальное время, долгие шаги ускорены. От запуска до рабочего стола synshell — около 4 минут.",
+            },
+            "title": {"en": "synport: Arch Linux on an Android phone in 4 minutes", "ru": "synport: Arch Linux на Android-телефоне за 4 минуты"},
+            "duration": "PT1M43S",
+        },
+        "built": {
+            "en": "Every release is installed from clean Windows and Arch virtual machines before it goes out, then checked on the phone: services, NPU, cameras, Wi-Fi.",
+            "ru": "Каждый выпуск перед публикацией ставится с чистых виртуальных машин Windows и Arch и проверяется на телефоне: службы, NPU, камеры, Wi-Fi.",
+        },
+        "hero": img("alexeyev.dev/assets/synport/install-split.png",
+                    "synport installing Arch Linux: the Windows window and the phone side by side",
+                    "synport ставит Arch Linux: окно на Windows и телефон рядом"),
+        "gallery": [
+            img("alexeyev.dev/assets/synport/window-options.png", "Options: user, Wi-Fi, time zone, apps", "Параметры: пользователь, Wi-Fi, часовой пояс, программы"),
+            img("alexeyev.dev/assets/synport/window-installing.png", "Installing: every step is visible in advance", "Установка: все шаги видны заранее"),
+            img("alexeyev.dev/assets/synport/phone-installer.png", "The phone installs Arch by itself", "Телефон сам ставит Arch"),
+            img("alexeyev.dev/assets/synport/phone-lock.png", "First boot: the synshell lock screen", "Первая загрузка: экран блокировки synshell"),
+            img("alexeyev.dev/assets/synport/phone-desktop.png", "synshell desktop with system widgets", "Рабочий стол synshell с виджетами системы"),
+            img("alexeyev.dev/assets/synport/phone-quick.png", "Quick settings", "Быстрые настройки"),
+            img("alexeyev.dev/assets/synport/window-done.png", "Done", "Готово"),
         ],
     },
     # ------------------------------------------------------------------ linux-legion

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>synport — Arch Linux рядом с Android, установка по USB</title>
+<meta name="description" content="Ставит Arch Linux ARM рядом с Android на телефоны и планшеты с Windows или Linux по USB-кабелю: только adb и fastboot, без файлов производителя.">
+<meta name="author" content="Виталий Алексеев">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://alexeyev.dev/ru/synport/">
+<link rel="alternate" hreflang="en" href="https://alexeyev.dev/synport/">
+<link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synport/">
+<link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synport/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=a41900faca">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Виталий Алексеев">
+<meta property="og:title" content="synport — Arch Linux рядом с Android, установка по USB">
+<meta property="og:description" content="Ставит Arch Linux ARM рядом с Android на телефоны и планшеты с Windows или Linux по USB-кабелю: только adb и fastboot, без файлов производителя.">
+<meta property="og:url" content="https://alexeyev.dev/ru/synport/">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://alexeyev.dev/og/synport-ru.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="synport — Arch Linux рядом с Android, установка по USB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="synport — Arch Linux рядом с Android, установка по USB">
+<meta name="twitter:description" content="Ставит Arch Linux ARM рядом с Android на телефоны и планшеты с Windows или Linux по USB-кабелю: только adb и fastboot, без файлов производителя.">
+<meta name="twitter:image" content="https://alexeyev.dev/og/synport-ru.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["SoftwareApplication","SoftwareSourceCode"],"@id":"https://alexeyev.dev/ru/synport/#software","name":"synport","description":"Ставит Arch Linux ARM рядом с Android на телефоны и планшеты с Windows или Linux по USB-кабелю: только adb и fastboot, без файлов производителя.","abstract":"Настоящий Arch Linux ARM рядом с Android, установка с компьютера на Windows или Linux по USB-кабелю. Android остаётся; при включении система выбирается клавишами громкости.","url":"https://alexeyev.dev/ru/synport/","mainEntityOfPage":"https://alexeyev.dev/ru/synport/","codeRepository":"https://github.com/VitaminDB/synport","sameAs":["https://github.com/VitaminDB/synport"],"applicationCategory":"UtilitiesApplication","operatingSystem":"Linux","programmingLanguage":"Rust","license":[],"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","@id":"https://alexeyev.dev/#person","name":"Vitaliy Alexeyev","url":"https://alexeyev.dev/"},"image":"https://alexeyev.dev/og/synport-ru.jpg","screenshot":["https://alexeyev.dev/img/alexeyev-dev/install-split.webp","https://alexeyev.dev/img/alexeyev-dev/window-options.webp","https://alexeyev.dev/img/alexeyev-dev/window-installing.webp","https://alexeyev.dev/img/alexeyev-dev/phone-installer.webp","https://alexeyev.dev/img/alexeyev-dev/phone-lock.webp","https://alexeyev.dev/img/alexeyev-dev/phone-desktop.webp","https://alexeyev.dev/img/alexeyev-dev/phone-quick.webp","https://alexeyev.dev/img/alexeyev-dev/window-done.webp"],"inLanguage":"ru","featureList":["Одно окно: проверка телефона, релиз, параметры (пользователь, Wi-Fi, часовой пояс, программы), установка, удаление — или то же из командной строки.","До самого конца ничего не прошивается: установщик запускается на телефоне из памяти (fastboot boot); если что-то пошло не так, телефон перезагрузится в Android, а synport покажет причину.","В образе нет файлов производителя: телефон берёт свои драйверы и прошивки; недостающий файл камеры synport берёт на ПК из OTA Xiaomi — около 5 МБ из 5 ГБ.","На телефоне работают: тач, 120 Гц, GPU (Vulkan, turnip), Wi-Fi, Bluetooth, звук, мобильный интернет, звонки и SMS, GPS, все пять камер, датчики, ИК, NPU.","Программы на выбор при установке: Firefox, Steam и Windows-игры через Wine, Android-приложения в контейнере, программы synshell.","Удаление в один клик: стоковый boot возвращается (проверка по sha256), файлы можно сначала сохранить на ПК."]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Виталий Алексеев","item":"https://alexeyev.dev/ru/"},{"@type":"ListItem","position":2,"name":"synport","item":"https://alexeyev.dev/ru/synport/"}]},{"@type":"VideoObject","name":"synport: Arch Linux на Android-телефоне за 4 минуты","description":"Один дубль с компьютера на Windows: счётчик показывает реальное время, долгие шаги ускорены. От запуска до рабочего стола synshell — около 4 минут.","thumbnailUrl":"https://alexeyev.dev/img/synport/video-poster.webp","contentUrl":"https://alexeyev.dev/media/synport-install.mp4","uploadDate":"2026-11-07","duration":"PT1M43S","inLanguage":"en"}]}</script>
+</head>
+<body class="project">
+<a class="skip" href="#main">К содержимому</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/ru/" aria-label="Виталий Алексеев — Главная"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Виталий Алексеев</span></a>
+    <nav class="top-nav" aria-label="Основная навигация">
+      <a href="/ru/#projects">Проекты</a>
+      <a href="/ru/blog/">Блог</a>
+      <a href="/ru/#vibe">Как проверено</a>
+      <a href="/ru/#contact">Контакты</a>
+      <a class="lang" href="/synport/" hreflang="en" lang="en" title="English">EN</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<nav class="crumbs wrap" aria-label="Навигационная цепочка"><ol><li><a href="/ru/">Виталий Алексеев</a></li><li><a href="/ru/#projects">Проекты</a></li><li aria-current="page">synport</li></ol></nav>
+<section class="p-hero" aria-labelledby="p-h">
+  <div class="wrap">
+    <p class="eyebrow rise">05 / 07 · Rust · syngui · adb + fastboot</p>
+    <h1 id="p-h" class="rise d1">synport</h1>
+    <p class="p-lead rise d2">Настоящий Arch Linux ARM рядом с Android, установка с компьютера на Windows или Linux по USB-кабелю. Android остаётся; при включении система выбирается клавишами громкости.</p>
+    <div class="rise d3"><dl class="facts"><div><dt>Лицензия</dt><dd>Freeware (binary)</dd></div><div><dt>Платформа</dt><dd>Windows · Linux → телефоны и планшеты на Android</dd></div><div><dt>Пакеты</dt><dd>Выпуски на GitHub (Windows, Linux)</dd></div><div><dt>Статус</dt><dd>Первый выпуск: Xiaomi 12T Pro</dd></div></dl></div>
+    <div class="actions rise d4"><a class="btn" href="https://github.com/VitaminDB/synport"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>Скачать на GitHub</span></a></div>
+    <figure class="shot-hero rise d4"><div class="frame"><img src="/img/alexeyev-dev/install-split.webp" width="1600" height="900" alt="synport ставит Arch Linux: окно на Windows и телефон рядом" srcset="/img/alexeyev-dev/install-split-800.webp 800w, /img/alexeyev-dev/install-split.webp 1600w" sizes="(max-width: 1240px) 100vw, 1180px" fetchpriority="high"></div>
+    <figcaption>synport ставит Arch Linux: окно на Windows и телефон рядом</figcaption></figure>
+    <div style="margin-top:clamp(32px,5vw,56px)"><dl class="statbar"><div><dt>минуты от запуска до рабочего стола (на видео)</dt><dd>≈4</dd></div><div><dt>устройства портированы, будут ещё</dt><dd>3</dd></div><div><dt>файлов производителя в образе</dt><dd>0</dd></div><div><dt>USB-кабель, без TWRP</dt><dd>1</dd></div></dl></div>
+  </div>
+</section>
+<section class="section " id="what" aria-labelledby="what-h"><div class="wrap"><div class="sec-head"><span class="sec-num">01</span><h2 id="what-h">Что это</h2></div><div class="prose"><p>synport ставит Arch Linux ARM рядом с Android. Android, его приложения и данные остаются; при включении система выбирается клавишами громкости (Vol+ — Arch Linux, Vol− — Android). Arch работает на собственном стоковом ядре телефона с ускорением GPU и моей сенсорной оболочкой synshell.</p><p>Установщик работает на Windows 10/11 и Linux, нужен только USB-кабель: adb и fastboot он скачает сам, а на Windows сам назначит драйвер WinUSB для fastboot. В образе нет закрытых файлов — при первой загрузке телефон берёт драйверы и прошивки из своих разделов.</p></div></div></section>
+<section class="section " id="video" aria-labelledby="video-h"><div class="wrap"><div class="sec-head"><span class="sec-num">02</span><h2 id="video-h">Как это работает</h2></div><figure class="video" style="margin:0"><div class="frame"><video controls preload="none" playsinline width="1600" height="900" poster="/img/synport/video-poster.webp" aria-label="synport: Arch Linux на Android-телефоне за 4 минуты"><source src="/media/synport-install.mp4" type="video/mp4"></video></div><figcaption>Один дубль с компьютера на Windows: счётчик показывает реальное время, долгие шаги ускорены. От запуска до рабочего стола synshell — около 4 минут.</figcaption></figure><div class="video-links"><a class="btn ghost" href="/media/synport-install.mp4" download>Скачать видео (MP4) · 35.9 MB</a></div></div></section>
+<section class="section " id="features" aria-labelledby="features-h"><div class="wrap"><div class="sec-head"><span class="sec-num">03</span><h2 id="features-h">Возможности</h2></div><ul class="features"><li>Одно окно: проверка телефона, релиз, параметры (пользователь, Wi-Fi, часовой пояс, программы), установка, удаление — или то же из командной строки.</li><li>До самого конца ничего не прошивается: установщик запускается на телефоне из памяти (fastboot boot); если что-то пошло не так, телефон перезагрузится в Android, а synport покажет причину.</li><li>В образе нет файлов производителя: телефон берёт свои драйверы и прошивки; недостающий файл камеры synport берёт на ПК из OTA Xiaomi — около 5 МБ из 5 ГБ.</li><li>На телефоне работают: тач, 120 Гц, GPU (Vulkan, turnip), Wi-Fi, Bluetooth, звук, мобильный интернет, звонки и SMS, GPS, все пять камер, датчики, ИК, NPU.</li><li>Программы на выбор при установке: Firefox, Steam и Windows-игры через Wine, Android-приложения в контейнере, программы synshell.</li><li>Удаление в один клик: стоковый boot возвращается (проверка по sha256), файлы можно сначала сохранить на ПК.</li></ul></div></section>
+<section class="section " id="install" aria-labelledby="install-h"><div class="wrap"><div class="sec-head"><span class="sec-num">04</span><h2 id="install-h">Установка</h2></div><div class="install"><pre><code># 1. Download and unpack synport-diting-&lt;version&gt;.zip from Releases
+# 2. Phone: unlocked bootloader, USB debugging on, cable connected
+synport.exe<span class="c">          # Windows (or ./synport on Linux), then press Install</span></code></pre><p>Первое устройство с публичным выпуском: Xiaomi 12T Pro / Redmi K50 Ultra (diting) на HyperOS OS2.0.5.0.VLFCNXM; установщик сначала проверит прошивку. ONYX BOOX Note Air 4C и Samsung Galaxy Tab A 8.0 портированы, выпуски для них будут позже.</p><p><a href="https://github.com/VitaminDB/synport#readme">Полная инструкция — в README →</a></p></div></div></section>
+<section class="section " id="requirements" aria-labelledby="requirements-h"><div class="wrap"><div class="sec-head"><span class="sec-num">05</span><h2 id="requirements-h">Требования и ограничения</h2></div><ul class="limits"><li>Разблокированный загрузчик (официальный Mi Unlock; разблокировка стирает телефон). synport его обратно не блокирует.</li><li>Windows 10/11 или Linux x86_64 и USB-кабель; около 20 ГБ свободной памяти на телефоне.</li><li>Пока одна прошивка: OS2.0.5.0.VLFCNXM (Китай). Сканер отпечатков — пока нет.</li><li>Бесплатно, в двоичном виде; части под GPL (конфиг ядра, BusyBox, initramfs) — в каждом выпуске.</li></ul></div></section>
+<section class="section " id="screenshots" aria-labelledby="screenshots-h"><div class="wrap"><div class="sec-head"><span class="sec-num">06</span><h2 id="screenshots-h">Скриншоты</h2></div><ul class="gallery"><li><figure><a href="/img/alexeyev-dev/window-options.webp"><div class="frame"><img src="/img/alexeyev-dev/window-options-800.webp" width="800" height="530" alt="Параметры: пользователь, Wi-Fi, часовой пояс, программы" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Параметры: пользователь, Wi-Fi, часовой пояс, программы</figcaption></figure></li><li><figure><a href="/img/alexeyev-dev/window-installing.webp"><div class="frame"><img src="/img/alexeyev-dev/window-installing-800.webp" width="800" height="530" alt="Установка: все шаги видны заранее" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Установка: все шаги видны заранее</figcaption></figure></li><li><figure><a href="/img/alexeyev-dev/phone-installer.webp"><div class="frame"><img src="/img/alexeyev-dev/phone-installer-800.webp" width="800" height="1652" alt="Телефон сам ставит Arch" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Телефон сам ставит Arch</figcaption></figure></li><li><figure><a href="/img/alexeyev-dev/phone-lock.webp"><div class="frame"><img src="/img/alexeyev-dev/phone-lock-800.webp" width="800" height="1652" alt="Первая загрузка: экран блокировки synshell" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Первая загрузка: экран блокировки synshell</figcaption></figure></li><li><figure><a href="/img/alexeyev-dev/phone-desktop.webp"><div class="frame"><img src="/img/alexeyev-dev/phone-desktop-800.webp" width="800" height="1652" alt="Рабочий стол synshell с виджетами системы" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Рабочий стол synshell с виджетами системы</figcaption></figure></li><li><figure><a href="/img/alexeyev-dev/phone-quick.webp"><div class="frame"><img src="/img/alexeyev-dev/phone-quick-800.webp" width="800" height="1652" alt="Быстрые настройки" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Быстрые настройки</figcaption></figure></li><li><figure><a href="/img/alexeyev-dev/window-done.webp"><div class="frame"><img src="/img/alexeyev-dev/window-done-800.webp" width="800" height="530" alt="Готово" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Готово</figcaption></figure></li></ul></div></section>
+
+<section class="vibe compact" id="how-built" aria-labelledby="how-built-h">
+  <div class="wrap">
+    <p class="eyebrow">Замерено, а не обещано</p>
+    <h2 id="how-built-h">Как проверено</h2>
+    <p class="vibe-text">Каждый выпуск перед публикацией ставится с чистых виртуальных машин Windows и Arch и проверяется на телефоне: службы, NPU, камеры, Wi-Fi.</p>
+    <p class="vibe-more"><a href="/ru/#vibe">Каждая цифра здесь измерена на моём железе.</a> <a href="https://github.com/VitaminDB/synport">github.com/VitaminDB/synport</a></p>
+  </div>
+</section>
+<nav class="section" aria-labelledby="others-h"><div class="wrap"><div class="sec-head"><span class="sec-num">07</span><h2 id="others-h">Другие проекты</h2></div><ul class="others"><li><a href="/ru/synthos/"><b>synthos</b><span>Локальная AI-студия</span></a></li><li><a href="/ru/synaptix/"><b>synaptix</b><span>Движок под synthos</span></a></li><li><a href="/ru/syngui/"><b>syngui</b><span>Retained-mode GUI-фреймворк для Rust</span></a></li><li><a href="/ru/synshell/"><b>synshell</b><span>Рабочий стол Wayland для компьютеров и телефонов</span></a></li><li><a href="/ru/linux-legion/"><b>linux-legion</b><span>Lenovo Vantage для Linux</span></a></li><li><a href="/ru/ardor-mouse/"><b>ardor-mouse</b><span>Настройка мышей ARDOR GAMING (Edge Air Ultra, Rukh) в Linux — DPI, подсветка, кнопки, сенсор, живая мышь в приложении</span></a></li></ul></div></nav>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Виталий Алексеев · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://www.linkedin.com/in/vitaly-alexeyev-08546b21b/" rel="me">LinkedIn</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Статический сайт без трекеров и cookies. Собран скриптом на Python.</p></div>
+    <nav aria-label="Другие проекты"><a href="/ru/synthos/">synthos</a><a href="/ru/synaptix/">synaptix</a><a href="/ru/syngui/">syngui</a><a href="/ru/synshell/">synshell</a><a href="/ru/synport/">synport</a><a href="/ru/linux-legion/">linux-legion</a><a href="/ru/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>

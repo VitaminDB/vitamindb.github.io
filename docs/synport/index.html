@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>synport — Arch Linux next to Android, one USB installer</title>
+<meta name="description" content="Installs real Arch Linux ARM next to Android on phones and tablets from Windows or Linux with one USB cable: adb and fastboot only, no vendor files.">
+<meta name="author" content="Vitaliy Alexeyev">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://alexeyev.dev/synport/">
+<link rel="alternate" hreflang="en" href="https://alexeyev.dev/synport/">
+<link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synport/">
+<link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synport/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=a41900faca">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vitaliy Alexeyev">
+<meta property="og:title" content="synport — Arch Linux next to Android, one USB installer">
+<meta property="og:description" content="Installs real Arch Linux ARM next to Android on phones and tablets from Windows or Linux with one USB cable: adb and fastboot only, no vendor files.">
+<meta property="og:url" content="https://alexeyev.dev/synport/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:image" content="https://alexeyev.dev/og/synport-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="synport — Arch Linux next to Android, one USB installer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="synport — Arch Linux next to Android, one USB installer">
+<meta name="twitter:description" content="Installs real Arch Linux ARM next to Android on phones and tablets from Windows or Linux with one USB cable: adb and fastboot only, no vendor files.">
+<meta name="twitter:image" content="https://alexeyev.dev/og/synport-en.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["SoftwareApplication","SoftwareSourceCode"],"@id":"https://alexeyev.dev/synport/#software","name":"synport","description":"Installs real Arch Linux ARM next to Android on phones and tablets from Windows or Linux with one USB cable: adb and fastboot only, no vendor files.","abstract":"Real Arch Linux ARM next to Android, installed from a Windows or Linux PC with one USB cable. Android stays; at power-on you pick the system with the volume keys.","url":"https://alexeyev.dev/synport/","mainEntityOfPage":"https://alexeyev.dev/synport/","codeRepository":"https://github.com/VitaminDB/synport","sameAs":["https://github.com/VitaminDB/synport"],"applicationCategory":"UtilitiesApplication","operatingSystem":"Linux","programmingLanguage":"Rust","license":[],"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","@id":"https://alexeyev.dev/#person","name":"Vitaliy Alexeyev","url":"https://alexeyev.dev/"},"image":"https://alexeyev.dev/og/synport-en.jpg","screenshot":["https://alexeyev.dev/img/alexeyev-dev/install-split.webp","https://alexeyev.dev/img/alexeyev-dev/window-options.webp","https://alexeyev.dev/img/alexeyev-dev/window-installing.webp","https://alexeyev.dev/img/alexeyev-dev/phone-installer.webp","https://alexeyev.dev/img/alexeyev-dev/phone-lock.webp","https://alexeyev.dev/img/alexeyev-dev/phone-desktop.webp","https://alexeyev.dev/img/alexeyev-dev/phone-quick.webp","https://alexeyev.dev/img/alexeyev-dev/window-done.webp"],"inLanguage":"en","featureList":["One window: phone check, release, options (user, Wi-Fi, time zone, apps), install, remove — or the same from the command line.","Nothing flashed until the end: the installer starts on the phone from RAM (fastboot boot); if anything fails, the phone restarts into Android and synport shows why.","No vendor files in the image: the phone imports its own drivers and firmware; the camera file it lacks is taken from Xiaomi's OTA on the PC, about 5 MB out of 5 GB.","Works on the phone: touch, 120 Hz, GPU (Vulkan, turnip), Wi-Fi, Bluetooth, sound, mobile data, calls and SMS, GPS, all five cameras, sensors, IR, NPU.","Apps to pick at install: Firefox, Steam and Windows games through Wine, Android apps in a container, synshell programs.","Remove in one click: the stock boot image is flashed back (checked by sha256), your files can be saved to the PC first."]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Vitaliy Alexeyev","item":"https://alexeyev.dev/"},{"@type":"ListItem","position":2,"name":"synport","item":"https://alexeyev.dev/synport/"}]},{"@type":"VideoObject","name":"synport: Arch Linux on an Android phone in 4 minutes","description":"One take from a Windows PC: the counter shows real time, long steps are sped up. About 4 minutes from start to the synshell desktop.","thumbnailUrl":"https://alexeyev.dev/img/synport/video-poster.webp","contentUrl":"https://alexeyev.dev/media/synport-install.mp4","uploadDate":"2026-11-07","duration":"PT1M43S","inLanguage":"en"}]}</script>
+</head>
+<body class="project">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/" aria-label="Vitaliy Alexeyev — Home"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Vitaliy Alexeyev</span></a>
+    <nav class="top-nav" aria-label="Main">
+      <a href="/#projects">Projects</a>
+      <a href="/blog/">Blog</a>
+      <a href="/#vibe">How it is tested</a>
+      <a href="/#contact">Contact</a>
+      <a class="lang" href="/ru/synport/" hreflang="ru" lang="ru" title="Русский">RU</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Vitaliy Alexeyev</a></li><li><a href="/#projects">Projects</a></li><li aria-current="page">synport</li></ol></nav>
+<section class="p-hero" aria-labelledby="p-h">
+  <div class="wrap">
+    <p class="eyebrow rise">05 / 07 · Rust · syngui · adb + fastboot</p>
+    <h1 id="p-h" class="rise d1">synport</h1>
+    <p class="p-lead rise d2">Real Arch Linux ARM next to Android, installed from a Windows or Linux PC with one USB cable. Android stays; at power-on you pick the system with the volume keys.</p>
+    <div class="rise d3"><dl class="facts"><div><dt>Licence</dt><dd>Freeware (binary)</dd></div><div><dt>Platform</dt><dd>Windows · Linux → Android phones and tablets</dd></div><div><dt>Packages</dt><dd>Releases on GitHub (Windows, Linux)</dd></div><div><dt>Status</dt><dd>First release: Xiaomi 12T Pro</dd></div></dl></div>
+    <div class="actions rise d4"><a class="btn" href="https://github.com/VitaminDB/synport"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>Download on GitHub</span></a></div>
+    <figure class="shot-hero rise d4"><div class="frame"><img src="/img/alexeyev-dev/install-split.webp" width="1600" height="900" alt="synport installing Arch Linux: the Windows window and the phone side by side" srcset="/img/alexeyev-dev/install-split-800.webp 800w, /img/alexeyev-dev/install-split.webp 1600w" sizes="(max-width: 1240px) 100vw, 1180px" fetchpriority="high"></div>
+    <figcaption>synport installing Arch Linux: the Windows window and the phone side by side</figcaption></figure>
+    <div style="margin-top:clamp(32px,5vw,56px)"><dl class="statbar"><div><dt>minutes from start to the desktop (on video)</dt><dd>≈4</dd></div><div><dt>devices ported, more coming</dt><dd>3</dd></div><div><dt>vendor files in the image</dt><dd>0</dd></div><div><dt>USB cable, no custom recovery</dt><dd>1</dd></div></dl></div>
+  </div>
+</section>
+<section class="section " id="what" aria-labelledby="what-h"><div class="wrap"><div class="sec-head"><span class="sec-num">01</span><h2 id="what-h">What it is</h2></div><div class="prose"><p>synport installs Arch Linux ARM next to Android. The phone keeps Android, its apps and data; at power-on you pick the system with the volume keys (Vol+ — Arch Linux, Vol− — Android). Arch runs on the phone&#x27;s own stock kernel with GPU acceleration and my touch desktop, synshell.</p><p>The installer runs on Windows 10/11 or Linux and needs only a USB cable: it downloads adb and fastboot itself and on Windows binds the WinUSB driver for fastboot. The image ships no proprietary files — on first boot the phone takes its drivers and firmware from its own partitions.</p></div></div></section>
+<section class="section " id="video" aria-labelledby="video-h"><div class="wrap"><div class="sec-head"><span class="sec-num">02</span><h2 id="video-h">Watch it run</h2></div><figure class="video" style="margin:0"><div class="frame"><video controls preload="none" playsinline width="1600" height="900" poster="/img/synport/video-poster.webp" aria-label="synport: Arch Linux on an Android phone in 4 minutes"><source src="/media/synport-install.mp4" type="video/mp4"></video></div><figcaption>One take from a Windows PC: the counter shows real time, long steps are sped up. About 4 minutes from start to the synshell desktop.</figcaption></figure><div class="video-links"><a class="btn ghost" href="/media/synport-install.mp4" download>Download the video (MP4) · 35.9 MB</a></div></div></section>
+<section class="section " id="features" aria-labelledby="features-h"><div class="wrap"><div class="sec-head"><span class="sec-num">03</span><h2 id="features-h">Key features</h2></div><ul class="features"><li>One window: phone check, release, options (user, Wi-Fi, time zone, apps), install, remove — or the same from the command line.</li><li>Nothing flashed until the end: the installer starts on the phone from RAM (fastboot boot); if anything fails, the phone restarts into Android and synport shows why.</li><li>No vendor files in the image: the phone imports its own drivers and firmware; the camera file it lacks is taken from Xiaomi&#x27;s OTA on the PC, about 5 MB out of 5 GB.</li><li>Works on the phone: touch, 120 Hz, GPU (Vulkan, turnip), Wi-Fi, Bluetooth, sound, mobile data, calls and SMS, GPS, all five cameras, sensors, IR, NPU.</li><li>Apps to pick at install: Firefox, Steam and Windows games through Wine, Android apps in a container, synshell programs.</li><li>Remove in one click: the stock boot image is flashed back (checked by sha256), your files can be saved to the PC first.</li></ul></div></section>
+<section class="section " id="install" aria-labelledby="install-h"><div class="wrap"><div class="sec-head"><span class="sec-num">04</span><h2 id="install-h">Install</h2></div><div class="install"><pre><code># 1. Download and unpack synport-diting-&lt;version&gt;.zip from Releases
+# 2. Phone: unlocked bootloader, USB debugging on, cable connected
+synport.exe<span class="c">          # Windows (or ./synport on Linux), then press Install</span></code></pre><p>First device with a public release: Xiaomi 12T Pro / Redmi K50 Ultra (diting) on HyperOS OS2.0.5.0.VLFCNXM; the installer checks the ROM first. ONYX BOOX Note Air 4C and Samsung Galaxy Tab A 8.0 are ported, releases for them will follow.</p><p><a href="https://github.com/VitaminDB/synport#readme">Full instructions in the README →</a></p></div></div></section>
+<section class="section " id="requirements" aria-labelledby="requirements-h"><div class="wrap"><div class="sec-head"><span class="sec-num">05</span><h2 id="requirements-h">Requirements and limitations</h2></div><ul class="limits"><li>Unlocked bootloader (official Mi Unlock; unlocking wipes the phone). synport never locks it back.</li><li>Windows 10/11 or Linux x86_64 and a USB cable; about 20 GB free on the phone.</li><li>One ROM for now: OS2.0.5.0.VLFCNXM (China). Fingerprint reader — not yet.</li><li>Free, binary only; the GPL parts (kernel config, BusyBox, initramfs) are in every release.</li></ul></div></section>
+<section class="section " id="screenshots" aria-labelledby="screenshots-h"><div class="wrap"><div class="sec-head"><span class="sec-num">06</span><h2 id="screenshots-h">Screenshots</h2></div><ul class="gallery"><li><figure><a href="/img/alexeyev-dev/window-options.webp"><div class="frame"><img src="/img/alexeyev-dev/window-options-800.webp" width="800" height="530" alt="Options: user, Wi-Fi, time zone, apps" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Options: user, Wi-Fi, time zone, apps</figcaption></figure></li><li><figure><a href="/img/alexeyev-dev/window-installing.webp"><div class="frame"><img src="/img/alexeyev-dev/window-installing-800.webp" width="800" height="530" alt="Installing: every step is visible in advance" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Installing: every step is visible in advance</figcaption></figure></li><li><figure><a href="/img/alexeyev-dev/phone-installer.webp"><div class="frame"><img src="/img/alexeyev-dev/phone-installer-800.webp" width="800" height="1652" alt="The phone installs Arch by itself" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>The phone installs Arch by itself</figcaption></figure></li><li><figure><a href="/img/alexeyev-dev/phone-lock.webp"><div class="frame"><img src="/img/alexeyev-dev/phone-lock-800.webp" width="800" height="1652" alt="First boot: the synshell lock screen" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>First boot: the synshell lock screen</figcaption></figure></li><li><figure><a href="/img/alexeyev-dev/phone-desktop.webp"><div class="frame"><img src="/img/alexeyev-dev/phone-desktop-800.webp" width="800" height="1652" alt="synshell desktop with system widgets" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>synshell desktop with system widgets</figcaption></figure></li><li><figure><a href="/img/alexeyev-dev/phone-quick.webp"><div class="frame"><img src="/img/alexeyev-dev/phone-quick-800.webp" width="800" height="1652" alt="Quick settings" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Quick settings</figcaption></figure></li><li><figure><a href="/img/alexeyev-dev/window-done.webp"><div class="frame"><img src="/img/alexeyev-dev/window-done-800.webp" width="800" height="530" alt="Done" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Done</figcaption></figure></li></ul></div></section>
+
+<section class="vibe compact" id="how-built" aria-labelledby="how-built-h">
+  <div class="wrap">
+    <p class="eyebrow">Measured, not promised</p>
+    <h2 id="how-built-h">How it is tested</h2>
+    <p class="vibe-text">Every release is installed from clean Windows and Arch virtual machines before it goes out, then checked on the phone: services, NPU, cameras, Wi-Fi.</p>
+    <p class="vibe-more"><a href="/#vibe">Every number here is measured on my own hardware.</a> <a href="https://github.com/VitaminDB/synport">github.com/VitaminDB/synport</a></p>
+  </div>
+</section>
+<nav class="section" aria-labelledby="others-h"><div class="wrap"><div class="sec-head"><span class="sec-num">07</span><h2 id="others-h">Other projects</h2></div><ul class="others"><li><a href="/synthos/"><b>synthos</b><span>Local AI studio</span></a></li><li><a href="/synaptix/"><b>synaptix</b><span>The engine under synthos</span></a></li><li><a href="/syngui/"><b>syngui</b><span>Retained-mode GUI framework for Rust</span></a></li><li><a href="/synshell/"><b>synshell</b><span>Wayland desktop environment for computers and phones</span></a></li><li><a href="/linux-legion/"><b>linux-legion</b><span>Lenovo Vantage for Linux</span></a></li><li><a href="/ardor-mouse/"><b>ardor-mouse</b><span>Linux configurator for ARDOR GAMING mice (Edge Air Ultra, Rukh) — DPI, RGB, buttons, sensor, a live mouse in the app</span></a></li></ul></div></nav>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Vitaliy Alexeyev · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://www.linkedin.com/in/vitaly-alexeyev-08546b21b/" rel="me">LinkedIn</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Static site, no trackers, no cookies. Built with a Python script.</p></div>
+    <nav aria-label="Other projects"><a href="/synthos/">synthos</a><a href="/synaptix/">synaptix</a><a href="/syngui/">syngui</a><a href="/synshell/">synshell</a><a href="/synport/">synport</a><a href="/linux-legion/">linux-legion</a><a href="/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>

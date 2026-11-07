@@ -71,6 +71,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/"/>
   </url>
   <url>
+    <loc>https://alexeyev.dev/synport/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/synport/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synport/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synport/"/>
+  </url>
+  <url>
+    <loc>https://alexeyev.dev/ru/synport/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/synport/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synport/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synport/"/>
+  </url>
+  <url>
     <loc>https://alexeyev.dev/linux-legion/</loc>
     <lastmod>2026-11-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/linux-legion/"/>

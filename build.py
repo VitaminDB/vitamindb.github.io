@@ -550,10 +550,11 @@ def build_project(site, imgs, lang, idx):
                 f'{body}</div></section>')
 
     facts = [(ui["licence"], p["licence"]), (ui["platform"], p["platform"][lang]),
-             (ui["packages"], ", ".join(p["aur"]) + " (AUR)" if p["aur"] else ("Cargo" if lang == "en" else "Cargo, из исходников")),
+             (ui["packages"], p["packages"][lang] if p.get("packages") else (", ".join(p["aur"]) + " (AUR)" if p["aur"] else ("Cargo" if lang == "en" else "Cargo, из исходников"))),
              (ui["status"], p["status"][lang])]
     facts_html = '<dl class="facts">' + "".join(f"<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>" for k, v in facts) + "</dl>"
-    buttons = f'<a class="btn" href="{esc(p["repo"])}">{ICON_GH}<span>{esc(ui["on_github"])}</span></a>'
+    gh_label = p["repo_label"][lang] if p.get("repo_label") else ui["on_github"]
+    buttons = f'<a class="btn" href="{esc(p["repo"])}">{ICON_GH}<span>{esc(gh_label)}</span></a>'
     for pkg in p["aur"]:
         buttons += f'<a class="btn ghost" href="https://aur.archlinux.org/packages/{esc(pkg)}">{esc(ui["on_aur"])}: {esc(pkg)}</a>'
 
