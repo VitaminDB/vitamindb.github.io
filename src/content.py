@@ -62,27 +62,27 @@ SITE = {
                 "Fifteen years close to the metal before this — repairing electronics, bare-metal "
                 "firmware, PCB design. Earlier commercial work: a central-heating controller with a "
                 "GSM-OTA bootloader (in production for years) and a Qt/C++ SPI-flash recovery tool "
-                "used daily in a repair shop.",
+                "used daily in a repair shop. These days I also develop with Claude Code, which makes "
+                "the work several times faster.",
             ],
             "ru": [
                 "До этого — пятнадцать лет рядом с железом: ремонт электроники, прошивки без ОС, "
                 "разводка плат. Из коммерческих работ — контроллер системы отопления с загрузчиком "
                 "обновлений по GSM (годами работает в серии) и программа на Qt/C++ для "
-                "восстановления SPI-флешек, которой каждый день пользуются в сервисном центре.",
+                "восстановления SPI-флешек, которой каждый день пользуются в сервисном центре. "
+                "Сейчас разрабатываю ещё и с Claude Code — так работа идёт в разы быстрее.",
             ],
         },
         "skills": ["Rust", "CUDA · NVRTC", "GEMM / GEMV", "FP4 / FP8 quantization", "Nsight",
                    "C++", "wgpu / WGSL", "Wayland", "STM32 · AVR · PIC", "Arch Linux", "KiCad"],
     },
-    # The "how it is built" statement (variant B, 07.11.2026).
+    # The "how it is tested" statement (07.11.2026): measurements, no tooling emphasis.
     "vibe": {
-        "en": "Since spring 2026 I have been working in Claude Code. That is how a CUDA inference "
-              "engine, a GUI framework, an AI studio and a Wayland desktop came about in half a "
-              "year. Every number on these pages is measured on my own hardware, not taken on the "
-              "model's word.",
-        "ru": "С весны 2026 года я работаю в Claude Code. За полгода так появились движок "
-              "инференса на CUDA, GUI-фреймворк, AI-студия и рабочий стол для Wayland. Все цифры "
-              "на этих страницах измерены на моём железе, а не взяты у модели на слово.",
+        "en": "Every number here is measured on my own hardware. Speed comes from runs on my "
+              "laptop, and correctness is checked against reference implementations rather than "
+              "taken on faith.",
+        "ru": "Каждая цифра здесь измерена на моём железе. Скорость — по прогонам на моём "
+              "ноутбуке, корректность — сверкой с эталонными реализациями, а не на веру.",
     },
     "hardware": {
         "en": "Measured on an RTX 5090 Laptop GPU (24 GB) with 93 GB of system RAM, Arch Linux.",
@@ -95,15 +95,15 @@ UI = {
     "en": {
         "skip": "Skip to content",
         "nav_projects": "Projects",
-        "nav_vibe": "How it is built",
+        "nav_vibe": "How it is tested",
         "nav_contact": "Contact",
         "lang_other": "Русский",
         "lang_other_short": "RU",
         "home": "Home",
         "projects_h": "Projects",
         "projects_sub": "Six repositories, one stack: every app below is drawn with syngui, and the AI ones run on synaptix.",
-        "vibe_h": "How it is built",
-        "vibe_label": "Vibe-coded with Claude Code",
+        "vibe_h": "How it is tested",
+        "vibe_label": "Measured, not promised",
         "background_h": "Background",
         "contact_h": "Contact",
         "contact_sub": "Questions, bug reports, work offers — any of these reaches me.",
@@ -121,7 +121,7 @@ UI = {
         "video_h": "Watch it run",
         "video_youtube": "Watch on YouTube",
         "video_file": "Download the video (MP4)",
-        "built_h": "How it is built",
+        "built_h": "How it is tested",
         "others_h": "Other projects",
         "licence": "Licence",
         "platform": "Platform",
@@ -147,15 +147,15 @@ UI = {
     "ru": {
         "skip": "К содержимому",
         "nav_projects": "Проекты",
-        "nav_vibe": "Как сделано",
+        "nav_vibe": "Как проверено",
         "nav_contact": "Контакты",
         "lang_other": "English",
         "lang_other_short": "EN",
         "home": "Главная",
         "projects_h": "Проекты",
         "projects_sub": "Шесть репозиториев, один стек: все программы ниже нарисованы на syngui, а те, что с нейросетями, работают на synaptix.",
-        "vibe_h": "Как сделано",
-        "vibe_label": "Вайбкодинг в Claude Code",
+        "vibe_h": "Как проверено",
+        "vibe_label": "Замерено, а не обещано",
         "background_h": "Опыт",
         "contact_h": "Контакты",
         "contact_sub": "Вопросы, баг-репорты, предложения о работе — пишите куда удобнее.",
@@ -173,7 +173,7 @@ UI = {
         "video_h": "Как это работает",
         "video_youtube": "Смотреть на YouTube",
         "video_file": "Скачать видео (MP4)",
-        "built_h": "Как сделано",
+        "built_h": "Как проверено",
         "others_h": "Другие проекты",
         "licence": "Лицензия",
         "platform": "Платформа",
@@ -491,8 +491,8 @@ PROJECTS = [
             },
         },
         "built": {
-            "en": "Every number in the README was measured on my machine, and correctness is checked against reference implementations layer by layer rather than taken on the model's word.",
-            "ru": "Каждая цифра в README измерена на моей машине, а корректность проверяется по эталонным реализациям слой за слоем, а не принимается на слово у модели.",
+            "en": "Every number in the README was measured on my machine, and correctness is checked against reference implementations layer by layer rather than taken on faith.",
+            "ru": "Каждая цифра в README измерена на моей машине, а корректность проверяется по эталонным реализациям слой за слоем, а не принимается на веру.",
         },
         "hero": img("synthos/docs/screenshots/chat-details.png",
                     "synaptix at work inside synthos: tok/s, prefill time and the prefix-KV share of a chat turn",
