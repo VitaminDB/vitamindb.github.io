@@ -52,6 +52,15 @@ UI = {
 
 SECTIONS = [
     {
+        "slug": "synshell",
+        "name": "synshell",
+        "about": {
+            "en": "My Wayland desktop environment for computers and phones: releases and applications.",
+            "ru": "Моё окружение рабочего стола Wayland для компьютеров и телефонов: выпуски и программы.",
+        },
+        "project": "synshell",
+    },
+    {
         "slug": "synmobile",
         "name": "synmobile",
         "about": {
@@ -63,6 +72,56 @@ SECTIONS = [
 ]
 
 POSTS = [
+    {
+        "slug": "synshell-0-2-0",
+        "section": "synshell",
+        "tags": ["release", "desktop", "phone"],
+        "date": "2026-11-07",
+        "cover": "synshell/docs/screenshots/desktop.png",
+        "title": {"en": "synshell 0.2.0: the first public release", "ru": "synshell 0.2.0: первый публичный выпуск"},
+        "summary": {
+            "en": "Wayland desktop in Rust for computers and phones: compositor, desktop, phone and game shells, System Settings and 31 apps. Packages in the AUR.",
+            "ru": "Рабочий стол Wayland на Rust для ПК и телефонов: композитор, оболочки для ПК, телефона и игр, «Параметры системы» и 31 приложение. Пакеты в AUR.",
+        },
+        "body": [
+            ("p", {"en": "synshell is the desktop I use every day on my laptop and on my phone. Version 0.2.0 is the first one published: prebuilt packages for x86_64 and aarch64 are in the AUR, archives are attached to the GitHub release.",
+                   "ru": "synshell — рабочий стол, которым я пользуюсь каждый день на ноутбуке и на телефоне. Версия 0.2.0 — первая опубликованная: готовые пакеты для x86_64 и aarch64 лежат в AUR, архивы приложены к выпуску на GitHub."}),
+            ("wide", {"en": "synshell/docs/screenshots/desktop.png", "ru": "synshell/docs/screenshots/desktop-ru.png"}, {"en": "The Nord theme: a floating top panel, the dock, the file manager, Resource Monitor and the terminal", "ru": "Тема Nord: плавающая верхняя панель, док, Проводник, Монитор ресурсов и Терминал"}),
+            ("h", {"en": "How it is built", "ru": "Как устроено"}),
+            ("p", {"en": "It is split the way KDE Plasma is: the synwm compositor on smithay, a separate shell process for panels, dock, launcher and notifications, and System Settings. If the shell crashes, the compositor restarts it and the windows stay. Almost everything is configured in one file, ~/.config/synshell/config.toml, and applied live; System Settings edits it in place and keeps comments. Every window and panel is drawn with syngui, my GUI framework.",
+                   "ru": "Устроено как KDE Plasma: композитор synwm на smithay, отдельный процесс оболочки с панелями, доком, меню запуска и уведомлениями и «Параметры системы». Если оболочка упадёт, композитор перезапустит её, а окна останутся. Почти всё настраивается в одном файле, ~/.config/synshell/config.toml, и применяется на лету; «Параметры системы» правят его на месте и сохраняют комментарии. Все окна и панели нарисованы на syngui — моём GUI-фреймворке."}),
+            ("h", {"en": "Desktop", "ru": "Рабочий стол"}),
+            ("list", {"en": ["Three panel layouts out of the box — top panel with a dock, classic taskbar (the default) and a vertical panel — and any of your own, edited with the mouse.",
+                             "Floating, tile, columns, grid and monocle layouts, window overview, Alt+Tab, window rules, Xwayland.",
+                             "The panel becomes the title bar of a maximized window, with a global menu for Qt/KDE and GTK 3.",
+                             "14 themes, Nord by default; the palette is passed to GTK, Qt/KDE and GIMP.",
+                             "Own lock screen, screen-sharing and screenshot portal over PipeWire, interface in 14 languages."],
+                      "ru": ["Три раскладки панелей из коробки — верхняя панель с доком, классическая панель задач (по умолчанию) и вертикальная — и любые свои, мышью.",
+                             "Раскладки окон «плавающая», «мозаика», «колонки», «сетка» и «монокль», обзор окон, Alt+Tab, правила окон, Xwayland.",
+                             "Панель становится заголовком развёрнутого окна с глобальным меню для Qt/KDE и GTK 3.",
+                             "14 тем, по умолчанию Nord; палитра передаётся в GTK, Qt/KDE и GIMP.",
+                             "Свой экран блокировки, портал показа экрана и снимков через PipeWire, интерфейс на 14 языках."]}),
+            ("wide", {"en": "synshell/docs/screenshots/classic.png", "ru": "synshell/docs/screenshots/classic-ru.png"}, {"en": "Classic taskbar — the default layout", "ru": "Классическая панель задач — раскладка по умолчанию"}),
+            ("h", {"en": "Phone and game mode", "ru": "Телефон и игровой режим"}),
+            ("p", {"en": "The same compositor runs a phone shell with an on-screen keyboard and phone apps: Phone, Messages, Camera, NFC, Compass, Sports and health, IR remote. Game mode (Super+G) is a fullscreen launcher with the Steam library, covers and gamepad navigation; Android apps run in a LineageOS container, each in its own window.",
+                   "ru": "Тот же композитор запускает оболочку телефона с экранной клавиатурой и телефонными приложениями: Телефон, Сообщения, Камера, NFC, Компас, Спорт и здоровье, ИК-пульт. Игровой режим (Super+G) — полноэкранное меню с библиотекой Steam, обложками и управлением с геймпада; Android-приложения работают в контейнере LineageOS, каждое в своём окне."}),
+            ("shots", [("synshell/docs/screenshots/phone.png", {"en": "Phone: home screen", "ru": "Телефон: домашний экран"}),
+                       ("synshell/docs/screenshots/phone-shade.png", {"en": "Phone: quick settings", "ru": "Телефон: быстрые настройки"})]),
+            ("h", {"en": "Applications", "ru": "Приложения"}),
+            ("p", {"en": "31 applications, each with its own page on this site: System Settings, file manager, terminal, software center for Arch and AUR, Resource Monitor, theme editor, Notes, passwords, virtual machines, video and music players, voice recorder, Maps, an assistant on local neural networks, cycle tracker, QuitSmoke and Syn Blocks.",
+                   "ru": "31 приложение, у каждого своя страница на этом сайте: «Параметры системы», Проводник, Терминал, «Программы» для Arch и AUR, Монитор ресурсов, Редактор тем, Заметки, Пароли, Виртуальные машины, Видео и Музыка, Диктофон, Карты, Ассистент на локальных нейросетях, «Цикл», «Бросить курить» и Syn Blocks."}),
+            ("h", {"en": "Install", "ru": "Установка"}),
+            ("list", {"en": ["yay -S synshell-bin — the desktop and all applications; synshell-core-bin — the minimum; any application on its own by its package name.",
+                             "Then pick “synshell” in your display manager, or enable the bundled login screen: systemctl enable synlogin.service."],
+                      "ru": ["yay -S synshell-bin — рабочий стол и все приложения; synshell-core-bin — минимум; любое приложение отдельно — по имени пакета.",
+                             "Затем выберите «synshell» в менеджере входа или включите встроенный экран входа: systemctl enable synlogin.service."]}),
+            ("h", {"en": "What to keep in mind", "ru": "Что учесть"}),
+            ("list", {"en": ["Early: one developer, the first commit is from September 2026.",
+                             "Tested on one laptop (Intel iGPU + NVIDIA RTX 5090 Laptop GPU) and one phone (Xiaomi 12T Pro). Other hardware is handled in the code but untested."],
+                      "ru": ["Ранняя стадия: один разработчик, первый коммит — сентябрь 2026.",
+                             "Проверено на одном ноутбуке (Intel iGPU + NVIDIA RTX 5090 Laptop GPU) и одном телефоне (Xiaomi 12T Pro). Другое железо учтено в коде, но не проверялось."]}),
+        ],
+    },
     {
         "slug": "synmobile-boot-and-login",
         "section": "synmobile",

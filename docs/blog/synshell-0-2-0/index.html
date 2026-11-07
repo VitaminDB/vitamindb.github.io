@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>synshell 0.2.0: the first public release</title>
+<meta name="description" content="Wayland desktop in Rust for computers and phones: compositor, desktop, phone and game shells, System Settings and 31 apps. Packages in the AUR.">
+<meta name="author" content="Vitaliy Alexeyev">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://alexeyev.dev/blog/synshell-0-2-0/">
+<link rel="alternate" hreflang="en" href="https://alexeyev.dev/blog/synshell-0-2-0/">
+<link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/blog/synshell-0-2-0/">
+<link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/blog/synshell-0-2-0/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=a41900faca">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Vitaliy Alexeyev">
+<meta property="og:title" content="synshell 0.2.0: the first public release">
+<meta property="og:description" content="Wayland desktop in Rust for computers and phones: compositor, desktop, phone and game shells, System Settings and 31 apps. Packages in the AUR.">
+<meta property="og:url" content="https://alexeyev.dev/blog/synshell-0-2-0/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:image" content="https://alexeyev.dev/og/blog-synshell-0-2-0-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="synshell 0.2.0: the first public release">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="synshell 0.2.0: the first public release">
+<meta name="twitter:description" content="Wayland desktop in Rust for computers and phones: compositor, desktop, phone and game shells, System Settings and 31 apps. Packages in the AUR.">
+<meta name="twitter:image" content="https://alexeyev.dev/og/blog-synshell-0-2-0-en.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://alexeyev.dev/blog/synshell-0-2-0/#post","headline":"synshell 0.2.0: the first public release","description":"Wayland desktop in Rust for computers and phones: compositor, desktop, phone and game shells, System Settings and 31 apps. Packages in the AUR.","datePublished":"2026-11-07","dateModified":"2026-11-07","inLanguage":"en","url":"https://alexeyev.dev/blog/synshell-0-2-0/","mainEntityOfPage":"https://alexeyev.dev/blog/synshell-0-2-0/","image":["https://alexeyev.dev/og/blog-synshell-0-2-0-en.jpg","https://alexeyev.dev/img/synshell/desktop.webp"],"author":{"@type":"Person","@id":"https://alexeyev.dev/#person","name":"Vitaliy Alexeyev","url":"https://alexeyev.dev/"},"isPartOf":{"@id":"https://alexeyev.dev/blog/#blog"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Vitaliy Alexeyev","item":"https://alexeyev.dev/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://alexeyev.dev/blog/"},{"@type":"ListItem","position":3,"name":"synshell 0.2.0: the first public release","item":"https://alexeyev.dev/blog/synshell-0-2-0/"}]}]}</script>
+</head>
+<body class="blog-post">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/" aria-label="Vitaliy Alexeyev — Home"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Vitaliy Alexeyev</span></a>
+    <nav class="top-nav" aria-label="Main">
+      <a href="/#projects">Projects</a>
+      <a href="/blog/">Blog</a>
+      <a href="/#vibe">How it is tested</a>
+      <a href="/#contact">Contact</a>
+      <a class="lang" href="/ru/blog/synshell-0-2-0/" hreflang="ru" lang="ru" title="Русский">RU</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Vitaliy Alexeyev</a></li><li><a href="/blog/">Blog</a></li><li><a href="/blog/#synshell">synshell</a></li></ol></nav><article class="post" aria-labelledby="post-h"><header class="p-hero"><div class="wrap"><p class="eyebrow rise"><time datetime="2026-11-07">November 7, 2026</time> · synshell</p><h1 id="post-h" class="rise d1">synshell 0.2.0: the first public release</h1><p class="p-lead rise d2">Wayland desktop in Rust for computers and phones: compositor, desktop, phone and game shells, System Settings and 31 apps. Packages in the AUR.</p></div></header><div class="wrap"><div class="chips post-tags"><a class="chip" href="/blog/?tag=synshell">#synshell</a><a class="chip" href="/blog/?tag=release">#release</a><a class="chip" href="/blog/?tag=desktop">#desktop</a><a class="chip" href="/blog/?tag=phone">#phone</a></div><nav class="post-toc" aria-label="Contents"><b>Contents</b><ol><li><a href="#s-how-it-is-built">How it is built</a></li><li><a href="#s-desktop">Desktop</a></li><li><a href="#s-phone-and-game-mode">Phone and game mode</a></li><li><a href="#s-applications">Applications</a></li><li><a href="#s-install">Install</a></li><li><a href="#s-what-to-keep-in-mind">What to keep in mind</a></li></ol></nav></div><div class="wrap post-body"><p>synshell is the desktop I use every day on my laptop and on my phone. Version 0.2.0 is the first one published: prebuilt packages for x86_64 and aarch64 are in the AUR, archives are attached to the GitHub release.</p>
+<figure class="post-wide"><a href="/img/synshell/desktop.webp"><div class="frame"><img src="/img/synshell/desktop.webp" width="1600" height="1000" alt="The Nord theme: a floating top panel, the dock, the file manager, Resource Monitor and the terminal" srcset="/img/synshell/desktop-800.webp 800w, /img/synshell/desktop.webp 1600w" sizes="(max-width: 900px) 100vw, 860px" loading="lazy" decoding="async"></div></a><figcaption>The Nord theme: a floating top panel, the dock, the file manager, Resource Monitor and the terminal</figcaption></figure>
+<h2 id="s-how-it-is-built">How it is built</h2>
+<p>It is split the way KDE Plasma is: the synwm compositor on smithay, a separate shell process for panels, dock, launcher and notifications, and System Settings. If the shell crashes, the compositor restarts it and the windows stay. Almost everything is configured in one file, ~/.config/synshell/config.toml, and applied live; System Settings edits it in place and keeps comments. Every window and panel is drawn with syngui, my GUI framework.</p>
+<h2 id="s-desktop">Desktop</h2>
+<ul class="limits"><li>Three panel layouts out of the box — top panel with a dock, classic taskbar (the default) and a vertical panel — and any of your own, edited with the mouse.</li><li>Floating, tile, columns, grid and monocle layouts, window overview, Alt+Tab, window rules, Xwayland.</li><li>The panel becomes the title bar of a maximized window, with a global menu for Qt/KDE and GTK 3.</li><li>14 themes, Nord by default; the palette is passed to GTK, Qt/KDE and GIMP.</li><li>Own lock screen, screen-sharing and screenshot portal over PipeWire, interface in 14 languages.</li></ul>
+<figure class="post-wide"><a href="/img/synshell/classic.webp"><div class="frame"><img src="/img/synshell/classic.webp" width="1600" height="1000" alt="Classic taskbar — the default layout" srcset="/img/synshell/classic-800.webp 800w, /img/synshell/classic.webp 1600w" sizes="(max-width: 900px) 100vw, 860px" loading="lazy" decoding="async"></div></a><figcaption>Classic taskbar — the default layout</figcaption></figure>
+<h2 id="s-phone-and-game-mode">Phone and game mode</h2>
+<p>The same compositor runs a phone shell with an on-screen keyboard and phone apps: Phone, Messages, Camera, NFC, Compass, Sports and health, IR remote. Game mode (Super+G) is a fullscreen launcher with the Steam library, covers and gamepad navigation; Android apps run in a LineageOS container, each in its own window.</p>
+<ul class="phone-shots"><li><figure><a href="/img/synshell/phone.webp"><div class="frame"><img src="/img/synshell/phone-800.webp" width="550" height="1175" alt="Phone: home screen" srcset="/img/synshell/phone-800.webp 550w, /img/synshell/phone.webp 550w" sizes="(max-width: 700px) 50vw, 300px" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Phone: home screen</figcaption></figure></li><li><figure><a href="/img/synshell/phone-shade.webp"><div class="frame"><img src="/img/synshell/phone-shade-800.webp" width="550" height="1175" alt="Phone: quick settings" srcset="/img/synshell/phone-shade-800.webp 550w, /img/synshell/phone-shade.webp 550w" sizes="(max-width: 700px) 50vw, 300px" loading="lazy" decoding="async"></div><span class="visually-hidden"> (open full size)</span></a><figcaption>Phone: quick settings</figcaption></figure></li></ul>
+<h2 id="s-applications">Applications</h2>
+<p>31 applications, each with its own page on this site: System Settings, file manager, terminal, software center for Arch and AUR, Resource Monitor, theme editor, Notes, passwords, virtual machines, video and music players, voice recorder, Maps, an assistant on local neural networks, cycle tracker, QuitSmoke and Syn Blocks.</p>
+<h2 id="s-install">Install</h2>
+<ul class="limits"><li>yay -S synshell-bin — the desktop and all applications; synshell-core-bin — the minimum; any application on its own by its package name.</li><li>Then pick “synshell” in your display manager, or enable the bundled login screen: systemctl enable synlogin.service.</li></ul>
+<h2 id="s-what-to-keep-in-mind">What to keep in mind</h2>
+<ul class="limits"><li>Early: one developer, the first commit is from September 2026.</li><li>Tested on one laptop (Intel iGPU + NVIDIA RTX 5090 Laptop GPU) and one phone (Xiaomi 12T Pro). Other hardware is handled in the code but untested.</li></ul><div class="pn-row"><a class="pn prev" href="/blog/synmobile-games-and-android/"><span>←</span> synmobile: Windows games and Android apps</a></div><p class="post-back"><a href="/blog/">← All posts</a> · <a href="/synshell/">Project page: synshell</a></p></div></article>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Vitaliy Alexeyev · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://www.linkedin.com/in/vitaly-alexeyev-08546b21b/" rel="me">LinkedIn</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Static site, no trackers, no cookies. Built with a Python script.</p></div>
+    <nav aria-label="Other projects"><a href="/synthos/">synthos</a><a href="/synaptix/">synaptix</a><a href="/syngui/">syngui</a><a href="/synshell/">synshell</a><a href="/linux-legion/">linux-legion</a><a href="/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>

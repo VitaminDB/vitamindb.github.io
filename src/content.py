@@ -204,6 +204,17 @@ def img(path, alt_en, alt_ru, cap_en=None, cap_ru=None):
             "caption": {"en": cap_en or alt_en, "ru": cap_ru or alt_ru}}
 
 
+def img_l(path_en, path_ru, alt_en, alt_ru):
+    """Screenshot with a separate Russian-interface version for /ru/ pages."""
+    d = img(path_en, alt_en, alt_ru)
+    d["src_ru"] = path_ru
+    return d
+
+
+# Old project URLs → new slug (meta-refresh pages, EN and RU).
+REDIRECTS = {"syndesktop": "synshell"}
+
+
 PROJECTS = [
     # ------------------------------------------------------------------ synthos
     # Source: synthos/README.md, synthos_public/07-facts.md
@@ -549,11 +560,11 @@ PROJECTS = [
         "what": {
             "en": [
                 "Most Rust GUI libraries make you choose: immediate-mode simplicity (egui) or a retained tree with typed styling (iced), a custom DSL (Slint) or web tech (Tauri, Dioxus). syngui takes a different combination — real stylesheets with a cascade, SolidJS-style fine-grained reactivity, a retained widget tree, and a large set of widgets you would normally have to vendor yourself.",
-                "It is used in production by its author: synthos, syndesktop, linux-legion and ardor-mouse all run on it, so its bugs get found by real use.",
+                "It is used in production by its author: synthos, synshell, linux-legion and ardor-mouse all run on it, so its bugs get found by real use.",
             ],
             "ru": [
                 "Большинство GUI-библиотек для Rust заставляют выбирать: простота immediate mode (egui) или retained-дерево с типизированными стилями (iced), собственный DSL (Slint) или веб-технологии (Tauri, Dioxus). syngui собирает другую комбинацию — настоящие таблицы стилей с каскадом, точечную реактивность в духе SolidJS, retained-дерево виджетов и большой набор виджетов, которые обычно приходится тащить в проект самому.",
-                "Автор пользуется им в продакшене: на нём работают synthos, syndesktop, linux-legion и ardor-mouse, так что баги находятся в реальной работе.",
+                "Автор пользуется им в продакшене: на нём работают synthos, synshell, linux-legion и ardor-mouse, так что баги находятся в реальной работе.",
             ],
         },
         "features": {
@@ -606,8 +617,8 @@ PROJECTS = [
             ],
         },
         "built": {
-            "en": "The performance numbers were measured on my machine, and every app I have built since — synthos, syndesktop, linux-legion, ardor-mouse — runs on this framework, so its bugs get found by real use.",
-            "ru": "Цифры производительности измерены на моей машине, а все программы, которые я сделал после, — synthos, syndesktop, linux-legion, ardor-mouse — работают на этом фреймворке, так что его баги находятся в настоящей работе.",
+            "en": "The performance numbers were measured on my machine, and every app I have built since — synthos, synshell, linux-legion, ardor-mouse — runs on this framework, so its bugs get found by real use.",
+            "ru": "Цифры производительности измерены на моей машине, а все программы, которые я сделал после, — synthos, synshell, linux-legion, ardor-mouse — работают на этом фреймворке, так что его баги находятся в настоящей работе.",
         },
         "hero": img("syngui/docs/widget-gallery.png",
                     "The widget_gallery_mss example running natively — MarkdownView with syntax highlighting",
@@ -627,121 +638,137 @@ PROJECTS = [
                 "На syngui: живая карта клавиатуры в linux-legion"),
         ],
     },
-    # ------------------------------------------------------------------ syndesktop
-    # Source: syndesktop/README.md (Russian at the time of writing), github-profile.
+    # ------------------------------------------------------------------ synshell
+    # Source: synshell/README.md, README.ru.md, docs/release-notes/0.2.0(.ru).md (07.11.2026).
+    # Former name: syndesktop (old URL /syndesktop/ redirects here, see REDIRECTS).
     {
-        "slug": "syndesktop",
-        "name": "syndesktop",
-        "repo": "https://github.com/VitaminDB/syndesktop",
-        "readme": "https://github.com/VitaminDB/syndesktop#readme",
-        "aur": [],
-        "licence": "MIT OR Apache-2.0",
-        "platform": {"en": "Linux · Wayland", "ru": "Linux · Wayland"},
-        "stack": ["Rust", "smithay 0.7", "syngui"],
+        "slug": "synshell",
+        "name": "synshell",
+        "repo": "https://github.com/VitaminDB/synshell",
+        "readme": "https://github.com/VitaminDB/synshell#readme",
+        "aur": ["synshell-bin", "synshell-git"],
+        # Every application from the README "Applications" tables gets its own page /synshell/<crate>/.
+        "apps": {"dir": "synshell", "readme": {"en": "README.md", "ru": "README.ru.md"},
+                 "section": {"en": "## Applications", "ru": "## Приложения"}},
+        "licence": "GPL-3.0 / commercial",
+        "platform": {"en": "Linux · Wayland · x86_64 and aarch64", "ru": "Linux · Wayland · x86_64 и aarch64"},
+        "stack": ["Rust", "smithay", "syngui"],
         "category": "DesktopEnhancementApplication",
-        "status": {"en": "Early, build from source", "ru": "Ранняя стадия, сборка из исходников"},
+        "status": {"en": "0.2.0, first public release", "ru": "0.2.0, первый публичный выпуск"},
         "title": {
-            "en": "syndesktop — Wayland desktop environment written in Rust",
-            "ru": "syndesktop — окружение рабочего стола Wayland на Rust",
+            "en": "synshell — Wayland desktop for computers and phones",
+            "ru": "synshell — рабочий стол Wayland для ПК и телефонов",
         },
         "description": {
-            "en": "Wayland desktop environment in Rust: a smithay compositor, a shell with a "
-                  "macOS-style dock and panels, system settings, a file manager, a screenshot tool.",
-            "ru": "Окружение рабочего стола Wayland на Rust: композитор на smithay, оболочка с доком "
-                  "в стиле macOS и панелями, параметры системы, проводник и снимок экрана.",
+            "en": "Wayland desktop environment in Rust for computers and phones: compositor, desktop, phone "
+                  "and game shells, System Settings and 31 apps. AUR packages.",
+            "ru": "Рабочий стол Wayland на Rust для компьютеров и телефонов: композитор, оболочки для ПК, "
+                  "телефона и игр, «Параметры системы» и 31 приложение. Пакеты в AUR.",
         },
         "tagline": {
-            "en": "A Wayland desktop environment in Rust, laid out like Plasma: a compositor, a shell and system settings as separate programs, configured through one file with changes applied live.",
-            "ru": "Окружение рабочего стола для Wayland на Rust, устроенное как Plasma: композитор, оболочка и «Параметры системы» — отдельные программы, всё настраивается одним файлом, и изменения применяются на лету.",
+            "en": "A Wayland desktop environment for computers and phones, laid out like KDE Plasma: a compositor, a separate shell and System Settings, plus 31 applications — all drawn with syngui and configured in one file, applied live.",
+            "ru": "Окружение рабочего стола Wayland для компьютеров и телефонов, устроенное как KDE Plasma: композитор, отдельная оболочка и «Параметры системы», плюс 31 приложение — всё нарисовано на syngui и настраивается одним файлом, на лету.",
         },
         "card": {
-            "en": "Wayland desktop environment: a smithay compositor, a shell with a macOS-style dock and panels, system settings, a file manager and a screenshot tool.",
-            "ru": "Рабочий стол для Wayland: композитор на smithay, оболочка с доком в стиле macOS и панелями, параметры системы, проводник и снимок экрана.",
+            "en": "Wayland desktop environment for computers and phones: a smithay compositor, desktop, phone and game shells, System Settings and 31 applications.",
+            "ru": "Рабочий стол Wayland для компьютеров и телефонов: композитор на smithay, оболочки для компьютера, телефона и игр, «Параметры системы» и 31 приложение.",
         },
         "stats": [
-            {"value": "5", "label": {"en": "programs: compositor, shell, settings, files, screenshot", "ru": "программ: композитор, оболочка, параметры, проводник, снимок"}},
-            {"value": "14", "label": {"en": "built-in themes, plus your own in MSS", "ru": "встроенных тем и свои на MSS"}},
-            {"value": "18", "label": {"en": "pages in system settings", "ru": "страниц в параметрах системы"}},
-            {"value": "0.7", "label": {"en": "smithay under the compositor", "ru": "версия smithay в композиторе"}},
+            {"value": "3", "label": {"en": "shells: desktop, phone, game mode", "ru": "оболочки: компьютер, телефон, игровой режим"}},
+            {"value": "31", "label": {"en": "applications, each with its own README", "ru": "приложение, у каждого свой README"}},
+            {"value": "14", "label": {"en": "interface languages", "ru": "языков интерфейса"}},
+            {"value": "14", "label": {"en": "built-in themes, Nord by default", "ru": "встроенных тем, по умолчанию Nord"}},
         ],
         "what": {
             "en": [
-                "syndesktop is a desktop environment for Wayland, written in Rust, with its interface drawn by syngui. It is split the way Plasma is: a compositor, a shell and a system-settings app are separate programs.",
-                "Almost everything is configured through ~/.config/syndesktop/config.toml, and changes apply on the fly. The settings app edits that file with toml_edit, so your comments survive.",
+                "synshell is a desktop environment for Wayland, written in Rust, for computers and phones. It is split the way KDE Plasma is: the synwm compositor (built on smithay), a separate shell process for panels, dock, launcher and notifications, and System Settings. Every window and panel is drawn with my own framework, syngui.",
+                "The same compositor runs a phone shell with an on-screen keyboard on Android phones and a console-style game mode (Super+G). Almost everything lives in one file, ~/.config/synshell/config.toml, and changes apply live; System Settings edits it in place and keeps your comments.",
             ],
             "ru": [
-                "syndesktop — окружение рабочего стола для Wayland на Rust, интерфейс нарисован на syngui. Устроено как Plasma: композитор, оболочка и «Параметры системы» — отдельные программы.",
-                "Почти всё настраивается через ~/.config/syndesktop/config.toml, изменения применяются на лету. «Параметры системы» правят этот файл через toml_edit, так что комментарии в нём сохраняются.",
+                "synshell — окружение рабочего стола для Wayland на Rust, для компьютеров и телефонов. Устроено как KDE Plasma: композитор synwm (на smithay), отдельный процесс оболочки с панелями, доком, меню запуска и уведомлениями и «Параметры системы». Все окна и панели нарисованы на моём фреймворке syngui.",
+                "Тот же композитор запускает оболочку телефона с экранной клавиатурой на Android-телефонах и игровой режим в стиле консоли (Super+G). Почти всё настраивается в одном файле, ~/.config/synshell/config.toml, и применяется на лету; «Параметры системы» правят его на месте и сохраняют комментарии.",
             ],
         },
         "features": {
             "en": [
-                "Compositor on smithay 0.7: DRM/KMS with several GPUs, hotplug and DPMS, or a nested window; server-side decorations, workspaces, floating / tile / columns / grid / monocle layouts, snapping to screen halves, window overview, Alt+Tab, window rules, Xwayland and IPC.",
-                "Shell on syngui (layer-shell): wallpaper, panels with applets, a launcher, D-Bus notifications, OSD, a power menu, a window switcher and a lock screen (ext-session-lock + PAM).",
-                "A dock in the spirit of macOS and Latte Dock: icons grow under the pointer, window indicators, bounces and particles on launch, 3D tilt and a 3D shelf with reflections, stacks and folders, autohide and smart hide.",
-                "An adaptive panel that stretches to the screen edge when a window is maximized or touches it, as in Plasma 6 — and a panel that becomes the title bar, with window title, window buttons and a global menu for Qt/KDE and GTK apps.",
-                "System settings with 18 pages that edit config.toml in place.",
-                "A file manager in the spirit of Windows 11: tabs in the title bar, two panes, icon / tile / list / table views, thumbnails, background operations with pause and cancel, Ctrl+Z, trash, search and a built-in image viewer (EXIF rotation, HEIC).",
-                "A screenshot tool: the screen freezes, you drag a region with handles and a magnifier or click a window or monitor, then copy, save, copy the path or open.",
-                "14 built-in themes — Nord, Catppuccin, Tokyo Night, Gruvbox, Rosé Pine, Everforest, Dracula, Kanagawa, Solarized and more — plus your own in MSS.",
-                "Scriptable over IPC: syndesktop msg windows, action \"workspace 2\", restart-shell and more.",
+                "Compositor synwm on smithay: DRM/KMS with several GPUs, hotplug and DPMS; workspaces, floating / tile / columns / grid / monocle layouts, snapping, window overview, Alt+Tab, window rules, Xwayland, a JSON IPC socket and synwm msg. If the shell crashes, the compositor restarts it and your windows stay.",
+                "Panel layouts set up with the mouse: a top panel with a dock, a classic taskbar (the default) or a vertical panel — any number of panels on any edge. An adaptive panel as in Plasma 6, and a panel that becomes the title bar of a maximized window with a global menu for Qt/KDE and GTK 3.",
+                "A dock in the spirit of macOS and Latte Dock: icons grow under the cursor, launch bounce, 3D tilt and a 3D shelf with reflections, groups, folders, autohide and intellihide.",
+                "Phone: the synmobile-shell phone shell, an on-screen keyboard and phone apps — Phone, Messages, Camera, NFC, Compass, Sports and health, IR remote.",
+                "Game mode: a fullscreen launcher with the Steam library, covers, gamepad navigation and an in-game quick menu; Wine components for all prefixes and Android apps in a LineageOS container (syndroid).",
+                "31 applications: System Settings, file manager (archives as folders, network locations, phones), terminal, software center (Arch repositories and AUR), Resource Monitor, theme editor, Notes (canvases, kanban, Gantt, mind maps, handwriting), passwords, virtual machines (syn-vm: QEMU/KVM, CLI and MCP server), video and music players, voice recorder, Maps, an assistant on local neural networks and more.",
+                "14 built-in themes (Nord by default), each exported to GTK, Qt/KDE and GIMP so other apps match; your own themes in MSS. Interface in 14 languages.",
+                "Computer ↔ phone over USB and Wi-Fi (synlink): screen and remote input, files, notifications, a shared clipboard, synced passwords.",
+                "Own lock screen (PAM), screen-sharing and screenshot portal over PipeWire for browsers and OBS, and the synshot screenshot tool.",
             ],
             "ru": [
-                "Композитор на smithay 0.7: DRM/KMS с несколькими GPU, горячим подключением и DPMS или вложенное окно; серверные рамки, рабочие столы, раскладки floating / tile / columns / grid / monocle, прилипание к половинам экрана, обзор окон, Alt+Tab, правила окон, Xwayland и IPC.",
-                "Оболочка на syngui (layer-shell): обои, панели с апплетами, меню запуска, уведомления по D-Bus, OSD, меню питания, переключатель окон и экран блокировки (ext-session-lock + PAM).",
-                "Док в духе macOS и Latte Dock: значок под курсором вырастает, индикаторы окон, прыжки и частицы при запуске, 3D-наклон и 3D-полка с отражениями, разделы и папки, автоскрытие и умное скрытие.",
-                "Адаптивная панель, которая прижимается к краю во всю длину, когда окно развёрнуто или касается её, как в Plasma 6, — и панель вместо заголовка окна: заголовок, кнопки окна и глобальное меню для программ на Qt/KDE и GTK.",
-                "«Параметры системы» — 18 страниц, которые правят config.toml на месте.",
-                "Проводник в духе Windows 11: вкладки в заголовке, две панели, виды «значки / плитка / список / таблица», миниатюры, операции в фоне с паузой и отменой, Ctrl+Z, корзина, поиск и встроенный просмотрщик картинок (поворот по EXIF, HEIC).",
-                "Снимок экрана: экран застывает, область выделяется рамкой с ручками и лупой, щелчок берёт окно или монитор; дальше — копировать, сохранить, скопировать путь или открыть.",
-                "14 встроенных тем — Nord, Catppuccin, Tokyo Night, Gruvbox, Rosé Pine, Everforest, Dracula, Kanagawa, Solarized и другие — и свои на MSS.",
-                "Управление через IPC: syndesktop msg windows, action \"workspace 2\", restart-shell и другое.",
+                "Композитор synwm на smithay: DRM/KMS с несколькими GPU, горячим подключением и DPMS; рабочие столы, раскладки «плавающая», «мозаика», «колонки», «сетка» и «монокль», прилипание, обзор окон, Alt+Tab, правила окон, Xwayland, сокет IPC с JSON и synwm msg. Если оболочка упадёт, композитор перезапустит её, а окна останутся.",
+                "Раскладки панелей мышью: верхняя панель с доком, классическая панель задач (по умолчанию) или вертикальная — сколько угодно панелей на любых краях. Адаптивная панель, как в Plasma 6, и панель вместо заголовка развёрнутого окна с глобальным меню для Qt/KDE и GTK 3.",
+                "Док в духе macOS и Latte Dock: значки растут под курсором, прыжок при запуске, 3D-наклон и 3D-полка с отражениями, группы, папки, автоскрытие и умное скрытие.",
+                "Телефон: оболочка synmobile-shell, экранная клавиатура и телефонные приложения — Телефон, Сообщения, Камера, NFC, Компас, Спорт и здоровье, ИК-пульт.",
+                "Игровой режим: полноэкранное меню с библиотекой Steam, обложками, управлением с геймпада и быстрым меню в игре; компоненты Wine для всех префиксов и Android-приложения в контейнере LineageOS (syndroid).",
+                "31 приложение: «Параметры системы», Проводник (архивы как папки, сетевые расположения, телефоны), Терминал, «Программы» (репозитории Arch и AUR), Монитор ресурсов, Редактор тем, Заметки (холсты, канбан, Гант, карты мыслей, рукописный ввод), Пароли, Виртуальные машины (syn-vm: QEMU/KVM, командная строка и MCP-сервер), Видео и Музыка, Диктофон, Карты, Ассистент на локальных нейросетях и другие.",
+                "14 встроенных тем (по умолчанию Nord); каждая передаётся в GTK, Qt/KDE и GIMP, чтобы другие программы выглядели так же; свои темы — на MSS. Интерфейс на 14 языках.",
+                "Компьютер ↔ телефон по USB и Wi-Fi (synlink): экран и управление, файлы, уведомления, общий буфер обмена, синхронизация паролей.",
+                "Свой экран блокировки (PAM), портал показа экрана и снимков через PipeWire для браузеров и OBS, снимки экрана synshot.",
             ],
         },
         "install": {
-            "code": "cargo build --profile fast-release\ntarget/fast-release/syndesktop --nested   # try it in a window\nmakepkg -si                              # full session: then pick syndesktop at login",
+            "code": "yay -S synshell-bin          # the desktop and all applications\nyay -S synshell-core-bin     # the minimum: compositor, shell, settings, files, terminal\nyay -S syn-vm-bin            # or any single application",
             "note": {
-                "en": "Build from source. The PKGBUILD in the repository installs a real session that you select in your login manager; --nested runs the compositor as a window inside your current session.",
-                "ru": "Сборка из исходников. PKGBUILD из репозитория ставит полноценный сеанс, который выбирается в менеджере входа; с --nested композитор запускается окном внутри текущего сеанса.",
+                "en": "Arch Linux, x86_64 and aarch64: every package comes as -bin (prebuilt) and -git (built from the repository). Then pick “synshell” in your display manager, or enable the bundled login screen: systemctl enable synlogin.service. The phone shell is synshell-mobile; neural networks are synaptix and synshell-ai.",
+                "ru": "Arch Linux, x86_64 и aarch64: каждый пакет есть в вариантах -bin (готовая сборка) и -git (сборка из репозитория). Затем выберите «synshell» в менеджере входа или включите встроенный экран входа: systemctl enable synlogin.service. Оболочка телефона — synshell-mobile, нейросети — synaptix и synshell-ai.",
             },
         },
         "requirements": {
             "en": [
-                "Linux with Wayland; X11 applications run through Xwayland.",
-                "No prebuilt packages or AUR entry yet: build from source with Cargo, with syngui cloned next to it (the PKGBUILD targets Arch Linux).",
-                "An early, single-developer project — expect rough edges; logs go to ~/.local/state/syndesktop/.",
+                "Linux with Wayland; X11 applications run through Xwayland. Packages for Arch Linux (AUR); archives for other systems are attached to the release.",
+                "Tested on one machine: my daily session on a hybrid laptop (Intel iGPU + NVIDIA RTX 5090 Laptop GPU). Multiple GPUs, monitor hotplug and other distributions are handled in the code but untested.",
+                "The phone build (aarch64) runs on a Xiaomi 12T Pro; other phones have not been tried.",
+                "Early: one developer, first commit in September 2026 — expect rough edges and config keys that still move.",
             ],
             "ru": [
-                "Linux с Wayland; программы для X11 работают через Xwayland.",
-                "Готовых пакетов и пакета в AUR пока нет: сборка из исходников через Cargo, syngui клонируется рядом (PKGBUILD рассчитан на Arch Linux).",
-                "Ранний проект одного разработчика — шероховатости будут; логи пишутся в ~/.local/state/syndesktop/.",
+                "Linux с Wayland; программы для X11 работают через Xwayland. Пакеты для Arch Linux (AUR); архивы для других систем приложены к выпуску.",
+                "Проверено на одной машине: мой ежедневный сеанс на гибридном ноутбуке (Intel iGPU + NVIDIA RTX 5090 Laptop GPU). Несколько GPU, горячее подключение мониторов и другие дистрибутивы учтены в коде, но не проверялись.",
+                "Сборка для телефона (aarch64) работает на Xiaomi 12T Pro; другие телефоны не пробовались.",
+                "Ранняя стадия: один разработчик, первый коммит — сентябрь 2026; шероховатости будут, ключи конфига ещё меняются.",
             ],
         },
         "built": {
-            "en": "The whole interface — shell, dock, settings, file manager — is drawn with syngui, the same framework as synthos.",
-            "ru": "Весь интерфейс — оболочка, док, параметры, проводник — нарисован на syngui, том же фреймворке, что и synthos.",
+            "en": "synshell is my own daily session on the laptop and on the phone, so what is described here is what I run every day. The whole interface — shells, dock, settings, all 31 applications — is drawn with syngui.",
+            "ru": "synshell — мой ежедневный сеанс на ноутбуке и на телефоне, так что описано то, чем я пользуюсь каждый день. Весь интерфейс — оболочки, док, параметры, все 31 приложение — нарисован на syngui.",
         },
-        # Screenshots: every image in syndesktop/docs/screenshots/ if the folder exists,
-        # otherwise docs/themes.jpg. Re-read on every build.
-        "hero": img("synshell/docs/screenshots/desktop.png",
-                    "syndesktop desktop: top panel, 3D dock and the file manager in the Synthwave theme",
-                    "Рабочий стол syndesktop: верхняя панель, 3D-док и проводник в теме «Синтвейв»"),
+        "hero": img_l("synshell/docs/screenshots/desktop.png", "synshell/docs/screenshots/desktop-ru.png",
+                  "synshell in the Nord theme: a floating top panel, the dock, the file manager, Resource Monitor and the terminal",
+                  "synshell в теме Nord: плавающая верхняя панель, док, Проводник, Монитор ресурсов и Терминал"),
         "gallery": [
-            img("synshell/docs/screenshots/tile.png",
-                "Tile layout: two file manager windows and System Settings side by side",
-                "Раскладка tile: два окна проводника и «Параметры системы» рядом"),
-            img("synshell/docs/screenshots/launcher.png",
-                "The application launcher",
-                "Меню запуска приложений"),
-            img("synshell/docs/screenshots/themes.png",
-                "System Settings, themes page; the maximized window turns the top panel into its title bar with a global menu",
-                "«Параметры системы», страница тем; у развёрнутого окна верхняя панель становится заголовком с глобальным меню"),
-            img("synshell/docs/screenshots/screenshot.png",
-                "The screenshot tool highlighting a window under the cursor",
-                "Скриншотер подсвечивает окно под курсором"),
-            img("synshell/docs/themes.jpg",
-                "The same desktop in several of the 14 built-in themes",
-                "Один и тот же рабочий стол в нескольких из 14 встроенных тем"),
+            img_l("synshell/docs/screenshots/classic.png", "synshell/docs/screenshots/classic-ru.png",
+                  "Classic taskbar at the bottom — the default layout",
+                  "Классическая панель задач внизу — раскладка по умолчанию"),
+            img_l("synshell/docs/screenshots/vertical.png", "synshell/docs/screenshots/vertical-ru.png",
+                  "Vertical panel on the left",
+                  "Вертикальная панель слева"),
+            img_l("synshell/docs/screenshots/launcher.png", "synshell/docs/screenshots/launcher-ru.png",
+                  "The launcher with pinned applications",
+                  "Меню запуска с закреплёнными приложениями"),
+            img_l("synshell/docs/screenshots/tile.png", "synshell/docs/screenshots/tile-ru.png",
+                  "Tile layout: the file manager, System Settings and the terminal",
+                  "Раскладка «мозаика»: Проводник, «Параметры системы» и Терминал"),
+            img_l("synshell/docs/screenshots/overview.png", "synshell/docs/screenshots/overview-ru.png",
+                  "Window overview: all windows of the desktop side by side",
+                  "Обзор окон: все окна рабочего стола рядом"),
+            img_l("synshell/docs/screenshots/themes.png", "synshell/docs/screenshots/themes-ru.png",
+                  "System Settings, Themes page",
+                  "«Параметры системы», страница тем"),
+            img_l("synshell/docs/screenshots/power.png", "synshell/docs/screenshots/power-ru.png",
+                  "Power menu over a dimmed screen",
+                  "Меню питания поверх затемнённого экрана"),
+            img_l("synshell/docs/screenshots/phone.png", "synshell/docs/screenshots/phone-ru.png",
+                  "The same synshell on a phone: home screen",
+                  "Тот же synshell на телефоне: домашний экран"),
+            img_l("synshell/docs/screenshots/phone-shade.png", "synshell/docs/screenshots/phone-shade-ru.png",
+                  "Phone: quick settings shade",
+                  "Телефон: шторка быстрых настроек"),
         ],
     },
     # ------------------------------------------------------------------ linux-legion

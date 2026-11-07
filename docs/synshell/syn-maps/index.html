@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maps — synshell</title>
+<meta name="description" content="Maps for the synshell desktop — OpenStreetMap with search, routes and your own location, on computers and phones.">
+<meta name="author" content="Vitaliy Alexeyev">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://alexeyev.dev/synshell/syn-maps/">
+<link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-maps/">
+<link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synshell/syn-maps/">
+<link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-maps/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=a41900faca">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vitaliy Alexeyev">
+<meta property="og:title" content="Maps — synshell">
+<meta property="og:description" content="Maps for the synshell desktop — OpenStreetMap with search, routes and your own location, on computers and phones.">
+<meta property="og:url" content="https://alexeyev.dev/synshell/syn-maps/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:image" content="https://alexeyev.dev/og/synshell-syn-maps-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Maps — synshell">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="Maps — synshell">
+<meta name="twitter:description" content="Maps for the synshell desktop — OpenStreetMap with search, routes and your own location, on computers and phones.">
+<meta name="twitter:image" content="https://alexeyev.dev/og/synshell-syn-maps-en.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Vitaliy Alexeyev","item":"https://alexeyev.dev/"},{"@type":"ListItem","position":2,"name":"synshell","item":"https://alexeyev.dev/synshell/"},{"@type":"ListItem","position":3,"name":"Maps","item":"https://alexeyev.dev/synshell/syn-maps/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Maps","alternateName":"syn-maps","description":"Maps for the synshell desktop — OpenStreetMap with search, routes and your own location, on computers and phones.","url":"https://alexeyev.dev/synshell/syn-maps/","operatingSystem":"Linux","applicationCategory":"DesktopEnhancementApplication","isPartOf":"https://alexeyev.dev/synshell/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"screenshot":"https://alexeyev.dev/img/synshell/route-en.webp"}</script>
+</head>
+<body class="project app">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/" aria-label="Vitaliy Alexeyev — Home"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Vitaliy Alexeyev</span></a>
+    <nav class="top-nav" aria-label="Main">
+      <a href="/#projects">Projects</a>
+      <a href="/blog/">Blog</a>
+      <a href="/#vibe">How it is tested</a>
+      <a href="/#contact">Contact</a>
+      <a class="lang" href="/ru/synshell/syn-maps/" hreflang="ru" lang="ru" title="Русский">RU</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Vitaliy Alexeyev</a></li><li><a href="/synshell/">synshell</a></li><li><a href="/synshell/#apps">Applications</a></li><li aria-current="page">Maps</li></ol></nav>
+<section class="p-hero app-hero" aria-labelledby="p-h">
+  <div class="wrap">
+    <p class="eyebrow rise">synshell · Media · syn-maps</p>
+    <h1 id="p-h" class="rise">Maps</h1>
+    <p class="tagline rise">Maps for the synshell desktop — OpenStreetMap with search, routes and your own location, on computers and phones.</p>
+    <div class="btns rise"><a class="btn" href="https://github.com/VitaminDB/synshell/blob/master/crates/syn-maps/README.md"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>README</span></a><a class="btn ghost" href="https://aur.archlinux.org/packages/syn-maps-bin">AUR package: syn-maps-bin</a><a class="btn ghost" href="https://aur.archlinux.org/packages/syn-maps-git">AUR package: syn-maps-git</a></div>
+    <figure class="shot-hero rise"><a href="/img/synshell/route-en.webp"><div class="frame"><img src="/img/synshell/route-en.webp" width="1400" height="900" alt="Route" fetchpriority="high"></div></a></figure>
+  </div>
+</section>
+<article class="section md-body"><div class="wrap"><div class="md"><h2>Features</h2>
+<ul>
+<li><strong>Map</strong> — OpenStreetMap with smooth zoom by wheel, pinch and gestures; tiles are cached on disk.</li>
+<li><strong>Layers</strong> — Map, Light and Dark (OpenStreetMap under a filter) and Satellite (Esri World Imagery).</li>
+<li><strong>Search</strong> — places and addresses via Nominatim, nearest to the visible area first, names in the interface language.</li>
+<li><strong>Any point</strong> — long press (right click with a mouse) drops a pin and looks up its address; the card shows coordinates.</li>
+<li><strong>Routes</strong> — by car, on foot or by bike (OSRM servers of FOSSGIS): time, distance and a list of turns with street names; a tap on a turn shows it on the map.</li>
+<li><strong>Navigation</strong> — “Start” follows your position and shows the next maneuver with the distance to it and to the end.</li>
+<li><strong>Your location</strong> — from GeoClue (on a phone — satellites through the modem); the map follows you until you move it.</li>
+<li><strong>geo: links</strong> — opens <code>geo:</code> links from other applications (<code>x-scheme-handler/geo</code>).</li>
+<li><strong>Phone and desktop layout</strong> — full-width cards on a phone, a side column on a wide window; the last view and layer are remembered.</li>
+<li><strong>14 languages</strong> — the UI follows the system or the language chosen in synshell.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Search</th>
+<th>Place, dark layer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="md-shot" href="/img/synshell/search-en.webp"><img src="/img/synshell/search-en-800.webp" width="800" height="514" alt="Search" loading="lazy" decoding="async"></a></td>
+<td><a class="md-shot" href="/img/synshell/place-en.webp"><img src="/img/synshell/place-en-800.webp" width="800" height="514" alt="Place" loading="lazy" decoding="async"></a></td>
+</tr>
+</tbody>
+</table>
+<h2>Install</h2>
+<p><strong>Arch Linux (AUR)</strong> — x86_64 and aarch64:</p>
+<pre><code class="language-sh">yay -S syn-maps-bin      # prebuilt
+yay -S syn-maps-git      # built from source
+</code></pre>
+<p>Depends on <code>synshell-core</code>. Your own location needs <code>geoclue</code>. Map tiles, search and routes need an internet connection.</p>
+<p>syn-maps is part of the <code>synshell</code> metapackage — the whole desktop: <code>yay -S synshell-bin</code>. <strong>From source:</strong> <code>cargo build --release -p syn-maps</code> in the <a href="/synshell/">synshell</a> repository.</p>
+<h2>Command line</h2>
+<pre><code class="language-sh">syn-maps                                  # last view (or your location)
+syn-maps 'geo:48.8584,2.2945?z=17'        # open a point
+syn-maps --screenshot shot.png --size 1400x900 --page route   # render a view to PNG without a window
+</code></pre>
+<h2>Part of synshell</h2>
+<p>syn-maps is one of the applications of <a href="/synshell/">synshell</a> — a Wayland desktop environment in Rust for computers and phones, built on the <a href="https://github.com/VitaminDB/syngui">syngui</a> UI framework.</p>
+<h2>License</h2>
+<p>GPL-3.0-only</p></div></div></article>
+<nav class="section" aria-labelledby="apps-h"><div class="wrap">
+  <div class="pn-row"><a class="pn prev" href="/synshell/syn-audio-recorder/"><span>←</span> Voice recorder</a><a class="pn next" href="/synshell/syn-phone/">Phone app <span>→</span></a></div>
+  <p><a href="/synshell/#apps">← synshell: all applications</a></p>
+  <h2 id="apps-h">Applications synshell</h2>
+  <ul class="others"><li><a href="/synshell/syn-settings/"><b>System settings</b><span>synsettings</span></a></li><li><a href="/synshell/syn-files/"><b>File manager</b><span>synfiles</span></a></li><li><a href="/synshell/syn-terminal/"><b>Terminal</b><span>syn-terminal</span></a></li><li><a href="/synshell/syn-shot/"><b>Screenshots</b><span>synshot</span></a></li><li><a href="/synshell/syn-pkg/"><b>Software center</b><span>synpkg</span></a></li><li><a href="/synshell/syn-systeminfo/"><b>System monitor</b><span>syn-systeminfo</span></a></li><li><a href="/synshell/syn-themeeditor/"><b>Theme editor</b><span>syn-themeeditor</span></a></li><li><a href="/synshell/syn-notes/"><b>Notes</b><span>syn-notes</span></a></li><li><a href="/synshell/syn-pass/"><b>Password manager</b><span>synpass</span></a></li><li><a href="/synshell/syn-assistant/"><b>The synshell assistant</b><span>synassistant</span></a></li><li><a href="/synshell/syn-vm/"><b>Virtual machines</b><span>syn-vm</span></a></li><li><a href="/synshell/syn-video-player/"><b>Video player</b><span>syn-video-player</span></a></li><li><a href="/synshell/syn-audio-player/"><b>Music player</b><span>syn-audio-player</span></a></li><li><a href="/synshell/syn-audio-recorder/"><b>Voice recorder</b><span>syn-audio-recorder</span></a></li><li><a href="/synshell/syn-phone/"><b>Phone app</b><span>synphone</span></a></li><li><a href="/synshell/syn-sms/"><b>Messages app</b><span>synsms</span></a></li><li><a href="/synshell/syn-camera/"><b>Camera</b><span>syncamera</span></a></li><li><a href="/synshell/syn-nfc/"><b>NFC app</b><span>syn-nfc</span></a></li><li><a href="/synshell/syn-compass/"><b>Compass</b><span>syn-compass</span></a></li><li><a href="/synshell/syn-health/"><b>Steps and activity</b><span>syn-health</span></a></li><li><a href="/synshell/syn-link-view/"><b>The screen of a linked device in a window</b><span>synlink-view</span></a></li><li><a href="/synshell/syn-remote/"><b>IR remote control</b><span>syn-remote</span></a></li><li><a href="/synshell/syn-droid/"><b>Android apps</b><span>syndroid</span></a></li><li><a href="/synshell/syn-wine-helper/"><b>Wine components</b><span>syn-wine-helper</span></a></li><li><a href="/synshell/syn-woman-cycle/"><b>Cycle tracker</b><span>syn-woman-cycle</span></a></li><li><a href="/synshell/syn-quitsmoke/"><b>QuitSmoke</b><span>syn-quitsmoke</span></a></li><li><a href="/synshell/syn-blocks/"><b>An 8×8 block puzzle</b><span>Syn Blocks</span></a></li><li><a href="/synshell/syn-epdtest/"><b>E Ink screen profiles and test patterns</b><span>syn-epdtest</span></a></li></ul>
+</div></nav>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Vitaliy Alexeyev · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://www.linkedin.com/in/vitaly-alexeyev-08546b21b/" rel="me">LinkedIn</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Static site, no trackers, no cookies. Built with a Python script.</p></div>
+    <nav aria-label="Other projects"><a href="/synthos/">synthos</a><a href="/synaptix/">synaptix</a><a href="/syngui/">syngui</a><a href="/synshell/">synshell</a><a href="/linux-legion/">linux-legion</a><a href="/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>synshell 0.2.0: первый публичный выпуск</title>
+<meta name="description" content="Рабочий стол Wayland на Rust для ПК и телефонов: композитор, оболочки для ПК, телефона и игр, «Параметры системы» и 31 приложение. Пакеты в AUR.">
+<meta name="author" content="Виталий Алексеев">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://alexeyev.dev/ru/blog/synshell-0-2-0/">
+<link rel="alternate" hreflang="en" href="https://alexeyev.dev/blog/synshell-0-2-0/">
+<link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/blog/synshell-0-2-0/">
+<link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/blog/synshell-0-2-0/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=a41900faca">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Виталий Алексеев">
+<meta property="og:title" content="synshell 0.2.0: первый публичный выпуск">
+<meta property="og:description" content="Рабочий стол Wayland на Rust для ПК и телефонов: композитор, оболочки для ПК, телефона и игр, «Параметры системы» и 31 приложение. Пакеты в AUR.">
+<meta property="og:url" content="https://alexeyev.dev/ru/blog/synshell-0-2-0/">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://alexeyev.dev/og/blog-synshell-0-2-0-ru.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="synshell 0.2.0: первый публичный выпуск">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="synshell 0.2.0: первый публичный выпуск">
+<meta name="twitter:description" content="Рабочий стол Wayland на Rust для ПК и телефонов: композитор, оболочки для ПК, телефона и игр, «Параметры системы» и 31 приложение. Пакеты в AUR.">
+<meta name="twitter:image" content="https://alexeyev.dev/og/blog-synshell-0-2-0-ru.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://alexeyev.dev/ru/blog/synshell-0-2-0/#post","headline":"synshell 0.2.0: первый публичный выпуск","description":"Рабочий стол Wayland на Rust для ПК и телефонов: композитор, оболочки для ПК, телефона и игр, «Параметры системы» и 31 приложение. Пакеты в AUR.","datePublished":"2026-11-07","dateModified":"2026-11-07","inLanguage":"ru","url":"https://alexeyev.dev/ru/blog/synshell-0-2-0/","mainEntityOfPage":"https://alexeyev.dev/ru/blog/synshell-0-2-0/","image":["https://alexeyev.dev/og/blog-synshell-0-2-0-ru.jpg","https://alexeyev.dev/img/synshell/desktop.webp"],"author":{"@type":"Person","@id":"https://alexeyev.dev/#person","name":"Vitaliy Alexeyev","url":"https://alexeyev.dev/"},"isPartOf":{"@id":"https://alexeyev.dev/ru/blog/#blog"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Виталий Алексеев","item":"https://alexeyev.dev/ru/"},{"@type":"ListItem","position":2,"name":"Блог","item":"https://alexeyev.dev/ru/blog/"},{"@type":"ListItem","position":3,"name":"synshell 0.2.0: первый публичный выпуск","item":"https://alexeyev.dev/ru/blog/synshell-0-2-0/"}]}]}</script>
+</head>
+<body class="blog-post">
+<a class="skip" href="#main">К содержимому</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/ru/" aria-label="Виталий Алексеев — Главная"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Виталий Алексеев</span></a>
+    <nav class="top-nav" aria-label="Основная навигация">
+      <a href="/ru/#projects">Проекты</a>
+      <a href="/ru/blog/">Блог</a>
+      <a href="/ru/#vibe">Как проверено</a>
+      <a href="/ru/#contact">Контакты</a>
+      <a class="lang" href="/blog/synshell-0-2-0/" hreflang="en" lang="en" title="English">EN</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap" aria-label="Навигационная цепочка"><ol><li><a href="/ru/">Виталий Алексеев</a></li><li><a href="/ru/blog/">Блог</a></li><li><a href="/ru/blog/#synshell">synshell</a></li></ol></nav><article class="post" aria-labelledby="post-h"><header class="p-hero"><div class="wrap"><p class="eyebrow rise"><time datetime="2026-11-07">7 ноября 2026</time> · synshell</p><h1 id="post-h" class="rise d1">synshell 0.2.0: первый публичный выпуск</h1><p class="p-lead rise d2">Рабочий стол Wayland на Rust для ПК и телефонов: композитор, оболочки для ПК, телефона и игр, «Параметры системы» и 31 приложение. Пакеты в AUR.</p></div></header><div class="wrap"><div class="chips post-tags"><a class="chip" href="/ru/blog/?tag=synshell">#synshell</a><a class="chip" href="/ru/blog/?tag=release">#release</a><a class="chip" href="/ru/blog/?tag=desktop">#desktop</a><a class="chip" href="/ru/blog/?tag=phone">#phone</a></div><nav class="post-toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#s-how-it-is-built">Как устроено</a></li><li><a href="#s-desktop">Рабочий стол</a></li><li><a href="#s-phone-and-game-mode">Телефон и игровой режим</a></li><li><a href="#s-applications">Приложения</a></li><li><a href="#s-install">Установка</a></li><li><a href="#s-what-to-keep-in-mind">Что учесть</a></li></ol></nav></div><div class="wrap post-body"><p>synshell — рабочий стол, которым я пользуюсь каждый день на ноутбуке и на телефоне. Версия 0.2.0 — первая опубликованная: готовые пакеты для x86_64 и aarch64 лежат в AUR, архивы приложены к выпуску на GitHub.</p>
+<figure class="post-wide"><a href="/img/synshell/desktop-ru.webp"><div class="frame"><img src="/img/synshell/desktop-ru.webp" width="1600" height="1000" alt="Тема Nord: плавающая верхняя панель, док, Проводник, Монитор ресурсов и Терминал" srcset="/img/synshell/desktop-ru-800.webp 800w, /img/synshell/desktop-ru.webp 1600w" sizes="(max-width: 900px) 100vw, 860px" loading="lazy" decoding="async"></div></a><figcaption>Тема Nord: плавающая верхняя панель, док, Проводник, Монитор ресурсов и Терминал</figcaption></figure>
+<h2 id="s-how-it-is-built">Как устроено</h2>
+<p>Устроено как KDE Plasma: композитор synwm на smithay, отдельный процесс оболочки с панелями, доком, меню запуска и уведомлениями и «Параметры системы». Если оболочка упадёт, композитор перезапустит её, а окна останутся. Почти всё настраивается в одном файле, ~/.config/synshell/config.toml, и применяется на лету; «Параметры системы» правят его на месте и сохраняют комментарии. Все окна и панели нарисованы на syngui — моём GUI-фреймворке.</p>
+<h2 id="s-desktop">Рабочий стол</h2>
+<ul class="limits"><li>Три раскладки панелей из коробки — верхняя панель с доком, классическая панель задач (по умолчанию) и вертикальная — и любые свои, мышью.</li><li>Раскладки окон «плавающая», «мозаика», «колонки», «сетка» и «монокль», обзор окон, Alt+Tab, правила окон, Xwayland.</li><li>Панель становится заголовком развёрнутого окна с глобальным меню для Qt/KDE и GTK 3.</li><li>14 тем, по умолчанию Nord; палитра передаётся в GTK, Qt/KDE и GIMP.</li><li>Свой экран блокировки, портал показа экрана и снимков через PipeWire, интерфейс на 14 языках.</li></ul>
+<figure class="post-wide"><a href="/img/synshell/classic-ru.webp"><div class="frame"><img src="/img/synshell/classic-ru.webp" width="1600" height="1000" alt="Классическая панель задач — раскладка по умолчанию" srcset="/img/synshell/classic-ru-800.webp 800w, /img/synshell/classic-ru.webp 1600w" sizes="(max-width: 900px) 100vw, 860px" loading="lazy" decoding="async"></div></a><figcaption>Классическая панель задач — раскладка по умолчанию</figcaption></figure>
+<h2 id="s-phone-and-game-mode">Телефон и игровой режим</h2>
+<p>Тот же композитор запускает оболочку телефона с экранной клавиатурой и телефонными приложениями: Телефон, Сообщения, Камера, NFC, Компас, Спорт и здоровье, ИК-пульт. Игровой режим (Super+G) — полноэкранное меню с библиотекой Steam, обложками и управлением с геймпада; Android-приложения работают в контейнере LineageOS, каждое в своём окне.</p>
+<ul class="phone-shots"><li><figure><a href="/img/synshell/phone.webp"><div class="frame"><img src="/img/synshell/phone-800.webp" width="550" height="1175" alt="Телефон: домашний экран" srcset="/img/synshell/phone-800.webp 550w, /img/synshell/phone.webp 550w" sizes="(max-width: 700px) 50vw, 300px" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Телефон: домашний экран</figcaption></figure></li><li><figure><a href="/img/synshell/phone-shade.webp"><div class="frame"><img src="/img/synshell/phone-shade-800.webp" width="550" height="1175" alt="Телефон: быстрые настройки" srcset="/img/synshell/phone-shade-800.webp 550w, /img/synshell/phone-shade.webp 550w" sizes="(max-width: 700px) 50vw, 300px" loading="lazy" decoding="async"></div><span class="visually-hidden"> (открыть в полном размере)</span></a><figcaption>Телефон: быстрые настройки</figcaption></figure></li></ul>
+<h2 id="s-applications">Приложения</h2>
+<p>31 приложение, у каждого своя страница на этом сайте: «Параметры системы», Проводник, Терминал, «Программы» для Arch и AUR, Монитор ресурсов, Редактор тем, Заметки, Пароли, Виртуальные машины, Видео и Музыка, Диктофон, Карты, Ассистент на локальных нейросетях, «Цикл», «Бросить курить» и Syn Blocks.</p>
+<h2 id="s-install">Установка</h2>
+<ul class="limits"><li>yay -S synshell-bin — рабочий стол и все приложения; synshell-core-bin — минимум; любое приложение отдельно — по имени пакета.</li><li>Затем выберите «synshell» в менеджере входа или включите встроенный экран входа: systemctl enable synlogin.service.</li></ul>
+<h2 id="s-what-to-keep-in-mind">Что учесть</h2>
+<ul class="limits"><li>Ранняя стадия: один разработчик, первый коммит — сентябрь 2026.</li><li>Проверено на одном ноутбуке (Intel iGPU + NVIDIA RTX 5090 Laptop GPU) и одном телефоне (Xiaomi 12T Pro). Другое железо учтено в коде, но не проверялось.</li></ul><div class="pn-row"><a class="pn prev" href="/ru/blog/synmobile-games-and-android/"><span>←</span> synmobile: Windows-игры и Android-приложения</a></div><p class="post-back"><a href="/ru/blog/">← Все записи</a> · <a href="/ru/synshell/">Страница проекта: synshell</a></p></div></article>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Виталий Алексеев · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://www.linkedin.com/in/vitaly-alexeyev-08546b21b/" rel="me">LinkedIn</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Статический сайт без трекеров и cookies. Собран скриптом на Python.</p></div>
+    <nav aria-label="Другие проекты"><a href="/ru/synthos/">synthos</a><a href="/ru/synaptix/">synaptix</a><a href="/ru/syngui/">syngui</a><a href="/ru/synshell/">synshell</a><a href="/ru/linux-legion/">linux-legion</a><a href="/ru/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>

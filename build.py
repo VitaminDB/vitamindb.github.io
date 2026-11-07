@@ -98,6 +98,11 @@ class Site:
 
 
 # --------------------------------------------------------------------------- images
+def src_for(item, lang):
+    """Image path for a language: a Russian-interface screenshot on /ru/ pages when there is one."""
+    return item.get("src_ru", item["src"]) if lang == "ru" else item["src"]
+
+
 class Images:
     """Converts repository screenshots to WebP (full ≤1600 px, thumb ≤800 px)."""
 
@@ -423,7 +428,7 @@ def build_hub(site, imgs, lang):
 
     cards = []
     for i, p in enumerate(c.PROJECTS, 1):
-        im = imgs.get(p["hero"]["src"])
+        im = imgs.get(src_for(p["hero"], lang))
         chips = "".join(f"<li class=\"chip\">{esc(t)}</li>" for t in p["stack"][:3])
         if p["aur"]:
             chips += '<li class="chip">AUR</li>'
@@ -518,7 +523,7 @@ def build_project(site, imgs, lang, idx):
     S, ui = c.SITE, c.UI[lang]
     p = c.PROJECTS[idx]
     slug = p["slug"]
-    hero = imgs.get(p["hero"]["src"])
+    hero = imgs.get(src_for(p["hero"], lang))
     url_en, url_ru = site.abs(site.path("en", slug)), site.abs(site.path("ru", slug))
     canonical = url_en if lang == "en" else url_ru
     home = site.path(lang)
@@ -534,7 +539,7 @@ def build_project(site, imgs, lang, idx):
             gallery_items.append({"src": rel, "alt": alt, "caption": alt})
         if found and p["hero"]["src"] not in [os.path.relpath(f, site.repos) for f in found]:
             pass  # the themes collage stays the hero; new screenshots fill the gallery
-    gal = [(g, imgs.get(g["src"])) for g in gallery_items]
+    gal = [(g, imgs.get(src_for(g, lang))) for g in gallery_items]
 
     n = 0
     def sec(title, body, sid, extra_cls=""):
@@ -620,6 +625,10 @@ def build_project(site, imgs, lang, idx):
 
     feats = "".join(f"<li>{esc(f)}</li>" for f in p["features"][lang])
     parts.append(sec(ui["features_h"], f'<ul class="features">{feats}</ul>', "features"))
+    if p.get("apps"):
+        t_apps = "Applications" if lang == "en" else "Приложения"
+        parts.append(sec(t_apps, apps_section_html(site, imgs, p, lang), "apps"))
+
 
     if p.get("perf"):
         heads = [ui["col_model"], ui["col_prefill"], ui["col_decode"], ui["col_notes"]]
@@ -769,7 +778,8 @@ def blog_block(site, imgs, lang, block):
     if kind == "p":
         return f'<p>{esc(block[1][lang])}</p>'
     if kind == "h":
-        return f'<h2>{esc(block[1][lang])}</h2>'
+        hid = block[2] if len(block) > 2 else "s-" + re.sub(r"[^a-z0-9]+", "-", block[1]["en"].lower()).strip("-")
+        return f'<h2 id="{esc(hid)}">{esc(block[1][lang])}</h2>'
     if kind == "list":
         return '<ul class="limits">' + "".join(f"<li>{esc(t)}</li>" for t in block[1][lang]) + "</ul>"
     if kind == "shots":
@@ -813,10 +823,69 @@ def blog_date(d, lang):
     return dt.date(int(y), int(m), int(day)).strftime("%B %-d, %Y")
 
 
+def post_tags(site, post):
+    return list(dict.fromkeys([post["section"]] + list(post.get("tags", []))))
+
+
+def h_id(block):
+    return block[2] if len(block) > 2 else "s-" + re.sub(r"[^a-z0-9]+", "-", block[1]["en"].lower()).strip("-")
+
+
+BLOG_JS = r"""<script>
+(function(){
+  var q=document.getElementById('bq'), chips=document.querySelectorAll('[data-filter]'),
+      cards=document.querySelectorAll('.post-card'), secs=document.querySelectorAll('.blog-sec'),
+      out=document.getElementById('site-results'), idx=null, tag='';
+  var m=location.search.match(/[?&]tag=([^&]+)/); if(m){tag=decodeURIComponent(m[1]);}
+  function load(cb){ if(idx) return cb(); fetch(out.dataset.index).then(function(r){return r.json()}).then(function(j){idx=j;cb()}).catch(function(){idx=[];cb()}); }
+  function apply(){
+    var t=(q.value||'').trim().toLowerCase(), words=t.split(/\s+/).filter(Boolean);
+    chips.forEach(function(c){c.setAttribute('aria-pressed', c.dataset.filter===tag?'true':'false')});
+    cards.forEach(function(c){
+      var okT=!tag||(' '+c.dataset.tags+' ').indexOf(' '+tag+' ')>=0;
+      var okQ=words.every(function(w){return c.dataset.text.indexOf(w)>=0});
+      c.hidden=!(okT&&okQ);
+    });
+    secs.forEach(function(s){ s.hidden=!s.querySelector('.post-card:not([hidden])'); });
+    if(!words.length){ out.hidden=true; out.innerHTML=''; return; }
+    load(function(){
+      var res=idx.filter(function(e){var h=(e.t+' '+e.d+' '+(e.g||'')).toLowerCase(); return words.every(function(w){return h.indexOf(w)>=0})}).slice(0,24);
+      out.hidden=false;
+      out.innerHTML='<h2>'+out.dataset.title+' ('+res.length+')</h2>'+(res.length?'<ul class="others">'+res.map(function(e){
+        return '<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&lt;')+'</b><span>'+e.k+' · '+e.d.replace(/</g,'&lt;')+'</span></a></li>'}).join('')+'</ul>':'<p>'+out.dataset.empty+'</p>');
+    });
+  }
+  chips.forEach(function(c){c.addEventListener('click',function(){tag=(tag===c.dataset.filter?'':c.dataset.filter);
+    history.replaceState(null,'',tag?'?tag='+encodeURIComponent(tag):location.pathname); apply();})});
+  q.addEventListener('input',apply); apply();
+})();
+</script>"""
+
+
+def build_search_index(site):
+    """search-<lang>.json: projects, app pages and blog posts for the blog search box."""
+    c, B = site.c, site.blog
+    for lang in LANGS:
+        kinds = {"en": ("project", "app", "post"), "ru": ("проект", "программа", "запись")}[lang]
+        items = []
+        for p in c.PROJECTS:
+            items.append({"t": p["name"], "d": p["card"][lang], "u": site.path(lang, p["slug"]), "k": kinds[0]})
+            for group, apps in site.app_lists.get(p["slug"], {}).get(lang, []):
+                for a in apps:
+                    items.append({"t": a["title"], "d": a["desc"], "u": site.path(lang, p["slug"] + "/" + a["crate"]),
+                                  "k": f'{kinds[1]} {p["name"]}', "g": f'{a["name"]} {group}'})
+        for post in B.POSTS:
+            items.append({"t": post["title"][lang], "d": post["summary"][lang], "u": site.path(lang, "blog/" + post["slug"]),
+                          "k": kinds[2], "g": " ".join(post_tags(site, post))})
+        site.write(("ru/" if lang == "ru" else "") + "search.json", json.dumps(items, ensure_ascii=False))
+
+
 def blog_card(site, imgs, lang, post):
     im = imgs.get(post["cover"])
     ui = site.blog.UI[lang]
-    return (f'<li class="card post-card"><div class="card-media">{img_tag(im, post["title"][lang])}</div>'
+    tags = post_tags(site, post)
+    text = " ".join([post["title"][lang], post["summary"][lang]] + tags).lower()
+    return (f'<li class="card post-card" data-tags="{esc(" ".join(tags))}" data-text="{esc(text)}"><div class="card-media">{img_tag(im, post["title"][lang])}</div>'
             f'<div class="card-body"><div class="card-top"><time class="card-num" datetime="{post["date"]}">{esc(blog_date(post["date"], lang))}</time></div>'
             f'<h3><a href="{site.path(lang, "blog/" + post["slug"])}">{esc(post["title"][lang])}</a></h3>'
             f'<p>{esc(post["summary"][lang])}</p><span class="read">{esc(ui["read"])} →</span></div></li>')
@@ -837,15 +906,25 @@ def build_blog(site, imgs):
                 continue
             n += 1
             cards = "".join(blog_card(site, imgs, lang, p) for p in posts)
-            secs.append(f'<section class="section" id="{sec["slug"]}" aria-labelledby="{sec["slug"]}-h"><div class="wrap">'
+            secs.append(f'<section class="section blog-sec" id="{sec["slug"]}" aria-labelledby="{sec["slug"]}-h"><div class="wrap">'
                         f'<div class="sec-head"><span class="sec-num">{n:02d}</span><h2 id="{sec["slug"]}-h">{esc(sec["name"])}</h2>'
                         f'<p>{esc(sec["about"][lang])} · {len(posts)} {esc(ui["posts"])}</p></div>'
                         f'<ul class="cards">{cards}</ul></div></section>')
-        toc = "".join(f'<a class="chip" href="#{s["slug"]}">{esc(s["name"])}</a>' for s in B.SECTIONS if any(p["section"] == s["slug"] for p in B.POSTS))
+        all_tags = list(dict.fromkeys(t for p in B.POSTS for t in post_tags(site, p)))
+        t_all = "All" if lang == "en" else "Все"
+        toc = (f'<button type="button" class="chip" data-filter="">{esc(t_all)}</button>'
+               + "".join(f'<button type="button" class="chip" data-filter="{esc(t)}">{esc(t)}</button>' for t in all_tags))
+        t_search = "Search posts, projects and apps" if lang == "en" else "Поиск по записям, проектам и программам"
+        t_found = "Found on the site" if lang == "en" else "Найдено на сайте"
+        t_empty = "Nothing found." if lang == "en" else "Ничего не найдено."
+        search_html = (f'<div class="blog-search rise d3"><label class="visually-hidden" for="bq">{esc(t_search)}</label>'
+                       f'<input id="bq" type="search" placeholder="{esc(t_search)}" autocomplete="off"></div>')
+        results_html = (f'<section class="section" aria-live="polite"><div class="wrap" id="site-results" hidden '
+                        f'data-index="{site.prefix}{"/ru" if lang == "ru" else ""}/search.json" data-title="{esc(t_found)}" data-empty="{esc(t_empty)}"></div></section>')
         main = (f'<nav class="crumbs wrap" aria-label="{esc(site.c.UI[lang]["breadcrumb"])}"><ol><li><a href="{home}">{esc(S["name"][lang])}</a></li><li aria-current="page">{esc(ui["h1"])}</li></ol></nav>'
                 f'<section class="p-hero" aria-labelledby="blog-h"><div class="wrap"><p class="eyebrow rise">@{esc(S["handle"])}</p>'
                 f'<h1 id="blog-h" class="rise d1">{esc(ui["h1"])}</h1><p class="p-lead rise d2">{esc(ui["lead"])}</p>'
-                f'<div class="chips rise d3">{toc}</div></div></section>' + "".join(secs))
+                f'{search_html}<div class="chips rise d3" role="group">{toc}</div></div></section>' + results_html + "".join(secs) + BLOG_JS)
         url_en, url_ru = site.abs(site.path("en", "blog")), site.abs(site.path("ru", "blog"))
         canonical = url_en if lang == "en" else url_ru
         ld = [{"@context": "https://schema.org", "@graph": [{
@@ -864,6 +943,26 @@ def build_blog(site, imgs):
             slug = "blog/" + post["slug"]
             blog_url = site.path(lang, "blog")
             body = "\n".join(blog_block(site, imgs, lang, b) for b in post["body"])
+            heads = [b for b in post["body"] if b[0] == "h"]
+            toc_html = ""
+            if len(heads) >= 3:
+                t_toc = "Contents" if lang == "en" else "Содержание"
+                toc_html = (f'<nav class="post-toc" aria-label="{esc(t_toc)}"><b>{esc(t_toc)}</b><ol>'
+                            + "".join(f'<li><a href="#{esc(h_id(h))}">{esc(h[1][lang])}</a></li>' for h in heads) + "</ol></nav>")
+            ordered = sorted(B.POSTS, key=lambda q: (q["date"], B.POSTS.index(q)))
+            k = ordered.index(post)
+            pn = ""
+            if k > 0:
+                q = ordered[k - 1]
+                pn += f'<a class="pn prev" href="{site.path(lang, "blog/" + q["slug"])}"><span>←</span> {esc(q["title"][lang])}</a>'
+            if k + 1 < len(ordered):
+                q = ordered[k + 1]
+                pn += f'<a class="pn next" href="{site.path(lang, "blog/" + q["slug"])}">{esc(q["title"][lang])} <span>→</span></a>'
+            proj_link = ""
+            if sec.get("project"):
+                t_proj = "Project page" if lang == "en" else "Страница проекта"
+                proj_link = f' · <a href="{site.path(lang, sec["project"])}">{esc(t_proj)}: {esc(sec["project"])}</a>'
+            tag_html = "".join(f'<a class="chip" href="{site.path(lang, "blog")}?tag={esc(t)}">#{esc(t)}</a>' for t in post_tags(site, post))
             discuss = ""
             if B.FOURPDA_URL:
                 discuss = f'<p class="discuss"><a class="btn" href="{esc(B.FOURPDA_URL)}">{esc(ui["discuss"])} →</a></p>'
@@ -879,7 +978,8 @@ def build_blog(site, imgs):
                     f'<article class="post" aria-labelledby="post-h"><header class="p-hero"><div class="wrap">'
                     f'<p class="eyebrow rise"><time datetime="{post["date"]}">{esc(blog_date(post["date"], lang))}</time> · {esc(sec["name"])}</p>'
                     f'<h1 id="post-h" class="rise d1">{esc(post["title"][lang])}</h1><p class="p-lead rise d2">{esc(post["summary"][lang])}</p></div></header>'
-                    f'<div class="wrap post-body">{body}{discuss}<p class="post-back"><a href="{blog_url}">← {esc(ui["back"])}</a></p></div></article>{more}')
+                    f'<div class="wrap"><div class="chips post-tags">{tag_html}</div>{toc_html}</div>'
+                    f'<div class="wrap post-body">{body}{discuss}<div class="pn-row">{pn}</div><p class="post-back"><a href="{blog_url}">← {esc(ui["back"])}</a>{proj_link}</p></div></article>{more}')
             url_en, url_ru = site.abs(site.path("en", slug)), site.abs(site.path("ru", slug))
             canonical = url_en if lang == "en" else url_ru
             cover = imgs.get(post["cover"])
@@ -904,6 +1004,243 @@ def build_blog(site, imgs):
 
 
 # --------------------------------------------------------------------------- 404, misc
+# --------------------------------------------------------------------------- app pages (synshell programs)
+# Every application listed in the "Applications" section of a project README gets its own page
+# at /<project>/<crate>/, rendered from crates/<crate>/README.md / README.ru.md with its screenshots.
+import markdown as _md
+
+GH_BLOB = "https://github.com/VitaminDB/{repo}/blob/master/{path}"
+
+
+def parse_app_list(site, p):
+    """[(group, [{crate, name, title, desc}])] per language from the project README tables."""
+    cfg = p["apps"]
+    out = {}
+    for lang in LANGS:
+        fn = cfg["readme"][lang]
+        text = open(os.path.join(site.repos, cfg["dir"], fn), encoding="utf-8").read()
+        sec = text.split(cfg["section"][lang], 1)[1]
+        sec = re.split(r"\n## ", sec, maxsplit=1)[0]
+        groups, cur = [], None
+        for line in sec.splitlines():
+            g = re.match(r"^\*\*([^*]+)\*\*\s*$", line.strip())
+            if g:
+                cur = (g.group(1).strip(), [])
+                groups.append(cur)
+                continue
+            m = re.match(r"^\|\s*\[([^\]]+)\]\(crates/([^/]+)/README(?:\.ru)?\.md\)\s*\|\s*\*\*(.+?)\*\*\s*(.*?)\s*\|\s*$", line)
+            if m and cur is not None:
+                title = m.group(3).strip().rstrip(".")
+                cur[1].append({"crate": m.group(2), "name": m.group(1), "title": title,
+                               "desc": re.sub(r"`([^`]+)`", r"\1", m.group(4).strip())})
+        out[lang] = [g for g in groups if g[1]]
+    return out
+
+
+def _app_readme(site, p, crate, lang):
+    base = os.path.join(site.repos, p["apps"]["dir"], "crates", crate)
+    fn = "README.ru.md" if lang == "ru" and os.path.exists(os.path.join(base, "README.ru.md")) else "README.md"
+    return open(os.path.join(base, fn), encoding="utf-8").read(), fn
+
+
+def split_header(text):
+    """Header block <div align="center"> … </div>: tagline, AUR packages, hero image; body without it."""
+    head, body = "", text
+    m = re.match(r"\s*<div align=\"center\">(.*?)</div>\s*", text, re.S)
+    if m:
+        head, body = m.group(1), text[m.end():]
+    else:  # plain README: "# name" then text
+        body = re.sub(r"^\s*# .*\n", "", text, 1)
+    tagline = ""
+    t = re.search(r"^\*\*(.+?)\*\*\s*$", head, re.M)
+    if t:
+        tagline = re.sub(r"`([^`]+)`", r"\1", t.group(1)).strip()
+    aur = re.findall(r"aur\.archlinux\.org/packages/([A-Za-z0-9@._+-]+)", head)
+    hero = re.search(r"!\[([^\]]*)\]\(([^)\s]+)\)", head)
+    hero = (hero.group(1), hero.group(2)) if hero else None
+    return tagline, list(dict.fromkeys(aur)), hero, body
+
+
+def build_apps(site, imgs):
+    """Pages for every app of projects that declare "apps"; returns sitemap slugs."""
+    c = site.c
+    slugs = []
+    for p in c.PROJECTS:
+        if not p.get("apps"):
+            continue
+        apps = parse_app_list(site, p)
+        site.app_lists[p["slug"]] = apps
+        order = [a["crate"] for _, items in apps["en"] for a in items]
+        for lang in LANGS:
+            flat = [(g, a) for g, items in apps[lang] for a in items]
+            for i, (group, a) in enumerate(flat):
+                build_app_page(site, imgs, p, lang, group, a, flat, i, set(order))
+        slugs += [f'{p["slug"]}/{cr}' for cr in order]
+    return slugs
+
+
+def app_hero(site, imgs, p, crate, lang):
+    text, _ = _app_readme(site, p, crate, lang)
+    _, _, hero, _ = split_header(text)
+    if not hero:
+        return None, ""
+    rel = os.path.normpath(os.path.join(p["apps"]["dir"], "crates", crate, hero[1]))
+    if not os.path.exists(os.path.join(site.repos, rel)):
+        return None, ""
+    return imgs.get(rel), hero[0]
+
+
+def build_app_page(site, imgs, p, lang, group, a, flat, idx, known):
+    c = site.c
+    S, ui = c.SITE, c.UI[lang]
+    crate, proj = a["crate"], p["slug"]
+    slug = f"{proj}/{crate}"
+    text, fn = _app_readme(site, p, crate, lang)
+    tagline, aur, hero, body = split_header(text)
+    crate_dir = os.path.join(p["apps"]["dir"], "crates", crate)
+    repo_name = p["repo"].rstrip("/").split("/")[-1]
+
+    html_body = _md.markdown(body, extensions=["tables", "fenced_code", "sane_lists"], output_format="html")
+
+    def fix_img(m):
+        attrs = m.group(1)
+        src = re.search(r'src="([^"]+)"', attrs).group(1)
+        alt = html.unescape(re.search(r'alt="([^"]*)"', attrs).group(1)) if 'alt="' in attrs else ""
+        if re.match(r"^[a-z]+://", src):
+            return m.group(0)
+        rel = os.path.normpath(os.path.join(crate_dir, src))
+        if not os.path.exists(os.path.join(site.repos, rel)) or not rel.lower().endswith((".png", ".jpg", ".jpeg", ".webp")):
+            return f'<img src="{esc(GH_BLOB.format(repo=repo_name, path=os.path.relpath(rel, p["apps"]["dir"])))}?raw=true" alt="{esc(alt or a["title"])}" loading="lazy" width="800" height="500">'
+        im = imgs.get(rel)
+        return (f'<a class="md-shot" href="{esc(im["full"]["url"])}">'
+                + img_tag(im, alt or a["title"]) + "</a>")
+    html_body = re.sub(r"<img ([^>]*?)/?>", fix_img, html_body)
+
+    def fix_link(m):
+        href = html.unescape(m.group(1))
+        if re.match(r"^([a-z]+:|#|/)", href):
+            return m.group(0)
+        path, _, frag = href.partition("#")
+        target = os.path.normpath(os.path.join(crate_dir, path))
+        mm = re.match(re.escape(os.path.join(p["apps"]["dir"], "crates")) + r"/([^/]+)/README(\.ru)?\.md$", target)
+        if mm and mm.group(1) in known:
+            return f'href="{site.path(lang, proj + "/" + mm.group(1))}"'
+        if target in (os.path.join(p["apps"]["dir"], "README.md"), os.path.join(p["apps"]["dir"], "README.ru.md")):
+            return f'href="{site.path(lang, proj)}"'
+        if target.endswith(("README.md", "README.ru.md")) and os.path.dirname(target) == crate_dir:
+            return f'href="{site.path("ru" if lang == "en" else "en", slug)}"'
+        url = GH_BLOB.format(repo=repo_name, path=os.path.relpath(target, p["apps"]["dir"]))
+        return f'href="{esc(url + ("#" + frag if frag else ""))}"'
+    html_body = re.sub(r'href="([^"]+)"', fix_link, html_body)
+    # one h1 per page: README headings start at h2; demote stray h1
+    html_body = re.sub(r"<(/?)h1>", r"<\1h2>", html_body)
+
+    him, halt = (None, "")
+    if hero:
+        rel = os.path.normpath(os.path.join(crate_dir, hero[1]))
+        if os.path.exists(os.path.join(site.repos, rel)):
+            him, halt = imgs.get(rel), hero[0]
+
+    url_en, url_ru = site.abs(site.path("en", slug)), site.abs(site.path("ru", slug))
+    canonical = url_en if lang == "en" else url_ru
+    home = site.path(lang)
+    proj_url = site.path(lang, proj)
+    gh_readme = GH_BLOB.format(repo=repo_name, path=f"crates/{crate}/{fn}")
+    buttons = f'<a class="btn" href="{esc(gh_readme)}">{ICON_GH}<span>README</span></a>'
+    for pkg in aur:
+        buttons += f'<a class="btn ghost" href="https://aur.archlinux.org/packages/{esc(pkg)}">{esc(ui["on_aur"])}: {esc(pkg)}</a>'
+    hero_html = ""
+    if him:
+        hero_html = (f'<figure class="shot-hero rise"><a href="{esc(him["full"]["url"])}"><div class="frame">'
+                     f'{img_tag(him, halt or a["title"], eager=True, variant="full")}</div></a></figure>')
+    prev_a = flat[idx - 1][1] if idx > 0 else None
+    next_a = flat[idx + 1][1] if idx + 1 < len(flat) else None
+    pn = ""
+    if prev_a:
+        pn += f'<a class="pn prev" href="{site.path(lang, proj + "/" + prev_a["crate"])}"><span>←</span> {esc(prev_a["title"])}</a>'
+    if next_a:
+        pn += f'<a class="pn next" href="{site.path(lang, proj + "/" + next_a["crate"])}">{esc(next_a["title"])} <span>→</span></a>'
+    others = "".join(
+        f'<li><a href="{site.path(lang, proj + "/" + b["crate"])}"><b>{esc(b["title"])}</b><span>{esc(b["name"])}</span></a></li>'
+        for _, b in flat if b["crate"] != crate)
+    t_apps = "Applications" if lang == "en" else "Приложения"
+    t_back = f"← {p['name']}: all applications" if lang == "en" else f"← {p['name']}: все приложения"
+    desc = tagline or a["desc"]
+    main = f"""
+<nav class="crumbs wrap" aria-label="{esc(ui["breadcrumb"])}"><ol><li><a href="{home}">{esc(S["name"][lang])}</a></li><li><a href="{proj_url}">{esc(p["name"])}</a></li><li><a href="{proj_url}#apps">{esc(t_apps)}</a></li><li aria-current="page">{esc(a["title"])}</li></ol></nav>
+<section class="p-hero app-hero" aria-labelledby="p-h">
+  <div class="wrap">
+    <p class="eyebrow rise">{esc(p["name"])} · {esc(group)} · {esc(a["name"])}</p>
+    <h1 id="p-h" class="rise">{esc(a["title"])}</h1>
+    <p class="tagline rise">{esc(desc)}</p>
+    <div class="btns rise">{buttons}</div>
+    {hero_html}
+  </div>
+</section>
+<article class="section md-body"><div class="wrap"><div class="md">{html_body}</div></div></article>
+<nav class="section" aria-labelledby="apps-h"><div class="wrap">
+  <div class="pn-row">{pn}</div>
+  <p><a href="{proj_url}#apps">{esc(t_back)}</a></p>
+  <h2 id="apps-h">{esc(t_apps)} {esc(p["name"])}</h2>
+  <ul class="others">{others}</ul>
+</div></nav>"""
+    title = f'{a["title"]} — {p["name"]}'
+    if len(title) > 60:
+        title = title[:59] + "…"
+    d = desc if len(desc) <= 160 else desc[:157].rsplit(" ", 1)[0] + "…"
+    og_rel = f"og/{proj}-{crate}-{lang}.jpg"
+    make_og(site, og_rel, a["title"], (desc.split(" — ")[0] if len(desc) > 90 else desc)[:110],
+            f'{p["name"]}  ·  {group}', [him] if him else [imgs.get(p["hero"]["src"])])
+    crumbs_ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": S["name"][lang], "item": site.abs(home)},
+        {"@type": "ListItem", "position": 2, "name": p["name"], "item": site.abs(proj_url)},
+        {"@type": "ListItem", "position": 3, "name": a["title"], "item": canonical}]}
+    app_ld = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": a["title"],
+              "alternateName": a["name"], "description": d, "url": canonical, "operatingSystem": "Linux",
+              "applicationCategory": "DesktopEnhancementApplication", "isPartOf": site.abs(proj_url),
+              "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}
+    if him:
+        app_ld["screenshot"] = site.abs(him["full"]["url"])
+    render(site, lang=lang, rel=("ru/" if lang == "ru" else "") + f"{slug}/index.html",
+           title=title, description=d, main=main, canonical=canonical,
+           alternates=[("en", url_en), ("ru", url_ru), ("x-default", url_en)],
+           og_image=site.abs(site.asset(og_rel)), ld=[crumbs_ld, app_ld], body_class="project app",
+           lang_url=site.path("ru" if lang == "en" else "en", slug), og_title=title)
+
+
+def apps_section_html(site, imgs, p, lang):
+    """Grid of app cards for the project overview page."""
+    apps = site.app_lists.get(p["slug"])
+    if not apps:
+        return ""
+    out = []
+    for group, items in apps[lang]:
+        cards = []
+        for a in items:
+            im, alt = app_hero(site, imgs, p, a["crate"], lang)
+            media = f'<div class="card-media">{img_tag(im, alt or a["title"])}</div>' if im else ""
+            cards.append(f'<li class="app-card"><a href="{site.path(lang, p["slug"] + "/" + a["crate"])}">{media}'
+                         f'<b>{esc(a["title"])}</b><span>{esc(a["desc"])}</span></a></li>')
+        out.append(f'<h3 class="app-group">{esc(group)}</h3><ul class="app-grid">{"".join(cards)}</ul>')
+    return "".join(out)
+
+
+def build_redirects(site):
+    """Old project URLs (renamed projects): a small page with meta refresh and canonical to the new one."""
+    for old, new in getattr(site.c, "REDIRECTS", {}).items():
+        for lang in LANGS:
+            target = site.abs(site.path(lang, new))
+            rel = ("ru/" if lang == "ru" else "") + f"{old}/index.html"
+            site.write(rel, f'''<!doctype html>
+<html lang="{lang}"><head><meta charset="utf-8">
+<title>{esc(new)}</title>
+<link rel="canonical" href="{esc(target)}">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url={esc(target)}">
+</head><body><p><a href="{esc(target)}">{esc(target)}</a></p></body></html>
+''')
+
+
 def build_404(site):
     c = site.c
     blocks = []
@@ -946,7 +1283,7 @@ def build_static(site):
 
 def build_sitemap(site):
     c = site.c
-    pages = [None] + [p["slug"] for p in c.PROJECTS] + ["blog"] + [f"blog/{p['slug']}" for p in site.blog.POSTS]
+    pages = [None] + [p["slug"] for p in c.PROJECTS] + list(getattr(site, "app_slugs", [])) + ["blog"] + [f"blog/{p['slug']}" for p in site.blog.POSTS]
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for slug in pages:
@@ -1067,6 +1404,10 @@ def check(site):
                     errors.append(f"{rel}: missing anchor #{frag} in {target}")
         if rel == "404.html":
             continue
+        redirect_pages = {os.path.normpath(("ru/" if l == "ru" else "") + f"{o}/index.html")
+                          for o in getattr(site.c, "REDIRECTS", {}) for l in LANGS}
+        if os.path.normpath(rel) in redirect_pages:
+            continue  # meta-refresh stubs for renamed projects
         if pp.headings.count(1) != 1:
             errors.append(f"{rel}: {pp.headings.count(1)} h1 elements")
         prev = 1
@@ -1136,12 +1477,16 @@ def main():
     imgs = Images(site)
 
     build_static(site)
+    site.app_lists = {}
+    site.app_slugs = build_apps(site, imgs)
     for lang in LANGS:
         build_hub(site, imgs, lang)
         for i in range(len(content.PROJECTS)):
             build_project(site, imgs, lang, i)
     build_blog(site, imgs)
+    build_search_index(site)
     build_404(site)
+    build_redirects(site)
     build_sitemap(site)
     removed = prune(site)
 
