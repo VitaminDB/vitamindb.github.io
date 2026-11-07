@@ -393,6 +393,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-health/"/>
   </url>
   <url>
+    <loc>https://alexeyev.dev/synshell/syn-link/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-link/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synshell/syn-link/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-link/"/>
+  </url>
+  <url>
+    <loc>https://alexeyev.dev/ru/synshell/syn-link/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-link/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synshell/syn-link/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-link/"/>
+  </url>
+  <url>
     <loc>https://alexeyev.dev/synshell/syn-link-view/</loc>
     <lastmod>2026-11-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-link-view/"/>
@@ -447,6 +461,48 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-wine-helper/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synshell/syn-wine-helper/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-wine-helper/"/>
+  </url>
+  <url>
+    <loc>https://alexeyev.dev/synshell/syn-wine/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-wine/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synshell/syn-wine/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-wine/"/>
+  </url>
+  <url>
+    <loc>https://alexeyev.dev/ru/synshell/syn-wine/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-wine/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synshell/syn-wine/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-wine/"/>
+  </url>
+  <url>
+    <loc>https://alexeyev.dev/synshell/syn-steam/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-steam/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synshell/syn-steam/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-steam/"/>
+  </url>
+  <url>
+    <loc>https://alexeyev.dev/ru/synshell/syn-steam/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-steam/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synshell/syn-steam/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-steam/"/>
+  </url>
+  <url>
+    <loc>https://alexeyev.dev/synshell/syn-dlss/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-dlss/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synshell/syn-dlss/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-dlss/"/>
+  </url>
+  <url>
+    <loc>https://alexeyev.dev/ru/synshell/syn-dlss/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-dlss/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synshell/syn-dlss/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-dlss/"/>
   </url>
   <url>
     <loc>https://alexeyev.dev/synshell/syn-woman-cycle/</loc>

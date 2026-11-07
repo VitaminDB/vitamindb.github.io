@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linking a phone and a computer — synshell</title>
+<meta name="description" content="Links synshell devices — phone and computer — over USB and Wi-Fi: screen, input, sound, files, notifications, a shared clipboard and ssh phone without…">
+<meta name="author" content="Vitaliy Alexeyev">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://alexeyev.dev/synshell/syn-link/">
+<link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-link/">
+<link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synshell/syn-link/">
+<link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-link/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=a41900faca">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vitaliy Alexeyev">
+<meta property="og:title" content="Linking a phone and a computer — synshell">
+<meta property="og:description" content="Links synshell devices — phone and computer — over USB and Wi-Fi: screen, input, sound, files, notifications, a shared clipboard and ssh phone without…">
+<meta property="og:url" content="https://alexeyev.dev/synshell/syn-link/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:image" content="https://alexeyev.dev/og/synshell-syn-link-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Linking a phone and a computer — synshell">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="Linking a phone and a computer — synshell">
+<meta name="twitter:description" content="Links synshell devices — phone and computer — over USB and Wi-Fi: screen, input, sound, files, notifications, a shared clipboard and ssh phone without…">
+<meta name="twitter:image" content="https://alexeyev.dev/og/synshell-syn-link-en.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Vitaliy Alexeyev","item":"https://alexeyev.dev/"},{"@type":"ListItem","position":2,"name":"synshell","item":"https://alexeyev.dev/synshell/"},{"@type":"ListItem","position":3,"name":"Linking a phone and a computer","item":"https://alexeyev.dev/synshell/syn-link/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Linking a phone and a computer","alternateName":"synlink","description":"Links synshell devices — phone and computer — over USB and Wi-Fi: screen, input, sound, files, notifications, a shared clipboard and ssh phone without…","url":"https://alexeyev.dev/synshell/syn-link/","operatingSystem":"Linux","applicationCategory":"DesktopEnhancementApplication","isPartOf":"https://alexeyev.dev/synshell/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+</head>
+<body class="project app">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/" aria-label="Vitaliy Alexeyev — Home"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Vitaliy Alexeyev</span></a>
+    <nav class="top-nav" aria-label="Main">
+      <a href="/#projects">Projects</a>
+      <a href="/blog/">Blog</a>
+      <a href="/#vibe">How it is tested</a>
+      <a href="/#contact">Contact</a>
+      <a class="lang" href="/ru/synshell/syn-link/" hreflang="ru" lang="ru" title="Русский">RU</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Vitaliy Alexeyev</a></li><li><a href="/synshell/">synshell</a></li><li><a href="/synshell/#apps">Applications</a></li><li aria-current="page">Linking a phone and a computer</li></ol></nav>
+<section class="p-hero app-hero" aria-labelledby="p-h">
+  <div class="wrap">
+    <p class="eyebrow rise">synshell · Phone · synlink</p>
+    <h1 id="p-h" class="rise">Linking a phone and a computer</h1>
+    <p class="tagline rise">Links synshell devices — phone and computer — over USB and Wi-Fi: screen, input, sound, files, notifications, a shared clipboard and ssh phone without knowing addresses.</p>
+    <div class="btns rise"><a class="btn" href="https://github.com/VitaminDB/synshell/blob/master/crates/syn-link/README.md"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>README</span></a><a class="btn ghost" href="https://aur.archlinux.org/packages/synshell-link-bin">AUR package: synshell-link-bin</a><a class="btn ghost" href="https://aur.archlinux.org/packages/synshell-link-git">AUR package: synshell-link-git</a></div>
+    
+  </div>
+</section>
+<article class="section md-body"><div class="wrap"><div class="md"><h2>Features</h2>
+<ul>
+<li><strong>Finds devices by itself</strong> — over the phone's USB cable (NCM network) and in the same Wi-Fi network; with both, one session stays, over USB (plug the cable in and the session moves to it).</li>
+<li><strong>Secure connection</strong> — QUIC over UDP with TLS 1.3, an ed25519 key per device and pinned fingerprints; independent streams, so copying files does not slow down the screen.</li>
+<li><strong>Pairing</strong> — over USB the computer agrees at once and the phone asks for one confirmation; over Wi-Fi a 6-digit code is shown on both screens. A computer with <code>discoverable = false</code> is not visible in Wi-Fi.</li>
+<li><strong>Screen</strong> — live view and control in <a href="/synshell/syn-link-view/">synlink-view</a>: only the changed areas are sent, large changes go as H.264/HEVC video from the hardware encoder of the other side (V4L2, VAAPI, NVENC), the rest is sent losslessly when the screen stops.</li>
+<li><strong>Sound</strong> — during the live view the device's sound plays here, and the local microphone appears there as “Microphone <name>”.</li>
+<li><strong>Input</strong> — mouse, touches, keys and text on the other device.</li>
+<li><strong>Files</strong> — the device's file system is mounted with FUSE and shows up under “Devices” in the file manager; drop a file on the link icon in the panel to copy it to the device's Downloads.</li>
+<li><strong>Notifications</strong> — notifications of one device appear on the other.</li>
+<li><strong>Shared clipboard</strong> — text copied on one device can be pasted on the other; secrets from the password manager are cleared everywhere when cleared at the source.</li>
+<li><strong>ssh</strong> — <code>ssh phone</code> or <code>ssh &lt;name&gt;</code> through the link, over the cable or Wi-Fi; without a system sshd the daemon starts a user one on <code>127.0.0.1</code>.</li>
+<li><strong>Wi-Fi networks</strong> — after pairing, the phone offers to take over the computer's Wi-Fi networks (NetworkManager or iwd); passwords travel only after you allow it on the phone.</li>
+<li><strong>For developers and AI agents</strong> — the <code>synlink</code> command line and an MCP server for Claude Code: screenshots, taps, swipes, text, commands, logs, notifications, files and screen recording.</li>
+</ul>
+<p>The phone shell shows “USB cable connected · shells linked” and the computer's card in the shade; settings are in “System Settings → Device link” (<code>[link]</code> in <code>config.toml</code>, applied on the fly). How it works inside: <a href="https://github.com/VitaminDB/synshell/blob/master/docs/LINK.md">docs/LINK.md</a>.</p>
+<h2>Install</h2>
+<p>synlink comes with the <code>synshell-link</code> package (the synlink daemon and the <a href="/synshell/syn-link-view/">synlink-view</a> window) — x86_64 and aarch64:</p>
+<pre><code class="language-sh">yay -S synshell-link-bin      # prebuilt
+yay -S synshell-link-git      # built from source
+</code></pre>
+<p>Depends on <code>synshell-core</code>. Optional: <code>openssh</code> (ssh to linked devices), <code>fuse3</code> (files of linked devices in the file manager). Part of the <code>synshell</code> metapackage: <code>yay -S synshell-bin</code> installs the whole desktop. <strong>From source:</strong> <code>cargo build --release -p syn-link</code> in the <a href="/synshell/">synshell</a> repository.</p>
+<p>The daemon starts with the session (<code>/etc/xdg/autostart/synlink.desktop</code>), one per user.</p>
+<h2>Command line</h2>
+<pre><code class="language-sh">synlink status                 # this machine, the cable, devices
+synlink pair accept phone      # answer a pairing request from the terminal
+synlink shot phone -o a.png    # screenshot (PNG)
+synlink tap phone 540 1200     # tap (screenshot pixels or fractions 0..1)
+synlink swipe phone 0.9 0.5 0.1 0.5 300
+synlink type phone 'hello'     # text into the focused field
+synlink key phone ctrl+a       # key combination
+synlink action phone back      # synwm action: back, shell home, shell shade…
+synlink exec phone -- uname -a # command (streamed output, exit code)
+synlink shell phone            # terminal
+synlink logs phone -f -u synshell
+synlink view phone             # live view window
+synlink audio phone on         # sound of the live view (off — stop; --no-mic — without the microphone)
+synlink mount phone            # files (usually mounted by themselves)
+ssh phone                      # ssh inside the link
+</code></pre>
+<p>A device is a name, the start of its id, <code>phone</code>/<code>desktop</code>/<code>laptop</code> (if there is only one) or <code>local</code> — this machine.</p>
+<p><strong>Claude Code:</strong> <code>claude mcp add synlink -- synlink mcp</code> — tools <code>devices</code>, <code>screenshot</code>, <code>tap</code>, <code>long_press</code>, <code>swipe</code>, <code>scroll</code>, <code>type_text</code>, <code>key</code>, <code>action</code>, <code>windows</code>, <code>exec</code>, <code>logs</code>, <code>notifications</code>, <code>read_file</code>, <code>write_file</code>, <code>record</code>.</p>
+<h2>Settings</h2>
+<pre><code class="language-toml">[link]
+enabled = true        # daemon in the session
+name = &quot;&quot;             # name for other devices (empty — the device model)
+discoverable = true   # visible in Wi-Fi for pairing
+notifications = true  # forward and show notifications
+auto_mount = true     # files of linked devices in the file manager
+clipboard = true      # shared clipboard
+port = 47471          # UDP QUIC; discovery — port − 1
+</code></pre>
+<h2>Part of synshell</h2>
+<p>synlink is one of the applications of <a href="/synshell/">synshell</a> — a Wayland desktop environment in Rust for computers and phones, built on the <a href="https://github.com/VitaminDB/syngui">syngui</a> UI framework.</p>
+<h2>License</h2>
+<p>GPL-3.0-only</p></div></div></article>
+<nav class="section" aria-labelledby="apps-h"><div class="wrap">
+  <div class="pn-row"><a class="pn prev" href="/synshell/syn-health/"><span>←</span> Steps and activity</a><a class="pn next" href="/synshell/syn-link-view/">The screen of a linked device in a window <span>→</span></a></div>
+  <p><a href="/synshell/#apps">← synshell: all applications</a></p>
+  <h2 id="apps-h">Applications synshell</h2>
+  <ul class="others"><li><a href="/synshell/syn-settings/"><b>System settings</b><span>synsettings</span></a></li><li><a href="/synshell/syn-files/"><b>File manager</b><span>synfiles</span></a></li><li><a href="/synshell/syn-terminal/"><b>Terminal</b><span>syn-terminal</span></a></li><li><a href="/synshell/syn-shot/"><b>Screenshots</b><span>synshot</span></a></li><li><a href="/synshell/syn-pkg/"><b>Software center</b><span>synpkg</span></a></li><li><a href="/synshell/syn-systeminfo/"><b>System monitor</b><span>syn-systeminfo</span></a></li><li><a href="/synshell/syn-themeeditor/"><b>Theme editor</b><span>syn-themeeditor</span></a></li><li><a href="/synshell/syn-notes/"><b>Notes</b><span>syn-notes</span></a></li><li><a href="/synshell/syn-pass/"><b>Password manager</b><span>synpass</span></a></li><li><a href="/synshell/syn-assistant/"><b>The synshell assistant</b><span>synassistant</span></a></li><li><a href="/synshell/syn-vm/"><b>Virtual machines</b><span>syn-vm</span></a></li><li><a href="/synshell/syn-video-player/"><b>Video player</b><span>syn-video-player</span></a></li><li><a href="/synshell/syn-audio-player/"><b>Music player</b><span>syn-audio-player</span></a></li><li><a href="/synshell/syn-audio-recorder/"><b>Voice recorder</b><span>syn-audio-recorder</span></a></li><li><a href="/synshell/syn-maps/"><b>Maps</b><span>syn-maps</span></a></li><li><a href="/synshell/syn-phone/"><b>Phone app</b><span>synphone</span></a></li><li><a href="/synshell/syn-sms/"><b>Messages app</b><span>synsms</span></a></li><li><a href="/synshell/syn-camera/"><b>Camera</b><span>syncamera</span></a></li><li><a href="/synshell/syn-nfc/"><b>NFC app</b><span>syn-nfc</span></a></li><li><a href="/synshell/syn-compass/"><b>Compass</b><span>syn-compass</span></a></li><li><a href="/synshell/syn-health/"><b>Steps and activity</b><span>syn-health</span></a></li><li><a href="/synshell/syn-link-view/"><b>The screen of a linked device in a window</b><span>synlink-view</span></a></li><li><a href="/synshell/syn-remote/"><b>IR remote control</b><span>syn-remote</span></a></li><li><a href="/synshell/syn-droid/"><b>Android apps</b><span>syndroid</span></a></li><li><a href="/synshell/syn-wine-helper/"><b>Wine components</b><span>syn-wine-helper</span></a></li><li><a href="/synshell/syn-wine/"><b>Wine for Windows programs and games</b><span>syn-wine</span></a></li><li><a href="/synshell/syn-steam/"><b>Steam on computers and phones</b><span>syn-steam</span></a></li><li><a href="/synshell/syn-dlss/"><b>DLSS 5 neural rendering</b><span>syn-dlss</span></a></li><li><a href="/synshell/syn-woman-cycle/"><b>Cycle tracker</b><span>syn-woman-cycle</span></a></li><li><a href="/synshell/syn-quitsmoke/"><b>QuitSmoke</b><span>syn-quitsmoke</span></a></li><li><a href="/synshell/syn-blocks/"><b>An 8×8 block puzzle</b><span>Syn Blocks</span></a></li><li><a href="/synshell/syn-epdtest/"><b>E Ink screen profiles and test patterns</b><span>syn-epdtest</span></a></li></ul>
+</div></nav>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Vitaliy Alexeyev · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://www.linkedin.com/in/vitaly-alexeyev-08546b21b/" rel="me">LinkedIn</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Static site, no trackers, no cookies. Built with a Python script.</p></div>
+    <nav aria-label="Other projects"><a href="/synthos/">synthos</a><a href="/synaptix/">synaptix</a><a href="/syngui/">syngui</a><a href="/synshell/">synshell</a><a href="/linux-legion/">linux-legion</a><a href="/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>

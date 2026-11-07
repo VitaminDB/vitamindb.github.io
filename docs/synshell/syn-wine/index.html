@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wine for Windows programs and games — synshell</title>
+<meta name="description" content="Wine for the synshell desktop — Windows programs and games on x86_64 computers and aarch64 phones: touch input, the Steam API bridge from Proton, DXVK, Wine…">
+<meta name="author" content="Vitaliy Alexeyev">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://alexeyev.dev/synshell/syn-wine/">
+<link rel="alternate" hreflang="en" href="https://alexeyev.dev/synshell/syn-wine/">
+<link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/synshell/syn-wine/">
+<link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/synshell/syn-wine/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=a41900faca">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vitaliy Alexeyev">
+<meta property="og:title" content="Wine for Windows programs and games — synshell">
+<meta property="og:description" content="Wine for the synshell desktop — Windows programs and games on x86_64 computers and aarch64 phones: touch input, the Steam API bridge from Proton, DXVK, Wine…">
+<meta property="og:url" content="https://alexeyev.dev/synshell/syn-wine/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:image" content="https://alexeyev.dev/og/synshell-syn-wine-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Wine for Windows programs and games — synshell">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="Wine for Windows programs and games — synshell">
+<meta name="twitter:description" content="Wine for the synshell desktop — Windows programs and games on x86_64 computers and aarch64 phones: touch input, the Steam API bridge from Proton, DXVK, Wine…">
+<meta name="twitter:image" content="https://alexeyev.dev/og/synshell-syn-wine-en.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Vitaliy Alexeyev","item":"https://alexeyev.dev/"},{"@type":"ListItem","position":2,"name":"synshell","item":"https://alexeyev.dev/synshell/"},{"@type":"ListItem","position":3,"name":"Wine for Windows programs and games","item":"https://alexeyev.dev/synshell/syn-wine/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Wine for Windows programs and games","alternateName":"syn-wine","description":"Wine for the synshell desktop — Windows programs and games on x86_64 computers and aarch64 phones: touch input, the Steam API bridge from Proton, DXVK, Wine…","url":"https://alexeyev.dev/synshell/syn-wine/","operatingSystem":"Linux","applicationCategory":"DesktopEnhancementApplication","isPartOf":"https://alexeyev.dev/synshell/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+</head>
+<body class="project app">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/" aria-label="Vitaliy Alexeyev — Home"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Vitaliy Alexeyev</span></a>
+    <nav class="top-nav" aria-label="Main">
+      <a href="/#projects">Projects</a>
+      <a href="/blog/">Blog</a>
+      <a href="/#vibe">How it is tested</a>
+      <a href="/#contact">Contact</a>
+      <a class="lang" href="/ru/synshell/syn-wine/" hreflang="ru" lang="ru" title="Русский">RU</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Vitaliy Alexeyev</a></li><li><a href="/synshell/">synshell</a></li><li><a href="/synshell/#apps">Applications</a></li><li aria-current="page">Wine for Windows programs and games</li></ol></nav>
+<section class="p-hero app-hero" aria-labelledby="p-h">
+  <div class="wrap">
+    <p class="eyebrow rise">synshell · Compatibility · syn-wine</p>
+    <h1 id="p-h" class="rise">Wine for Windows programs and games</h1>
+    <p class="tagline rise">Wine for the synshell desktop — Windows programs and games on x86_64 computers and aarch64 phones: touch input, the Steam API bridge from Proton, DXVK, Wine Mono and Gecko in the package, ARM64EC with FEX on ARM.</p>
+    <div class="btns rise"><a class="btn" href="https://github.com/VitaminDB/synshell/blob/master/crates/syn-wine/README.md"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>README</span></a></div>
+    
+  </div>
+</section>
+<article class="section md-body"><div class="wrap"><div class="md"><p>syn-wine is a pacman package (not a Cargo crate) built from upstream Wine 11.19 with synshell patches. One <code>PKGBUILD</code> and one set of patches serve both x86_64 and aarch64; ARM-only parts sit under <code>$CARCH</code> in the <code>PKGBUILD</code> and <code>#ifdef __aarch64__</code> in the patches. It replaces <code>wine</code>, <code>wine-mono</code> and <code>wine-gecko</code> (<code>provides</code>/<code>conflicts</code>) and the former phone package <code>wine-arm64ec</code>.</p>
+<h2>Features</h2>
+<ul>
+<li><strong>Touch</strong> — Wayland and X11 touches reach Windows programs, including DirectInput.</li>
+<li><strong>Steam API bridge from Proton</strong> — <code>lsteamclient</code> and <code>steam.exe</code> from a pinned Proton commit: games that call <code>steam_api</code> start under this Wine with the Linux Steam client.</li>
+<li><strong>Steam compatibility tool “syn-wine”</strong> — <code>/usr/share/steam/compatibilitytools.d/syn-wine</code>: Windows games from the Steam library run on this Wine without Proton. Each game gets its own prefix next to its Steam data, DXVK is installed on the first start, and with the synshell compositor a game can get its own screen resolution (<code>[[x11_app]]</code>, “System Settings → Session → X11 programs”).</li>
+<li><strong>Missing components</strong> — when a program lacks a DLL (MFC, Visual Basic runtimes, OpenAL…) or a GStreamer codec, Wine calls <a href="/synshell/syn-wine-helper/">syn-wine-helper</a>: a window offers to install it once for all prefixes and starts the program again.</li>
+<li><strong>DXVK</strong> — Direct3D 8–11 over Vulkan; <code>setup-dxvk install|uninstall</code> puts it into a prefix (x64 + x32 on x86_64, ARM64EC + x32 on aarch64).</li>
+<li><strong>Wine Mono 11.3.0 and Wine Gecko 2.47.4 in the package</strong> — unpacked into <code>/usr/share/wine/{mono,gecko}</code>, shared by all prefixes, so a new prefix does not ask to download them. Mono is x86 on x86_64 and arm64 on aarch64; Gecko is x86 and x86_64 on both (used by x86 programs through WoW64/FEX and by x86_64 programs through ARM64EC).</li>
+<li><strong>Fixes</strong> — EmulateModeset under Xwayland (a game renders in its own mode, Wine scales it to the screen), swapchain, DPI, Media Foundation and window frame fixes; <code>.exe</code> files start through binfmt, Win32 font aliases for fontconfig.</li>
+<li><strong>DLSS 5</strong> — Wine sets <code>VKLayer_DLSS5=1</code> for its programs when “syn-wine games” is switched on in <a href="/synshell/syn-dlss/">syn-dlss</a> (package <code>syn-wine-dlss5</code>).</li>
+</ul>
+<h3>aarch64 (phones)</h3>
+<ul>
+<li><strong>ARM64EC and WoW64</strong> — native ARM64 code with x86_64 emulated inside Wine by FEX (<code>libarm64ecfex.dll</code>) and 32-bit x86 by FEX (<code>libwow64fex.dll</code>, own build with fixes for division by zero, <code>POP</code> faults and debug registers) or Box64 — DLLs from Hangover; no x86-64 RootFS.</li>
+<li><strong>Own DXVK ARM64EC build</strong> (DXVK 3.1.1, with shared resources through D3DKMT).</li>
+<li><strong>Phone adjustments</strong> — DPI 180 for new prefixes, then taken from <code>Xft.dpi</code> of the game's X server; workarounds for the 39-bit address space of Android kernels and the rpcrt4 delay-load; the Wayland driver when Turnip lacks X11 WSI (<code>SYN_WINE_WAYLAND=1</code> forces it).</li>
+</ul>
+<h2>Install</h2>
+<p>syn-wine is not published to AUR; it is built from this directory.</p>
+<pre><code class="language-sh">cd crates/syn-wine
+makepkg -si                      # computer (x86_64)
+</code></pre>
+<p>Phone: <code>synport hostpkg syn-wine</code> (cross-build on the host, synmobile) or <code>makepkg</code> on the phone. For aarch64 the build directory needs <code>dxvk-&lt;version&gt;-arm64ec.tar.gz</code> (<code>build-dxvk-arm64ec.sh</code>) and <code>libwow64fex-&lt;commit&gt;.dll</code> (<code>build-fex-wow64.sh</code>) — both are built on an x86_64 host with llvm-mingw.</p>
+<p>Optional: <code>synshell</code> (syn-wine-helper — missing DLLs), <code>ntsync-autoload</code> (NTSync), <code>samba</code> (NTLM).</p>
+<h2>Usage</h2>
+<pre><code class="language-sh">wine setup.exe                   # as usual Wine
+setup-dxvk install               # DXVK into $WINEPREFIX (default ~/.wine)
+setup-dxvk uninstall
+</code></pre>
+<p>In Steam: a game's “Properties → Compatibility → Force a specific Steam Play compatibility tool” → “Wine synshell (системный)”. The tool's log is <code>syn-wine.log</code> in the game's compatdata folder. Steam itself is the <a href="/synshell/syn-steam/">syn-steam</a> package.</p>
+<h2>DLSS 5 (<code>dlss5/</code>)</h2>
+<p>A fork of <a href="https://github.com/bmitch87/DLSS5VKLayer">DLSS5VKLayer</a> (from commit <code>ab722b0</code>): DLSS 5 Neural Rendering for Linux games and Wine/Proton games on NVIDIA. The Vulkan layer <code>VK_LAYER_NV_dlssnr</code> (64 and 32 bit) hands frames to <code>dlssnr_helper.exe</code>, which loads NGX and the model under syn-wine. It is a separate package, <code>syn-wine-dlss5</code> (<code>cd dlss5/packaging &amp;&amp; makepkg -si</code>), with the <a href="/synshell/syn-dlss/">syn-dlss</a> window.</p>
+<h2>Part of synshell</h2>
+<p>syn-wine is part of <a href="/synshell/">synshell</a> — a Wayland desktop environment in Rust for computers and phones, built on the <a href="https://github.com/VitaminDB/syngui">syngui</a> UI framework.</p>
+<h2>License</h2>
+<p>Wine — LGPL-2.1-or-later; DXVK — Zlib.</p></div></div></article>
+<nav class="section" aria-labelledby="apps-h"><div class="wrap">
+  <div class="pn-row"><a class="pn prev" href="/synshell/syn-wine-helper/"><span>←</span> Wine components</a><a class="pn next" href="/synshell/syn-steam/">Steam on computers and phones <span>→</span></a></div>
+  <p><a href="/synshell/#apps">← synshell: all applications</a></p>
+  <h2 id="apps-h">Applications synshell</h2>
+  <ul class="others"><li><a href="/synshell/syn-settings/"><b>System settings</b><span>synsettings</span></a></li><li><a href="/synshell/syn-files/"><b>File manager</b><span>synfiles</span></a></li><li><a href="/synshell/syn-terminal/"><b>Terminal</b><span>syn-terminal</span></a></li><li><a href="/synshell/syn-shot/"><b>Screenshots</b><span>synshot</span></a></li><li><a href="/synshell/syn-pkg/"><b>Software center</b><span>synpkg</span></a></li><li><a href="/synshell/syn-systeminfo/"><b>System monitor</b><span>syn-systeminfo</span></a></li><li><a href="/synshell/syn-themeeditor/"><b>Theme editor</b><span>syn-themeeditor</span></a></li><li><a href="/synshell/syn-notes/"><b>Notes</b><span>syn-notes</span></a></li><li><a href="/synshell/syn-pass/"><b>Password manager</b><span>synpass</span></a></li><li><a href="/synshell/syn-assistant/"><b>The synshell assistant</b><span>synassistant</span></a></li><li><a href="/synshell/syn-vm/"><b>Virtual machines</b><span>syn-vm</span></a></li><li><a href="/synshell/syn-video-player/"><b>Video player</b><span>syn-video-player</span></a></li><li><a href="/synshell/syn-audio-player/"><b>Music player</b><span>syn-audio-player</span></a></li><li><a href="/synshell/syn-audio-recorder/"><b>Voice recorder</b><span>syn-audio-recorder</span></a></li><li><a href="/synshell/syn-maps/"><b>Maps</b><span>syn-maps</span></a></li><li><a href="/synshell/syn-phone/"><b>Phone app</b><span>synphone</span></a></li><li><a href="/synshell/syn-sms/"><b>Messages app</b><span>synsms</span></a></li><li><a href="/synshell/syn-camera/"><b>Camera</b><span>syncamera</span></a></li><li><a href="/synshell/syn-nfc/"><b>NFC app</b><span>syn-nfc</span></a></li><li><a href="/synshell/syn-compass/"><b>Compass</b><span>syn-compass</span></a></li><li><a href="/synshell/syn-health/"><b>Steps and activity</b><span>syn-health</span></a></li><li><a href="/synshell/syn-link/"><b>Linking a phone and a computer</b><span>synlink</span></a></li><li><a href="/synshell/syn-link-view/"><b>The screen of a linked device in a window</b><span>synlink-view</span></a></li><li><a href="/synshell/syn-remote/"><b>IR remote control</b><span>syn-remote</span></a></li><li><a href="/synshell/syn-droid/"><b>Android apps</b><span>syndroid</span></a></li><li><a href="/synshell/syn-wine-helper/"><b>Wine components</b><span>syn-wine-helper</span></a></li><li><a href="/synshell/syn-steam/"><b>Steam on computers and phones</b><span>syn-steam</span></a></li><li><a href="/synshell/syn-dlss/"><b>DLSS 5 neural rendering</b><span>syn-dlss</span></a></li><li><a href="/synshell/syn-woman-cycle/"><b>Cycle tracker</b><span>syn-woman-cycle</span></a></li><li><a href="/synshell/syn-quitsmoke/"><b>QuitSmoke</b><span>syn-quitsmoke</span></a></li><li><a href="/synshell/syn-blocks/"><b>An 8×8 block puzzle</b><span>Syn Blocks</span></a></li><li><a href="/synshell/syn-epdtest/"><b>E Ink screen profiles and test patterns</b><span>syn-epdtest</span></a></li></ul>
+</div></nav>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Vitaliy Alexeyev · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://www.linkedin.com/in/vitaly-alexeyev-08546b21b/" rel="me">LinkedIn</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Static site, no trackers, no cookies. Built with a Python script.</p></div>
+    <nav aria-label="Other projects"><a href="/synthos/">synthos</a><a href="/synaptix/">synaptix</a><a href="/syngui/">syngui</a><a href="/synshell/">synshell</a><a href="/linux-legion/">linux-legion</a><a href="/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>
