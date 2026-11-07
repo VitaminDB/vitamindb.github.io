@@ -85,9 +85,9 @@
 </table>
 <p>Снимки сделаны на компьютере с подставным каталогом драйвера.</p>
 <h2>Установка</h2>
-<p><strong>Arch Linux (AUR)</strong> — x86_64 и aarch64:</p>
-<pre><code class="language-sh">yay -S syn-epdtest-bin      # готовые бинарники
-yay -S syn-epdtest-git      # сборка из исходников
+<p><strong>Архив из выпуска</strong> (в AUR нет — инструмент разработчика) — x86_64 и aarch64, из <a href="https://github.com/VitaminDB/synshell/releases/tag/v0.2.0">v0.2.0</a>:</p>
+<pre><code class="language-sh">curl -LO https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syn-epdtest-0.2.0-$(uname -m).tar.zst
+sudo tar -xpf syn-epdtest-0.2.0-$(uname -m).tar.zst -C /
 </code></pre>
 <p>Зависит от <code>synshell-core</code>; в метапакет <code>synshell</code> не входит. <strong>Из исходников:</strong> <code>cargo build --release -p syn-epdtest</code> в репозитории <a href="/ru/synshell/">synshell</a>.</p>
 <h2>Командная строка</h2>

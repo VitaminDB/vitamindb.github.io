@@ -85,9 +85,9 @@
 </table>
 <p>The screenshots were taken on a computer with a stand-in driver directory.</p>
 <h2>Install</h2>
-<p><strong>Arch Linux (AUR)</strong> — x86_64 and aarch64:</p>
-<pre><code class="language-sh">yay -S syn-epdtest-bin      # prebuilt
-yay -S syn-epdtest-git      # built from source
+<p><strong>Release archive</strong> (not in the AUR — a developer tool) — x86_64 and aarch64, from <a href="https://github.com/VitaminDB/synshell/releases/tag/v0.2.0">v0.2.0</a>:</p>
+<pre><code class="language-sh">curl -LO https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syn-epdtest-0.2.0-$(uname -m).tar.zst
+sudo tar -xpf syn-epdtest-0.2.0-$(uname -m).tar.zst -C /
 </code></pre>
 <p>Depends on <code>synshell-core</code>; not part of the <code>synshell</code> metapackage. <strong>From source:</strong> <code>cargo build --release -p syn-epdtest</code> in the <a href="/synshell/">synshell</a> repository.</p>
 <h2>Command line</h2>
