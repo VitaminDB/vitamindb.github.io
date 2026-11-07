@@ -74,20 +74,15 @@ SITE = {
         "skills": ["Rust", "CUDA · NVRTC", "GEMM / GEMV", "FP4 / FP8 quantization", "Nsight",
                    "C++", "wgpu / WGSL", "Wayland", "STM32 · AVR · PIC", "Arch Linux", "KiCad"],
     },
-    # The vibe-coding statement. EN is verbatim from the brief.
+    # The "how it is built" statement (variant B, 07.11.2026).
     "vibe": {
-        "en": "Everything here is vibe-coded. Since spring 2026 I write all of my projects with "
-              "Claude Code: I decide what to build and how it fits together, describe each task, "
-              "and review, run and measure the result on my own hardware — the model writes the "
-              "code. That is how one person ends up with a CUDA inference engine, a GUI framework, "
-              "an AI studio and a Wayland desktop in half a year. The numbers on these pages are "
-              "measured on my machine, not taken on the model's word.",
-        "ru": "Всё здесь написано вайбкодингом. С весны 2026 года я пишу все свои проекты в "
-              "Claude Code: сам решаю, что строить и как части складываются в целое, описываю "
-              "каждую задачу, а потом проверяю, запускаю и замеряю результат на своём железе — "
-              "код пишет модель. Так один человек за полгода и приходит к CUDA-движку инференса, "
-              "GUI-фреймворку, AI-студии и рабочему столу для Wayland. Цифры на этих страницах "
-              "измерены на моей машине, а не взяты на слово у модели.",
+        "en": "Since spring 2026 I have been working in Claude Code. That is how a CUDA inference "
+              "engine, a GUI framework, an AI studio and a Wayland desktop came about in half a "
+              "year. Every number on these pages is measured on my own hardware, not taken on the "
+              "model's word.",
+        "ru": "С весны 2026 года я работаю в Claude Code. За полгода так появились движок "
+              "инференса на CUDA, GUI-фреймворк, AI-студия и рабочий стол для Wayland. Все цифры "
+              "на этих страницах измерены на моём железе, а не взяты у модели на слово.",
     },
     "hardware": {
         "en": "Measured on an RTX 5090 Laptop GPU (24 GB) with 93 GB of system RAM, Arch Linux.",
@@ -147,7 +142,7 @@ UI = {
         "col_notes": "Notes",
         "breadcrumb": "Breadcrumb",
         "other_nav": "Other projects",
-        "vibe_more": "Why that matters: every speed figure is measured on real hardware, and every README lists what does not work yet next to what does.",
+        "vibe_more": "Every README lists what does not work yet next to what does.",
     },
     "ru": {
         "skip": "К содержимому",
@@ -199,7 +194,7 @@ UI = {
         "col_notes": "Примечание",
         "breadcrumb": "Навигационная цепочка",
         "other_nav": "Другие проекты",
-        "vibe_more": "Что это значит на деле: каждая цифра скорости измерена на реальном железе, а в каждом README рядом с тем, что работает, перечислено то, что пока не работает.",
+        "vibe_more": "В каждом README рядом с тем, что работает, перечислено то, что пока не работает.",
     },
 }
 
@@ -352,8 +347,8 @@ PROJECTS = [
             "duration": "PT56S",
         },
         "built": {
-            "en": "The model writes the code, the tests and most of the documentation; I decide what to build, review it and measure it. Every number in the README was measured on my machine, with the losses reported next to the wins. synthos is my own daily code editor and chat.",
-            "ru": "Модель пишет код, тесты и большую часть документации; я решаю, что делать, проверяю и замеряю. Каждая цифра в README измерена на моей машине, и рядом с выигрышами записаны потери. synthos — мой собственный ежедневный редактор кода и чат.",
+            "en": "Every number in the README was measured on my machine, with the losses reported next to the wins. synthos is my own daily code editor and chat.",
+            "ru": "Каждая цифра в README измерена на моей машине, и рядом с выигрышами записаны потери. synthos — мой собственный ежедневный редактор кода и чат.",
         },
         "hero": img("synthos/docs/screenshots/notes-dashboard-floating-chat.png",
                     "synthos: a notes workspace built by the agent, with the chat torn off into a floating window",
@@ -496,8 +491,8 @@ PROJECTS = [
             },
         },
         "built": {
-            "en": "The model writes the code, the tests and most of the documentation. Every number in the README was measured on my machine, and correctness is checked against reference implementations layer by layer rather than taken on the model's word.",
-            "ru": "Модель пишет код, тесты и большую часть документации. Каждая цифра в README измерена на моей машине, а корректность проверяется по эталонным реализациям слой за слоем, а не принимается на слово у модели.",
+            "en": "Every number in the README was measured on my machine, and correctness is checked against reference implementations layer by layer rather than taken on the model's word.",
+            "ru": "Каждая цифра в README измерена на моей машине, а корректность проверяется по эталонным реализациям слой за слоем, а не принимается на слово у модели.",
         },
         "hero": img("synthos/docs/screenshots/chat-details.png",
                     "synaptix at work inside synthos: tok/s, prefill time and the prefix-KV share of a chat turn",
@@ -611,8 +606,8 @@ PROJECTS = [
             ],
         },
         "built": {
-            "en": "The model writes the code, the tests and most of the documentation. The performance numbers were measured on my machine, and every app I have built since — synthos, syndesktop, linux-legion, ardor-mouse — runs on this framework, so its bugs get found by real use.",
-            "ru": "Модель пишет код, тесты и большую часть документации. Цифры производительности измерены на моей машине, а все программы, которые я сделал после, — synthos, syndesktop, linux-legion, ardor-mouse — работают на этом фреймворке, так что его баги находятся в настоящей работе.",
+            "en": "The performance numbers were measured on my machine, and every app I have built since — synthos, syndesktop, linux-legion, ardor-mouse — runs on this framework, so its bugs get found by real use.",
+            "ru": "Цифры производительности измерены на моей машине, а все программы, которые я сделал после, — synthos, syndesktop, linux-legion, ardor-mouse — работают на этом фреймворке, так что его баги находятся в настоящей работе.",
         },
         "hero": img("syngui/docs/widget-gallery.png",
                     "The widget_gallery_mss example running natively — MarkdownView with syntax highlighting",
@@ -723,8 +718,8 @@ PROJECTS = [
             ],
         },
         "built": {
-            "en": "The model writes the code; I decide what to build, describe each task and check the result on my own machine. The whole interface — shell, dock, settings, file manager — is drawn with syngui, the same framework as synthos.",
-            "ru": "Код пишет модель; я решаю, что делать, описываю каждую задачу и проверяю результат на своей машине. Весь интерфейс — оболочка, док, параметры, проводник — нарисован на syngui, том же фреймворке, что и synthos.",
+            "en": "The whole interface — shell, dock, settings, file manager — is drawn with syngui, the same framework as synthos.",
+            "ru": "Весь интерфейс — оболочка, док, параметры, проводник — нарисован на syngui, том же фреймворке, что и synthos.",
         },
         # Screenshots: every image in syndesktop/docs/screenshots/ if the folder exists,
         # otherwise docs/themes.jpg. Re-read on every build.
@@ -838,8 +833,8 @@ PROJECTS = [
             ],
         },
         "built": {
-            "en": "The model writes the code, the tests and most of the documentation. Every packet format was captured from and tested on my own Legion laptop — the live tests write layers to an inactive keyboard profile, read them back and restore the original byte for byte.",
-            "ru": "Модель пишет код, тесты и большую часть документации. Каждый формат пакета снят с моего собственного Legion и проверен на нём — живые тесты пишут слои в неактивный профиль клавиатуры, читают обратно и восстанавливают исходный байт в байт.",
+            "en": "Every packet format was captured from and tested on my own Legion laptop — the live tests write layers to an inactive keyboard profile, read them back and restore the original byte for byte.",
+            "ru": "Каждый формат пакета снят с моего собственного Legion и проверен на нём — живые тесты пишут слои в неактивный профиль клавиатуры, читают обратно и восстанавливают исходный байт в байт.",
         },
         "animations": [
             img("linux_legion/screenshots/lighting.gif",
@@ -952,8 +947,8 @@ PROJECTS = [
             ],
         },
         "built": {
-            "en": "The model writes the code, the tests and most of the documentation. The protocol was reverse-engineered from and tested on real mice — the Edge Air Ultra on my desk and the Rukh by @Metisav; the tests decode packets and EEPROM dumps captured from both.",
-            "ru": "Модель пишет код, тесты и большую часть документации. Протокол восстановлен и проверен на настоящих мышах — Edge Air Ultra на моём столе и Rukh у @Metisav; тесты разбирают пакеты и дампы EEPROM, снятые с обеих.",
+            "en": "The protocol was reverse-engineered from and tested on real mice — the Edge Air Ultra on my desk and the Rukh by @Metisav; the tests decode packets and EEPROM dumps captured from both.",
+            "ru": "Протокол восстановлен и проверен на настоящих мышах — Edge Air Ultra на моём столе и Rukh у @Metisav; тесты разбирают пакеты и дампы EEPROM, снятые с обеих.",
         },
         "animations": [
             img("ardor_mouse/screenshots/lighting.gif",
