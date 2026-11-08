@@ -1272,8 +1272,11 @@ def build_static(site):
     site.write("favicon.svg", FAVICON)
     site.write(".nojekyll", "")
     # Files served verbatim from the site root: search-engine verification files and the like.
-    for f in sorted(glob.glob(os.path.join(SRC, "root", "*"))):
-        site.write(os.path.basename(f), open(f, "rb").read(), binary=True)
+    root = os.path.join(SRC, "root")
+    for dirpath, _, files in os.walk(root):
+        for fn in sorted(files):
+            f = os.path.join(dirpath, fn)
+            site.write(os.path.relpath(f, root), open(f, "rb").read(), binary=True)
     site.write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {site.abs(site.prefix + '/sitemap.xml')}\n")
     cname = os.path.join(site.out, "CNAME")
     if site.args.cname:
