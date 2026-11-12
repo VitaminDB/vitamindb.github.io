@@ -93,7 +93,13 @@
 </table>
 <p>The preview and the photos in the screenshots are generated pictures shown through the <code>--screenshot</code> mode, not frames from a real camera.</p>
 <h2>Requirements</h2>
-<p>The camera is driven by <code>syncamd</code>, the camera service of the synshell phone platform (socket <code>/run/syncam/syncam.sock</code>, frames as dma-buf). Without it the app opens and reports why no camera is available.</p>
+<p>Three kinds of cameras share one interface:</p>
+<ul>
+<li><code>syncamd</code>, the camera service of the synshell phone platform (socket <code>/run/syncam/syncam.sock</code>, frames as dma-buf, full-size stills and HAL controls);</li>
+<li>a raw Bayer sensor on a mainline kernel (Qualcomm camss and similar): the pipeline is found in the media graph (<code>/dev/media*</code>) and enabled automatically, frames go through a software ISP — black level, demosaic, white balance, gamma, auto exposure via sensor controls, contrast autofocus via the lens motor, digital zoom; a still is a stream frame;</li>
+<li>a V4L2 webcam (desktop).</li>
+</ul>
+<p>Without any camera the app opens and says so.</p>
 <h2>Install</h2>
 <p><strong>Arch Linux (AUR)</strong> — x86_64 and aarch64:</p>
 <pre><code class="language-sh">yay -S syncamera-bin      # prebuilt

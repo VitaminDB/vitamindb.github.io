@@ -77,6 +77,8 @@
 <h3>aarch64 (phones)</h3>
 <ul>
 <li><strong>ARM64EC and WoW64</strong> — native ARM64 code with x86_64 emulated inside Wine by FEX (<code>libarm64ecfex.dll</code>) and 32-bit x86 by FEX (<code>libwow64fex.dll</code>, own build with fixes for division by zero, <code>POP</code> faults and debug registers) or Box64 — DLLs from Hangover; no x86-64 RootFS.</li>
+<li><strong>x86 emulator per program</strong> — <code>HKCU\Software\Wine\AppDefaults\&lt;name.exe&gt;\Wow64</code>: value <code>x86</code> picks the emulator DLL, subkey <code>Environment</code> sets its environment (e.g. <code>FEX_TSOENABLED=0</code>) before it starts. Heroes of Might and Magic III runs on FEX without TSO out of the box: Box64 deadlocks when the Miles sound thread suspends the game thread, and default FEX mixes sound so slowly the game stutters.</li>
+<li><strong>OpenGL below 3.2</strong> (Adreno 504 / freedreno): the framebuffer GL surface uses <code>glFramebufferTexture2D</code> — DirectDraw/Direct3D games are no longer black.</li>
 <li><strong>Own DXVK ARM64EC build</strong> (DXVK 3.1.1, with shared resources through D3DKMT).</li>
 <li><strong>Phone adjustments</strong> — DPI 180 for new prefixes, then taken from <code>Xft.dpi</code> of the game's X server; workarounds for the 39-bit address space of Android kernels and the rpcrt4 delay-load; the Wayland driver when Turnip lacks X11 WSI (<code>SYN_WINE_WAYLAND=1</code> forces it).</li>
 </ul>

@@ -340,7 +340,7 @@ PROJECTS = [
             "rows": [
                 ["Gemma-4 26B A4B", "10 100 tok/s (4k)", "210 tok/s", ""],
                 ["Qwen3.8-27B hybrid", "1 450 tok/s (3.3k)", "47 tok/s", "MTP + CUDA graph"],
-                ["Qwen3.8-Flash-Next 125B MoE", "1 650 tok/s @ 260k", "17–22 tok/s", "262k context on 24 GB"],
+                ["Qwen3.8-Flash-Next 125B MoE", "1 650 tok/s @ 260k", "36 tok/s (4-bit) · 48 tok/s (3-bit)", "experts in RAM, 262k context on 24 GB"],
             ],
             "note": {
                 "en": "A 3k-token follow-up turn on top of an 80k history takes 3.3 s thanks to prefix-KV reuse. Images at 1024²: SDXL 30 steps in 6.5 s, Qwen-Image 2.1 40 steps in 30 s (MXFP8) or 23 s (NVFP4).",
@@ -496,7 +496,7 @@ PROJECTS = [
             "rows": [
                 ["Gemma-4 26B A4B", "10 100 tok/s @ 4k", "210 tok/s", "CUDA-graph decode captures the MoE"],
                 ["Qwen3.8-27B hybrid", "1 450 tok/s @ 3.3k", "47 tok/s", "MTP speculative decode"],
-                ["Qwen3.8-Flash-Next 125B MoE", "1 650 tok/s @ 260k", "17–22 tok/s", "262k context on 24 GB"],
+                ["Qwen3.8-Flash-Next 125B MoE", "1 650 tok/s @ 260k", "36 tok/s (4-bit) · 48 tok/s (3-bit)", "experts in RAM, 262k context on 24 GB"],
             ],
             "note": {
                 "en": "Gemma-4 decode went 35 → 210 tok/s and prefill 957 → 10 100 tok/s over a week of kernel work. Diffusion at 1024²: SDXL 30 steps in 6.5 s (8.8 GB peak), Qwen-Image-Edit-2511 40 steps in 155 s with NVFP4 (13.2 GB peak).",

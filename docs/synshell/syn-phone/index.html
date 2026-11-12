@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Phone app — synshell</title>
-<meta name="description" content="Phone app for synshell on phones — keypad, call log and the in-call screen, on top of the synshell modem daemon.">
+<meta name="description" content="synshell Phone — keypad, call log, contacts with photos, call recording and a call screen with live voice visualization, on top of the synshell modem daemon.">
 <meta name="author" content="Vitaliy Alexeyev">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
@@ -19,7 +19,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Vitaliy Alexeyev">
 <meta property="og:title" content="Phone app — synshell">
-<meta property="og:description" content="Phone app for synshell on phones — keypad, call log and the in-call screen, on top of the synshell modem daemon.">
+<meta property="og:description" content="synshell Phone — keypad, call log, contacts with photos, call recording and a call screen with live voice visualization, on top of the synshell modem daemon.">
 <meta property="og:url" content="https://alexeyev.dev/synshell/syn-phone/">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ru_RU">
@@ -31,10 +31,10 @@
 <meta name="twitter:site" content="@alexeyev_vitaly">
 <meta name="twitter:creator" content="@alexeyev_vitaly">
 <meta name="twitter:title" content="Phone app — synshell">
-<meta name="twitter:description" content="Phone app for synshell on phones — keypad, call log and the in-call screen, on top of the synshell modem daemon.">
+<meta name="twitter:description" content="synshell Phone — keypad, call log, contacts with photos, call recording and a call screen with live voice visualization, on top of the synshell modem daemon.">
 <meta name="twitter:image" content="https://alexeyev.dev/og/synshell-syn-phone-en.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Vitaliy Alexeyev","item":"https://alexeyev.dev/"},{"@type":"ListItem","position":2,"name":"synshell","item":"https://alexeyev.dev/synshell/"},{"@type":"ListItem","position":3,"name":"Phone app","item":"https://alexeyev.dev/synshell/syn-phone/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Phone app","alternateName":"synphone","description":"Phone app for synshell on phones — keypad, call log and the in-call screen, on top of the synshell modem daemon.","url":"https://alexeyev.dev/synshell/syn-phone/","operatingSystem":"Linux","applicationCategory":"DesktopEnhancementApplication","isPartOf":"https://alexeyev.dev/synshell/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"screenshot":"https://alexeyev.dev/img/synshell/dialer-en.webp"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Phone app","alternateName":"synphone","description":"synshell Phone — keypad, call log, contacts with photos, call recording and a call screen with live voice visualization, on top of the synshell modem daemon.","url":"https://alexeyev.dev/synshell/syn-phone/","operatingSystem":"Linux","applicationCategory":"DesktopEnhancementApplication","isPartOf":"https://alexeyev.dev/synshell/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"screenshot":"https://alexeyev.dev/img/synshell/dialer-en.webp"}</script>
 </head>
 <body class="project app">
 <a class="skip" href="#main">Skip to content</a>
@@ -57,35 +57,40 @@
   <div class="wrap">
     <p class="eyebrow rise">synshell · Phone · synphone</p>
     <h1 id="p-h" class="rise">Phone app</h1>
-    <p class="tagline rise">Phone app for synshell on phones — keypad, call log and the in-call screen, on top of the synshell modem daemon.</p>
+    <p class="tagline rise">synshell Phone — keypad, call log, contacts with photos, call recording and a call screen with live voice visualization, on top of the synshell modem daemon.</p>
     <div class="btns rise"><a class="btn" href="https://github.com/VitaminDB/synshell/blob/master/crates/syn-phone/README.md"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>README</span></a><a class="btn ghost" href="https://aur.archlinux.org/packages/synshell-mobile-bin">AUR package: synshell-mobile-bin</a><a class="btn ghost" href="https://aur.archlinux.org/packages/synshell-mobile-git">AUR package: synshell-mobile-git</a></div>
     <figure class="shot-hero rise"><a href="/img/synshell/dialer-en.webp"><div class="frame"><img src="/img/synshell/dialer-en.webp" width="860" height="1800" alt="Keypad" fetchpriority="high"></div></a></figure>
   </div>
 </section>
 <article class="section md-body"><div class="wrap"><div class="md"><h2>Features</h2>
 <ul>
-<li><strong>Keypad</strong> — dial with the on-screen keys or the keyboard (digits, Backspace, Enter); long press on 0 gives “+”, long press on ⌫ clears the number.</li>
-<li><strong>Call log</strong> — incoming, outgoing, missed and declined calls with time and duration; unseen missed calls are marked on the tab. A tap puts the number into the keypad; buttons call back or open the conversation in <a href="/synshell/syn-sms/">synsms</a>.</li>
-<li><strong>In-call screen</strong> — the window switches to it when a call comes in or goes out: answer / decline, call timer, mute, speaker, DTMF keypad, hang up; a second incoming call is shown as such.</li>
-<li><strong>Network line</strong> — operator and roaming, or why calls are impossible: no modem, airplane mode, no network.</li>
+<li><strong>Keypad</strong> — on-screen keys or the keyboard; contact suggestions as you type digits, “Add to contacts” for a new number; long press on 0 gives “+”.</li>
+<li><strong>Call log</strong> — grouped by day, with contact names and photos, a “Missed” filter, a mark on calls that were recorded. Tap to call back, tap the avatar for the contact card (or to add the number), the button opens the conversation in <a href="/synshell/syn-sms/">synsms</a>.</li>
+<li><strong>Contacts</strong> — search by name or number, favorites, alphabetical list; a card (call, message, all numbers, e-mail, note, recent calls) and an editor (photo from a file, numbers with types, e-mail, note, favorite). Stored as vCard (<code>~/.local/share/synshell/contacts</code>), shared with SMS and the shell; <code>.vcf</code> import and export with photos.</li>
+<li><strong>Call screen</strong> — the caller's photo full-screen (or a large avatar), name and number type, timer; live voice visualization — the other party and you as running waves like in Voice Recorder (can be turned off); mute, speaker, DTMF keypad, recording, contact card, message. Incoming: answer, decline, reply with a message; a second call is shown separately.</li>
+<li><strong>Call recording</strong> — with a button during the call or automatically for every call; Opus in “Music/Calls” (folder is configurable), a list of recordings with playback.</li>
+<li><strong>Runs in the background</strong> — the process lives for the whole session: an incoming call shows the window at once (and hides it again afterwards if it was hidden), closing the window does not drop the call or the recording. The call on the lock screen (answer without unlocking) and the green call pill are drawn by the shell.</li>
+<li><strong>Settings</strong> — visualization, caller photo, recording mode and folder, carrier services (call waiting, caller ID, call forwarding), contact import/export, clearing the log, start tab.</li>
 <li><strong>14 languages</strong> — follows the system language.</li>
 </ul>
 <table>
 <thead>
 <tr>
 <th>Recents</th>
+<th>Contacts</th>
 <th>Call</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a class="md-shot" href="/img/synshell/recents-en.webp"><img src="/img/synshell/recents-en-800.webp" width="800" height="1674" alt="Recents" loading="lazy" decoding="async"></a></td>
+<td><a class="md-shot" href="/img/synshell/contacts-en.webp"><img src="/img/synshell/contacts-en-800.webp" width="800" height="1674" alt="Contacts" loading="lazy" decoding="async"></a></td>
 <td><a class="md-shot" href="/img/synshell/call-en.webp"><img src="/img/synshell/call-en-800.webp" width="800" height="1674" alt="Call" loading="lazy" decoding="async"></a></td>
 </tr>
 </tbody>
 </table>
 <h2>Requirements</h2>
-<p>Calls go through <code>synmodemd</code>, the synshell modem daemon (Qualcomm modems over QMI/QRTR). Call audio (mute, speaker) is handled by <code>palaudiod</code> of the phone platform. Without a modem the app opens, but only shows “Modem unavailable”.</p>
+<p>Calls go through <code>synmodemd</code>, the synshell modem daemon (Qualcomm modems over QMI/QRTR). Call audio (mute, speaker) is handled by <code>palaudiod</code> of the phone platform; recording and voice visualization read its tap <code>/run/palaudio/voice-tap</code> (without it they are unavailable, calls still work). Recordings are encoded by <code>ffmpeg</code> (libopus). Without a modem the app opens, but shows “Modem unavailable”.</p>
 <h2>Install</h2>
 <p><strong>Arch Linux (AUR)</strong> — x86_64 and aarch64. synphone is part of the <code>synshell-mobile</code> package (phone shell, modem, SMS, NFC, compass, step counter):</p>
 <pre><code class="language-sh">yay -S synshell-mobile-bin      # prebuilt
@@ -96,7 +101,10 @@ yay -S synshell-mobile-git      # built from source
 <pre><code class="language-sh">synphone                        # keypad
 synphone +15550142              # number in the keypad
 synphone --log                  # open the call log
-synphone --screenshot out.png --page log   # window snapshot with made-up data (dial|log|call)
+synphone --contacts             # open contacts
+synphone --background           # background process (session autostart)
+synphone --screenshot out.png --page log   # window snapshot with made-up data
+                                # (dial|log|contacts|contact|edit|settings|call|incoming)
 </code></pre>
 <h2>Part of synshell</h2>
 <p>synphone is one of the applications of <a href="/synshell/">synshell</a> — a Wayland desktop environment in Rust for computers and phones, built on the <a href="https://github.com/VitaminDB/syngui">syngui</a> UI framework.</p>
