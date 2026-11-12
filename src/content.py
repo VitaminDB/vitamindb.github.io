@@ -314,8 +314,8 @@ PROJECTS = [
         "install": {
             "code": "paru -S synthos-bin   # prebuilt binary — recommended\nparu -S synthos-git   # build from source (CUDA toolkit, ~2 h, ~15 GB disk)",
             "note": {
-                "en": "Other distributions: download the tarball from Releases or build from source — the binary is built against Arch library versions. Models downloaded from Hugging Face are packed once into a single .syn file (Syn packages → Build a .syn); GGUF chat models open directly.",
-                "ru": "Другие дистрибутивы: архив со страницы Releases или сборка из исходников — бинарник собран под версии библиотек Arch. Модели, скачанные с Hugging Face, один раз упаковываются в файл .syn (Syn packages → Build a .syn); чат-модели в GGUF открываются напрямую.",
+                "en": "Other distributions: download the tarball from Releases or build from source — the binary is built against Arch library versions. Models downloaded from Hugging Face are packed once into a single .syn file (Syn packages → Build a .syn); GGUF chat models open directly. synthos works on its own: the synaptix engine is built in, no service needed; if synshell's synaptixd service is running, synthos connects to it and shares the models already loaded, so nothing sits in VRAM twice.",
+                "ru": "Другие дистрибутивы: архив со страницы Releases или сборка из исходников — бинарник собран под версии библиотек Arch. Модели, скачанные с Hugging Face, один раз упаковываются в файл .syn (Syn packages → Build a .syn); чат-модели в GGUF открываются напрямую. synthos работает сам по себе: движок synaptix встроен, служба не нужна; если запущена служба synaptixd из synshell, synthos подключается к ней и использует уже загруженные модели, чтобы они не занимали видеопамять дважды.",
             },
         },
         "requirements": {
