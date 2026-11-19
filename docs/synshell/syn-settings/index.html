@@ -71,6 +71,7 @@
 <li><strong>Panels and docks</strong> — any edge of any monitor, floating or stuck to the edge, auto-hide, length, alignment, reserved space.</li>
 <li><strong>Workspace</strong> — window behavior, workspaces and their default layout, window rules, launcher, notifications.</li>
 <li><strong>Devices</strong> — keyboard and layouts, shortcuts, mouse and touchpad, monitors (scale, HDR), Wi-Fi, Bluetooth, sound (outputs, inputs and per-app volume), USB devices, VPN (NetworkManager, WireGuard with key generation), device link (synlink), game mode, hardware overview with live sensors.</li>
+<li><strong>Internet connections</strong> — several connections at once (Wi-Fi, cable, a phone over USB; the <code>synnetd</code> service): links with live speed, “primary link only” or “all links at once” mode, primary link choice, USB modems without NetworkManager, and a choice per application — e.g. a torrent client over all links and the browser over Wi-Fi only.</li>
 <li><strong>Phone</strong> — mobile network, calls and SMS, modem info, gestures, vibration.</li>
 <li><strong>System</strong> — power and CPU governors, power alerts (low and critical battery, clean shutdown near 0 %, idle-sleep warning, unexpected power-off report, linked devices going to sleep or off), neural networks and the assistant, location and camera permissions, language, date and time, lock and idle, autostart, default applications (written to <code>mimeapps.list</code>), session, “About”.</li>
 <li><strong>Search</strong> across all pages, in the interface language and in Russian.</li>
@@ -93,6 +94,7 @@
 </tr>
 </tbody>
 </table>
+<p><a class="md-shot" href="/img/synshell/uplinks-en.webp"><img src="/img/synshell/uplinks-en-800.webp" width="800" height="610" alt="Internet connections" loading="lazy" decoding="async"></a></p>
 <h2>Install</h2>
 <p><strong>Arch Linux (AUR)</strong> — x86_64 and aarch64. synsettings is part of <code>synshell-core</code>, the base set of desktop programs (compositor, shell, settings, file manager, terminal, software center, screenshots):</p>
 <pre><code class="language-sh">yay -S synshell-core-bin      # prebuilt

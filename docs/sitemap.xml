@@ -589,6 +589,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/blog/"/>
   </url>
   <url>
+    <loc>https://alexeyev.dev/blog/synshell-several-internet-connections/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/blog/synshell-several-internet-connections/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/blog/synshell-several-internet-connections/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/blog/synshell-several-internet-connections/"/>
+  </url>
+  <url>
+    <loc>https://alexeyev.dev/ru/blog/synshell-several-internet-connections/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/blog/synshell-several-internet-connections/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/blog/synshell-several-internet-connections/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/blog/synshell-several-internet-connections/"/>
+  </url>
+  <url>
     <loc>https://alexeyev.dev/blog/synshell-0-2-0/</loc>
     <lastmod>2026-11-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://alexeyev.dev/blog/synshell-0-2-0/"/>

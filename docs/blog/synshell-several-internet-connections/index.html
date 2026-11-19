@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>synshell: several internet connections at once</title>
+<meta name="description" content="Wi-Fi, cable and a phone over USB together: one primary link with fallback or all links at once, and a choice for each application.">
+<meta name="author" content="Vitaliy Alexeyev">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://alexeyev.dev/blog/synshell-several-internet-connections/">
+<link rel="alternate" hreflang="en" href="https://alexeyev.dev/blog/synshell-several-internet-connections/">
+<link rel="alternate" hreflang="ru" href="https://alexeyev.dev/ru/blog/synshell-several-internet-connections/">
+<link rel="alternate" hreflang="x-default" href="https://alexeyev.dev/blog/synshell-several-internet-connections/">
+<link rel="preload" href="/assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=a41900faca">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Vitaliy Alexeyev">
+<meta property="og:title" content="synshell: several internet connections at once">
+<meta property="og:description" content="Wi-Fi, cable and a phone over USB together: one primary link with fallback or all links at once, and a choice for each application.">
+<meta property="og:url" content="https://alexeyev.dev/blog/synshell-several-internet-connections/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:image" content="https://alexeyev.dev/og/blog-synshell-several-internet-connections-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="synshell: several internet connections at once">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alexeyev_vitaly">
+<meta name="twitter:creator" content="@alexeyev_vitaly">
+<meta name="twitter:title" content="synshell: several internet connections at once">
+<meta name="twitter:description" content="Wi-Fi, cable and a phone over USB together: one primary link with fallback or all links at once, and a choice for each application.">
+<meta name="twitter:image" content="https://alexeyev.dev/og/blog-synshell-several-internet-connections-en.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://alexeyev.dev/blog/synshell-several-internet-connections/#post","headline":"synshell: several internet connections at once","description":"Wi-Fi, cable and a phone over USB together: one primary link with fallback or all links at once, and a choice for each application.","datePublished":"2026-11-19","dateModified":"2026-11-19","inLanguage":"en","url":"https://alexeyev.dev/blog/synshell-several-internet-connections/","mainEntityOfPage":"https://alexeyev.dev/blog/synshell-several-internet-connections/","image":["https://alexeyev.dev/og/blog-synshell-several-internet-connections-en.jpg","https://alexeyev.dev/img/synshell/uplinks-en.webp"],"author":{"@type":"Person","@id":"https://alexeyev.dev/#person","name":"Vitaliy Alexeyev","url":"https://alexeyev.dev/"},"isPartOf":{"@id":"https://alexeyev.dev/blog/#blog"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Vitaliy Alexeyev","item":"https://alexeyev.dev/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://alexeyev.dev/blog/"},{"@type":"ListItem","position":3,"name":"synshell: several internet connections at once","item":"https://alexeyev.dev/blog/synshell-several-internet-connections/"}]}]}</script>
+</head>
+<body class="blog-post">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/" aria-label="Vitaliy Alexeyev — Home"><span class="mono-mark" aria-hidden="true">VA</span><span class="brand-name">Vitaliy Alexeyev</span></a>
+    <nav class="top-nav" aria-label="Main">
+      <a href="/#projects">Projects</a>
+      <a href="/blog/">Blog</a>
+      <a href="/#vibe">How it is tested</a>
+      <a href="/#contact">Contact</a>
+      <a class="lang" href="/ru/blog/synshell-several-internet-connections/" hreflang="ru" lang="ru" title="Русский">RU</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Vitaliy Alexeyev</a></li><li><a href="/blog/">Blog</a></li><li><a href="/blog/#synshell">synshell</a></li></ol></nav><article class="post" aria-labelledby="post-h"><header class="p-hero"><div class="wrap"><p class="eyebrow rise"><time datetime="2026-11-19">November 19, 2026</time> · synshell</p><h1 id="post-h" class="rise d1">synshell: several internet connections at once</h1><p class="p-lead rise d2">Wi-Fi, cable and a phone over USB together: one primary link with fallback or all links at once, and a choice for each application.</p></div></header><div class="wrap"><div class="chips post-tags"><a class="chip" href="/blog/?tag=synshell">#synshell</a><a class="chip" href="/blog/?tag=desktop">#desktop</a><a class="chip" href="/blog/?tag=network">#network</a></div><nav class="post-toc" aria-label="Contents"><b>Contents</b><ol><li><a href="#s-two-modes">Two modes</a></li><li><a href="#s-a-choice-for-each-application">A choice for each application</a></li><li><a href="#s-phone-as-a-usb-modem">Phone as a USB modem</a></li><li><a href="#s-safe-by-design">Safe by design</a></li><li><a href="#s-how-to-turn-it-on">How to turn it on</a></li></ol></nav></div><div class="wrap post-body"><p>synshell has a new service, synnetd. It lets Wi-Fi, cable and a phone over USB work at the same time instead of one replacing another. It is set up in System Settings → Internet connections.</p>
+<figure class="post-wide"><a href="/img/synshell/uplinks-en.webp"><div class="frame"><img src="/img/synshell/uplinks-en.webp" width="1180" height="900" alt="System Settings → Internet connections: Wi-Fi and a USB modem, the mode, the primary link and per-app choices" srcset="/img/synshell/uplinks-en-800.webp 800w, /img/synshell/uplinks-en.webp 1180w" sizes="(max-width: 900px) 100vw, 860px" loading="lazy" decoding="async"></div></a><figcaption>System Settings → Internet connections: Wi-Fi and a USB modem, the mode, the primary link and per-app choices</figcaption></figure>
+<h2 id="s-two-modes">Two modes</h2>
+<ul class="limits"><li>Primary link only (the default): all traffic goes through one link, the others are backups. If the primary one drops, everything moves to the next. The primary link is picked automatically (cable, then Wi-Fi, then USB modem) or by hand.</li><li>All links at once: connections are spread across the links, so torrents, updates and Steam downloads from many sources use all of them. A single connection always stays on one link.</li></ul>
+<h2 id="s-a-choice-for-each-application">A choice for each application</h2>
+<p>Each application can have its own setting regardless of the system mode: for example, a torrent client over all links, while the browser and calls stay on Wi-Fi. Settings suggests the programs that benefit most — qBittorrent, Transmission, Steam. Under the hood the program&#x27;s processes go into their own cgroup with a tiny BPF program that marks every new socket, so the route is chosen at connect() time without races.</p>
+<h2 id="s-phone-as-a-usb-modem">Phone as a USB modem</h2>
+<p>An Android phone or an iPhone in USB tethering mode is brought up by the service itself, with its own DHCP client — NetworkManager is not needed. If something else already configures the interface, synnetd leaves it alone.</p>
+<figure class="post-wide"><a href="/img/synshell/network-widget-ru.webp"><div class="frame"><img src="/img/synshell/network-widget-ru.webp" width="400" height="204" alt="The Network desktop widget in all-links mode: 1.9 MB/s in total, the USB modem and Wi-Fi each drawn in its own colour" srcset="/img/synshell/network-widget-ru-800.webp 400w, /img/synshell/network-widget-ru.webp 400w" sizes="(max-width: 900px) 100vw, 860px" loading="lazy" decoding="async"></div></a><figcaption>The Network desktop widget in all-links mode: 1.9 MB/s in total, the USB modem and Wi-Fi each drawn in its own colour</figcaption></figure>
+<h2 id="s-safe-by-design">Safe by design</h2>
+<ul class="limits"><li>The system routing table is never changed: the service keeps its routes in separate tables and rules. Stop it, and the system works as if it had never been there.</li><li>With only one link connected, it adds no rules at all; when a VPN is on, it steps aside.</li></ul>
+<h2 id="s-how-to-turn-it-on">How to turn it on</h2>
+<ul class="limits"><li>sudo systemctl enable --now synnetd — the service ships in the synshell-core package.</li><li>Command line: synnetd status, synnetd mode primary|both, synnetd primary &lt;interface&gt;|auto, synnetd app &lt;name&gt; primary|both|system.</li><li>Details: docs/NETD.md in the synshell repository.</li></ul><div class="pn-row"><a class="pn prev" href="/blog/synshell-0-2-0/"><span>←</span> synshell 0.2.0: the first public release</a></div><p class="post-back"><a href="/blog/">← All posts</a> · <a href="/synshell/">Project page: synshell</a></p></div></article><nav class="section" aria-labelledby="more-h"><div class="wrap"><div class="sec-head"><span class="sec-num">→</span><h2 id="more-h">More in this section: synshell</h2></div><ul class="others"><li><a href="/blog/synshell-0-2-0/"><b>synshell 0.2.0: the first public release</b><span>Wayland desktop in Rust for computers and phones: compositor, desktop, phone and game shells, System Settings and 31 apps. Packages in the AUR.</span></a></li></ul></div></nav>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p>© 2026 Vitaliy Alexeyev · <a href="https://github.com/VitaminDB" rel="me">GitHub</a> · <a href="https://www.linkedin.com/in/vitaly-alexeyev-08546b21b/" rel="me">LinkedIn</a> · <a href="https://paypal.me/vitamindbnfkz">PayPal</a></p><p>Static site, no trackers, no cookies. Built with a Python script.</p></div>
+    <nav aria-label="Other projects"><a href="/synthos/">synthos</a><a href="/synaptix/">synaptix</a><a href="/syngui/">syngui</a><a href="/synshell/">synshell</a><a href="/synport/">synport</a><a href="/linux-legion/">linux-legion</a><a href="/ardor-mouse/">ardor-mouse</a></nav>
+  </div>
+</footer>
+</body>
+</html>
