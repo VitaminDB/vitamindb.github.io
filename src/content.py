@@ -295,7 +295,7 @@ PROJECTS = [
                 "Video: LTX-2.3 (text, image or audio to video, IC-LoRA control) and MiniMax-H3 with synchronized stereo audio and image / video / audio references.",
                 "Music and speech: YuE2 songs through an editable ABC score and covers of a recording, ACE-Step, VoxCPM2 and OmniVoice voice cloning, VibeVoice multi-speaker dialogue, GigaAM transcription, Sortformer diarization.",
                 "A local knowledge base (RAG): files, folders, PDF and URLs, hybrid BM25 + vector search with an optional rerank, stored in bundled SQLite.",
-                "A code editor with git-status decorations and integrated terminals that run full-screen TUIs.",
+                "A code editor with git-status decorations and integrated terminals that run full-screen TUIs. Terminals survive restarts and crashes: a separate holder keeps the programs running and the tabs reattach on the next start; other programs open tabs themselves with synthos --open-terminal <dir> --cmd '<command>'.",
                 "A Hugging Face browser with a download dock, in-app packing of models into .syn with per-layer-group quantization, and an interface in 14 languages.",
             ],
             "ru": [
@@ -307,7 +307,7 @@ PROJECTS = [
                 "Видео: LTX-2.3 (из текста, картинки или звука, управление через IC-LoRA) и MiniMax-H3 с синхронным стереозвуком и референсами — картинками, видео и звуком.",
                 "Музыка и речь: песни YuE2 через редактируемую партитуру ABC и каверы на запись, ACE-Step, клонирование голоса в VoxCPM2 и OmniVoice, диалог на несколько голосов в VibeVoice, распознавание речи GigaAM и разметка спикеров Sortformer.",
                 "Локальная база знаний (RAG): файлы, папки, PDF и ссылки, гибридный поиск BM25 + векторы с необязательным реранком, всё хранится во встроенном SQLite.",
-                "Редактор кода с подсветкой статуса git и встроенными терминалами, в которых работают полноэкранные TUI.",
+                "Редактор кода с подсветкой статуса git и встроенными терминалами, в которых работают полноэкранные TUI. Терминалы переживают перезапуск и падение: программы в них держит отдельный хранитель, и при следующем запуске вкладки подключаются к ним; другие программы открывают вкладки сами — synthos --open-terminal <папка> --cmd '<команда>'.",
                 "Браузер Hugging Face с панелью загрузок, упаковка моделей в .syn прямо в программе с квантованием по группам слоёв и интерфейс на 14 языках.",
             ],
         },
