@@ -366,7 +366,8 @@ def footer_html(site, lang):
     year = site.lastmod[:4]
     return (f'    <div><p>© {year} {esc(c.SITE["name"][lang])} · <a href="{esc(c.SITE["contacts"]["github"])}" rel="me">GitHub</a>'
             f' · <a href="{esc(c.SITE["contacts"]["linkedin"])}" rel="me">LinkedIn</a>'
-            f' · <a href="{esc(c.SITE["contacts"]["paypal"])}">PayPal</a></p><p>{esc(ui["footer_note"])}</p></div>\n'
+            + (f' · <a href="{esc(c.SITE["contacts"]["youtube"])}" rel="me">YouTube</a>' if c.SITE["contacts"].get("youtube") else "")
+            + f' · <a href="{esc(c.SITE["contacts"]["paypal"])}">PayPal</a></p><p>{esc(ui["footer_note"])}</p></div>\n'
             f'    <nav aria-label="{esc(ui["other_nav"])}">{links}</nav>')
 
 
