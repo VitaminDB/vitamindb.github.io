@@ -641,7 +641,7 @@ PROJECTS = [
         ],
     },
     # ------------------------------------------------------------------ synshell
-    # Source: synshell/README.md, README.ru.md, docs/release-notes/0.2.0(.ru).md (07.11.2026).
+    # Source: synshell/README.md, README.ru.md, docs/release-notes/0.2.0(.ru).md (07.11.2026); synnetd — docs/NETD.md (19.11.2026).
     # Former name: syndesktop (old URL /syndesktop/ redirects here, see REDIRECTS).
     {
         "slug": "synshell",
@@ -702,6 +702,7 @@ PROJECTS = [
                 "14 built-in themes (Nord by default), each exported to GTK, Qt/KDE and GIMP so other apps match; your own themes in MSS. Interface in 14 languages.",
                 "Computer ↔ phone over USB and Wi-Fi (synlink): screen and remote input, files, notifications, a shared clipboard, synced passwords.",
                 "Own lock screen (PAM), screen-sharing and screenshot portal over PipeWire for browsers and OBS, and the synshot screenshot tool.",
+                "Several internet connections at once (the synnetd service): Wi-Fi, cable and a phone over USB (Android or iPhone, brought up without NetworkManager) work together — one primary channel with automatic fallback, or all channels at once, spreading connections so torrents, downloads and Steam go faster. Each application gets its own choice (a torrent client over all channels, the browser over Wi-Fi only) via cgroup and BPF socket marks, without touching the system routing table or a VPN. Set up in System Settings → Internet connections; the Network desktop widget shows every channel in its own colour.",
             ],
             "ru": [
                 "Композитор synwm на smithay: DRM/KMS с несколькими GPU, горячим подключением и DPMS; рабочие столы, раскладки «плавающая», «мозаика», «колонки», «сетка» и «монокль», прилипание, обзор окон, Alt+Tab, правила окон, Xwayland, сокет IPC с JSON и synwm msg. Если оболочка упадёт, композитор перезапустит её, а окна останутся.",
@@ -713,6 +714,7 @@ PROJECTS = [
                 "14 встроенных тем (по умолчанию Nord); каждая передаётся в GTK, Qt/KDE и GIMP, чтобы другие программы выглядели так же; свои темы — на MSS. Интерфейс на 14 языках.",
                 "Компьютер ↔ телефон по USB и Wi-Fi (synlink): экран и управление, файлы, уведомления, общий буфер обмена, синхронизация паролей.",
                 "Свой экран блокировки (PAM), портал показа экрана и снимков через PipeWire для браузеров и OBS, снимки экрана synshot.",
+                "Несколько подключений к интернету сразу (служба synnetd): Wi-Fi, кабель и телефон по USB (Android или iPhone, поднимается сам, без NetworkManager) работают вместе — один канал основной с автопереходом на запасные или все каналы сразу: соединения распределяются, и торренты, загрузки и Steam идут быстрее. Для каждой программы свой выбор (торрент через все каналы, браузер только через Wi-Fi) — через cgroup и BPF-метки сокетов, без правки системной таблицы маршрутов и без вмешательства в VPN. Настройка — «Параметры» → «Подключения к интернету»; виджет «Сеть» показывает каждый канал своим цветом.",
             ],
         },
         "install": {

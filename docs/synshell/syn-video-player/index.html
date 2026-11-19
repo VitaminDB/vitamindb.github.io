@@ -98,6 +98,8 @@ yay -S syn-video-player-git      # built from source
 </code></pre>
 <p>Depends on <code>ffmpeg</code>. Neural filters need an NVIDIA card: DLSS 5 — the <code>syn-wine-dlss5</code> helper, super-resolution and RIFE — <code>.syn</code> models in the <code>vfx</code> folder of the synaptix model library.</p>
 <p>The player is part of the <code>synshell</code> metapackage — the whole desktop: <code>yay -S synshell-bin</code>. <strong>From source:</strong> <code>cargo build --release -p syn-video-player</code> in the <a href="/synshell/">synshell</a> repository.</p>
+<h2>Embedding</h2>
+<p>The player is also a library (<code>syn_video_player::embed</code>): other programs embed the same player screen — header with the playback chip, audio tracks, subtitles with styling, settings — and add their own chips, overlays, settings sections, neighbouring videos and stream reopening through the <code>Host</code> trait. Without the default <code>desktop</code> feature (DLSS 5, neural filters, desktop services) it builds for Android too. Used by tv_rezka: improvements here reach it automatically.</p>
 <h2>Command line</h2>
 <pre><code class="language-sh">syn-video-player                                # library
 syn-video-player movie.mkv                      # open a file or a URL

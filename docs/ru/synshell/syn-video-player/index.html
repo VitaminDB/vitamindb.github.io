@@ -98,6 +98,8 @@ yay -S syn-video-player-git      # сборка из исходников
 </code></pre>
 <p>Нужен <code>ffmpeg</code>. Нейрофильтрам нужна видеокарта NVIDIA: DLSS 5 — помощник <code>syn-wine-dlss5</code>, увеличению и RIFE — модели <code>.syn</code> в папке <code>vfx</code> библиотеки моделей synaptix.</p>
 <p>Плеер входит в метапакет <code>synshell</code> — весь рабочий стол: <code>yay -S synshell-bin</code>. <strong>Из исходников:</strong> <code>cargo build --release -p syn-video-player</code> в репозитории <a href="/ru/synshell/">synshell</a>.</p>
+<h2>Встраивание</h2>
+<p>Плеер — ещё и библиотека (<code>syn_video_player::embed</code>): другие программы встраивают тот же экран плеера — шапку с чипом воспроизведения, звуковые дорожки, субтитры с оформлением, настройки — и добавляют свои чипы, слои, разделы настроек, соседние ролики и переоткрытие потока через типаж <code>Host</code>. Без фичи <code>desktop</code> (по умолчанию включена: DLSS 5, нейрофильтры, службы рабочего стола) собирается и под Android. Так устроен плеер tv_rezka: улучшения здесь сразу приходят туда.</p>
 <h2>Командная строка</h2>
 <pre><code class="language-sh">syn-video-player                                # библиотека
 syn-video-player фильм.mkv                      # открыть файл или сетевой адрес
