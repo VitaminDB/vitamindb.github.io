@@ -896,7 +896,7 @@ PROJECTS = [
         "name": "linux-legion",
         "repo": "https://github.com/VitaminDB/linux-legion",
         "readme": "https://github.com/VitaminDB/linux-legion#readme",
-        "aur": ["linux-legion"],
+        "aur": ["linux-legion", "linux-legion-bin", "linux-legion-git"],
         "licence": "MIT",
         "platform": {"en": "Linux · Lenovo Legion laptops", "ru": "Linux · ноутбуки Lenovo Legion"},
         "stack": ["Rust", "syngui", "hidraw"],
@@ -907,39 +907,41 @@ PROJECTS = [
             "ru": "linux-legion — аналог Lenovo Vantage для Linux",
         },
         "description": {
-            "en": "Control Lenovo Legion laptops on Linux: power modes, CPU power limits, fans, "
-                  "per-key Spectrum RGB, battery charging modes. No root, no kernel module. AUR.",
-            "ru": "Управление Lenovo Legion в Linux: режимы питания, лимиты мощности CPU, "
-                  "вентиляторы, RGB-подсветка Spectrum, режимы зарядки. Без root и модулей ядра.",
+            "en": "Lenovo Legion control on Linux: power modes and own profiles, CPU temperature limit, "
+                  "CPU / GPU limits, fans, Spectrum RGB, battery. No root. AUR.",
+            "ru": "Lenovo Legion в Linux: режимы питания и свои профили, предел температуры CPU, "
+                  "лимиты CPU / GPU, вентиляторы, подсветка Spectrum, батарея. Без root.",
         },
         "tagline": {
-            "en": "A Linux control centre for Lenovo Legion laptops — what Lenovo Vantage and Legion Space do on Windows: power modes, CPU power limits, fans, per-key Spectrum RGB, battery modes and hardware switches.",
-            "ru": "Центр управления ноутбуками Lenovo Legion для Linux — то, что в Windows делают Lenovo Vantage и Legion Space: режимы питания, лимиты мощности CPU, вентиляторы, RGB-подсветка Spectrum по клавишам, режимы батареи и аппаратные переключатели.",
+            "en": "A Linux control centre for Lenovo Legion laptops — what Lenovo Vantage and Legion Space do on Windows: power modes and own profiles, CPU and GPU power limits, a CPU temperature limit in any mode, fans, per-key Spectrum RGB, battery modes and hardware switches.",
+            "ru": "Центр управления ноутбуками Lenovo Legion для Linux — то, что в Windows делают Lenovo Vantage и Legion Space: режимы питания и свои профили, лимиты мощности CPU и GPU, предел температуры CPU в любом режиме, вентиляторы, RGB-подсветка Spectrum по клавишам, режимы батареи и аппаратные переключатели.",
         },
         "card": {
-            "en": "Lenovo Vantage for Linux: power modes, CPU limits, fans, per-key Spectrum RGB, battery modes. No root, no kernel module.",
-            "ru": "Lenovo Vantage для Linux: режимы питания, лимиты CPU, вентиляторы, RGB-подсветка Spectrum, режимы батареи. Без root и модулей ядра.",
+            "en": "Lenovo Vantage for Linux: power modes and own profiles, CPU temperature limit, CPU / GPU limits, fans, per-key Spectrum RGB, battery modes. No root, no kernel module.",
+            "ru": "Lenovo Vantage для Linux: режимы питания и свои профили, предел температуры CPU, лимиты CPU / GPU, вентиляторы, RGB-подсветка Spectrum, режимы батареи. Без root и модулей ядра.",
         },
         "stats": [
             {"value": "12", "label": {"en": "lighting effects in the layer editor", "ru": "эффектов подсветки в редакторе слоёв"}},
             {"value": "14", "label": {"en": "interface languages, switched on the fly", "ru": "языков интерфейса, переключаются на лету"}},
             {"value": "~10", "unit": "/s", "label": {"en": "key colours read back from the controller", "ru": "раз в секунду читаются цвета клавиш"}},
-            {"value": "0", "label": {"en": "out-of-tree kernel modules, daemons, root", "ru": "сторонних модулей ядра, демонов и root"}},
+            {"value": "0", "label": {"en": "out-of-tree kernel modules and root", "ru": "сторонних модулей ядра и root"}},
         ],
         "what": {
             "en": [
-                "linux-legion is written in Rust on syngui. It uses the upstream kernel drivers (lenovo-wmi-gamezone, lenovo-wmi-other, ideapad-laptop) and talks to the RGB controller directly through hidraw — no out-of-tree kernel module, no daemon and no root at runtime.",
+                "linux-legion is written in Rust on syngui. It uses the upstream kernel drivers (lenovo-wmi-gamezone, lenovo-wmi-other, ideapad-laptop) and talks to the RGB controller directly through hidraw — no out-of-tree kernel module and no root at runtime; a small user service keeps the CPU limits, the CPU temperature limit and the fans in line with the selected mode or profile.",
                 "A udev rule gives the logged-in user access to the RGB controller and makes the sysfs knobs writable for the wheel group. The README also documents the Spectrum protocol, including the Gen 10 quirks found on real hardware, for anyone porting it elsewhere.",
             ],
             "ru": [
-                "linux-legion написан на Rust и syngui. Он пользуется штатными драйверами ядра (lenovo-wmi-gamezone, lenovo-wmi-other, ideapad-laptop) и общается с RGB-контроллером напрямую через hidraw — без стороннего модуля ядра, без демона и без root при работе.",
+                "linux-legion написан на Rust и syngui. Он пользуется штатными драйверами ядра (lenovo-wmi-gamezone, lenovo-wmi-other, ideapad-laptop) и общается с RGB-контроллером напрямую через hidraw — без стороннего модуля ядра и без root при работе; небольшая пользовательская служба держит лимиты CPU, предел температуры и вентиляторы по выбранному режиму или профилю.",
                 "Правило udev даёт вошедшему пользователю доступ к RGB-контроллеру и открывает настройки в sysfs на запись группе wheel. В README описан и протокол Spectrum, включая особенности 10-го поколения, найденные на живом железе, — для тех, кто захочет перенести его куда-то ещё.",
             ],
         },
         "features": {
             "en": [
                 "Home: power mode in one click, live CPU / GPU / memory / battery gauges and fan speeds; the NVIDIA GPU is polled only while it is already awake, so the dashboard never wakes the dGPU.",
-                "Performance: Quiet, Balanced, Performance, Extreme and Custom (the same as Fn+Q); in Custom — CPU PL1 / PL2, every other limit the firmware exposes, and manual fan targets.",
+                "Performance: Quiet, Balanced, Performance, Extreme and Custom (the same as Fn+Q); in Custom — CPU PL1 / PL2, every other limit the firmware exposes in side-by-side CPU and GPU cards, and manual fan targets.",
+                "Own profiles (0.2.0): clone any mode or profile, name it and set PL1 / PL2 and a CPU temperature limit on top — e.g. Extreme with the GPU at its full 175 W and the CPU held at 95 °C. The limit uses the Intel TCC offset, so it works in every mode; the GPU card explains why the firmware locks TGP in Custom.",
+                "Tray: the window can hide to the tray on close (switch in the left panel); --hidden starts straight into the tray.",
                 "Auto-apply: the firmware forgets custom limits after a reboot, so an optional user service restores them at login, when Custom mode is switched on and after resume.",
                 "Spectrum lighting: six hardware profiles, brightness, the LEGION lid logo and a layer editor on a live key map with 12 effects; profiles are stored in the keyboard itself.",
                 "Battery: Standard, Rapid charge or Conservation (≈80 %), plus charge level and health.",
@@ -949,7 +951,9 @@ PROJECTS = [
             ],
             "ru": [
                 "Главная: режим питания в один клик, живые шкалы CPU / GPU / памяти / батареи и обороты вентиляторов; видеокарта NVIDIA опрашивается, только если уже проснулась, так что панель не будит дискретную карту.",
-                "Производительность: Quiet, Balanced, Performance, Extreme и Custom (то же, что Fn+Q); в Custom — PL1 / PL2 процессора, все остальные лимиты, которые отдаёт прошивка, и ручные обороты вентиляторов.",
+                "Производительность: Quiet, Balanced, Performance, Extreme и Custom (то же, что Fn+Q); в Custom — PL1 / PL2 процессора, все остальные лимиты прошивки в двух карточках рядом (процессор и видеокарта) и ручные обороты вентиляторов.",
+                "Свои профили (0.2.0): клонирование любого режима или профиля, своё название, PL1 / PL2 и предел температуры CPU поверх режима — например, «Экстрим» с видеокартой на полных 175 Вт и процессором не горячее 95 °C. Предел работает через Intel TCC offset, то есть в любом режиме; карточка видеокарты объясняет, почему в Custom прошивка не даёт менять TGP.",
+                "Трей: окно может прятаться в трей при закрытии (переключатель в левой панели); --hidden запускает сразу в трей.",
                 "Автоприменение: прошивка забывает свои лимиты после перезагрузки, поэтому необязательный пользовательский сервис возвращает их при входе, при включении Custom и после сна.",
                 "Подсветка Spectrum: шесть аппаратных профилей, яркость, логотип LEGION на крышке и редактор слоёв на живой карте клавиш с 12 эффектами; профили хранятся в самой клавиатуре.",
                 "Батарея: Standard, Rapid charge или Conservation (≈80 %), уровень заряда и износ.",
@@ -959,10 +963,10 @@ PROJECTS = [
             ],
         },
         "install": {
-            "code": "yay -S linux-legion        # or: paru -S linux-legion",
+            "code": "yay -S linux-legion        # from the release source\nyay -S linux-legion-bin    # prebuilt\nyay -S linux-legion-git    # latest master",
             "note": {
-                "en": "The package installs the binary, a menu entry, icons and the udev rule. From source: cargo build --release, then install packaging/70-linux-legion.rules into /etc/udev/rules.d/ and reload udev.",
-                "ru": "Пакет ставит бинарник, пункт меню, иконки и правило udev. Из исходников: cargo build --release, затем положить packaging/70-linux-legion.rules в /etc/udev/rules.d/ и перезагрузить правила udev.",
+                "en": "The package installs the binary, a menu entry, icons, the udev rule and the user service. From source: syngui package -w -f arch --install (syngui-cli), or cargo build --release and install packaging/70-linux-legion.rules into /etc/udev/rules.d/.",
+                "ru": "Пакет ставит бинарник, пункт меню, иконки, правило udev и пользовательскую службу. Из исходников: syngui package -w -f arch --install (syngui-cli) или cargo build --release и правило packaging/70-linux-legion.rules в /etc/udev/rules.d/.",
             },
         },
         "requirements": {
@@ -994,7 +998,8 @@ PROJECTS = [
         "gallery": [
             img("linux_legion/screenshots/lighting.png", "Spectrum lighting — live key map", "Подсветка Spectrum — живая карта клавиш"),
             img("linux_legion/screenshots/lighting-layers.png", "Lighting effect layers", "Слои эффектов подсветки"),
-            img("linux_legion/screenshots/performance.png", "Performance modes, power limits and fans", "Режимы производительности, лимиты мощности и вентиляторы"),
+            img("linux_legion/screenshots/performance.png", "Power modes and own profiles", "Режимы питания и свои профили"),
+            img("linux_legion/screenshots/performance-limits.png", "CPU and GPU power limits", "Лимиты мощности процессора и видеокарты"),
             img("linux_legion/screenshots/battery.png", "Battery charging modes", "Режимы зарядки батареи"),
             img("linux_legion/screenshots/device.png", "Device switches and system information", "Переключатели устройства и сведения о системе"),
         ],

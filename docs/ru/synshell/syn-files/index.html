@@ -78,7 +78,7 @@
 <li><strong>Диски и устройства</strong> — флешки и разделы (udisks), телефоны Android (MTP), камеры (PTP), iPhone (фото и видео — с телефона; на телефон файлы кладутся в папку выбранной программы — видны в «Файлы → На iPhone»), файлы устройств, связанных через synlink.</li>
 <li><strong>Сетевые расположения</strong> — «Подключиться к серверу…»: SFTP, SMB, FTP, WebDAV, NFS через gvfs, с вопросами о пароле и ключе сервера.</li>
 <li><strong>Панель терминала</strong> (F12) в открытой папке.</li>
-<li><strong>Просмотр картинок</strong> — <code>synfiles --viewer</code>: масштаб к указателю, лента миниатюр, все картинки папки, поворот по EXIF, удаление в корзину, «Открыть с помощью».</li>
+<li><strong>Просмотр картинок</strong> — <code>synfiles --viewer</code>: масштаб к указателю, лента миниатюр, все картинки папки, поворот по EXIF, удаление в корзину, «Открыть с помощью», <strong>печать</strong> (Ctrl+P) с предпросмотром: принтер, бумага, ориентация, цвет, двусторонняя печать, 1–9 картинок на листе, вписать или заполнить, поля, настройки драйвера или сохранение в PDF.</li>
 <li><strong>Окно выбора файлов</strong> для портала synshell — диалоги «Открыть» и «Сохранить» других программ.</li>
 <li><strong>Вид для телефона</strong> с управлением касаниями.</li>
 <li><strong>14 языков</strong> — как в системе или язык, выбранный в настройках.</li>
@@ -102,7 +102,7 @@
 <pre><code class="language-sh">yay -S synshell-core-bin      # готовые бинарники
 yay -S synshell-core-git      # сборка из исходников
 </code></pre>
-<p>Дополнительно: <code>shared-mime-info</code> (типы файлов), <code>ffmpegthumbnailer</code> (миниатюры видео), <code>libheif</code> (HEIC/HEIF/AVIF), <code>imagemagick</code> (редкие форматы картинок в просмотрщике), <code>udisks2</code> (флешки и диски), <code>gvfs-mtp</code> / <code>gvfs-gphoto2</code> / <code>gvfs-afc</code> (телефоны Android, камеры, iPhone), <code>gvfs-smb</code> (сетевые папки Windows и Samba), <code>git</code> (состояние git), <code>fuse3</code> (архивы как папки), <code>breeze-icons</code> (тема значков по умолчанию).</p>
+<p>Дополнительно: <code>shared-mime-info</code> (типы файлов), <code>ffmpegthumbnailer</code> (миниатюры видео), <code>libheif</code> (HEIC/HEIF/AVIF), <code>imagemagick</code> (редкие форматы картинок в просмотрщике), <code>udisks2</code> (флешки и диски), <code>gvfs-mtp</code> / <code>gvfs-gphoto2</code> / <code>gvfs-afc</code> (телефоны Android, камеры, iPhone), <code>gvfs-smb</code> (сетевые папки Windows и Samba), <code>git</code> (состояние git), <code>fuse3</code> (архивы как папки), <code>breeze-icons</code> (тема значков по умолчанию), <code>cups</code> (печать).</p>
 <p>Весь рабочий стол: <code>yay -S synshell-bin</code>. <strong>Из исходников:</strong> <code>cargo build --release -p syn-files</code> в репозитории <a href="/ru/synshell/">synshell</a>.</p>
 <h2>Командная строка</h2>
 <pre><code class="language-sh">synfiles                                  # вкладки прошлого сеанса или домашняя папка
