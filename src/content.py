@@ -20,8 +20,9 @@ SITE = {
         "github": "https://github.com/VitaminDB",
         "linkedin": "https://www.linkedin.com/in/vitaly-alexeyev-08546b21b/",
         "x": "https://x.com/alexeyev_vitaly",
-        "email": "vitamindbnfkz@gmail.com",
+        "email": "vitamindbnfkz@gmail.com",   # switch to hello@alexeyev.dev once email routing is live
         "paypal": "https://paypal.me/vitamindbnfkz",
+        "stripe_support": "",   # Stripe Payment Link URL for donations; hidden while empty
         "youtube": "https://www.youtube.com/@alexeyev_dev",   # channel URL; hidden while empty
         "discord": "",   # invite URL; hidden while empty
     },
@@ -55,8 +56,8 @@ SITE = {
                                                         "ru": "декод Gemma-4 26B A4B"}},
             {"value": "110+", "label": {"en": "widgets in the GUI framework",
                                          "ru": "виджетов в GUI-фреймворке"}},
-            {"value": "6", "label": {"en": "open-source projects, MIT / Apache-2.0",
-                                      "ru": "открытых проектов, MIT / Apache-2.0"}},
+            {"value": "6", "label": {"en": "open-source projects, GPL-3.0 / MIT",
+                                      "ru": "открытых проектов, GPL-3.0 / MIT"}},
         ],
         # From github-profile/README.md, "Background".
         "background": {
@@ -97,8 +98,14 @@ UI = {
     "en": {
         "skip": "Skip to content",
         "nav_projects": "Projects",
+        "nav_services": "Services",
         "nav_vibe": "How it is tested",
         "nav_contact": "Contact",
+        "footer_services": "Services & Pricing",
+        "footer_terms": "Terms",
+        "footer_privacy": "Privacy",
+        "footer_refunds": "Refunds",
+        "commercial_btn": "Commercial license",
         "lang_other": "Русский",
         "lang_other_short": "RU",
         "home": "Home",
@@ -149,8 +156,14 @@ UI = {
     "ru": {
         "skip": "К содержимому",
         "nav_projects": "Проекты",
+        "nav_services": "Услуги",
         "nav_vibe": "Как проверено",
         "nav_contact": "Контакты",
+        "footer_services": "Услуги и цены",
+        "footer_terms": "Условия",
+        "footer_privacy": "Конфиденциальность",
+        "footer_refunds": "Возвраты",
+        "commercial_btn": "Коммерческая лицензия",
         "lang_other": "English",
         "lang_other_short": "EN",
         "home": "Главная",
@@ -226,7 +239,7 @@ PROJECTS = [
         "repo": "https://github.com/VitaminDB/synthos",
         "readme": "https://github.com/VitaminDB/synthos#readme",
         "aur": ["synthos-bin", "synthos-git"],
-        "licence": "MIT OR Apache-2.0",
+        "licence": "GPL-3.0 / commercial",
         "platform": {"en": "Linux x86_64 · NVIDIA sm_80+", "ru": "Linux x86_64 · NVIDIA sm_80+"},
         "stack": ["Rust", "CUDA", "synaptix", "syngui"],
         "category": "MultimediaApplication",
@@ -402,7 +415,7 @@ PROJECTS = [
         "repo": "https://github.com/VitaminDB/synaptix",
         "readme": "https://github.com/VitaminDB/synaptix#readme",
         "aur": [],
-        "licence": "MIT OR Apache-2.0",
+        "licence": "GPL-3.0 / commercial",
         "platform": {"en": "CUDA sm_80+ · CPU fallback", "ru": "CUDA sm_80+ · запасной путь на CPU"},
         "stack": ["Rust", "CUDA", "NVRTC"],
         "category": "DeveloperApplication",
@@ -530,7 +543,7 @@ PROJECTS = [
         "repo": "https://github.com/VitaminDB/syngui",
         "readme": "https://github.com/VitaminDB/syngui#readme",
         "aur": [],
-        "licence": "MIT OR Apache-2.0",
+        "licence": "GPL-3.0 / commercial",
         "platform": {"en": "Linux · Windows · macOS · Android · Web", "ru": "Linux · Windows · macOS · Android · Web"},
         "stack": ["Rust", "wgpu 28", "WGSL"],
         "category": "DeveloperApplication",
@@ -1118,3 +1131,315 @@ PROJECTS = [
         ],
     },
 ]
+
+
+# --------------------------------------------------------------------------- services & legal
+SERVICES = {
+    "title": {
+        "en": "Services & Licensing — Vitaliy Alexeyev",
+        "ru": "Услуги и лицензии — Виталий Алексеев",
+    },
+    "description": {
+        "en": "Commercial software licenses (synaptix, syngui, synshell, synthos), Rust/CUDA/Linux engineering services, pricing and open-source support.",
+        "ru": "Коммерческие лицензии (synaptix, syngui, synshell, synthos), разработка на Rust, CUDA и Linux, цены и поддержка открытых проектов.",
+    },
+    "h1": {
+        "en": "Services & Licensing",
+        "ru": "Услуги и лицензии",
+    },
+    "lead": {
+        "en": "Commercial licenses for closed-source products, contract systems engineering in Rust, CUDA and Linux, and voluntary sponsorship for ongoing open-source work.",
+        "ru": "Коммерческие лицензии для закрытых продуктов, системная разработка на Rust, CUDA и Linux, а также добровольная поддержка открытых проектов.",
+    },
+    "sections": [
+        {
+            "id": "licensing",
+            "title": {
+                "en": "Commercial software licenses",
+                "ru": "Коммерческие лицензии на ПО",
+            },
+            "intro": {
+                "en": "synaptix, syngui, synshell and synthos are dual-licensed under GPL-3.0 and a commercial license. Use them freely under GPL-3.0, or buy a commercial license to embed them into proprietary / closed-source software without GPL obligations.",
+                "ru": "synaptix, syngui, synshell и synthos распространяются под двойной лицензией: GPL-3.0 и коммерческая. Используйте их бесплатно под GPL-3.0 или приобретите коммерческую лицензию, чтобы встраивать в закрытый продукт без требований GPL.",
+            },
+            "tiers": [
+                {
+                    "name": {"en": "Indie / Solo", "ru": "Indie / Один разработчик"},
+                    "price": "$199",
+                    "period": {"en": "/ year", "ru": "/ год"},
+                    "summary": {
+                        "en": "For solo developers and small independent products.",
+                        "ru": "Для независимых разработчиков и небольших продуктов.",
+                    },
+                    "items": {
+                        "en": [
+                            "1 developer seat, unlimited commercial deployments",
+                            "Covers synaptix, syngui, synshell or synthos",
+                            "Updates for all minor releases during the term",
+                            "Email support (2 business days response)",
+                        ],
+                        "ru": [
+                            "1 рабочее место разработчика, без ограничения по числу инсталляций",
+                            "Покрывает synaptix, syngui, synshell или synthos",
+                            "Все обновления в течение оплаченного года",
+                            "Поддержка по почте (ответ до 2 рабочих дней)",
+                        ],
+                    },
+                    "cta": {"en": "Request Indie license", "ru": "Запросить Indie-лицензию"},
+                    "subject": "Commercial License Inquiry — Indie ($199/yr)",
+                },
+                {
+                    "name": {"en": "Team / Company", "ru": "Команда / Компания"},
+                    "price": "$990",
+                    "period": {"en": "/ year", "ru": "/ год"},
+                    "summary": {
+                        "en": "For commercial teams shipping closed-source software.",
+                        "ru": "Для компаний и команд, выпускающих закрытое ПО.",
+                    },
+                    "items": {
+                        "en": [
+                            "Up to 10 developer seats, unlimited products",
+                            "Full stack: synaptix, syngui, synshell and synthos",
+                            "Priority bug triage and compatibility fixes",
+                            "Invoice and signed license certificate",
+                        ],
+                        "ru": [
+                            "До 10 разработчиков, неограниченное число продуктов",
+                            "Весь стек: synaptix, syngui, synshell и synthos",
+                            "Приоритетный разбор багов и правок совместимости",
+                            "Инвойс и подписанный лицензионный сертификат",
+                        ],
+                    },
+                    "cta": {"en": "Request Team license", "ru": "Запросить лицензию для команды"},
+                    "subject": "Commercial License Inquiry — Team ($990/yr)",
+                },
+                {
+                    "name": {"en": "Enterprise", "ru": "Enterprise"},
+                    "price": {"en": "Custom", "ru": "По запросу"},
+                    "period": {"en": "annual or perpetual", "ru": "годовая или бессрочная"},
+                    "summary": {
+                        "en": "For larger engineering teams, OEMs and hardware vendors.",
+                        "ru": "Для крупных команд, OEM и производителей оборудования.",
+                    },
+                    "items": {
+                        "en": [
+                            "Unlimited seats or perpetual buyout options",
+                            "Custom NDA, SLA and security/compliance review",
+                            "Direct integration assistance and custom kernels/ports",
+                            "Wire / ACH / Stripe invoice billing",
+                        ],
+                        "ru": [
+                            "Неограниченное число мест или бессрочный выкуп",
+                            "Индивидуальный NDA, SLA и аудит соответствия",
+                            "Помощь с интеграцией, кастомные ядра и порты",
+                            "Оплата по инвойсу (Wire / ACH / Stripe)",
+                        ],
+                    },
+                    "cta": {"en": "Contact for quote", "ru": "Запросить расчёт"},
+                    "subject": "Enterprise Commercial License Inquiry",
+                },
+            ],
+        },
+        {
+            "id": "engineering",
+            "title": {
+                "en": "Freelance & sponsored engineering",
+                "ru": "Фриланс и спонсируемая разработка",
+            },
+            "intro": {
+                "en": "Systems software engineering close to the metal: Rust, CUDA/NVRTC kernels, FP4/FP8 quantization, wgpu GUI, Wayland/Linux desktop and hardware utilities, embedded STM32 firmware.",
+                "ru": "Системная разработка близко к железу: Rust, CUDA/NVRTC-ядра, квантизация FP4/FP8, GUI на wgpu, утилиты для Linux и железа, прошивки под STM32.",
+            },
+            "tiers": [
+                {
+                    "name": {"en": "Technical Consultation", "ru": "Техническая консультация"},
+                    "price": "$100",
+                    "period": {"en": "/ hour", "ru": "/ час"},
+                    "summary": {
+                        "en": "Architecture review, profiling, or debugging session.",
+                        "ru": "Разбор архитектуры, профилирование или поиск сложного бага.",
+                    },
+                    "items": {
+                        "en": [
+                            "Rust, GPU/CUDA performance & quantization review",
+                            "Linux desktop / Wayland / USB HID / embedded advice",
+                            "Written summary of findings and next steps",
+                        ],
+                        "ru": [
+                            "Аудит производительности Rust, GPU/CUDA и квантизации",
+                            "Консультации по Linux / Wayland / USB HID / embedded",
+                            "Письменное резюме с выводами и планом действий",
+                        ],
+                    },
+                    "cta": {"en": "Book consultation", "ru": "Заказать консультацию"},
+                    "subject": "Technical Consultation ($100/hr)",
+                },
+                {
+                    "name": {"en": "Contract Development", "ru": "Разработка по контракту"},
+                    "price": "$80",
+                    "period": {"en": "/ hour", "ru": "/ час"},
+                    "summary": {
+                        "en": "Hands-on systems programming billed by tracked hours.",
+                        "ru": "Системная разработка с почасовой оплатой по трекеру.",
+                    },
+                    "items": {
+                        "en": [
+                            "Rust libraries, CLI/GUI apps, CUDA inference kernels",
+                            "Hardware tools, protocol reverse engineering, STM32",
+                            "Weekly deliverables, tests and benchmark reports",
+                        ],
+                        "ru": [
+                            "Библиотеки на Rust, CLI/GUI-приложения, CUDA-ядра",
+                            "Утилиты под железо, реверс протоколов, STM32",
+                            "Еженедельные результаты, тесты и замеры скорости",
+                        ],
+                    },
+                    "cta": {"en": "Discuss a project", "ru": "Обсудить задачу"},
+                    "subject": "Contract Engineering Inquiry ($80/hr)",
+                },
+                {
+                    "name": {"en": "Sponsored Feature / Port", "ru": "Спонсируемая фича / Порт"},
+                    "price": {"en": "from $500", "ru": "от $500"},
+                    "period": {"en": "/ milestone", "ru": "/ этап"},
+                    "summary": {
+                        "en": "Fund a specific feature, bugfix or device port on the roadmap.",
+                        "ru": "Финансирование конкретной функции или порта устройства.",
+                    },
+                    "items": {
+                        "en": [
+                            "Fixed scope and milestone estimate upfront",
+                            "Prioritized development in synaptix, syngui, synshell, synthos or synport",
+                            "Delivered as open-source PR or private commercial build",
+                        ],
+                        "ru": [
+                            "Фиксированный объём и оценка до старта работы",
+                            "Приоритетная реализация в synaptix, syngui, synshell, synthos или synport",
+                            "Поставка в открытом PR или приватной коммерческой сборке",
+                        ],
+                    },
+                    "cta": {"en": "Sponsor a feature", "ru": "Проспонсировать фичу"},
+                    "subject": "Sponsored Feature / Device Port Inquiry",
+                },
+            ],
+        },
+    ],
+    "support": {
+        "id": "support",
+        "title": {
+            "en": "Support open-source development",
+            "ru": "Поддержать открытую разработку",
+        },
+        "intro": {
+            "en": "All public repositories and utilities (linux-legion, ardor-mouse, synport, and GPL-3.0 builds of the main stack) remain free to use. Voluntary tips help cover hardware, testing devices and maintenance time.",
+            "ru": "Все публичные репозитории и утилиты (linux-legion, ardor-mouse, synport и GPL-сборки основного стека) остаются бесплатными. Добровольные донаты помогают оплачивать железо для тестов и время на поддержку.",
+        },
+        "amounts": [
+            {"val": "$5", "label": {"en": "Buy a coffee", "ru": "Угостить кофе"}},
+            {"val": "$15", "label": {"en": "Monthly supporter", "ru": "Поддержка проекта"}},
+            {"val": "$50", "label": {"en": "Hardware & CI fund", "ru": "В фонд железа и тестов"}},
+        ],
+        "paypal_btn": {"en": "Support via PayPal", "ru": "Поддержать через PayPal"},
+        "stripe_btn": {"en": "Support by card (Stripe)", "ru": "Поддержать картой (Stripe)"},
+    },
+    "how": {
+        "id": "how-it-works",
+        "title": {
+            "en": "Ordering, billing & delivery",
+            "ru": "Оплата и порядок работы",
+        },
+        "steps": {
+            "en": [
+                "Send a short description of what you need (license tier, consulting topic or scope) by email.",
+                "Within 2 business days you receive a written scope confirmation and an invoice payable by card (Stripe), ACH/Wire transfer, or PayPal.",
+                "All products and services are delivered digitally (license agreement PDF, source/release access, GitHub PRs or written reports) within 1–3 business days for licenses or on the agreed schedule for engineering.",
+                "Full terms, privacy details and our 14-day refund policy are published on the Legal page.",
+            ],
+            "ru": [
+                "Напишите на почту, что именно нужно: тариф лицензии, тему консультации или описание задачи.",
+                "В течение 2 рабочих дней вы получите письменное подтверждение объёма и счёт (инвойс) для оплаты картой (Stripe), банковским переводом (ACH/Wire) или через PayPal.",
+                "Все лицензии и результаты работ поставляются в цифровом виде (PDF-договор, доступ к релизам/репозиторию, PR или отчёты) за 1–3 рабочих дня для лицензий или по согласованному графику разработки.",
+                "Полные условия, политика конфиденциальности и 14-дневная политика возврата опубликованы на странице правовой информации.",
+            ],
+        },
+        "legal_link": {"en": "Read Terms, Privacy & Refund Policy", "ru": "Условия, конфиденциальность и политика возврата"},
+    },
+}
+
+LEGAL = {
+    "title": {
+        "en": "Legal: Terms, Privacy & Refunds — Vitaliy Alexeyev",
+        "ru": "Условия, конфиденциальность и возвраты — alexeyev.dev",
+    },
+    "description": {
+        "en": "Terms of Service, Privacy Policy and Refund Policy for alexeyev.dev software licenses, freelance engineering services and open-source support.",
+        "ru": "Условия использования, политика конфиденциальности и политика возврата средств для лицензий, услуг разработки и поддержки на alexeyev.dev.",
+    },
+    "h1": {
+        "en": "Legal & Policies",
+        "ru": "Правовая информация",
+    },
+    "lead": {
+        "en": "Terms of Service, Privacy Policy and Refund Policy covering commercial software licenses, engineering services and voluntary sponsorships offered through alexeyev.dev.",
+        "ru": "Условия оказания услуг, политика конфиденциальности и политика возврата для коммерческих лицензий, услуг разработки и поддержки на alexeyev.dev.",
+    },
+    "updated": {
+        "en": "Last updated: November 25, 2026",
+        "ru": "Последнее обновление: 25 ноября 2026 года",
+    },
+    "sections": [
+        {
+            "id": "terms",
+            "title": {"en": "Terms of Service", "ru": "Условия оказания услуг (Terms of Service)"},
+            "paragraphs": {
+                "en": [
+                    "These terms govern the purchase of commercial software licenses, technical consulting, freelance systems engineering, and voluntary sponsorships offered on alexeyev.dev by Vitaliy Alexeyev (Kostanay, Kazakhstan; commercial billing may also be issued through an affiliated U.S. billing entity shown on your invoice).",
+                    "Commercial licenses grant the non-exclusive right to use, modify and distribute the covered software (synaptix, syngui, synshell, synthos) in proprietary products according to the seat count and term stated on the invoice, without GPL-3.0 copyleft obligations.",
+                    "Engineering and consulting services are performed on the scope, rate and schedule agreed in writing before work begins. Deliverables are provided digitally via email, Git repositories or release archives.",
+                    "Software and engineering deliverables are provided on an \"as is\" basis unless a separate written SLA specifies otherwise. Total liability for any claim is limited to the fees actually paid for the specific license or milestone in the preceding 12 months.",
+                ],
+                "ru": [
+                    "Настоящие условия регулируют приобретение коммерческих лицензий на ПО, технических консультаций, услуг системной разработки и добровольной поддержки на сайте alexeyev.dev у Виталия Алексеева (Костанай, Казахстан; коммерческие счета могут также выставляться через аффилированное юрлицо США, указанное в инвойсе).",
+                    "Коммерческая лицензия предоставляет неисключительное право использовать, модифицировать и распространять указанное ПО (synaptix, syngui, synshell, synthos) в закрытых продуктах в рамках числа рабочих мест и срока из инвойса — без обязательств GPL-3.0.",
+                    "Услуги разработки и консультации оказываются по объёму, ставке и срокам, согласованным письменно до начала работ. Результаты передаются в цифровом виде по почте, через Git-репозитории или архивы релизов.",
+                    "ПО и результаты работ предоставляются «как есть», если отдельным письменным SLA не предусмотрено иное. Совокупная ответственность по любым требованиям ограничена суммой, фактически уплаченной за конкретную лицензию или этап за последние 12 месяцев.",
+                ],
+            },
+        },
+        {
+            "id": "privacy",
+            "title": {"en": "Privacy Policy", "ru": "Политика конфиденциальности (Privacy Policy)"},
+            "paragraphs": {
+                "en": [
+                    "alexeyev.dev is a static website: it sets no cookies, runs no third-party ad networks, and uses no behavioural analytics trackers.",
+                    "When you contact us by email or purchase a license or service, we receive only the information you provide: your name, email address, company name, billing details and project correspondence. We use this information strictly to communicate, deliver software/services, issue invoices and comply with tax/accounting laws.",
+                    "Online card and wallet payments are processed securely by third-party payment processors (such as Stripe or PayPal). Payment card numbers and bank credentials are handled directly by those processors and are never stored on alexeyev.dev.",
+                    "We never sell or rent your personal data. You may request access to, correction of, or deletion of your contact records at any time by writing to the support email listed below (subject to statutory invoice retention rules).",
+                ],
+                "ru": [
+                    "alexeyev.dev — статический сайт: он не устанавливает cookies, не содержит рекламных сетей и сторонних поведенческих трекеров.",
+                    "Когда вы пишете на почту или приобретаете лицензию/услугу, мы получаем только те данные, которые вы передаёте сами: имя, email, название компании, платёжные реквизиты для инвойса и переписку по задаче. Эти данные используются исключительно для связи, поставки ПО/услуг, выставления счетов и налогового учёта.",
+                    "Онлайн-платежи картами и кошельками безопасно обрабатываются сторонними платёжными провайдерами (Stripe, PayPal). Номера банковских карт и платёжные реквизиты обрабатываются непосредственно провайдерами и никогда не хранятся на alexeyev.dev.",
+                    "Мы никогда не продаём и не передаём ваши данные третьим лицам в маркетинговых целях. Вы можете в любой момент запросить доступ, исправление или удаление ваших контактных данных по почте ниже (с учётом обязательных сроков хранения бухгалтерских документов).",
+                ],
+            },
+        },
+        {
+            "id": "refunds",
+            "title": {"en": "Refund & Cancellation Policy", "ru": "Политика возврата и отмены (Refund Policy)"},
+            "paragraphs": {
+                "en": [
+                    "Commercial software licenses: eligible for a full 100% refund within 14 calendar days of purchase if the licensed software has not been deployed into a commercial production release. To request a refund, email us with your invoice number.",
+                    "Freelance & consulting services: hourly work is billed for time actually spent and is non-refundable once delivered. Any prepaid unused hours or unstarted fixed-price milestones can be cancelled in writing at any time for a full refund of the unused balance.",
+                    "Voluntary open-source donations / sponsorships: donations are non-refundable, except in cases of accidental duplicate charges or unauthorized transactions reported within 14 calendar days.",
+                    "Approved refunds are issued back to the original payment method within 5–10 business days depending on your bank or card issuer. For any billing or refund question, contact us at the email below — we respond within 2 business days.",
+                ],
+                "ru": [
+                    "Коммерческие лицензии на ПО: полный 100% возврат в течение 14 календарных дней с даты оплаты, если ПО по лицензии ещё не было внедрено в коммерческий продакшн-релиз. Для возврата напишите на почту и укажите номер инвойса.",
+                    "Услуги разработки и консультации: уже отработанные и переданные часы возврату не подлежат. Любые предоплаченные неиспользованные часы или не начатые этапы можно отменить письменно в любой момент с полным возвратом остатка.",
+                    "Добровольные донаты и спонсорство: не подлежат возврату, за исключением случаев ошибочного двойного списания или несанкционированного платежа (обратиться в течение 14 календарных дней).",
+                    "Одобренный возврат перечисляется тем же способом оплаты в срок 5–10 рабочих дней в зависимости от банка. По любым вопросам оплаты и возврата пишите на почту ниже — отвечаем в течение 2 рабочих дней.",
+                ],
+            },
+        },
+    ],
+}

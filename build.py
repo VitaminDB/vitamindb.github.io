@@ -273,7 +273,11 @@ def make_og(site, rel, title, line, kicker, shots):
 ICON_GH = ('<svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>')
 ICON_ARROW = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg>'
 
-SPDX = {"MIT": "https://spdx.org/licenses/MIT.html", "Apache-2.0": "https://spdx.org/licenses/Apache-2.0.html"}
+SPDX = {
+    "MIT": "https://spdx.org/licenses/MIT.html",
+    "Apache-2.0": "https://spdx.org/licenses/Apache-2.0.html",
+    "GPL-3.0": "https://spdx.org/licenses/GPL-3.0-only.html",
+}
 
 
 def licences(expr):
@@ -345,9 +349,10 @@ def render(site, *, lang, rel, title, description, main, canonical=None, alterna
         home_label=esc(ui["home"]),
         nav_label="Main" if lang == "en" else "Основная навигация",
         nav_projects=esc(ui["nav_projects"]),
+        nav_services=esc(ui["nav_services"]),
+        services_url=site.path(lang, "services"),
         nav_blog=esc(site.blog.UI[lang]["nav"]),
         blog_url=site.path(lang, "blog"),
-        nav_vibe=esc(ui["nav_vibe"]),
         nav_contact=esc(ui["nav_contact"]),
         lang_url=esc(lang_url or site.path(other)),
         lang_other_code=other,
@@ -364,10 +369,17 @@ def footer_html(site, lang):
     ui = c.UI[lang]
     links = "".join(f'<a href="{site.path(lang, p["slug"])}">{esc(p["name"])}</a>' for p in c.PROJECTS)
     year = site.lastmod[:4]
+    srv = site.path(lang, "services")
+    leg = site.path(lang, "legal")
     return (f'    <div><p>© {year} {esc(c.SITE["name"][lang])} · <a href="{esc(c.SITE["contacts"]["github"])}" rel="me">GitHub</a>'
             f' · <a href="{esc(c.SITE["contacts"]["linkedin"])}" rel="me">LinkedIn</a>'
             + (f' · <a href="{esc(c.SITE["contacts"]["youtube"])}" rel="me">YouTube</a>' if c.SITE["contacts"].get("youtube") else "")
-            + f' · <a href="{esc(c.SITE["contacts"]["paypal"])}">PayPal</a></p><p>{esc(ui["footer_note"])}</p></div>\n'
+            + f' · <a href="{esc(c.SITE["contacts"]["paypal"])}">PayPal</a></p>'
+            f'<p class="foot-meta"><a href="{srv}">{esc(ui["footer_services"])}</a>'
+            f' · <a href="{leg}#terms">{esc(ui["footer_terms"])}</a>'
+            f' · <a href="{leg}#privacy">{esc(ui["footer_privacy"])}</a>'
+            f' · <a href="{leg}#refunds">{esc(ui["footer_refunds"])}</a></p>'
+            f'<p>{esc(ui["footer_note"])}</p></div>\n'
             f'    <nav aria-label="{esc(ui["other_nav"])}">{links}</nav>')
 
 
@@ -454,6 +466,7 @@ def build_hub(site, imgs, lang):
       <div class="meta-row rise d4"><span class="avail">{esc(S["availability"][lang])}</span></div>
       <div class="actions rise d5">
         <a class="btn" href="{esc(ct["github"])}" rel="me">{ICON_GH}<span>github.com/VitaminDB</span></a>
+        <a class="btn ghost" href="{site.path(lang, "services")}">{esc(ui["footer_services"])}</a>
         <a class="btn ghost" href="{esc(ct["linkedin"])}" rel="me">LinkedIn</a>
         <a class="btn ghost" href="mailto:{esc(ct["email"])}">{esc(ct["email"])}</a>
       </div>
@@ -558,6 +571,8 @@ def build_project(site, imgs, lang, idx):
     buttons = f'<a class="btn" href="{esc(p["repo"])}">{ICON_GH}<span>{esc(gh_label)}</span></a>'
     for pkg in p["aur"]:
         buttons += f'<a class="btn ghost" href="https://aur.archlinux.org/packages/{esc(pkg)}">{esc(ui["on_aur"])}: {esc(pkg)}</a>'
+    if "commercial" in p["licence"].lower():
+        buttons += f'<a class="btn ghost" href="{site.path(lang, "services")}#licensing">{esc(ui["commercial_btn"])}</a>'
 
     parts = []
     parts.append(f"""
@@ -879,6 +894,11 @@ def build_search_index(site):
         for post in B.POSTS:
             items.append({"t": post["title"][lang], "d": post["summary"][lang], "u": site.path(lang, "blog/" + post["slug"]),
                           "k": kinds[2], "g": " ".join(post_tags(site, post))})
+        page_kind = "page" if lang == "en" else "страница"
+        items.append({"t": c.SERVICES["h1"][lang], "d": c.SERVICES["description"][lang],
+                      "u": site.path(lang, "services"), "k": page_kind, "g": "services pricing license freelance support"})
+        items.append({"t": c.LEGAL["h1"][lang], "d": c.LEGAL["description"][lang],
+                      "u": site.path(lang, "legal"), "k": page_kind, "g": "terms privacy refund policy legal"})
         site.write(("ru/" if lang == "ru" else "") + "search.json", json.dumps(items, ensure_ascii=False))
 
 
@@ -1286,9 +1306,170 @@ def build_static(site):
         site.keep("CNAME")   # keep a previously configured domain
 
 
+def build_services(site, imgs):
+    """Services, commercial licensing pricing and open-source support page (EN + RU)."""
+    c = site.c
+    S, srv = c.SITE, c.SERVICES
+    ct = S["contacts"]
+    person = person_ld(site)
+    from urllib.parse import quote
+    for lang in LANGS:
+        ui = c.UI[lang]
+        home = site.path(lang)
+        legal_url = site.path(lang, "legal")
+        parts = [
+            f'<nav class="crumbs wrap" aria-label="{esc(ui["breadcrumb"])}"><ol>'
+            f'<li><a href="{home}">{esc(S["name"][lang])}</a></li>'
+            f'<li aria-current="page">{esc(srv["h1"][lang])}</li></ol></nav>',
+            f'<section class="p-hero" aria-labelledby="srv-h"><div class="wrap">'
+            f'<p class="eyebrow rise">@{esc(S["handle"])} · {esc(S["location"][lang])}</p>'
+            f'<h1 id="srv-h" class="rise d1">{esc(srv["h1"][lang])}</h1>'
+            f'<p class="p-lead rise d2">{esc(srv["lead"][lang])}</p>'
+            f'<div class="legal-nav rise d3">'
+            f'<a class="chip" href="#licensing">{esc(srv["sections"][0]["title"][lang])}</a>'
+            f'<a class="chip" href="#engineering">{esc(srv["sections"][1]["title"][lang])}</a>'
+            f'<a class="chip" href="#support">{esc(srv["support"]["title"][lang])}</a>'
+            f'<a class="chip" href="#how-it-works">{esc(srv["how"]["title"][lang])}</a>'
+            f'</div></div></section>',
+        ]
+        n = 0
+        for sec in srv["sections"]:
+            n += 1
+            cards = []
+            for t in sec["tiers"]:
+                price = t["price"][lang] if isinstance(t["price"], dict) else t["price"]
+                period = t["period"][lang] if isinstance(t["period"], dict) else t["period"]
+                bullets = "".join(f"<li>{esc(x)}</li>" for x in t["items"][lang])
+                mailto = f'mailto:{ct["email"]}?subject={quote(t["subject"])}'
+                cards.append(
+                    f'<li class="price-card">'
+                    f'<h3>{esc(t["name"][lang])}</h3>'
+                    f'<div class="price-val">{esc(price)}<small>{esc(period)}</small></div>'
+                    f'<p class="price-sum">{esc(t["summary"][lang])}</p>'
+                    f'<ul class="price-list">{bullets}</ul>'
+                    f'<a class="btn" href="{esc(mailto)}">{esc(t["cta"][lang])}</a>'
+                    f'</li>'
+                )
+            parts.append(
+                f'<section class="section" id="{esc(sec["id"])}" aria-labelledby="{esc(sec["id"])}-h"><div class="wrap">'
+                f'<div class="sec-head"><span class="sec-num">{n:02d}</span><h2 id="{esc(sec["id"])}-h">{esc(sec["title"][lang])}</h2>'
+                f'<p>{esc(sec["intro"][lang])}</p></div>'
+                f'<ul class="pricing-grid">{"".join(cards)}</ul>'
+                f'</div></section>'
+            )
+        sup = srv["support"]
+        n += 1
+        tiers_html = "".join(f'<li><b>{esc(a["val"])}</b><span>{esc(a["label"][lang])}</span></li>' for a in sup["amounts"])
+        sup_btns = ""
+        if ct.get("stripe_support"):
+            sup_btns += f'<a class="btn" href="{esc(ct["stripe_support"])}">{esc(sup["stripe_btn"][lang])}</a>'
+        if ct.get("paypal"):
+            cls = "btn ghost" if sup_btns else "btn"
+            sup_btns += f'<a class="{cls}" href="{esc(ct["paypal"])}">{esc(sup["paypal_btn"][lang])}</a>'
+        sup_btns += f'<a class="btn ghost" href="mailto:{esc(ct["email"])}">{esc(ct["email"])}</a>'
+        parts.append(
+            f'<section class="section" id="{esc(sup["id"])}" aria-labelledby="{esc(sup["id"])}-h"><div class="wrap">'
+            f'<div class="sec-head"><span class="sec-num">{n:02d}</span><h2 id="{esc(sup["id"])}-h">{esc(sup["title"][lang])}</h2>'
+            f'<p>{esc(sup["intro"][lang])}</p></div>'
+            f'<ul class="support-tiers">{tiers_html}</ul>'
+            f'<div class="actions">{sup_btns}</div>'
+            f'</div></section>'
+        )
+        how = srv["how"]
+        n += 1
+        steps_html = "".join(f"<li>{esc(x)}</li>" for x in how["steps"][lang])
+        parts.append(
+            f'<section class="section" id="{esc(how["id"])}" aria-labelledby="{esc(how["id"])}-h"><div class="wrap">'
+            f'<div class="sec-head"><span class="sec-num">{n:02d}</span><h2 id="{esc(how["id"])}-h">{esc(how["title"][lang])}</h2></div>'
+            f'<ul class="limits">{steps_html}</ul>'
+            f'<p style="margin-top:24px"><a class="btn ghost" href="{legal_url}">{esc(how["legal_link"][lang])} →</a></p>'
+            f'</div></section>'
+        )
+        url_en, url_ru = site.abs(site.path("en", "services")), site.abs(site.path("ru", "services"))
+        canonical = url_en if lang == "en" else url_ru
+        og_rel = f"og/services-{lang}.jpg"
+        make_og(site, og_rel, srv["h1"][lang], srv["lead"][lang], "@VitaminDB · services",
+                [imgs.get(c.PROJECTS[i]["hero"]["src"]) for i in (0, 1, 2)])
+        ld = [{"@context": "https://schema.org", "@graph": [
+            {"@type": "WebPage", "@id": canonical + "#page", "url": canonical,
+             "name": srv["title"][lang], "description": srv["description"][lang], "inLanguage": lang,
+             "author": {"@id": person["@id"]}},
+            {"@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": S["name"][lang], "item": site.abs(home)},
+                {"@type": "ListItem", "position": 2, "name": srv["h1"][lang], "item": canonical}]},
+        ]}]
+        render(site, lang=lang, rel=("ru/" if lang == "ru" else "") + "services/index.html",
+               title=srv["title"][lang], description=srv["description"][lang], main="\n".join(parts),
+               canonical=canonical, alternates=[("en", url_en), ("ru", url_ru), ("x-default", url_en)],
+               og_image=site.abs(site.asset(og_rel)), ld=ld, body_class="services",
+               lang_url=site.path("ru" if lang == "en" else "en", "services"), og_title=srv["title"][lang])
+
+
+def build_legal(site, imgs):
+    """Legal policies page: Terms of Service, Privacy Policy and Refund Policy (EN + RU)."""
+    c = site.c
+    S, leg = c.SITE, c.LEGAL
+    ct = S["contacts"]
+    person = person_ld(site)
+    for lang in LANGS:
+        ui = c.UI[lang]
+        home = site.path(lang)
+        srv_url = site.path(lang, "services")
+        toc = "".join(f'<a class="chip" href="#{esc(sec["id"])}">{esc(sec["title"][lang])}</a>' for sec in leg["sections"])
+        parts = [
+            f'<nav class="crumbs wrap" aria-label="{esc(ui["breadcrumb"])}"><ol>'
+            f'<li><a href="{home}">{esc(S["name"][lang])}</a></li>'
+            f'<li aria-current="page">{esc(leg["h1"][lang])}</li></ol></nav>',
+            f'<section class="p-hero" aria-labelledby="legal-h"><div class="wrap">'
+            f'<p class="eyebrow rise">@{esc(S["handle"])} · {esc(S["location"][lang])}</p>'
+            f'<h1 id="legal-h" class="rise d1">{esc(leg["h1"][lang])}</h1>'
+            f'<p class="p-lead rise d2">{esc(leg["lead"][lang])}</p>'
+            f'<p class="legal-updated rise d3">{esc(leg["updated"][lang])}</p>'
+            f'<div class="legal-nav rise d3">{toc}</div>'
+            f'</div></section>',
+        ]
+        for n, sec in enumerate(leg["sections"], 1):
+            paras = "".join(f"<p>{esc(p)}</p>" for p in sec["paragraphs"][lang])
+            parts.append(
+                f'<section class="section" id="{esc(sec["id"])}" aria-labelledby="{esc(sec["id"])}-h"><div class="wrap">'
+                f'<div class="sec-head"><span class="sec-num">{n:02d}</span><h2 id="{esc(sec["id"])}-h">{esc(sec["title"][lang])}</h2></div>'
+                f'<div class="prose">{paras}</div>'
+                f'</div></section>'
+            )
+        contact_h = "Billing & support contact" if lang == "en" else "Контакты по оплате и возвратам"
+        contact_p = (f'Email: <a href="mailto:{esc(ct["email"])}">{esc(ct["email"])}</a> · '
+                     f'<a href="{srv_url}">{esc(ui["footer_services"])}</a>')
+        parts.append(
+            f'<section class="section" id="billing-contact" aria-labelledby="billing-contact-h"><div class="wrap">'
+            f'<div class="sec-head"><span class="sec-num">{len(leg["sections"]) + 1:02d}</span>'
+            f'<h2 id="billing-contact-h">{esc(contact_h)}</h2></div>'
+            f'<div class="prose"><p>{contact_p}</p></div>'
+            f'</div></section>'
+        )
+        url_en, url_ru = site.abs(site.path("en", "legal")), site.abs(site.path("ru", "legal"))
+        canonical = url_en if lang == "en" else url_ru
+        og_rel = f"og/legal-{lang}.jpg"
+        make_og(site, og_rel, leg["h1"][lang], leg["lead"][lang], "@VitaminDB · legal",
+                [imgs.get(c.PROJECTS[0]["hero"]["src"])])
+        ld = [{"@context": "https://schema.org", "@graph": [
+            {"@type": "WebPage", "@id": canonical + "#page", "url": canonical,
+             "name": leg["title"][lang], "description": leg["description"][lang], "inLanguage": lang,
+             "author": {"@id": person["@id"]}},
+            {"@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": S["name"][lang], "item": site.abs(home)},
+                {"@type": "ListItem", "position": 2, "name": leg["h1"][lang], "item": canonical}]},
+        ]}]
+        render(site, lang=lang, rel=("ru/" if lang == "ru" else "") + "legal/index.html",
+               title=leg["title"][lang], description=leg["description"][lang], main="\n".join(parts),
+               canonical=canonical, alternates=[("en", url_en), ("ru", url_ru), ("x-default", url_en)],
+               og_image=site.abs(site.asset(og_rel)), ld=ld, body_class="legal",
+               lang_url=site.path("ru" if lang == "en" else "en", "legal"), og_title=leg["title"][lang])
+
+
 def build_sitemap(site):
     c = site.c
-    pages = [None] + [p["slug"] for p in c.PROJECTS] + list(getattr(site, "app_slugs", [])) + ["blog"] + [f"blog/{p['slug']}" for p in site.blog.POSTS]
+    pages = ([None, "services", "legal"] + [p["slug"] for p in c.PROJECTS]
+             + list(getattr(site, "app_slugs", [])) + ["blog"] + [f"blog/{p['slug']}" for p in site.blog.POSTS])
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for slug in pages:
@@ -1489,6 +1670,8 @@ def main():
         for i in range(len(content.PROJECTS)):
             build_project(site, imgs, lang, i)
     build_blog(site, imgs)
+    build_services(site, imgs)
+    build_legal(site, imgs)
     build_search_index(site)
     build_404(site)
     build_redirects(site)

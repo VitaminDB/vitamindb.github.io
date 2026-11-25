@@ -390,3 +390,36 @@ button.chip[aria-pressed="true"] { background: var(--accent); color: var(--bg); 
 .post-toc ol { margin: 10px 0 0; padding-left: 1.2em; }
 .post-toc li { margin: 4px 0; }
 .section:has(> #site-results[hidden]) { display: none; }
+
+/* ---- services & legal ---- */
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(16px, 2.4vw, 24px); list-style: none; margin: 0; padding: 0;
+}
+.price-card {
+  display: flex; flex-direction: column; gap: 14px; padding: 24px 22px;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.price-card h3 { font-size: 20px; letter-spacing: -.015em; }
+.price-val { font: 600 clamp(28px, 3vw, 38px)/1.05 var(--display); letter-spacing: -.03em; color: var(--ink); }
+.price-val small { font: 500 13px/1 var(--mono); color: var(--accent); margin-left: 6px; letter-spacing: .02em; }
+.price-sum { color: var(--ink2); font-size: 15.5px; margin: 0; }
+.price-list { list-style: none; margin: 0; padding: 0; flex: 1; }
+.price-list li { position: relative; padding: 8px 0 8px 22px; border-top: 1px solid var(--line); font-size: 15px; color: var(--ink2); }
+.price-list li::before { content: "—"; position: absolute; left: 0; color: var(--accent); font-family: var(--mono); }
+.price-card .btn { align-self: flex-start; margin-top: 4px; }
+.support-tiers {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 14px; list-style: none; margin: 0 0 24px; padding: 0; max-width: 780px;
+}
+.support-tiers li {
+  display: flex; flex-direction: column; gap: 4px; padding: 16px 18px;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.support-tiers b { font: 600 24px/1.1 var(--display); color: var(--accent); }
+.support-tiers span { font-size: 14.5px; color: var(--ink2); }
+.legal-updated { font: 500 13px/1.4 var(--mono); color: var(--muted); margin: 0 0 20px; }
+.legal-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.legal-nav .chip { text-decoration: none; }
+.foot-meta { margin-top: 6px; }
