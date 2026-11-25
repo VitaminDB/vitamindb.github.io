@@ -20,7 +20,7 @@ SITE = {
         "github": "https://github.com/VitaminDB",
         "linkedin": "https://www.linkedin.com/in/vitaly-alexeyev-08546b21b/",
         "x": "https://x.com/alexeyev_vitaly",
-        "email": "vitamindbnfkz@gmail.com",   # switch to hello@alexeyev.dev once email routing is live
+        "email": "hello@alexeyev.dev",   # Cloudflare Email Routing → Gmail (live since 25.11.2026)
         "paypal": "https://paypal.me/vitamindbnfkz",
         "stripe_support": "",   # Stripe Payment Link URL for donations; hidden while empty
         "youtube": "https://www.youtube.com/@alexeyev_dev",   # channel URL; hidden while empty
