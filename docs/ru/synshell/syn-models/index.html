@@ -76,6 +76,22 @@
 <li><strong>Настройки</strong> — токен, кэш загрузок, сколько файлов качать параллельно, сегменты на файл, лимит скорости, пропускаемые форматы и папка пакетов.</li>
 <li><strong>«Параметры системы»</strong> — в разделе Нейросети → Хранилище моделей есть кнопка «Открыть «Модели»».</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>Обучение: как это работает</th>
+<th>Редактор датасета</th>
+<th>Адаптер LoRA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="md-shot" href="/img/synshell/syn-models-training-ru.webp"><img src="/img/synshell/syn-models-training-ru-800.webp" width="800" height="512" alt="Обучение: обзор, задачи, датасеты и адаптеры" loading="lazy" decoding="async"></a></td>
+<td><a class="md-shot" href="/img/synshell/syn-models-training-dataset-ru.webp"><img src="/img/synshell/syn-models-training-dataset-ru-800.webp" width="800" height="512" alt="Редактор датасета с примерами диалогов" loading="lazy" decoding="async"></a></td>
+<td><a class="md-shot" href="/img/synshell/syn-models-training-adapter-ru.webp"><img src="/img/synshell/syn-models-training-adapter-ru-800.webp" width="800" height="512" alt="Обученный адаптер LoRA: сведения, включение по умолчанию и сила" loading="lazy" decoding="async"></a></td>
+</tr>
+</tbody>
+</table>
 <p>Проверено целиком: поиск SmolLM2-135M-Instruct → загрузка 260 МБ → упаковка с MXFP8 в <code>.syn</code> на 142 МБ → synaptixd загружает пакет, модель отвечает верно.</p>
 <table>
 <thead>
