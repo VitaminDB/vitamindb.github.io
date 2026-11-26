@@ -249,23 +249,24 @@ PROJECTS = [
             "ru": "synthos — локальная AI-студия для Linux без Python",
         },
         "description": {
-            "en": "Run LLMs locally on Linux and NVIDIA: agentic chat, notes, image, video, music "
-                  "and speech generation. 27B–125B models on one GPU. Rust, no Python, no cloud.",
-            "ru": "Запуск LLM локально на Linux и NVIDIA: чат с агентом, заметки, генерация "
-                  "картинок, видео, музыки и речи. Модели 27B–125B на одной видеокарте, без Python.",
+            "en": "Run LLMs locally on Linux and NVIDIA: agentic chat, image, video, music and speech "
+                  "generation, a code editor. 27B–125B models on one GPU. Rust, no Python.",
+            "ru": "Запуск LLM локально на Linux и NVIDIA: чат с агентом, генерация картинок, видео, "
+                  "музыки и речи, редактор кода. Модели 27B–125B на одной видеокарте, без Python.",
         },
         "tagline": {
-            "en": "A local AI desktop studio: agentic chat, notes and a node editor for images, "
-                  "video, music and speech — on one NVIDIA GPU, with no Python and no cloud.",
-            "ru": "Локальная нейросетевая студия для рабочего стола: чат с агентом, заметки и "
-                  "нодовый редактор для картинок, видео, музыки и речи — на одной видеокарте "
-                  "NVIDIA, без Python и облака.",
+            "en": "A local AI desktop studio: an agentic chat that generates images, video, music "
+                  "and speech, a knowledge base and a code editor — on one NVIDIA GPU, with no Python "
+                  "and no cloud.",
+            "ru": "Локальная нейросетевая студия для рабочего стола: чат с агентом, который сам "
+                  "генерирует картинки, видео, музыку и речь, база знаний и редактор кода — на одной "
+                  "видеокарте NVIDIA, без Python и облака.",
         },
         "card": {
-            "en": "Local AI studio: agentic chat, notes with boards and a calendar, a node editor for "
-                  "image, video, music and speech generation. 27B–125B models on one GPU.",
-            "ru": "Локальная AI-студия: чат с агентом, заметки с досками и календарём, нодовый "
-                  "редактор для генерации картинок, видео, музыки и речи. Модели 27B–125B на одной карте.",
+            "en": "Local AI studio: an agentic chat that generates images, video, music and speech, "
+                  "a knowledge base and a code editor. 27B–125B models on one GPU.",
+            "ru": "Локальная AI-студия: чат с агентом, который генерирует картинки, видео, музыку и "
+                  "речь, база знаний и редактор кода. Модели 27B–125B на одной карте.",
         },
         "stats": [
             {"value": "125B", "label": {"en": "MoE chat model on a 24 GB laptop card", "ru": "MoE-модель для чата на ноутбучной карте 24 ГБ"}},
@@ -277,58 +278,60 @@ PROJECTS = [
             "en": [
                 "synthos is one desktop app around a local GPU. A chat client runs 27B–125B models "
                 "from single-file .syn bundles or GGUF files and drives the rest of the app through "
-                "tools; a notes mode holds your documents, kanban boards, mind maps and calendar in "
-                "a single project file; a node editor wires generative models into runnable graphs — "
-                "prompt → image, image + instruction → edited image, text or image → video with "
-                "sound, lyrics → music, script → multi-voice dialogue, audio → transcript.",
-                "The agent can build and run those graphs itself, write into your notes, search your "
-                "knowledge base and read the web. Everything runs on the device on the native "
-                "synaptix engine — no Python, no torch, no cloud. Nothing leaves the machine.",
+                "tools. Ask for a picture, a clip with sound, a song or a voiced dialogue, and the "
+                "agent calls its generate tool, which runs the model straight in synshell's "
+                "synaptixd neural service — prompt → image, image + instruction → edited image, "
+                "text or image → video with sound, lyrics → music, script → multi-voice dialogue.",
+                "The agent also searches your knowledge base and reads the web, and synthos is a "
+                "code editor with terminals. Everything runs on the device on the native synaptix "
+                "engine — no Python, no torch, no cloud. Nothing leaves the machine. Notes, the "
+                "Hugging Face browser and .syn packing now live in synshell as separate programs "
+                "(Notes and Models).",
             ],
             "ru": [
                 "synthos — одна программа для рабочего стола вокруг локальной видеокарты. Чат "
                 "запускает модели от 27B до 125B из однофайловых бандлов .syn или из GGUF и через "
-                "инструменты управляет всем остальным; режим заметок держит документы, канбан-доски, "
-                "майнд-карты и календарь в одном файле проекта; нодовый редактор собирает "
-                "генеративные модели в графы, которые можно запустить: промпт → картинка, картинка "
-                "с инструкцией → отредактированная картинка, текст или картинка → видео со звуком, "
-                "текст песни → музыка, сценарий → диалог на несколько голосов, звук → расшифровка.",
-                "Агент умеет сам собрать и запустить такой граф, писать в заметки, искать по базе "
-                "знаний и читать веб. Всё считается на месте, на собственном движке synaptix — без "
-                "Python, без torch и без облака. Данные не покидают машину.",
+                "инструменты управляет всем остальным. Попросите картинку, ролик со звуком, песню "
+                "или озвученный диалог — агент вызовет инструмент generate, и модель запустится "
+                "прямо в службе нейросетей synaptixd из synshell: промпт → картинка, картинка с "
+                "инструкцией → отредактированная картинка, текст или картинка → видео со звуком, "
+                "текст песни → музыка, сценарий → диалог на несколько голосов.",
+                "Ещё агент ищет по базе знаний и читает веб, а сам synthos — редактор кода с "
+                "терминалами. Всё считается на месте, на собственном движке synaptix — без Python, "
+                "без torch и без облака. Данные не покидают машину. Заметки, браузер Hugging Face "
+                "и упаковка в .syn теперь живут в synshell отдельными программами («Заметки» и "
+                "«Модели»).",
             ],
         },
         "features": {
             "en": [
                 "Chat with Qwen3, the Qwen3.6 / 3.8 hybrids, Qwen3.8-Flash-Next (a 125B MoE that runs on a 24 GB card), Gemma-3, Gemma-4 26B A4B, Muse Glimmer 30B and Llama — with vision where the model has it.",
                 "Native inference: NVFP4, MXFP8, SQ1…SQ8 and all ggml quantization types, CUDA-graph decode, MTP and DFlash speculative decoding, prefix-KV reuse across turns and partial offload of layers to host RAM.",
-                "An agent with tools: web search and reading, knowledge-base retrieval, building and running node graphs, full access to notes, a view_media tool, a wizard that asks you a question mid-turn, subagents and your own skills.",
-                "Notes where a whole project is one .syn file: a WYSIWYG block editor over Markdown, flow or free-canvas pages, kanban boards, Gantt charts, mind maps and a calendar with reminders.",
+                "An agent with tools: web search and reading, knowledge-base retrieval, generate (image, video, music and speech straight through the synaptixd service), a view_media tool, a wizard that asks you a question mid-turn, subagents and your own skills.",
                 "Images: FLUX.1, FLUX.2 (dev, klein 4B / 9B), Qwen-Image 2.1, Qwen-Image-Edit 2509 / 2511 and SDXL.",
                 "Video: LTX-2.3 (text, image or audio to video, IC-LoRA control) and MiniMax-H3 with synchronized stereo audio and image / video / audio references.",
                 "Music and speech: YuE2 songs through an editable ABC score and covers of a recording, ACE-Step, VoxCPM2 and OmniVoice voice cloning, VibeVoice multi-speaker dialogue, GigaAM transcription, Sortformer diarization.",
                 "A local knowledge base (RAG): files, folders, PDF and URLs, hybrid BM25 + vector search with an optional rerank, stored in bundled SQLite.",
                 "A code editor with git-status decorations and integrated terminals that run full-screen TUIs. Terminals survive restarts and crashes: a separate holder keeps the programs running and the tabs reattach on the next start; other programs open tabs themselves with synthos --open-terminal <dir> --cmd '<command>'.",
-                "A Hugging Face browser with a download dock, in-app packing of models into .syn with per-layer-group quantization, and an interface in 14 languages.",
+                "An interface in 14 languages. Hugging Face downloads and packing models into .syn moved to the synshell Models program, notes — to synshell Notes.",
             ],
             "ru": [
                 "Чат с Qwen3, гибридами Qwen3.6 / 3.8, Qwen3.8-Flash-Next (MoE на 125B, которая работает на карте 24 ГБ), Gemma-3, Gemma-4 26B A4B, Muse Glimmer 30B и Llama — со зрением, если оно есть у модели.",
                 "Собственный инференс: NVFP4, MXFP8, SQ1…SQ8 и все типы квантования ggml, декод через CUDA-граф, спекулятивное декодирование MTP и DFlash, переиспользование префикс-KV между ходами и частичная выгрузка слоёв в оперативную память.",
-                "Агент с инструментами: поиск и чтение веба, поиск по базе знаний, сборка и запуск нодовых графов, полный доступ к заметкам, просмотр файлов своим зрением (view_media), вопрос пользователю посреди хода, субагенты и свои навыки.",
-                "Заметки, где весь проект — один файл .syn: визуальный блочный редактор поверх Markdown, страницы потоком или свободным холстом, канбан-доски, диаграммы Ганта, майнд-карты и календарь с напоминаниями.",
+                "Агент с инструментами: поиск и чтение веба, поиск по базе знаний, generate (картинка, видео, музыка и речь напрямую через службу synaptixd), просмотр файлов своим зрением (view_media), вопрос пользователю посреди хода, субагенты и свои навыки.",
                 "Картинки: FLUX.1, FLUX.2 (dev, klein 4B / 9B), Qwen-Image 2.1, Qwen-Image-Edit 2509 / 2511 и SDXL.",
                 "Видео: LTX-2.3 (из текста, картинки или звука, управление через IC-LoRA) и MiniMax-H3 с синхронным стереозвуком и референсами — картинками, видео и звуком.",
                 "Музыка и речь: песни YuE2 через редактируемую партитуру ABC и каверы на запись, ACE-Step, клонирование голоса в VoxCPM2 и OmniVoice, диалог на несколько голосов в VibeVoice, распознавание речи GigaAM и разметка спикеров Sortformer.",
                 "Локальная база знаний (RAG): файлы, папки, PDF и ссылки, гибридный поиск BM25 + векторы с необязательным реранком, всё хранится во встроенном SQLite.",
                 "Редактор кода с подсветкой статуса git и встроенными терминалами, в которых работают полноэкранные TUI. Терминалы переживают перезапуск и падение: программы в них держит отдельный хранитель, и при следующем запуске вкладки подключаются к ним; другие программы открывают вкладки сами — synthos --open-terminal <папка> --cmd '<команда>'.",
-                "Браузер Hugging Face с панелью загрузок, упаковка моделей в .syn прямо в программе с квантованием по группам слоёв и интерфейс на 14 языках.",
+                "Интерфейс на 14 языках. Загрузка с Hugging Face и упаковка моделей в .syn переехали в программу synshell «Модели», заметки — в «Заметки» synshell.",
             ],
         },
         "install": {
             "code": "paru -S synthos-bin   # prebuilt binary — recommended\nparu -S synthos-git   # build from source (CUDA toolkit, ~2 h, ~15 GB disk)",
             "note": {
-                "en": "Other distributions: download the tarball from Releases or build from source — the binary is built against Arch library versions. Models downloaded from Hugging Face are packed once into a single .syn file (Syn packages → Build a .syn); GGUF chat models open directly. synthos works on its own: the synaptix engine is built in, no service needed; if synshell's synaptixd service is running, synthos connects to it and shares the models already loaded, so nothing sits in VRAM twice.",
-                "ru": "Другие дистрибутивы: архив со страницы Releases или сборка из исходников — бинарник собран под версии библиотек Arch. Модели, скачанные с Hugging Face, один раз упаковываются в файл .syn (Syn packages → Build a .syn); чат-модели в GGUF открываются напрямую. synthos работает сам по себе: движок synaptix встроен, служба не нужна; если запущена служба synaptixd из synshell, synthos подключается к ней и использует уже загруженные модели, чтобы они не занимали видеопамять дважды.",
+                "en": "Other distributions: download the tarball from Releases or build from source — the binary is built against Arch library versions. Models downloaded from Hugging Face are packed once into a single .syn file with the synshell Models program; GGUF chat models open directly. synthos works on its own: the synaptix engine is built in, no service needed; if synshell's synaptixd service is running, synthos connects to it and shares the models already loaded, so nothing sits in VRAM twice.",
+                "ru": "Другие дистрибутивы: архив со страницы Releases или сборка из исходников — бинарник собран под версии библиотек Arch. Модели, скачанные с Hugging Face, один раз упаковываются в файл .syn программой synshell «Модели»; чат-модели в GGUF открываются напрямую. synthos работает сам по себе: движок synaptix встроен, служба не нужна; если запущена служба synaptixd из synshell, synthos подключается к ней и использует уже загруженные модели, чтобы они не занимали видеопамять дважды.",
             },
         },
         "requirements": {
@@ -376,34 +379,23 @@ PROJECTS = [
             "en": "Every number in the README was measured on my machine, with the losses reported next to the wins. synthos is my own daily code editor and chat.",
             "ru": "Каждая цифра в README измерена на моей машине, и рядом с выигрышами записаны потери. synthos — мой собственный ежедневный редактор кода и чат.",
         },
-        "hero": img("synthos/docs/screenshots/notes-dashboard-floating-chat.png",
-                    "synthos: a notes workspace built by the agent, with the chat torn off into a floating window",
-                    "synthos: рабочее пространство заметок, собранное агентом, и чат, вынесенный в плавающее окно"),
+        "hero": img("synthos/docs/screenshots/agent-pipeline-self-correct.png",
+                    "synthos: the agent runs a MiniMax-H3 video generation, hits a latent-shape error and fixes the resolution itself",
+                    "synthos: агент запускает генерацию видео MiniMax-H3, получает ошибку формы латента и сам исправляет разрешение"),
         "gallery": [
-            img("synthos/docs/screenshots/agent-pipeline-self-correct.png",
-                "The agent runs a MiniMax-H3 video pipeline, hits a latent-shape error and fixes the resolution itself",
-                "Агент запускает видеопайплайн MiniMax-H3, получает ошибку формы латента и сам исправляет разрешение"),
-            img("synthos/docs/screenshots/nodes-menu-models.png",
-                "The node editor: the Neuro node menu, a running graph and the models-in-memory panel",
-                "Нодовый редактор: меню нод Neuro, работающий граф и панель загруженных моделей"),
             img("synthos/docs/screenshots/chat-details.png",
                 "Chat details: tok/s, prefill time and how much of the prompt came from the prefix-KV cache",
                 "Подробности чата: ток/с, время префилла и доля промпта из кэша префикс-KV"),
-            img("synthos/docs/screenshots/notes-kanban-drag.png",
-                "Kanban boards with labels, priorities and checklists — a card mid-drag",
-                "Канбан-доски с метками, приоритетами и чек-листами — карточку перетаскивают"),
             img("synthos/docs/screenshots/chat-tools-autotools-skills.png",
                 "Tools, the autotools pool and skills, toggled per chat",
                 "Инструменты, пул autotools и навыки включаются для каждого чата отдельно"),
-            img("synthos/docs/screenshots/pack-build-syn.png",
-                "Build a .syn: the model is recognised by itself; pick where to save and, optionally, a quantization",
-                "Сборка .syn: модель распознаётся сама, остаётся выбрать, куда сохранить, и при желании квантование"),
-            img("synthos/docs/screenshots/notes-calendar-month.png",
-                "Calendar, month view — events, board deadlines and Gantt bars",
-                "Календарь на месяц — события, сроки с досок и полосы из диаграммы Ганта"),
-            img("synthos/docs/screenshots/notes-mindmap.png", "Mind map in notes", "Майнд-карта в заметках"),
+            img("synthos/docs/screenshots/chat-sampling.png",
+                "Sampling settings of a chat", "Настройки сэмплирования чата"),
             img("synthos/docs/screenshots/code-editor-terminal.png",
                 "Code editor with the integrated terminal", "Редактор кода со встроенным терминалом"),
+            img("synthos/docs/screenshots/code-terminal-btop.png",
+                "A full-screen TUI (btop) in the integrated terminal",
+                "Полноэкранный TUI (btop) во встроенном терминале"),
         ],
     },
     # ------------------------------------------------------------------ synaptix
@@ -524,12 +516,12 @@ PROJECTS = [
                     "synaptix at work inside synthos: tok/s, prefill time and the prefix-KV share of a chat turn",
                     "synaptix в работе внутри synthos: ток/с, время префилла и доля промпта из префикс-KV"),
         "gallery": [
-            img("synthos/docs/screenshots/pack-wizard-layers.png",
-                "Packing a .syn bundle: components, auxiliary files and precision per layer group (synthos UI)",
-                "Упаковка бандла .syn: компоненты, вспомогательные файлы и точность для каждой группы слоёв (интерфейс synthos)"),
+            img("synshell/crates/syn-models/docs/screenshots/pack-ru.png",
+                "Packing a .syn bundle: model composition and quantization; synaptixd quantizes on the GPU (synshell Models)",
+                "Упаковка бандла .syn: состав модели и квантование, которое считает synaptixd на видеокарте (synshell «Модели»)"),
             img("synthos/docs/screenshots/nodes-acestep.png",
-                "ACE-Step text → music graph running on synaptix (synthos node editor)",
-                "Граф ACE-Step «текст → музыка» на synaptix (нодовый редактор synthos)"),
+                "ACE-Step text → music graph running on synaptix (node editor)",
+                "Граф ACE-Step «текст → музыка» на synaptix (нодовый редактор)"),
             img("synthos/docs/screenshots/agent-pipeline-run.png",
                 "The agent checks VRAM, frees it and starts a video run (synthos)",
                 "Агент проверяет видеопамять, освобождает её и запускает генерацию видео (synthos)"),
@@ -676,21 +668,21 @@ PROJECTS = [
         },
         "description": {
             "en": "Wayland desktop environment in Rust for computers and phones: compositor, desktop, phone "
-                  "and game shells, System Settings and 31 apps. AUR packages.",
+                  "and game shells, System Settings and 32 apps. AUR packages.",
             "ru": "Рабочий стол Wayland на Rust для компьютеров и телефонов: композитор, оболочки для ПК, "
-                  "телефона и игр, «Параметры системы» и 31 приложение. Пакеты в AUR.",
+                  "телефона и игр, «Параметры системы» и 32 приложения. Пакеты в AUR.",
         },
         "tagline": {
-            "en": "A Wayland desktop environment for computers and phones, laid out like KDE Plasma: a compositor, a separate shell and System Settings, plus 31 applications — all drawn with syngui and configured in one file, applied live.",
-            "ru": "Окружение рабочего стола Wayland для компьютеров и телефонов, устроенное как KDE Plasma: композитор, отдельная оболочка и «Параметры системы», плюс 31 приложение — всё нарисовано на syngui и настраивается одним файлом, на лету.",
+            "en": "A Wayland desktop environment for computers and phones, laid out like KDE Plasma: a compositor, a separate shell and System Settings, plus 32 applications — all drawn with syngui and configured in one file, applied live.",
+            "ru": "Окружение рабочего стола Wayland для компьютеров и телефонов, устроенное как KDE Plasma: композитор, отдельная оболочка и «Параметры системы», плюс 32 приложения — всё нарисовано на syngui и настраивается одним файлом, на лету.",
         },
         "card": {
-            "en": "Wayland desktop environment for computers and phones: a smithay compositor, desktop, phone and game shells, System Settings and 31 applications.",
-            "ru": "Рабочий стол Wayland для компьютеров и телефонов: композитор на smithay, оболочки для компьютера, телефона и игр, «Параметры системы» и 31 приложение.",
+            "en": "Wayland desktop environment for computers and phones: a smithay compositor, desktop, phone and game shells, System Settings and 32 applications.",
+            "ru": "Рабочий стол Wayland для компьютеров и телефонов: композитор на smithay, оболочки для компьютера, телефона и игр, «Параметры системы» и 32 приложения.",
         },
         "stats": [
             {"value": "3", "label": {"en": "shells: desktop, phone, game mode", "ru": "оболочки: компьютер, телефон, игровой режим"}},
-            {"value": "31", "label": {"en": "applications, each with its own README", "ru": "приложение, у каждого свой README"}},
+            {"value": "32", "label": {"en": "applications, each with its own README", "ru": "приложения, у каждого свой README"}},
             {"value": "14", "label": {"en": "interface languages", "ru": "языков интерфейса"}},
             {"value": "14", "label": {"en": "built-in themes, Nord by default", "ru": "встроенных тем, по умолчанию Nord"}},
         ],
@@ -711,7 +703,7 @@ PROJECTS = [
                 "A dock in the spirit of macOS and Latte Dock: icons grow under the cursor, launch bounce, 3D tilt and a 3D shelf with reflections, groups, folders, autohide and intellihide.",
                 "Phone: the synmobile-shell phone shell, an on-screen keyboard and phone apps — Phone, Messages, Camera, NFC, Compass, Sports and health, IR remote.",
                 "Game mode: a fullscreen launcher with the Steam library, covers, gamepad navigation and an in-game quick menu; Wine components for all prefixes and Android apps in a LineageOS container (syndroid).",
-                "31 applications: System Settings, file manager (archives as folders, network locations, phones), terminal, software center (Arch repositories and AUR), Resource Monitor, theme editor, Notes (canvases, kanban, Gantt, mind maps, handwriting), passwords, virtual machines (syn-vm: QEMU/KVM, CLI and MCP server), video and music players, voice recorder, Maps, an assistant on local neural networks and more.",
+                "32 applications: System Settings, file manager (archives as folders, network locations, phones), terminal, software center (Arch repositories and AUR), Resource Monitor, theme editor, Notes (canvases, kanban, Gantt, mind maps, handwriting), passwords, virtual machines (syn-vm: QEMU/KVM, CLI and MCP server), video and music players, voice recorder, Maps, an assistant on local neural networks, Models (Hugging Face downloads and .syn packages) and more.",
                 "14 built-in themes (Nord by default), each exported to GTK, Qt/KDE and GIMP so other apps match; your own themes in MSS. Interface in 14 languages.",
                 "Computer ↔ phone over USB and Wi-Fi (synlink): screen and remote input, files, notifications, a shared clipboard, synced passwords.",
                 "Own lock screen (PAM), screen-sharing and screenshot portal over PipeWire for browsers and OBS, and the synshot screenshot tool.",
@@ -723,7 +715,7 @@ PROJECTS = [
                 "Док в духе macOS и Latte Dock: значки растут под курсором, прыжок при запуске, 3D-наклон и 3D-полка с отражениями, группы, папки, автоскрытие и умное скрытие.",
                 "Телефон: оболочка synmobile-shell, экранная клавиатура и телефонные приложения — Телефон, Сообщения, Камера, NFC, Компас, Спорт и здоровье, ИК-пульт.",
                 "Игровой режим: полноэкранное меню с библиотекой Steam, обложками, управлением с геймпада и быстрым меню в игре; компоненты Wine для всех префиксов и Android-приложения в контейнере LineageOS (syndroid).",
-                "31 приложение: «Параметры системы», Проводник (архивы как папки, сетевые расположения, телефоны), Терминал, «Программы» (репозитории Arch и AUR), Монитор ресурсов, Редактор тем, Заметки (холсты, канбан, Гант, карты мыслей, рукописный ввод), Пароли, Виртуальные машины (syn-vm: QEMU/KVM, командная строка и MCP-сервер), Видео и Музыка, Диктофон, Карты, Ассистент на локальных нейросетях и другие.",
+                "32 приложения: «Параметры системы», Проводник (архивы как папки, сетевые расположения, телефоны), Терминал, «Программы» (репозитории Arch и AUR), Монитор ресурсов, Редактор тем, Заметки (холсты, канбан, Гант, карты мыслей, рукописный ввод), Пароли, Виртуальные машины (syn-vm: QEMU/KVM, командная строка и MCP-сервер), Видео и Музыка, Диктофон, Карты, Ассистент на локальных нейросетях, «Модели» (загрузка с Hugging Face и пакеты .syn) и другие.",
                 "14 встроенных тем (по умолчанию Nord); каждая передаётся в GTK, Qt/KDE и GIMP, чтобы другие программы выглядели так же; свои темы — на MSS. Интерфейс на 14 языках.",
                 "Компьютер ↔ телефон по USB и Wi-Fi (synlink): экран и управление, файлы, уведомления, общий буфер обмена, синхронизация паролей.",
                 "Свой экран блокировки (PAM), портал показа экрана и снимков через PipeWire для браузеров и OBS, снимки экрана synshot.",
@@ -752,8 +744,8 @@ PROJECTS = [
             ],
         },
         "built": {
-            "en": "synshell is my own daily session on the laptop and on the phone, so what is described here is what I run every day. The whole interface — shells, dock, settings, all 31 applications — is drawn with syngui.",
-            "ru": "synshell — мой ежедневный сеанс на ноутбуке и на телефоне, так что описано то, чем я пользуюсь каждый день. Весь интерфейс — оболочки, док, параметры, все 31 приложение — нарисован на syngui.",
+            "en": "synshell is my own daily session on the laptop and on the phone, so what is described here is what I run every day. The whole interface — shells, dock, settings, all 32 applications — is drawn with syngui.",
+            "ru": "synshell — мой ежедневный сеанс на ноутбуке и на телефоне, так что описано то, чем я пользуюсь каждый день. Весь интерфейс — оболочки, док, параметры, все 32 приложения — нарисован на syngui.",
         },
         "hero": img_l("synshell/docs/screenshots/desktop.png", "synshell/docs/screenshots/desktop-ru.png",
                   "synshell in the Nord theme: a floating top panel, the dock, the file manager, Resource Monitor and the terminal",

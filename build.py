@@ -123,6 +123,8 @@ class Images:
         g = "-".join(parts[1:3]) if parts[0] == "alexeyev.dev" and len(parts) > 3 and parts[1] == "blog" else parts[0]
         group = re.sub(r"[^a-z0-9-]+", "-", g.lower().replace("_", "-"))
         stem = os.path.splitext(parts[-1])[0]
+        if len(parts) > 3 and parts[1] == "crates":  # synshell/crates/<crate>/…: same file names in many crates
+            stem = f"{parts[2]}-{stem}"
         stem = re.sub(r"[^A-Za-z0-9-]+", "-", stem).strip("-").lower() or hashlib.sha1(rel.encode()).hexdigest()[:8]
         out = {}
         img = None
