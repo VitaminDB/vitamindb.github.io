@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Модели — synshell</title>
-<meta name="description" content="«Модели» для рабочего стола synshell — поиск и загрузка моделей с Hugging Face, библиотека пакетов .syn и упаковка моделей в них (квантование считает служба…">
+<meta name="description" content="«Модели» для рабочего стола synshell — поиск и загрузка моделей с Hugging Face, библиотека пакетов .syn, упаковка моделей в них и обучение LoRA (квантование…">
 <meta name="author" content="Виталий Алексеев">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
@@ -19,7 +19,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Виталий Алексеев">
 <meta property="og:title" content="Модели — synshell">
-<meta property="og:description" content="«Модели» для рабочего стола synshell — поиск и загрузка моделей с Hugging Face, библиотека пакетов .syn и упаковка моделей в них (квантование считает служба…">
+<meta property="og:description" content="«Модели» для рабочего стола synshell — поиск и загрузка моделей с Hugging Face, библиотека пакетов .syn, упаковка моделей в них и обучение LoRA (квантование…">
 <meta property="og:url" content="https://alexeyev.dev/ru/synshell/syn-models/">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:locale:alternate" content="en_US">
@@ -31,10 +31,10 @@
 <meta name="twitter:site" content="@alexeyev_vitaly">
 <meta name="twitter:creator" content="@alexeyev_vitaly">
 <meta name="twitter:title" content="Модели — synshell">
-<meta name="twitter:description" content="«Модели» для рабочего стола synshell — поиск и загрузка моделей с Hugging Face, библиотека пакетов .syn и упаковка моделей в них (квантование считает служба…">
+<meta name="twitter:description" content="«Модели» для рабочего стола synshell — поиск и загрузка моделей с Hugging Face, библиотека пакетов .syn, упаковка моделей в них и обучение LoRA (квантование…">
 <meta name="twitter:image" content="https://alexeyev.dev/og/synshell-syn-models-ru.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Виталий Алексеев","item":"https://alexeyev.dev/ru/"},{"@type":"ListItem","position":2,"name":"synshell","item":"https://alexeyev.dev/ru/synshell/"},{"@type":"ListItem","position":3,"name":"Модели","item":"https://alexeyev.dev/ru/synshell/syn-models/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Модели","alternateName":"syn-models","description":"«Модели» для рабочего стола synshell — поиск и загрузка моделей с Hugging Face, библиотека пакетов .syn и упаковка моделей в них (квантование считает служба…","url":"https://alexeyev.dev/ru/synshell/syn-models/","operatingSystem":"Linux","applicationCategory":"DesktopEnhancementApplication","isPartOf":"https://alexeyev.dev/ru/synshell/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"screenshot":"https://alexeyev.dev/img/synshell/syn-models-huggingface-ru.webp"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Модели","alternateName":"syn-models","description":"«Модели» для рабочего стола synshell — поиск и загрузка моделей с Hugging Face, библиотека пакетов .syn, упаковка моделей в них и обучение LoRA (квантование…","url":"https://alexeyev.dev/ru/synshell/syn-models/","operatingSystem":"Linux","applicationCategory":"DesktopEnhancementApplication","isPartOf":"https://alexeyev.dev/ru/synshell/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"screenshot":"https://alexeyev.dev/img/synshell/syn-models-huggingface-ru.webp"}</script>
 </head>
 <body class="project app">
 <a class="skip" href="#main">К содержимому</a>
@@ -57,13 +57,13 @@
   <div class="wrap">
     <p class="eyebrow rise">synshell · Работа · syn-models</p>
     <h1 id="p-h" class="rise">Модели</h1>
-    <p class="tagline rise">«Модели» для рабочего стола synshell — поиск и загрузка моделей с Hugging Face, библиотека пакетов .syn и упаковка моделей в них (квантование считает служба нейросетей synaptixd).</p>
+    <p class="tagline rise">«Модели» для рабочего стола synshell — поиск и загрузка моделей с Hugging Face, библиотека пакетов .syn, упаковка моделей в них и обучение LoRA (квантование и обучение считает служба нейросетей synaptixd).</p>
     <div class="btns rise"><a class="btn" href="https://github.com/VitaminDB/synshell/blob/master/crates/syn-models/README.ru.md"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>README</span></a></div>
     <figure class="shot-hero rise"><a href="/img/synshell/syn-models-huggingface-ru.webp"><div class="frame"><img src="/img/synshell/syn-models-huggingface-ru.webp" width="1280" height="820" alt="Hugging Face: карточка модели, README, файлы с SHA256 и очередь загрузок" fetchpriority="high"></div></a></figure>
   </div>
 </section>
 <article class="section md-body"><div class="wrap"><div class="md"><h2>Возможности</h2>
-<p>Одно окно с тремя разделами — вкладки в заголовке, Ctrl+1 / Ctrl+2 / Ctrl+3.</p>
+<p>Одно окно с четырьмя разделами — вкладки в заголовке, Ctrl+1 … Ctrl+4 (Hugging Face, Библиотека, Настройки, Обучение); <code>syn-models --page training</code> открывает сразу «Обучение».</p>
 <ul>
 <li><strong>Hugging Face</strong> — поиск по Hub с сортировкой по трендам, загрузкам, звёздам или дате обновления; README модели и список файлов с размерами и SHA256.</li>
 <li><strong>Очередь загрузок</strong> — несколько файлов одновременно, до 16 сегментов HTTP Range на файл, общий лимит скорости, пауза; после перезапуска очередь продолжается, каждый файл сверяется по SHA256. «Скачать всё» пропускает onnx, openvino, fp32 и копии весов в <code>.bin</code>.</li>
@@ -72,6 +72,7 @@
 <li><strong>Библиотека</strong> — закладки папок с пакетами <code>.syn</code>; у открытого пакета — обзор (архитектура, назначение, размер, формат), слои, файлы, метаданные и просмотр.</li>
 <li><strong>Упаковка в <code>.syn</code></strong> — мастер показывает состав модели и собирает пакет с квантованием (NVFP4, MXFP8, SQ8 / SQ6 / SQ5 и другие). Само квантование считает на видеокарте служба нейросетей synshell — synaptixd.</li>
 <li><strong>От загрузки до пакета в один шаг</strong> — кнопка «Упаковать в .syn» в карточке скачанной модели сразу открывает мастер упаковки в Библиотеке.</li>
+<li><strong>Обучение</strong> — дообучение языковых моделей адаптерами LoRA: обзор того, как это устроено, задачи обучения с живым графиком лосса, скоростью и оставшимся временем, датасеты с редактором и проверкой токенизатором самой модели, и сами адаптеры — включение по умолчанию для модели, сила без повторного обучения, удаление. Квантованная модель обучается как есть (QLoRA). Обучение идёт в службе synaptixd, поэтому окно можно закрыть, задача продолжится. В synthos адаптеры по-прежнему включаются для отдельного чата в его карточке LoRA, оттуда кнопка ведёт сюда.</li>
 <li><strong>Настройки</strong> — токен, кэш загрузок, сколько файлов качать параллельно, сегменты на файл, лимит скорости, пропускаемые форматы и папка пакетов.</li>
 <li><strong>«Параметры системы»</strong> — в разделе Нейросети → Хранилище моделей есть кнопка «Открыть «Модели»».</li>
 </ul>
@@ -95,7 +96,7 @@
 <h2>Установка</h2>
 <p>Пакет <code>syn-models</code> входит в группу <code>synshell-apps</code> и зависит от <code>synshell-core</code>; метапакет <code>synshell</code> ставит его вместе со всем рабочим столом. Для упаковки с квантованием нужна служба <code>synaptix</code>. <strong>Из исходников:</strong> <code>cargo build --release -p syn-models</code> в репозитории <a href="/ru/synshell/">synshell</a>.</p>
 <h2>Откуда взялась</h2>
-<p>Страницы Hugging Face и Syn-пакетов раньше были внутри <a href="https://github.com/VitaminDB/synthos">synthos</a>. Они переехали в synshell отдельной программой; при первом запуске она забирает настройки и незавершённую очередь загрузок из synthos.</p>
+<p>Страницы Hugging Face, Syn-пакетов и обучения LoRA раньше были внутри <a href="https://github.com/VitaminDB/synthos">synthos</a>. Они переехали в synshell отдельной программой; при первом запуске она забирает настройки и незавершённую очередь загрузок из synthos.</p>
 <h2>Часть synshell</h2>
 <p>syn-models — одно из приложений <a href="/ru/synshell/">synshell</a>: окружения рабочего стола для Wayland на Rust для компьютеров и телефонов, на UI-фреймворке <a href="https://github.com/VitaminDB/syngui">syngui</a>.</p>
 <h2>Лицензия</h2>

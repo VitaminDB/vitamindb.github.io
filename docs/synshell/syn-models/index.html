@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Models — synshell</title>
-<meta name="description" content="Models for the synshell desktop — Hugging Face search and downloads, a library of .syn model packages and packing models into them (quantization runs in the…">
+<meta name="description" content="Models for the synshell desktop — Hugging Face search and downloads, a library of .syn model packages, packing models into them and LoRA training…">
 <meta name="author" content="Vitaliy Alexeyev">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
@@ -19,7 +19,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Vitaliy Alexeyev">
 <meta property="og:title" content="Models — synshell">
-<meta property="og:description" content="Models for the synshell desktop — Hugging Face search and downloads, a library of .syn model packages and packing models into them (quantization runs in the…">
+<meta property="og:description" content="Models for the synshell desktop — Hugging Face search and downloads, a library of .syn model packages, packing models into them and LoRA training…">
 <meta property="og:url" content="https://alexeyev.dev/synshell/syn-models/">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ru_RU">
@@ -31,10 +31,10 @@
 <meta name="twitter:site" content="@alexeyev_vitaly">
 <meta name="twitter:creator" content="@alexeyev_vitaly">
 <meta name="twitter:title" content="Models — synshell">
-<meta name="twitter:description" content="Models for the synshell desktop — Hugging Face search and downloads, a library of .syn model packages and packing models into them (quantization runs in the…">
+<meta name="twitter:description" content="Models for the synshell desktop — Hugging Face search and downloads, a library of .syn model packages, packing models into them and LoRA training…">
 <meta name="twitter:image" content="https://alexeyev.dev/og/synshell-syn-models-en.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Vitaliy Alexeyev","item":"https://alexeyev.dev/"},{"@type":"ListItem","position":2,"name":"synshell","item":"https://alexeyev.dev/synshell/"},{"@type":"ListItem","position":3,"name":"Models","item":"https://alexeyev.dev/synshell/syn-models/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Models","alternateName":"syn-models","description":"Models for the synshell desktop — Hugging Face search and downloads, a library of .syn model packages and packing models into them (quantization runs in the…","url":"https://alexeyev.dev/synshell/syn-models/","operatingSystem":"Linux","applicationCategory":"DesktopEnhancementApplication","isPartOf":"https://alexeyev.dev/synshell/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"screenshot":"https://alexeyev.dev/img/synshell/syn-models-huggingface-ru.webp"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Models","alternateName":"syn-models","description":"Models for the synshell desktop — Hugging Face search and downloads, a library of .syn model packages, packing models into them and LoRA training…","url":"https://alexeyev.dev/synshell/syn-models/","operatingSystem":"Linux","applicationCategory":"DesktopEnhancementApplication","isPartOf":"https://alexeyev.dev/synshell/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"screenshot":"https://alexeyev.dev/img/synshell/syn-models-huggingface-ru.webp"}</script>
 </head>
 <body class="project app">
 <a class="skip" href="#main">Skip to content</a>
@@ -57,13 +57,13 @@
   <div class="wrap">
     <p class="eyebrow rise">synshell · Work · syn-models</p>
     <h1 id="p-h" class="rise">Models</h1>
-    <p class="tagline rise">Models for the synshell desktop — Hugging Face search and downloads, a library of .syn model packages and packing models into them (quantization runs in the synaptixd neural service).</p>
+    <p class="tagline rise">Models for the synshell desktop — Hugging Face search and downloads, a library of .syn model packages, packing models into them and LoRA training (quantization and training run in the synaptixd neural service).</p>
     <div class="btns rise"><a class="btn" href="https://github.com/VitaminDB/synshell/blob/master/crates/syn-models/README.md"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>README</span></a></div>
     <figure class="shot-hero rise"><a href="/img/synshell/syn-models-huggingface-ru.webp"><div class="frame"><img src="/img/synshell/syn-models-huggingface-ru.webp" width="1280" height="820" alt="Hugging Face: a model card, its README, files with SHA256 and the download queue" fetchpriority="high"></div></a></figure>
   </div>
 </section>
 <article class="section md-body"><div class="wrap"><div class="md"><h2>Features</h2>
-<p>One window with three sections — tabs in the title bar, Ctrl+1 / Ctrl+2 / Ctrl+3.</p>
+<p>One window with four sections — tabs in the title bar, Ctrl+1 … Ctrl+4 (Hugging Face, Library, Settings, Training); <code>syn-models --page training</code> opens straight on Training.</p>
 <ul>
 <li><strong>Hugging Face</strong> — search the Hub sorted by trending, downloads, likes or last update; the model's README and its file list with sizes and SHA256.</li>
 <li><strong>Download queue</strong> — several files at once, up to 16 HTTP Range segments per file, one shared speed limit, pause; the queue continues after a restart, and every file is checked against its SHA256. “Download all” skips onnx, openvino, fp32 and <code>.bin</code> copies of the weights.</li>
@@ -72,6 +72,7 @@
 <li><strong>Library</strong> — bookmarked folders with <code>.syn</code> packages; an opened package shows an overview (architecture, purpose, size, format), layers, files, metadata and a preview.</li>
 <li><strong>Packing into <code>.syn</code></strong> — a wizard shows what the model is made of and packs it with quantization (NVFP4, MXFP8, SQ8 / SQ6 / SQ5 and others). The quantization itself is computed on the GPU by the synshell neural service synaptixd.</li>
 <li><strong>One step from download to package</strong> — “Pack into .syn” on a downloaded model opens the packing wizard in the Library right away.</li>
+<li><strong>Training</strong> — fine-tuning language models with LoRA adapters: an overview of how it works, training jobs with a live loss chart, speed and time left, datasets with an editor and a check against the model's own tokenizer, and the adapters themselves — switch one on by default for a model, set its strength without retraining, delete it. A quantized model is trained as is (QLoRA). Training runs in the synaptixd service, so the window can be closed while a job runs. In synthos adapters are still switched on per chat in the chat's LoRA card, which links here.</li>
 <li><strong>Settings</strong> — token, download cache, parallel files, segments per file, speed limit, formats to skip and the packages folder.</li>
 <li><strong>System Settings</strong> — Neural networks → Model storage has an “Open Models” button.</li>
 </ul>
@@ -96,7 +97,7 @@
 <h2>Install</h2>
 <p>The <code>syn-models</code> package belongs to the <code>synshell-apps</code> group and depends on <code>synshell-core</code>; the <code>synshell</code> metapackage installs it with the rest of the desktop. Packing with quantization needs the <code>synaptix</code> service. <strong>From source:</strong> <code>cargo build --release -p syn-models</code> in the <a href="/synshell/">synshell</a> repository.</p>
 <h2>Where it came from</h2>
-<p>The Hugging Face and Syn packages pages used to live inside <a href="https://github.com/VitaminDB/synthos">synthos</a>. They moved to synshell as this program; on first start it takes over the synthos settings and the unfinished download queue.</p>
+<p>The Hugging Face, Syn packages and LoRA training pages used to live inside <a href="https://github.com/VitaminDB/synthos">synthos</a>. They moved to synshell as this program; on first start it takes over the synthos settings and the unfinished download queue.</p>
 <h2>Part of synshell</h2>
 <p>syn-models is one of the applications of <a href="/synshell/">synshell</a> — a Wayland desktop environment in Rust for computers and phones, built on the <a href="https://github.com/VitaminDB/syngui">syngui</a> UI framework.</p>
 <h2>License</h2>

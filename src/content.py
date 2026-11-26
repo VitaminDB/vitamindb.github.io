@@ -241,7 +241,7 @@ PROJECTS = [
         "aur": ["synthos-bin", "synthos-git"],
         "licence": "GPL-3.0 / commercial",
         "platform": {"en": "Linux x86_64 · NVIDIA sm_80+", "ru": "Linux x86_64 · NVIDIA sm_80+"},
-        "stack": ["Rust", "CUDA", "synaptix", "syngui"],
+        "stack": ["Rust", "synaptixd", "syngui"],
         "category": "MultimediaApplication",
         "status": {"en": "Early, single developer", "ru": "Ранняя стадия, один разработчик"},
         "title": {
@@ -284,9 +284,9 @@ PROJECTS = [
                 "text or image → video with sound, lyrics → music, script → multi-voice dialogue.",
                 "The agent also searches your knowledge base and reads the web, and synthos is a "
                 "code editor with terminals. Everything runs on the device on the native synaptix "
-                "engine — no Python, no torch, no cloud. Nothing leaves the machine. Notes, the "
-                "Hugging Face browser and .syn packing now live in synshell as separate programs "
-                "(Notes and Models).",
+                "engine in the synaptixd service — no Python, no torch, no cloud; synthos itself is a light client of that service. Nothing leaves the machine. Notes, the "
+                "Hugging Face browser, .syn packing and LoRA training now live in synshell as separate "
+                "programs (Notes and Models).",
             ],
             "ru": [
                 "synthos — одна программа для рабочего стола вокруг локальной видеокарты. Чат "
@@ -297,47 +297,47 @@ PROJECTS = [
                 "инструкцией → отредактированная картинка, текст или картинка → видео со звуком, "
                 "текст песни → музыка, сценарий → диалог на несколько голосов.",
                 "Ещё агент ищет по базе знаний и читает веб, а сам synthos — редактор кода с "
-                "терминалами. Всё считается на месте, на собственном движке synaptix — без Python, "
-                "без torch и без облака. Данные не покидают машину. Заметки, браузер Hugging Face "
-                "и упаковка в .syn теперь живут в synshell отдельными программами («Заметки» и "
-                "«Модели»).",
+                "терминалами. Всё считается на месте, на собственном движке synaptix в службе synaptixd — "
+                "без Python, без torch и без облака; сам synthos — лёгкий клиент этой службы. Данные не покидают машину. Заметки, браузер Hugging Face "
+                "упаковка в .syn и обучение LoRA теперь живут в synshell отдельными программами "
+                "(«Заметки» и «Модели»).",
             ],
         },
         "features": {
             "en": [
                 "Chat with Qwen3, the Qwen3.6 / 3.8 hybrids, Qwen3.8-Flash-Next (a 125B MoE that runs on a 24 GB card), Gemma-3, Gemma-4 26B A4B, Muse Glimmer 30B and Llama — with vision where the model has it.",
-                "Native inference: NVFP4, MXFP8, SQ1…SQ8 and all ggml quantization types, CUDA-graph decode, MTP and DFlash speculative decoding, prefix-KV reuse across turns and partial offload of layers to host RAM.",
+                "Inference in the synaptixd service on the native synaptix engine: NVFP4, MXFP8, SQ1…SQ8 and all ggml quantization types, CUDA-graph decode, MTP and DFlash speculative decoding, prefix-KV reuse across turns and partial offload of layers to host RAM.",
                 "An agent with tools: web search and reading, knowledge-base retrieval, generate (image, video, music and speech straight through the synaptixd service), a view_media tool, a wizard that asks you a question mid-turn, subagents and your own skills.",
                 "Images: FLUX.1, FLUX.2 (dev, klein 4B / 9B), Qwen-Image 2.1, Qwen-Image-Edit 2509 / 2511 and SDXL.",
                 "Video: LTX-2.3 (text, image or audio to video, IC-LoRA control) and MiniMax-H3 with synchronized stereo audio and image / video / audio references.",
                 "Music and speech: YuE2 songs through an editable ABC score and covers of a recording, ACE-Step, VoxCPM2 and OmniVoice voice cloning, VibeVoice multi-speaker dialogue, GigaAM transcription, Sortformer diarization.",
                 "A local knowledge base (RAG): files, folders, PDF and URLs, hybrid BM25 + vector search with an optional rerank, stored in bundled SQLite.",
                 "A code editor with git-status decorations and integrated terminals that run full-screen TUIs. Terminals survive restarts and crashes: a separate holder keeps the programs running and the tabs reattach on the next start; other programs open tabs themselves with synthos --open-terminal <dir> --cmd '<command>'.",
-                "An interface in 14 languages. Hugging Face downloads and packing models into .syn moved to the synshell Models program, notes — to synshell Notes.",
+                "An interface in 14 languages. Hugging Face downloads, packing models into .syn and LoRA training moved to the synshell Models program (trained adapters are still switched on per chat in its LoRA card), notes — to synshell Notes.",
             ],
             "ru": [
                 "Чат с Qwen3, гибридами Qwen3.6 / 3.8, Qwen3.8-Flash-Next (MoE на 125B, которая работает на карте 24 ГБ), Gemma-3, Gemma-4 26B A4B, Muse Glimmer 30B и Llama — со зрением, если оно есть у модели.",
-                "Собственный инференс: NVFP4, MXFP8, SQ1…SQ8 и все типы квантования ggml, декод через CUDA-граф, спекулятивное декодирование MTP и DFlash, переиспользование префикс-KV между ходами и частичная выгрузка слоёв в оперативную память.",
+                "Инференс в службе synaptixd на собственном движке synaptix: NVFP4, MXFP8, SQ1…SQ8 и все типы квантования ggml, декод через CUDA-граф, спекулятивное декодирование MTP и DFlash, переиспользование префикс-KV между ходами и частичная выгрузка слоёв в оперативную память.",
                 "Агент с инструментами: поиск и чтение веба, поиск по базе знаний, generate (картинка, видео, музыка и речь напрямую через службу synaptixd), просмотр файлов своим зрением (view_media), вопрос пользователю посреди хода, субагенты и свои навыки.",
                 "Картинки: FLUX.1, FLUX.2 (dev, klein 4B / 9B), Qwen-Image 2.1, Qwen-Image-Edit 2509 / 2511 и SDXL.",
                 "Видео: LTX-2.3 (из текста, картинки или звука, управление через IC-LoRA) и MiniMax-H3 с синхронным стереозвуком и референсами — картинками, видео и звуком.",
                 "Музыка и речь: песни YuE2 через редактируемую партитуру ABC и каверы на запись, ACE-Step, клонирование голоса в VoxCPM2 и OmniVoice, диалог на несколько голосов в VibeVoice, распознавание речи GigaAM и разметка спикеров Sortformer.",
                 "Локальная база знаний (RAG): файлы, папки, PDF и ссылки, гибридный поиск BM25 + векторы с необязательным реранком, всё хранится во встроенном SQLite.",
                 "Редактор кода с подсветкой статуса git и встроенными терминалами, в которых работают полноэкранные TUI. Терминалы переживают перезапуск и падение: программы в них держит отдельный хранитель, и при следующем запуске вкладки подключаются к ним; другие программы открывают вкладки сами — synthos --open-terminal <папка> --cmd '<команда>'.",
-                "Интерфейс на 14 языках. Загрузка с Hugging Face и упаковка моделей в .syn переехали в программу synshell «Модели», заметки — в «Заметки» synshell.",
+                "Интерфейс на 14 языках. Загрузка с Hugging Face, упаковка моделей в .syn и обучение LoRA переехали в программу synshell «Модели» (обученные адаптеры по-прежнему включаются для чата в его карточке LoRA), заметки — в «Заметки» synshell.",
             ],
         },
         "install": {
-            "code": "paru -S synthos-bin   # prebuilt binary — recommended\nparu -S synthos-git   # build from source (CUDA toolkit, ~2 h, ~15 GB disk)",
+            "code": "paru -S synthos-bin   # prebuilt binary — recommended\nparu -S synthos-git   # build from source (no CUDA toolkit needed)",
             "note": {
-                "en": "Other distributions: download the tarball from Releases or build from source — the binary is built against Arch library versions. Models downloaded from Hugging Face are packed once into a single .syn file with the synshell Models program; GGUF chat models open directly. synthos works on its own: the synaptix engine is built in, no service needed; if synshell's synaptixd service is running, synthos connects to it and shares the models already loaded, so nothing sits in VRAM twice.",
-                "ru": "Другие дистрибутивы: архив со страницы Releases или сборка из исходников — бинарник собран под версии библиотек Arch. Модели, скачанные с Hugging Face, один раз упаковываются в файл .syn программой synshell «Модели»; чат-модели в GGUF открываются напрямую. synthos работает сам по себе: движок synaptix встроен, служба не нужна; если запущена служба synaptixd из synshell, synthos подключается к ней и использует уже загруженные модели, чтобы они не занимали видеопамять дважды.",
+                "en": "Other distributions: download the tarball from Releases or build from source — the binary is built against Arch library versions. Models downloaded from Hugging Face are packed once into a single .syn file with the synshell Models program; GGUF chat models open directly. Neural networks run in the system synaptixd service (package synaptix, a dependency of synthos); synthos is its client and shares the loaded models with every synshell app, so nothing sits in VRAM twice. Without the service the code editor and terminals work, while the chat, generation, voice input and knowledge base wait for it.",
+                "ru": "Другие дистрибутивы: архив со страницы Releases или сборка из исходников — бинарник собран под версии библиотек Arch. Модели, скачанные с Hugging Face, один раз упаковываются в файл .syn программой synshell «Модели»; чат-модели в GGUF открываются напрямую. Нейросети работают в системной службе synaptixd (пакет synaptix, зависимость synthos); synthos — её клиент и делит загруженные модели со всеми программами synshell, чтобы ничего не занимало видеопамять дважды. Без службы работают редактор кода и терминалы, а чат, генерация, голосовой ввод и база знаний ждут её.",
             },
         },
         "requirements": {
             "en": [
                 "Linux x86_64 only. Runtime: gtk3, wayland, libxkbcommon, fontconfig, a Vulkan driver, alsa, ffmpeg.",
-                "An NVIDIA GPU from sm_80 (Ampere) up. Native NVFP4 / MXFP8 tensor-core paths need Blackwell (sm_120+); older cards run through portable kernels.",
+                "The synaptixd service (package synaptix) and, for it, an NVIDIA GPU from sm_80 (Ampere) up. Native NVFP4 / MXFP8 tensor-core paths need Blackwell (sm_120+); older cards run through portable kernels.",
                 "7 GB of VRAM is enough to run everything, 24 GB to run it quickly: on 7 GB a 27B hybrid answers at 1–2 tok/s.",
                 "No AMD (ROCm) or Apple (Metal) support. A Windows build is planned but does not exist yet.",
                 "No model weights are shipped: you download them yourself and accept each model's licence — some are non-commercial.",
@@ -345,7 +345,7 @@ PROJECTS = [
             ],
             "ru": [
                 "Только Linux x86_64. Нужны gtk3, wayland, libxkbcommon, fontconfig, драйвер Vulkan, alsa, ffmpeg.",
-                "Видеокарта NVIDIA от sm_80 (Ampere) и новее. Родные тензорные пути NVFP4 / MXFP8 — только на Blackwell (sm_120+), старые карты работают через переносимые ядра.",
+                "Служба synaptixd (пакет synaptix) и для неё видеокарта NVIDIA от sm_80 (Ampere) и новее. Родные тензорные пути NVFP4 / MXFP8 — только на Blackwell (sm_120+), старые карты работают через переносимые ядра.",
                 "Чтобы запустить всё, хватает 7 ГБ видеопамяти, чтобы работало быстро — нужно 24 ГБ: на 7 ГБ гибрид 27B отвечает со скоростью 1–2 ток/с.",
                 "AMD (ROCm) и Apple (Metal) не поддерживаются. Сборка под Windows в планах, но её пока нет.",
                 "Веса моделей в комплект не входят: их скачиваете вы и принимаете лицензию каждой модели — некоторые только для некоммерческого использования.",
